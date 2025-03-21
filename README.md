@@ -36,9 +36,10 @@ The next step is to organize the documentation into a searchable static site usi
 
 ## Phase 3: Building an AI Agent (Planned)
 
-We plan to build an AI agent that can answer questions about the Rama platform using:
+We plan to build an AI agent that can answer questions about the Rama platform and assist in development using:
 - Vector embeddings for semantic search
-- A knowledge graph for understanding relationships
+- Rama framework
+- A Graph of Thought knowledge graph for understanding relationships interacting with Rama
 - Self-learning capabilities for continuous improvement
 
 ## Setup Instructions
