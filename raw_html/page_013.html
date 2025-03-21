@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Stream topologies :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="stream.html">Stream topologies</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_usage" class="">Usage</a></li><li data-level="1"><a href="#_operation" class="">Operation</a></li><li data-level="1"><a href="#_fault_tolerance_and_retry_modes" class="">Fault-tolerance and "retry modes"</a></li><li data-level="1"><a href="#_start_from_options" class="">"Start from" options</a></li><li data-level="1"><a href="#_ack_return_agg_options" class="is-active">"Ack return agg" options</a></li><li data-level="1"><a href="#_throttling">Throttling</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="2"><a href="#_configurations">Configurations</a></li><li data-level="2"><a href="#_dynamic_options">Dynamic options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Stream topologies</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_usage">Usage</a></li><li data-level="1"><a href="#_operation">Operation</a></li><li data-level="1"><a href="#_fault_tolerance_and_retry_modes">Fault-tolerance and "retry modes"</a></li><li data-level="1"><a href="#_start_from_options">"Start from" options</a></li><li data-level="1"><a href="#_ack_return_agg_options">"Ack return agg" options</a></li><li data-level="1"><a href="#_throttling">Throttling</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="2"><a href="#_configurations">Configurations</a></li><li data-level="2"><a href="#_dynamic_options">Dynamic options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <a href="tutorial5.html" class="page">the tutorial</a>, you learned the basics of using stream topologies. You saw how stream topologies reactively process data from depots, and you saw how easy it is to configure stream topologies to process from as many depots as you need. In this section, we’ll go beyond the basics to show everything there is to know about stream topologies, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Internal state kept by stream topologies and how it’s updated</p>
+</li>
+<li>
+<p>Fault-tolerance of stream topologies and different retry behaviors available</p>
+</li>
+<li>
+<p>Configuring where a new stream topology starts processing from a depot</p>
+</li>
+<li>
+<p>How stream topologies throttle processing to avoid being overloaded</p>
+</li>
+<li>
+<p>Tuning options available for stream topologies</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stream topologies can create any number of PStates and consume data from any number of depots. They typically finish processing a depot record within a few milliseconds. Let’s take a look at this example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicStreamTopologyModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+    setup.declareDepot(<span class="hljs-string">"*depot2"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p1"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    s.pstate(
+      <span class="hljs-string">"$$p2"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>)
+     .compoundAgg(<span class="hljs-string">"$$p1"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, Agg.count()))
+     .compoundAgg(<span class="hljs-string">"$$p2"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count())))
+     .ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.NOT_EQUAL, <span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>),
+       Block.hashPartition(<span class="hljs-string">"*k2"</span>)
+            .compoundAgg(<span class="hljs-string">"$$p1"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count()))
+            .compoundAgg(<span class="hljs-string">"$$p2"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, Agg.count()))));
+
+    s.source(<span class="hljs-string">"*depot2"</span>).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.CURRENT_TASK_ID).out(<span class="hljs-string">"*taskId"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"From *depot2:"</span>, <span class="hljs-string">"*taskId"</span>, <span class="hljs-string">"*v"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> BasicStreamTopologyModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      Depot depot2 = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot2"</span>);
+      PState p1 = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p1"</span>);
+      PState p2 = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p2"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"a"</span>));
+
+      System.out.println(<span class="hljs-string">"a count: "</span> + p1.selectOne(Path.key(<span class="hljs-string">"a"</span>)));
+      System.out.println(<span class="hljs-string">"b count: "</span> + p1.selectOne(Path.key(<span class="hljs-string">"b"</span>)));
+      System.out.println(<span class="hljs-string">"c count: "</span> + p1.selectOne(Path.key(<span class="hljs-string">"c"</span>)));
+
+      System.out.println(<span class="hljs-string">"b subcounts: "</span> + p2.select(Path.key(<span class="hljs-string">"b"</span>).all()));
+
+      depot2.append(<span class="hljs-string">"X"</span>);
+      depot2.append(<span class="hljs-string">"Y"</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module produces PStates <code>"$$p1"</code> and <code>"$$p2"</code> that track counts from data coming from <code>"*depot"</code>. <code>"$$p2"</code> stores counts for each pair of keys. <code>"*depot"</code> emits tuples containing two keys, and the counts are incremented for each key. Except for batch blocks, the entire dataflow API is available to you in stream topologies. Conditionals, loops, branching, and unification can be used freely. This module uses a condition to only increment counts for the reverse combination of keys if the keys are not equal. Partitioners can be used inside conditionals, and they can also be used in loops or any other dataflow construct.</p>
+</div>
+<div class="paragraph">
+<p>Running the <code>main</code> method prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">a count: 2
+b count: 2
+c count: 1
+b subcounts: [["a" 1] ["c" 1]]
+From *depot2: 3 X
+From *depot2: 0 Y</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>"*depot2"</code> is included just to demonstrate consuming from multiple depots. When consuming multiple depots from a topology, it’s typical for each source block to modify the same PStates in different ways.</p>
+</div>
+<div class="paragraph">
+<p>Because batch blocks cannot be used in stream topologies, stream topologies are unable to benefit from <a href="aggregators.html#_high_performance_two_phase_aggregation_with_combiners" class="page">two-phase aggregation</a>. This makes it difficult to do efficient global aggregation in stream topologies. If you want efficient global aggregation, you should generally prefer <a href="microbatch.html" class="page">microbatch topologies</a>.</p>
+</div>
+<div class="paragraph">
+<p>Stream topologies have deep integration with depot appends. Depot appends as shown in this example will block until all colocated stream topologies have finished processing the data. There are other "ack levels" you can use on depots if you want different behavior –&nbsp;see <a href="depots.html" class="page">the page on depots</a> for more details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operation"><a class="anchor" href="#_operation"></a>Operation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Understanding how Rama executes stream topologies can help you understand its fault-tolerance model and the key factors impacting performance. Let’s look at a broad overview of how they work.</p>
+</div>
+<div class="paragraph">
+<p>After a depot partition appends a new record, it pushes that record to all subscribed stream topologies. This includes colocated stream topologies as well as <a href="module-dependencies.html" class="page">stream topologies from other modules</a>.</p>
+</div>
+<div class="paragraph">
+<p>Colocated stream topologies carefully track every depot record being processed. Depending on the implementation of the stream topology, processing a single depot record can trigger many downstream events across many tasks across the module. Facilities like conditionals and loops can make the amount of downstream processing dynamic. The downstream work forms an "event tree", and a stream topology can only mark a depot record as processed when the event tree has been exhausted and each individual event in the tree has completed. For example, consider the following source block of a stream topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+ .anchor(<span class="hljs-string">"root"</span>)
+ .hashPartition(<span class="hljs-string">"*k"</span>)
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-string">"XYZ"</span>))
+ .hook(<span class="hljs-string">"root"</span>)
+ .shufflePartition()
+ .ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.EQUAL, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"A"</span>)
+   Block.each(Ops.RANGE, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>).out(<span class="hljs-string">"*i"</span>)
+        .hashPartition(<span class="hljs-string">"*i"</span>)
+        .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*i"</span>).termVal(<span class="hljs-string">"*k"</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>See <a href="intermediate-dataflow.html#_yieldifovertime" class="page">this section</a> for a discussion of how a topology breaks down into events. The event tree for this code for the depot record "A" would be:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/stream/event-tree.png" alt="event tree">
+</div>
+</div>
+<div class="paragraph">
+<p>Each of those events could run on different tasks on different nodes across the cluster. Rama efficiently tracks these event trees, no matter how big or dynamic, with just a tiny bit of metadata called the "ack val" at the root of processing and with each event. In this case, you can see the initial event branches into both a <code>hashPartition</code> and <code>shufflePartition</code> creating two outgoing events. The <code>RANGE</code> call emits two times, creating two outgoing events from that event.</p>
+</div>
+<div class="paragraph">
+<p>An individual event could do an arbitrary number of reads and writes to PStates on its task. The event doing the writing will be able to read its writes immediately, but PState clients and other topologies will not see those writes applied until after the event has finished and those writes have finished <a href="replication.html" class="page">replicating</a>. That writes are made externally visible on an event by event basis in stream topologies is different than how <a href="microbatch.html" class="page">microbatch topologies</a> work.</p>
+</div>
+<div class="paragraph">
+<p>Execution of stream topology events on tasks are batched. All task threads for a module have a queue for pending events. While an event is executing, many events can queue up for a variety of work: stream and microbatch topology events, PState reads, system events, and so on. When it’s time to process a stream topology on a task, there could be many events queued up for that stream topology belonging to many event trees. To greatly improve performance, Rama batches the processing of those events together. All writes to PStates across all those events are buffered, applied, and replicated together. This means all writes across all events in a batch become visible externally at the same time. If your incoming throughput of data is low, these batches will be small (even as small as one event). If your incoming throughput of data is much higher, the batch sizes would be bigger because more stream topology events would queue up on a task while other events are running. This auto-batching behavior by Rama gives you the best of both worlds of latency and throughput for stream processing.</p>
+</div>
+<div class="paragraph">
+<p>All writes to PStates from all events during one of these batches are made visible at the same time. So when you write to multiple PStates in the same event, you’re guaranteed either all writes or none of the writes are visible at any given moment.</p>
+</div>
+<div class="paragraph">
+<p>Stream topologies track progress with an internal PState with a name of the form <code>"$$__streaming-state-&lt;topologyId&gt;"</code>. In the example from the previous section, the PState would be called <code>"$$__streaming-state-s"</code>. Each partition of this PState tracks progress on colocated depot partitions by the stream topology, and this PState enables a stream topology to pick up where it left off after a module update or a leader switch. Telemetry for this PState can be viewed in the <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a>. Because it would be inefficient to write to this PState after every depot record finishes processing, it is only written to after a configurable number of records have been processed or a configurable amount of time has passed. This has implications for how stream topologies handle fault-tolerance, which we’ll look at in the next section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fault_tolerance_and_retry_modes"><a class="anchor" href="#_fault_tolerance_and_retry_modes"></a>Fault-tolerance and "retry modes"</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A topology event can fail for many reasons. One of the machines involved in processing could lose power, there could be a disk error, or there could be a bug in your code. Any exception thrown anywhere in the processing of a depot record will cause that topology event to retry processing of that record according to the configured "retry mode". Failures are rare, but it’s important you think through how they will be handled and how they can affect your PStates.</p>
+</div>
+<div class="paragraph">
+<p>A "retry mode" is configured on a source by source basis. There are three retry modes available: "individual", "all after", and "none". A retry mode can be configured like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>, StreamSourceOptions.retryNone())
+
+s.source(<span class="hljs-string">"*depot2"</span>, StreamSourceOptions.retryAllAfter())</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Whenever a record is retried, it’s retried from the start of the corresponding source block. A depot record is never partially retried –&nbsp;even if it failed at the end of the topology code it will retry from the start of processing. So if retries are enabled, Rama guarantees "at least once processing" semantics for stream topologies. This means that during failures a depot record could cause multiple writes to the same PState. Write operations that are idempotent, like adding to a set, are unaffected by this. But non-idempotent write operations like incrementing a counter can become inaccurate from retries. This is a tradeoff for the extremely low latency of stream topologies. If perfect accuracy is critical for a use case like this, consider using a <a href="microbatch.html" class="page">microbatch topology</a> instead.</p>
+</div>
+<div class="paragraph">
+<p>The default retry mode is "individual". In this mode, only depot records that failed to process are retried. Rama will try its best to retry records in the order in which they were appended, but because processing is asynchronous and distributed it can’t guarantee this.</p>
+</div>
+<div class="paragraph">
+<p>The "none" retry mode never retries failed records. This retry mode has "at most once" processing semantics.</p>
+</div>
+<div class="paragraph">
+<p>The final retry mode is "all after". In this mode a failed record will cause all records after it on the same depot partition to also be retried (even if they already succeeded). If the order of processing is critical, like processing "Follow" and "Unfollow" records for a social graph, this mode is appropriate.</p>
+</div>
+<div class="paragraph">
+<p>Exceptions aren’t the only thing that can cause the processing of a record to fail. Rama also fails a record if its event tree doesn’t succeed within a configurable timeout. This handles scenarios like a downstream machine losing power in the middle of processing.</p>
+</div>
+<div class="paragraph">
+<p>The way stream topologies checkpoint their progress on depot partitions also has implications for what records get retried. If a <a href="replication.html" class="page">leader</a> restarts or suddenly loses leadership after it has successfully processed some records but before it has checkpointed that progress, those records will get retried.</p>
+</div>
+<div class="paragraph">
+<p>Because stream topology events are batched together for execution on a task thread, if any one of those events throws an exception all the events will fail. These events could be for processing triggered by depot records from many tasks across the module. So one of those events failing could lead to many depot records retrying across many tasks. Note that this behavior is unrelated to timeouts since timeouts are tracked on depot partitions at the root of event trees.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, if an exception is thrown or the process crashes during execution of a stream topology event, all PState writes during that batch of execution will be discarded. They will never replicate or be made visible externally. Subsequent retries from the depot sources for event trees involved in that batch will redo those writes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_from_options"><a class="anchor" href="#_start_from_options"></a>"Start from" options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first time a stream topology processes a depot partition (whether when the module is first launched or if a new depot source is added on a <a href="operating-rama.html#_updating_modules" class="page">module update</a>), it must determine where to start processing from that partition. By default it starts processing from the end, meaning it only processes records added to the partition after the topology started. However, there are a variety of options for starting from somewhere else.</p>
+</div>
+<div class="paragraph">
+<p>Here are examples of all the different options you can configure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>, StreamSourceOptions.startFromBeginning())
+
+s.source(<span class="hljs-string">"*depot2"</span>, StreamSourceOptions.startFromOffsetAfterTimestamp(<span class="hljs-number">107740800000</span>))
+
+s.source(<span class="hljs-string">"*depot3"</span>, StreamSourceOptions.startFromOffsetAgo(<span class="hljs-number">10000</span>, OffsetAgo.RECORDS))
+
+s.source(<span class="hljs-string">"*depot4"</span>, StreamSourceOptions.startFromOffsetAgo(<span class="hljs-number">15</span>, OffsetAgo.DAYS))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>startFromBeginning</code> starts processing from the first record available on the depot partition. <code>startFromOffsetAfterTimestamp</code> starts from the first record appended after that timestamp. <code>startFromOffsetAgo</code> lets you start from either a fixed number of records or a set amount of time in the past. See the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/module/OffsetAgo.html">Javadoc for OffsetAgo</a> for all the options.</p>
+</div>
+<div class="paragraph">
+<p>These options can be combined with retry options using the builder pattern, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>, StreamSourceOptions.startFromBeginning().retryNone())</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Keep in mind that "start from" options only apply the first time the topology runs on a depot partition. After a leader switch or module update it will continue from where it left off.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ack_return_agg_options"><a class="anchor" href="#_ack_return_agg_options"></a>"Ack return agg" options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depot appends done with <code>AckLevel.ACK</code> wait for all colocated stream topologies consuming that depot to finish processing the appended data. Additionally, those colocated stream topologies can return arbitrary information as part of processing to the appender of that data. This is done with the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#ackReturn-java.lang.Object-">ackReturn</a> method.</p>
+</div>
+<div class="paragraph">
+<p>Values given to <code>ackReturn</code> are aggregated on the task where processing began for that depot record. By default, the aggregation method used chooses the last value aggregated. Here’s an example of using an ack return to return the value updated in a PState during processing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicAckReturnModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.IDENTITY));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+     .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()))
+     .localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .ackReturn(<span class="hljs-string">"*v"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> BasicAckReturnModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      System.out.println(<span class="hljs-string">"Ack return 1: "</span> + depot.append(<span class="hljs-string">"a"</span>));
+      System.out.println(<span class="hljs-string">"Ack return 2: "</span> + depot.append(<span class="hljs-string">"a"</span>));
+      System.out.println(<span class="hljs-string">"Ack return 3: "</span> + depot.append(<span class="hljs-string">"a"</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Ack return 1: {"s" 1}
+Ack return 2: {"s" 2}
+Ack return 3: {"s" 3}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, the return of depot appends with <code>AckLevel.ACK</code> (which is the default if not specified) is a map from topology name to ack return value. Here there’s only one colocated stream topology providing an ack return, so the map contains just the one entry. In this example, for each depot append of the same key, the ack return value increases by one.</p>
+</div>
+<div class="paragraph">
+<p>How ack return values are aggregated can be customized in the source options for a depot subscription. The ack return aggregator is specified using <a href="aggregators.html" class="page">aggregators</a>, whether a built-in aggregator or a custom one defined with <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaCombinerAgg.html">RamaCombinerAgg</a> or <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaAccumulatorAgg1.html">RamaAccumulatorAgg1</a>.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example that uses the built-in "sum" aggregator for ack returns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SumAckReturnModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.IDENTITY));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"sumTopology"</span>);
+
+    s.source(<span class="hljs-string">"*depot"</span>, StreamSourceOptions.ackReturnAgg(Agg::sum)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.RANGE, <span class="hljs-number">0</span>, <span class="hljs-string">"*v"</span>)
+     .shufflePartition()
+     .ackReturn(<span class="hljs-string">"*v"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> SumAckReturnModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">8</span>, <span class="hljs-number">3</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      System.out.println(<span class="hljs-string">"Ack return for 3: "</span> + depot.append(<span class="hljs-number">3</span>));
+      System.out.println(<span class="hljs-string">"Ack return for 5: "</span> + depot.append(<span class="hljs-number">5</span>));
+      System.out.println(<span class="hljs-string">"Ack return for 10: "</span> + depot.append(<span class="hljs-number">10</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Ack return for 3: {"sumTopology" 9}
+Ack return for 5: {"sumTopology" 25}
+Ack return for 10: {"sumTopology" 100}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The many ack return values are coming from random tasks in this example, but they all get summed together properly.</p>
+</div>
+<div class="paragraph">
+<p>Using a custom aggregator just requires passing an instance of that aggregator, such as <code>StreamSourceOptions.ackReturnAgg(new MyAggregator())</code>. Using a custom aggregator allows for totally arbitrary logic to be plugged in for the ack return value aggregation. A custom aggregator also allows the start value of aggregation to be specified.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_throttling"><a class="anchor" href="#_throttling"></a>Throttling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stream topologies place a limit on how many depot records can be processing at any given time. This is done to protect the module from being overloaded with data. If the incoming rate of data were much greater than what the topology could handle, memory usage would go up as more and more events backed up on internal queues. Eventually this would lead to out of memory errors and outages.</p>
+</div>
+<div class="paragraph">
+<p>Since all depot records are tracked anyway as they’re out for execution by a topology, stream topologies throttle at the depot level. If the limit is set to 1000, at most 1000 records can be pending completion for a given task. As soon as a depot record succeeds or fails processing (including timeouts), one more depot record is allowed to be emitted for processing for that task for the topology.</p>
+</div>
+<div class="paragraph">
+<p>When the limit is hit, the depot will wait for pending records to complete before emitting any more records. Depot appends with <code>AckLevel.ACK</code> while the limit is hit will throw an exception back to clients. In these cases the appends will have gone through, but since it was unable to start stream processing for at least one of the colocated stream topologies it returns immediately to clients with an exception rather than wait an indeterminate amount of time. Lastly, when the limit is hit those records will be skipped entirely for stream topologies with <code>retryNone</code> set for that depot source.</p>
+</div>
+<div class="paragraph">
+<p>You should make sure to <a href="operating-rama.html#_scaling_modules" class="page">scale</a> your modules such that stream topologies operate well under the limit in normal operation. For a healthy topology that limit should only be hit in unusual situations like sudden, temporary bursts of inbound traffic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tuning_options"><a class="anchor" href="#_tuning_options"></a>Tuning options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many references were made on this page to configurations for various aspects of stream topology operation. This section will list all <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">configurations and dynamic options</a> relevant to stream topologies.</p>
+</div>
+<div class="sect2">
+<h3 id="_configurations"><a class="anchor" href="#_configurations"></a>Configurations</h3>
+<div class="paragraph">
+<p>Configurations are fixed upon module deploy and can only be changed with a module update. They cannot be customized on a topology by topology basis. There is only one configuration of this type for stream topologies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topology.stream.periodic.checkpoint.seconds</code>: Progress on depot partitions is written at this frequency regardless of how much progress has been made. This ensures that progress is written for low throughput depots at a predictable rate.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dynamic_options"><a class="anchor" href="#_dynamic_options"></a>Dynamic options</h3>
+<div class="paragraph">
+<p>Dynamic options can be edited from the <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a> and take effect immediately. They can be configured on a topology by topology basis. The dynamic options available for stream topologies are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topology.stream.checkpoint.progress.threshold</code>: Progress on depot partitions is written after this many depot records from the last checkpointed offset have succeeded.</p>
+</li>
+<li>
+<p><code>topology.stream.max.events.per.batch</code>: This is the max number of stream topology events to batch together when executing stream topology events on a task.</p>
+</li>
+<li>
+<p><code>topology.stream.max.executing.per.task</code>: This is the max number of depot records that can be pending for a stream topology for each task. Importantly, this is not a global number but a per task number. This option is what throttles stream topologies to protect the module from being overloaded.</p>
+</li>
+<li>
+<p><code>topology.stream.timeout.seconds</code>: This is the timeout for each event tree to complete successfully.</p>
+</li>
+<li>
+<p><code>depot.cache.cardinality</code>: Stream topologies utilize a cache on depots so they don’t have to re-read records from disk to perform retries. This config determines the size of that cache.</p>
+</li>
+<li>
+<p><code>depot.cache.catchup.chunk.size</code>: When filling the depot cache, this config determines how many depot records to fetch at a time. This is relevant when a stream topology is far behind processing on a depot.</p>
+</li>
+<li>
+<p><code>depot.max.pending.streaming.per.partition</code>: This is how many acked depot appends can be tracked per depot partition.</p>
+</li>
+<li>
+<p><code>depot.ack.failure.on.any.streaming.failure</code>: Determines whether an acked depot append should be considered failed if any colocated streaming topology fails on the first attempt, or if it should give stream topologies a chance to succeed on retries. This defaults to true, and when false acked depot appends will only fail due to timeout or passing the max pending limit. Note that this option doesn’t affect stream topologies with retry mode of "none" whose failure will always cause acked depot appends to immediately fail.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stream topologies are appropriate when you need millisecond-level latency for updating your PStates. Their integration with depot appends makes them great for coordinating work with front-end clients. You’ve seen how stream topologies give you great flexibility in how failures should be handled.</p>
+</div>
+<div class="paragraph">
+<p>Though stream topologies cannot handle as high throughput as microbatch topologies due to the overhead of tracking each depot record individually, the use of batching within Rama’s implementation still gives them great performance. All those optimizations happen automatically in the background, and as a developer you’re able to take advantage of intuitive semantics for interacting with PStates.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

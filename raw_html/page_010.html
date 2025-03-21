@@ -1,0 +1,1622 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Paths :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="paths.html">Paths</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_navigation_model" class="">Navigation model</a></li><li data-level="1"><a href="#_value_navigators" class="">Value navigators</a></li><li data-level="1"><a href="#_virtual_value_navigators" class="">Virtual value navigators</a></li><li data-level="1"><a href="#_filter_navigators" class="">Filter navigators</a></li><li data-level="1"><a href="#_substructure_navigators" class="">Substructure navigators</a></li><li data-level="2"><a href="#_sublist_and_filteredlist" class="">subList and filteredList</a></li><li data-level="2"><a href="#_range_queries" class="">Range queries</a></li><li data-level="1"><a href="#_view_navigators" class="">View navigators</a></li><li data-level="1"><a href="#_control_navigators" class="is-active">Control navigators</a></li><li data-level="1"><a href="#_transform_paths">Transform paths</a></li><li data-level="1"><a href="#_custom_navigators">Custom navigators</a></li><li data-level="1"><a href="#_value_collection">Value collection</a></li><li data-level="1"><a href="#_reactivity">Reactivity</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Paths</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_navigation_model">Navigation model</a></li><li data-level="1"><a href="#_value_navigators">Value navigators</a></li><li data-level="1"><a href="#_virtual_value_navigators">Virtual value navigators</a></li><li data-level="1"><a href="#_filter_navigators">Filter navigators</a></li><li data-level="1"><a href="#_substructure_navigators">Substructure navigators</a></li><li data-level="2"><a href="#_sublist_and_filteredlist">subList and filteredList</a></li><li data-level="2"><a href="#_range_queries">Range queries</a></li><li data-level="1"><a href="#_view_navigators">View navigators</a></li><li data-level="1"><a href="#_control_navigators">Control navigators</a></li><li data-level="1"><a href="#_transform_paths">Transform paths</a></li><li data-level="1"><a href="#_custom_navigators">Custom navigators</a></li><li data-level="1"><a href="#_value_collection">Value collection</a></li><li data-level="1"><a href="#_reactivity">Reactivity</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Paths are the core mechanism in Rama for reading and writing PStates. They provide a flexible and concise way to specify sophisticated, fine-grained behavior regardless of the complexity of a PState’s structure. The power of paths comes from being a <em>composable abstraction</em>. On this page you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to think in terms of "navigators", the building blocks of paths.</p>
+</li>
+<li>
+<p>The different kinds of navigators, including value navigators, virtual value navigators, filter navigators, substructure navigators, view navigators, and control navigators.</p>
+</li>
+<li>
+<p>How to write your own navigators to handle custom types or different kinds of navigations.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_navigation_model"><a class="anchor" href="#_navigation_model"></a>Navigation model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Paths <em>navigate</em> to <em>locations</em> in a data structure. A path is defined as a sequence of <em>navigators</em>, each of which specifies one step of navigation. Navigators and paths can navigate to one location, many locations, or even zero locations.</p>
+</div>
+<div class="paragraph">
+<p>You can visualize navigation as "hopping" through a data structure. For example, suppose you’re working with a data structure that’s a map → map → lists, created with the following code. Since PStates are just data structures, we can use regular data structures as a substitute for exploring the capabilities of paths.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap() {{
+  put(<span class="hljs-string">"a0"</span>, <span class="hljs-keyword">new</span> HashMap() {{
+    put(<span class="hljs-string">"a1"</span>, Arrays.asList(<span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>));
+    put(<span class="hljs-string">"b1"</span>, Arrays.asList(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>));
+  }});
+  put(<span class="hljs-string">"b0"</span>, <span class="hljs-keyword">new</span> HashMap() {{
+    put(<span class="hljs-string">"c1"</span>, Arrays.asList(<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>));
+  }});
+}};</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can visualize this data structure like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/paths-diagrams/simple-data-structure.png" alt="simple data structure">
+</div>
+</div>
+<div class="paragraph">
+<p>Let’s say you query this structure with the path <code>Path.key("a0").key("a1").nth(1)</code>. Rama’s dataflow API can run <code>select</code> on regular data structures which is an easy way to experiment with paths without having to launch full modules. So you can run the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"a0"</span>).key(<span class="hljs-string">"a1"</span>).nth(<span class="hljs-number">1</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case, the code prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can visualize the "hops" of this path like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/paths-diagrams/simple-navigation.png" alt="simple navigation">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A more convenient way to write this path is <code>Path.key("a0", "a1").nth(1)</code>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>The <code>key</code> navigator navigates to the value for the specified key in a map, and the <code>nth</code> navigator navigates to the value for the specified index in a list.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at another example that navigates to multiple values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"a0"</span>).mapVals().all()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>mapVals</code> navigator navigates to each value of a map, and <code>all</code> navigates to each value of a list. To be clear, these navigators are navigating to each value individually. They are not navigating to a collection of values. So in this case, <code>select</code> navigates to five different values and emits one time for each value, printing the result:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 9
+Val: 3
+Val: 6
+Val: 0
+Val: 8</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can visualize this navigation like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/paths-diagrams/multi-navigation.png" alt="multi navigation">
+</div>
+</div>
+<div class="paragraph">
+<p>It’s important to note <code>select</code> works differently in the dataflow API as in the PState client API (e.g. <code>List results = pstate.select(Path.key("a0").mapVals().all())</code>). The dataflow API emits to subsequent dataflow code, while the PState client API is called in a regular Java context. In the dataflow API, <code>select</code> emits one time per navigated value. Calling <code>select</code> on a PState client returns a list of all navigated values. So if the path navigates to zero values, the dataflow code will not emit while the PState client API will return an empty list. Paths themselves work exactly the same in both contexts –&nbsp;the only difference is how results are provided.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at another path that includes filtering:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"a0"</span>).mapVals().all().filterLessThan(<span class="hljs-number">7</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>filterLessThan</code> navigator stays navigated at the current value if it is less than the specified number. This code prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 3
+Val: 6
+Val: 0</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can visualize this navigation as:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/paths-diagrams/filter-navigation.png" alt="filter navigation">
+</div>
+</div>
+<div class="paragraph">
+<p>Whereas <code>key</code>, <code>nth</code>, <code>mapVals</code>, and <code>all</code> navigate to subvalues, <code>filterLessThan</code> does something different. It uses a condition to determine whether to continue navigating the path from that value or not.</p>
+</div>
+<div class="paragraph">
+<p>With these three examples you should have the general feel for using paths. You use navigators to "hop" around a data structure to target the value or values that interest you. From the <code>filterLessThan</code> navigator you can see navigators don’t necessarily navigate to subvalues but can express different behavior. As a design principle navigators always perform one specific action, and you achieve more intricate behaviors through composing navigators together in arbitrary ways.</p>
+</div>
+<div class="paragraph">
+<p>On the rest of this page, we’ll categorize the different kinds of navigators available. At the end of this page you’ll see the simple interface all navigators implement, and you’ll see how you can implement your own navigators using this interface.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_value_navigators"><a class="anchor" href="#_value_navigators"></a>Value navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>"Value navigators" navigate to zero or more subvalues inside a data structure. Some value navigators always navigate to exactly one value (like <code>key</code> and <code>nth</code>), and sometimes the number of navigations depends on the data (like <code>mapVals</code> and <code>all</code>). You can group value navigators by the data structures on which they operate. Rama’s built-in value navigators support maps, sets, and lists. Rather than list every value navigator available, let’s explore a few of the interesting ones you haven’t seen yet to expand your mind to the possibilities. For a complete listing of navigators, consult the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html">Javadoc for Path</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>first</code> navigator navigates to the first element in a list. If the list is empty, it doesn’t navigate anywhere. For example, suppose you ran the following code on the same data we’ve been using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"b0"</span>, <span class="hljs-string">"c1"</span>).first()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val (A):"</span>, <span class="hljs-string">"*v"</span>)
+     .select(data, Path.key(<span class="hljs-string">"z"</span>).first()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val (B):"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val (A): x</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Notice that since the key "z" does not exist in the top-level map, <code>key("z")</code> navigates to the value <code>null</code>. <code>null</code> is treated the same as an empty list for <code>first</code>, so no values are emitted from that second <code>select</code> call.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s revisit <code>all</code> so you can see it works on data structures other than lists. Let’s take a look at using <code>all</code> on one of the inner maps in our example data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"a0"</span>).all()).out(<span class="hljs-string">"*entry"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*entry"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints out:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: #object[java.util.HashMap$Node 0x142db18c a1=[9, 3, 6]]
+Val: #object[java.util.HashMap$Node 0x4491644a b1=[0, 8]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like how <code>all</code> on a list navigates to each value, <code>all</code> on a map navigates to each map entry (<code>HashMap$Node</code> is HashMap’s implementation of <code>Map.Entry</code>). Likewise, <code>all</code> also works on sets by navigating to each value. Conceptually <code>all</code> means to navigate to "all subvalues", and this concept is valid for many data structures.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look at the <code>mapKey</code> navigator. <code>mapKey</code> navigates to the specified key if it exists in the map. Note that it navigates <em>to the key</em>, not to the value for the key. You might be wondering why you would ever want to navigate to a key whose value you already have (since you’re providing the key as input to <code>mapKey</code>). And if you’re thinking in terms of <code>select</code>, you’re right that it’s not very useful. Where <code>mapKey</code> shows its utility is with PState transforms. Here’s an example of this using the <a href="testing.html#_testpstate" class="page">TestPState</a> utility to play with a transform path outside the context of a module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).termVal(<span class="hljs-number">0</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"b"</span>).termVal(<span class="hljs-number">1</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*initVal"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Init:"</span>, <span class="hljs-string">"*initVal"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.mapKey(<span class="hljs-string">"a"</span>).termVal(<span class="hljs-string">"c"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*newVal"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transform:"</span>, <span class="hljs-string">"*newVal"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>We’ll look at transforms in more depth later on this page, but this transform is simple enough to understand <code>mapKey</code>. The <code>TestPState</code> is initialized with some data and then another transform is performed with <code>mapKey</code>. The <code>termVal</code> navigator sets the value at that point of navigation to the specified value. Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Init: {a 0, b 1}
+After transform: {b 1, c 0}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>By navigating to the "a" key and changing its value to "c", the entire map entry is relocated to the "c" key. This is a much more concise way to perform the operation than the alternative of manually calling <code>get</code>, <code>remove</code>, and <code>put</code> on the map.</p>
+</div>
+<div class="paragraph">
+<p>Value navigators encompass all the different ways of navigating to subvalues in data structures. With an understanding of value navigators now in place, let’s take a look at a similar category of navigators called "virtual value navigators".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_virtual_value_navigators"><a class="anchor" href="#_virtual_value_navigators"></a>Virtual value navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whereas value navigators navigate to subvalues which currently exist in a data structure, virtual value navigators navigate to locations which don’t currently exist. Although this sounds like a wacky concept, virtual value navigators are quite useful for adding elements to nested data structures (as you often do with PStates). You’ve added elements to data structures a million times before, so virtual value navigators provide a brand new perspective on these kinds of operations.</p>
+</div>
+<div class="paragraph">
+<p>Virtual value navigators have no use outside of transforms, so the examples in this section will all use <code>TestPState</code>. There are only a handful of virtual value navigators, so this section will look at all of them. Let’s start with the sole virtual value navigator for sets, <code>voidSetElem</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.voidSetElem().termVal(<span class="hljs-string">"a"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After first transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.voidSetElem().termVal(<span class="hljs-string">"f"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After second transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.voidSetElem().termVal(<span class="hljs-string">"c"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After third transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>voidSetElem</code> navigates to the "void" element for the set in question. The "void" element doesn’t currently exist in the set, and when it’s changed to an actual value becomes added to the set. So <code>voidSetElem</code> is a way to add elements to a set without ever needing to leave the context of a path. This is especially useful when dealing with sets nested inside other data structures, as it saves you quite a bit of code.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>TestPState</code> in this module starts with the value <code>null</code>. <code>voidSetElem</code> treats <code>null</code> the same as an empty set which is why the <code>TestPState</code> contains a set after the first transform.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Running this code prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">After first transform: #{a}
+After second transform: #{f a}
+After third transform: #{f a c}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Sets only have one way to add elements. Lists, on the other hand, can have elements added in a number of ways. So let’s take a look at the three virtual value navigators for lists: <code>beforeElem</code>, <code>afterElem</code>, and <code>beforeIndex</code>. Here’s an example utilizing all of them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-string">"a"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-string">"b"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-string">"c"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After appends:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.beforeElem().termVal(<span class="hljs-string">"d"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After prepend:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.beforeIndex(<span class="hljs-number">2</span>).termVal(<span class="hljs-string">"e"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After insert:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This code uses the three different virtual value navigators for lists. <code>beforeElem</code> navigates to the void element before the first element, <code>afterElem</code> navigates to the void element after the last element, and <code>beforeIndex</code> navigates to the void element in between the specified index and the prior index. In all these cases setting that void element to an actual value inserts a new element at that position. Using these virtual value navigators the code does three appends, one prepend, and one insertion before index 2. Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">After appends: (a b c)
+After prepend: (d a b c)
+After insert: (d a e b c)</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Virtual value navigators are a convenient way to express insertion of new elements into data structures, especially when those data structures are nested.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_filter_navigators"><a class="anchor" href="#_filter_navigators"></a>Filter navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s now take a look at "filter navigators". You already saw one filter navigator, <code>filterLessThan</code>. All filter navigators determine whether to stay navigated at the current location or not. For all of these navigators you should think of "filter" as "filter for" –&nbsp;the navigator condition tests for what to keep and removes elements that don’t match the condition. Like before we won’t be looking at every navigator in this category, and you can consult <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html">the Javadoc for Path</a> for the complete listing.</p>
+</div>
+<div class="paragraph">
+<p>For the following examples, we’ll be using the same data as we used earlier in this page. As a reminder, the data structure looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/paths-diagrams/simple-data-structure.png" alt="simple data structure">
+</div>
+</div>
+<div class="paragraph">
+<p>A commonly used filter navigator is <code>filterPred</code>, which runs a function on the navigated element. If the function returns false it stops navigation at that point. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">filterPredExample</span><span class="hljs-params">()</span> </span>{
+  Map data = genData();
+  Block.select(data,
+               Path.mapVals()
+                   .filterPred((Map m) -&gt; m.size() == <span class="hljs-number">1</span>)
+                   .mapVals()
+                   .all()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first <code>.mapVals</code> call navigates to two maps. The <code>filterPred</code> runs a function on each map to determine whether to continue navigating from that point. In this case, the function stays navigated only if the map has exactly one element. The map for the "a0" key has two elements, so the path stops navigating from that point. The map for the "b0" key matches the condition, so the path continues from there. Running this code prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: x
+Val: y</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Notice that once navigation stops none of the subsequent navigators run for that element –&nbsp;this is what it means to stop navigation.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of the <code>filterSelected</code> navigator which does a nested select to determine whether to filter or not:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data,
+             Path.mapVals()
+                 .filterSelected(Path.mapVals().all().filterEqual(<span class="hljs-number">8</span>))
+                 .key(<span class="hljs-string">"a1"</span>)
+                 .all()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 9
+Val: 3
+Val: 6</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is the first navigator you’ve seen making use of a subpath. In this case, <code>filterSelected</code> checks whether that subpath selects anything from that point. If not, it stops navigation. There are two things to note here:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>filterSelected</code> does not navigate anywhere. If the <code>filterSelected</code> condition passes it’s navigated at the same location as before the condition ran.</p>
+</li>
+<li>
+<p>The condition has nothing to do with the values navigated to by the path. The condition is purely based on whether it navigated to any locations at all. So if it navigated to one, two, or ten locations, the condition passes. if it navigates to zero locations, the condition fails and it stops navigation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Filter navigators are one form of navigator that conditions its behavior based on the value currently navigated to. You’ll see even more conditional kinds of behavior in the section below on "control navigators".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_substructure_navigators"><a class="anchor" href="#_substructure_navigators"></a>Substructure navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Substructure navigators are one of the most powerful categories of navigators. When used in transforms, you can do some mind-bending manipulations in a surprisingly small amount of code. You don’t need substructure navigators very often for transforms, but when you do you feel like a wizard.</p>
+</div>
+<div class="paragraph">
+<p>Most data structures can be broken up into smaller versions containing less data. A set can be broken up into any number of subsets, a map into submaps, and a list into sublists. A substructure navigator navigates to one of these smaller versions, and transforms to those substructures affect the original locations in the parent data structure. Let’s look at some examples.</p>
+</div>
+<div class="sect2">
+<h3 id="_sublist_and_filteredlist"><a class="anchor" href="#_sublist_and_filteredlist"></a><code>subList</code> and <code>filteredList</code></h3>
+<div class="paragraph">
+<p><code>subList</code>, as the name implies, navigates to a contiguous part of a list. For example, consider the following code run on the same data we’ve been using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.select(data, Path.key(<span class="hljs-string">"a0"</span>, <span class="hljs-string">"a1"</span>).sublist(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This selects the sublist from indices 1 (inclusive) to 3 (exclusive), printing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: [3 6]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>That’s useful but not very exciting. Now let’s take a look at using <code>subList</code> inside a transform. In this code we’ll initialize a <code>TestPState</code> with some data and then use <code>subList</code> to reverse part of a nested list:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"a"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"b"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"c"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"d"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"e"</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>).afterElem().termVal(<span class="hljs-string">"f"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>)).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Initial nested list:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>,
+                       Path.key(<span class="hljs-string">"k"</span>)
+                           .sublist(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>)
+                           .term((List l) -&gt; {
+                             List ret = <span class="hljs-keyword">new</span> ArrayList(l);
+                             Collections.reverse(ret);
+                             <span class="hljs-keyword">return</span> ret;
+                           }))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"k"</span>)).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The code first initializes a list for key "k" with six elements. It then does another transform using <code>subList</code> to reverse the order of the middle four elements of that list. This code prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial nested list: (a b c d e f)
+After transform: (a e d c b f)</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A few notes about this code:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>term</code> is used for one of the transform paths. Unlike <code>termVal</code> which replaces the navigated value with the provided value, <code>term</code> replaces the navigated value with the results of running the provided function on the navigated value. In this case, it returns a new list computed to be the reverse of the input list.</p>
+</li>
+<li>
+<p>You may be wondering why the <code>term</code> function creates a brand new list. This is because the input list is immutable and cannot be modified. <code>subList</code> always navigates to immutable lists.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This usage of <code>subList</code> demonstrates a computation which can be tricky to write manually. But with the power of paths and composition, it’s easy.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at another substructure navigator for lists: <code>filteredList</code>. Like <code>filterSelected</code>, this takes in a condition path as input. <code>filteredList</code> navigates to a list of all elements matching the specified condition path. Here’s an example that reverses all the even numbers in a list:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">0</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">1</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">2</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">3</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">4</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-number">5</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Initial list:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>,
+                       Path.filteredList(Path.filterPred(Ops.IS_EVEN))
+                           .term((List l) -&gt; {
+                             List ret = <span class="hljs-keyword">new</span> ArrayList(l);
+                             Collections.reverse(ret);
+                             <span class="hljs-keyword">return</span> ret;
+                           }))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like previous examples, this initializes a list of numbers into the <code>TestPState</code> and then runs a transform using <code>filteredList</code>. Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial list: (0 1 2 3 4 5)
+After transform: (4 1 2 3 0 5)</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see from this example, <code>filteredList</code> remembers the positions each element corresponds to in the original list. So when the sublist is reversed, the positions are reversed back in the original list.</p>
+</div>
+<div class="paragraph">
+<p>Reversing sublists, whether contiguous or not, is probably not something you’ll ever need to do. But the point of these examples is to show the extremely precise control you have over how you query and manipulate data structures. To write these kinds of manipulations using regular Java code requires far more effort. Since PStates are just data structures, oftentimes nested, paths give you extremely precise control over how you index your data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_range_queries"><a class="anchor" href="#_range_queries"></a>Range queries</h3>
+<div class="paragraph">
+<p>Let’s look at two more examples of substructure navigators: <code>sortedMapRange</code> and <code>sortedMapRangeFrom</code>. These navigators, alongside the similar navigators <code>sortedSetRange</code> and <code>sortedSetRangeFrom</code>, are how you do range queries in Rama. Top-level and subindexed maps in PStates are sorted, and these navigators are how you efficiently iterate over portions of those indexes. For instance, you may be storing ten years of time-series information in a subindexed map and only want to fetch a few minutes from it.</p>
+</div>
+<div class="paragraph">
+<p>Because it’s such a common use case, let’s take a look at using these navigators with a module storing time-series data. In this example, the <code>"*purchaseDepot"</code> receives purchase information consisting of a store ID, a product ID, the "minute bucket" when the purchase was made, and a dollar amount. The module materializes the <code>"$$totalsByTime"</code> PState with the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{storeId&lt;String&gt;: {productId&lt;String&gt;: {minuteBucket&lt;Long&gt;: revenue&lt;Long&gt;}}}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The inner two maps are subindexed since they can contain a lot of elements. Here’s the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SortedMapRangeModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*purchaseDepot"</span>, Depot.hashBy(Ops.FIRST));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"products"</span>);
+    s.pstate(
+      <span class="hljs-string">"$$totalsByTime"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+          <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+          <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()
+          ).<span class="hljs-title">subindexed</span>()))</span>;
+
+    s.source(<span class="hljs-string">"*purchaseDepot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*storeId"</span>, <span class="hljs-string">"*productId"</span>, <span class="hljs-string">"*minuteBucket"</span>, <span class="hljs-string">"*amt"</span>)
+     .compoundAgg(
+       <span class="hljs-string">"$$totalsByTime"</span>,
+       CompoundAgg.map(
+         <span class="hljs-string">"*storeId"</span>,
+         CompoundAgg.map(
+           <span class="hljs-string">"*productId"</span>,
+           CompoundAgg.map(
+             <span class="hljs-string">"*minuteBucket"</span>,
+             Agg.sum(<span class="hljs-string">"*amt"</span>)))));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> SortedMapRangeModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot purchaseDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*purchaseDepot"</span>);
+      PState totalsByTime = cluster.clusterPState(moduleName, <span class="hljs-string">"$$totalsByTime"</span>);
+
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>, <span class="hljs-number">10</span>, <span class="hljs-number">3</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>, <span class="hljs-number">15</span>, <span class="hljs-number">4</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>, <span class="hljs-number">16</span>, <span class="hljs-number">17</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"all-about-eve"</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"stangers-on-a-train"</span>, <span class="hljs-number">11</span>, <span class="hljs-number">9</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"the-best-years-of-our-lives"</span>, <span class="hljs-number">10</span>, <span class="hljs-number">3</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"inherit-the-wind"</span>, <span class="hljs-number">10</span>, <span class="hljs-number">4</span>));
+      purchaseDepot.append(Arrays.asList(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"paths-of-glory"</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>));
+
+      System.out.println(
+        <span class="hljs-string">"Query 1: "</span> +
+        totalsByTime.select(Path.key(<span class="hljs-string">"blockbuster"</span>, <span class="hljs-string">"witness-for-the-prosecution"</span>)
+                                .sortedMapRange(<span class="hljs-number">10</span>, <span class="hljs-number">20</span>)
+                                .all()
+                                .filterSelected(Path.last().filterGreaterThan(<span class="hljs-number">10</span>))));
+      System.out.println(
+        <span class="hljs-string">"Query 2: "</span> +
+        totalsByTime.select(Path.key(<span class="hljs-string">"blockbuster"</span>).sortedMapRangeFrom(<span class="hljs-string">""</span>, <span class="hljs-number">5</span>).mapKeys()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Before explaining the code, let’s take a look at the results of running <code>main</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query 1: [[10 14] [11 12] [16 17]]
+Query 2: ["all-about-eve" "inherit-the-wind" "paths-of-glory" "stangers-on-a-train" "the-best-years-of-our-lives"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The module here is extremely simple. It processes purchase data as lists containing four elements and uses <code>Ops.EXPAND</code> to bind each of those four elements to vars. It then aggregates into <code>"$$totalsByTime"</code> the number of dollars received for each product for each time bucket.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>main</code> method, some test data is appended to the module. Then you can see the two queries making use of the range query navigators. The first query uses <code>sortedMapRange</code> which gets the submap from a start key (inclusive) to an end key (exclusive). The query fetches the time buckets in that range for that product that received more than $10.</p>
+</div>
+<div class="paragraph">
+<p>The second query uses <code>sortedMapRangeFrom</code> to get the first five products indexed in the product map for the store "blockbuster". <code>sortedMapRange</code> takes in a start key and a maximum number of elements to read from that point. <code>sortedMapRange</code> is useful when you want to read a fixed size range of data. It is frequently used for paginating through large amounts of data, where each page is a fixed size. In this case <code>""</code> is the smallest possible string so this gets the submap with the first five entries in that products map. Since this query is only interested in the product names, it uses <code>mapKeys</code> to make sure only those are returned.</p>
+</div>
+<div class="paragraph">
+<p>In all PState queries, the paths execute entirely server side. So the only data returned is the results of executing the path. Since paths are so expressive, including having the ability to make use of arbitrary Java functions, you have heaps of computational power out your disposal when it comes to querying your indexes.</p>
+</div>
+<div class="paragraph">
+<p>The variants of the range query navigators you’ve seen always include the start key in the results, and for <code>sortedMapRange</code> and <code>sortedSetRange</code>, exclude the end key. There are other variants of these navigators which accept options that let you specify explicitly whether the start or end keys are inclusive or exclusive. See the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRange-java.lang.Object-java.lang.Object-java.lang.Object-">Javadoc</a> for more detail.</p>
+</div>
+<div class="paragraph">
+<p>There are many other substructure navigators available. Be sure to check out the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html">Javadoc for Path</a> for a complete listing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_view_navigators"><a class="anchor" href="#_view_navigators"></a>View navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another category of navigators is "view navigators". View navigators navigate you to a transformation of the currently navigated value.</p>
+</div>
+<div class="paragraph">
+<p>The simplest view navigator is <code>nullToVal</code>. This navigator navigates to the provided value if the current navigated value is null and does nothing otherwise. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+
+Block.select(data, Path.key(<span class="hljs-string">"a"</span>).nullToVal(<span class="hljs-string">"xyz"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(data, Path.key(<span class="hljs-string">"b"</span>).nullToVal(<span class="hljs-string">"xyz"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 1
+Val 2: xyz</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, since the value for the "a" key is non-null, <code>nullToVal</code> does nothing. But since the value for the "b" key is null, it navigates to the provided value "xyz".</p>
+</div>
+<div class="paragraph">
+<p><code>nullToVal</code> is commonly used to initialize a new value when doing a nested transform. It’s less commonly used for selects, though it can occasionally be a convenience for those use cases.</p>
+</div>
+<div class="paragraph">
+<p>A more interesting view navigator is <code>view</code>. <code>view</code> is extremely generic –&nbsp;it changes the navigated value by running any Java code you want. Here are some examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyFunction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaFunction1</span>&lt;<span class="hljs-title">List</span>, <span class="hljs-title">String</span>&gt; </span>{
+  <span class="hljs-keyword">private</span> String token;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyFunction</span><span class="hljs-params">(String token)</span> </span>{
+    <span class="hljs-keyword">this</span>.token = token;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">invoke</span><span class="hljs-params">(List l)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span> + l.size() + <span class="hljs-string">"/"</span> + token + <span class="hljs-string">"/"</span> + l.get(<span class="hljs-number">0</span>);
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">viewExamples</span><span class="hljs-params">()</span> </span>{
+  Map data = <span class="hljs-keyword">new</span> HashMap();
+  data.put(<span class="hljs-string">"a"</span>, Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>));
+
+  Block.select(data, Path.key(<span class="hljs-string">"a"</span>).nth(<span class="hljs-number">0</span>).view(Ops.INC)).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+       .select(data, Path.key(<span class="hljs-string">"a"</span>).view((List l) -&gt; l.size() + <span class="hljs-number">10</span>)).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+       .select(data, Path.key(<span class="hljs-string">"a"</span>).view(<span class="hljs-keyword">new</span> MyFunction(<span class="hljs-string">"***"</span>))).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Val 3:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running <code>viewExamples</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 2
+Val 2: 13
+Val 3: 3/***/1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>From these examples you can see <code>view</code> can take in any function as input, whether a predefined function in Rama from the <code>Ops</code> class, Java lambdas, or explicit implementations of the <code>RamaFunction1</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>While you get this level of flexibility when using <code>view</code> in dataflow code, there are some restrictions when using <code>select</code> on a PState from a client. Rama requires that any functions sent to modules as part of queries already exist on that module’s classpath. So in the above examples the usages of <code>Ops.INC</code> and <code>MyFunction</code> would work fine (as long as <code>MyFunction</code> is on the module’s classpath), but the lambda would not (it would be a huge security risk if Rama let you execute arbitrary foreign code like this inside of modules!).</p>
+</div>
+<div class="paragraph">
+<p>As a module writer, you can include custom functions for clients to make use of in their PState queries. These functions serve a similar purpose as "user defined functions" in SQL databases, except they’re written in regular Java code instead of a limited DSL. Because they’re written in regular Java code, you can make use of the full power of the Java ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at one more view navigator: <code>transformed</code>. <code>transformed</code> works just like <code>view</code> except expresses how the value is changed with a transform path instead of a Java function. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>));
+
+Block.select(data, Path.key(<span class="hljs-string">"a"</span>).transformed(Path.nth(<span class="hljs-number">1</span>).termVal(<span class="hljs-string">"!"</span>))).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: (1 ! 10)</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>transformed</code> is another good example of a navigator that’s parameterized with a path. It’s useful when you want part of the values you’re selecting to be in a different form.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_control_navigators"><a class="anchor" href="#_control_navigators"></a>Control navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final category of navigators to explore are "control navigators". These manipulate the flow of navigation, similar to how operators like <code>if</code> and <code>or</code> manipulate program flow in regular programming.</p>
+</div>
+<div class="paragraph">
+<p>The most basic control navigators are <code>stay</code> and <code>stop</code>. As their names imply, the former does nothing and the latter stops navigation. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+
+Block.select(data, Path.key(<span class="hljs-string">"a"</span>).stay()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(data, Path.key(<span class="hljs-string">"a"</span>).stop()).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>stay</code> and <code>stop</code> are not navigators you usually use on their own. Their use would be in other control navigators or in Java functions which build paths dynamically.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at <code>ifPath</code>. <code>ifPath</code> branches navigation based on the results of a condition. Like <code>filterSelected</code>, the condition for <code>ifPath</code> is a path and tests whether that path navigates to any locations. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>));
+
+Block.select(
+        data,
+        Path.key(<span class="hljs-string">"a"</span>)
+            .ifPath(Path.nth(<span class="hljs-number">0</span>).filterEqual(<span class="hljs-number">1</span>),
+                    Path.nth(<span class="hljs-number">1</span>),
+                    Path.nth(<span class="hljs-number">2</span>))).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(
+       data,
+       Path.key(<span class="hljs-string">"a"</span>)
+           .ifPath(Path.all().filterEqual(<span class="hljs-string">"x"</span>),
+                   Path.nth(<span class="hljs-number">1</span>),
+                   Path.nth(<span class="hljs-number">2</span>))).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(
+       data,
+       Path.key(<span class="hljs-string">"a"</span>)
+           .ifPath(Path.stop(), Path.stay())
+           .nth(<span class="hljs-number">0</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 3:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 5
+Val 2: 10</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All these usages of <code>ifPath</code> navigate to the nested list and branch the path based on the value of that list. In the first case, it tests whether the first element of the list is equal to 1. If so it navigates to index 1, and if not it navigates to index 2. In this case the condition passes so it navigates to index 1.</p>
+</div>
+<div class="paragraph">
+<p>In the second case, the condition path tests whether any elements in the list are equal to "x". Since that path fails to navigate to any locations, navigation continues down the "else" path by navigating to index 2.</p>
+</div>
+<div class="paragraph">
+<p>In the last case, you can see what happens when you don’t provide an "else" path. When not provided the "else" path is equivalent to <code>Path.stop()</code>, The condition path <code>Path.stop()</code> always fails, so it uses that default path and stops navigation. This is why "Val 3" isn’t printed.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at <code>multiPath</code>. <code>multiPath</code> continues navigation from the given point down multiple paths. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+data.put(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>);
+data.put(<span class="hljs-string">"c"</span>, <span class="hljs-number">3</span>);
+
+Block.select(data, Path.multiPath(Path.key(<span class="hljs-string">"a"</span>), Path.key(<span class="hljs-string">"b"</span>))).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 1
+Val: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, the effect of this path is to navigate to both the "a" and "b" keys. <code>multiPath</code> always traverses the paths in the order in which you provide them. In this case, for example, that property lets you know the first result is the value for "a" and the second the value for "b".</p>
+</div>
+<div class="paragraph">
+<p>When used within a condition path (e.g. for <code>ifPath</code> or <code>filterSelected</code>), <code>multiPath</code> is like an <code>or</code> operator. Since a condition path is "true" if it navigates to any location, <code>multiPath</code> is "true" if either path navigates to any location.</p>
+</div>
+<div class="paragraph">
+<p>The last control navigator we’ll look at is <code>subselect</code>. In a way <code>subselect</code> could also be considered a substructure navigator. When used inside of transforms <code>subselect</code> can do some truly mind-bending things.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start with an example of using <code>subselect</code> inside a <code>select</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
+data.put(<span class="hljs-string">"b"</span>, Arrays.asList(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>));
+
+Block.select(data, Path.mapVals().subselect(Path.all().filterPred(Ops.IS_ODD))).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: [1 3]
+Val: [5]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>subselect</code> acts like a <code>select</code> inside the overall path and navigates to a list of values. From this example, you can see it executes a nested <code>select</code> from each of the map vals.</p>
+</div>
+<div class="paragraph">
+<p><code>subselect</code> gets interesting inside of transforms since it remembers the original locations of all navigated values. So when you modify the list navigated to by <code>subselect</code>, the original locations of all those values are modified in the original data structure. Let’s look at an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-keyword">null</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">1</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">2</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">3</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">4</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-keyword">null</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">5</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">6</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">7</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.afterElem().termVal(<span class="hljs-keyword">null</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">8</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">9</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.last().afterElem().termVal(<span class="hljs-number">10</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Initial contents:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>,
+                       Path.subselect(Path.all().all().filterPred(Ops.IS_ODD))
+                           .term((List l) -&gt; {
+                             List ret = <span class="hljs-keyword">new</span> ArrayList(l);
+                             Collections.reverse(ret);
+                             <span class="hljs-keyword">return</span> ret;
+                           }))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transform:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>TestPState</code> is initialized with a list of lists of numbers. Then a transform is done using <code>subselect</code> to reverse the positions of the odd numbers across all lists. Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial contents: ((1 2 3 4) (5 6 7) (8 9 10))
+After transform: ((9 2 7 4) (5 6 3) (8 1 10))</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>It doesn’t matter how deep <code>subselect</code> reaches during its selection. It remembers the locations of all selected values and can do mind-bending manipulations like this. These are the kinds of manipulations which are very difficult to code manually, yet with paths they’re expressed in a tiny amount of code.</p>
+</div>
+<div class="paragraph">
+<p>You’re unlikely to come across many use cases which require manipulation like this. But <code>subselect</code>, more than any other navigator, demonstrates the awesome power you have at your disposal for slicing and dicing your PStates any which way you wish.</p>
+</div>
+<div class="paragraph">
+<p><code>subselect</code> does have many important uses during client PState selects – you saw a usage of it in <a href="tutorial6.html" class="page">the tutorial</a>. Whenever you want your query to perform aggregation of multiple selected values as part of your path, like a sum, <code>subselect</code> is your tool.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_transform_paths"><a class="anchor" href="#_transform_paths"></a>Transform paths</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You’ve seen a number of examples already on this page of using paths in <code>localTransform</code> operations, but let’s now take a deeper look at how they work.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Paths used in transforms only work on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>PState data structures, including subindexed structures</p>
+</li>
+<li>
+<p>Data structures created by paths (e.g. <code>nullToList</code>, <code>afterElem</code> applied to <code>null</code>, etc.)</p>
+</li>
+<li>
+<p><a href="https://clojure.org/reference/data_structures">Clojure’s immutable data structure library</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The built-in navigators are oriented towards immutable data structures, so they won’t work on mutable Java types like <code>ArrayList</code>, <code>HashMap</code>, and so on. This is generally not a limitation though. Since paths are the core mechanism for manipulating PStates, you’re naturally creating the compatible data structures as a consequence.</p>
+</div>
+<div class="paragraph">
+<p>Paths used for selects work fine on Java’s mutable data structures.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Paths in <code>localTransform</code> work exactly like they do in <code>select</code> –&nbsp;using a path you specify the subvalues you wish to change by navigating to them. The only difference is all navigation in a <code>localTransform</code> must end in one of the special "term" navigators. These are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>termVal</code></strong>: Replace the navigated value with the provided value.</p>
+</li>
+<li>
+<p><strong><code>term</code></strong>: Replace the navigated value with the result of running a function on it.</p>
+</li>
+<li>
+<p><strong><code>termVoid</code></strong>: Replace the navigated value with "void", having the effect of removing it from the collection it’s within. <code>termVoid</code> is only valid when the value exists within a collection and does not work for top-level values.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If navigation does not end in one of the "term" navigators, you’ll get an exception at runtime.</p>
+</div>
+<div class="paragraph">
+<p>You’ve already seen many examples of using <code>termVal</code>, so we don’t need to explore that further. You’ve seen some examples of <code>term</code>, but there’s additional capabilities there worth looking at.</p>
+</div>
+<div class="paragraph">
+<p><code>term</code> allows you to specify up to seven additional arguments which will be passed in to the provided function along with the navigated value. This feature is purely a convenience. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).termVal(<span class="hljs-number">1</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"b"</span>).termVal(<span class="hljs-number">2</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Initial value:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).term(Ops.PLUS, <span class="hljs-number">10</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>,
+                       Path.key(<span class="hljs-string">"b"</span>)
+                           .term((Integer v, Integer arg1, Integer arg2) -&gt; {
+                             System.out.println(<span class="hljs-string">"term function args: "</span> + v + <span class="hljs-string">", "</span> + arg1 + <span class="hljs-string">", "</span> + arg2);
+                             <span class="hljs-keyword">return</span> v * arg1 + arg2;
+                           }, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transforms:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial value: {a 1, b 2}
+term function args: 2, 10, 20
+After transforms: {a 11, b 40}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If <code>term</code> didn’t accept any extra arguments, you could achieve the same thing by defining <code>RamaFunction1</code> implementations that take the extra arguments in the constructor and them as instance fields. This feature of <code>term</code> lets you avoid the hassle of defining those extra classes, making a use case like adding 10 to the navigated value trivial. You can see from the output here how the <code>term</code> function takes in the navigated value first followed by the additional arguments.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at <code>termVoid</code>. Whereas navigators like <code>afterElem</code> can add new elements to a list by navigating to a "void" element, <code>termVoid</code> does the opposite by setting an existing value to "void". This causes that element to be removed from the data structure. Let’s look at some examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(TestPState tp = TestPState.create(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>)) </span>{
+  Block.each(Ops.IDENTITY, tp).out(<span class="hljs-string">"$$p"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).afterElem().termVal(<span class="hljs-number">1</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).afterElem().termVal(<span class="hljs-number">2</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).afterElem().termVal(<span class="hljs-number">3</span>))
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"b"</span>).termVal(<span class="hljs-string">"xyz"</span>))
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Initial value:"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>).nth(<span class="hljs-number">1</span>).termVoid())
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"b"</span>).termVoid())
+       .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*v"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"After transforms:"</span>, <span class="hljs-string">"*v"</span>)
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial value: {a (1 2 3), b xyz}
+After transforms: {a (1 3)}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>With <code>termVoid</code> it doesn’t matter how you navigate to the element you wish to remove. When you set it to "void" the element will be removed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_navigators"><a class="anchor" href="#_custom_navigators"></a>Custom navigators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The built-in navigators are so expressive you’ll find the need to write your own custom navigators a rare occurrence. If you’re using custom types inside of PStates and you want to slice and dice them in a fine-grained way with paths, then implementing your own navigators would be appropriate.</p>
+</div>
+<div class="paragraph">
+<p>Custom navigators just have to implement the following interface:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Navigator</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">RamaSerializable</span> </span>{
+  Object VOID = <span class="hljs-keyword">new</span> Object();
+
+  <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Next</span> </span>{
+    <span class="hljs-function">Object <span class="hljs-title">invokeNext</span><span class="hljs-params">(Object obj)</span></span>;
+  }
+
+  <span class="hljs-function">Object <span class="hljs-title">select</span><span class="hljs-params">(T obj, Next next)</span></span>;
+  <span class="hljs-function">T <span class="hljs-title">transform</span><span class="hljs-params">(T obj, Next next)</span></span>;
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is the same interface used to implement every navigator provided by Rama. Isn’t it amazing how the incredible expressiveness of paths is powered by such a simple interface?</p>
+</div>
+<div class="paragraph">
+<p>To explain this interface, let’s take a look at how you would implement a navigator that navigates to the first two elements of a list. If the list has less than two elements, the navigator stops navigation. Here’s the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyListNav</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Navigator</span>&lt;<span class="hljs-title">List</span>&gt; </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">select</span><span class="hljs-params">(List obj, Next next)</span> </span>{
+    <span class="hljs-keyword">if</span>(obj.size() &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> Navigator.VOID;
+    <span class="hljs-keyword">else</span> {
+      Object ret = next.invokeNext(obj.get(<span class="hljs-number">0</span>));
+      next.invokeNext(obj.get(<span class="hljs-number">1</span>));
+      <span class="hljs-keyword">return</span> ret;
+    }
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> List <span class="hljs-title">transform</span><span class="hljs-params">(List obj, Next next)</span> </span>{
+    <span class="hljs-keyword">if</span>(obj.size() &gt;= <span class="hljs-number">2</span>) {
+      Object new0 = next.invokeNext(obj.get(<span class="hljs-number">0</span>));
+      Object new1 = next.invokeNext(obj.get(<span class="hljs-number">1</span>));
+      <span class="hljs-keyword">if</span>(new1 == Navigator.VOID) obj.remove(<span class="hljs-number">1</span>);
+      <span class="hljs-keyword">else</span> obj.set(<span class="hljs-number">1</span>, new1);
+      <span class="hljs-keyword">if</span>(new0 == Navigator.VOID) obj.remove(<span class="hljs-number">0</span>);
+      <span class="hljs-keyword">else</span> obj.set(<span class="hljs-number">0</span>, new0);
+    }
+    <span class="hljs-keyword">return</span> obj;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>select</code> method must:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Call <code>next.invokeNext</code> on any values to navigate to. <code>next.invokeNext</code> continues executing the rest of the path in which the navigator instance lives.</p>
+</li>
+<li>
+<p>Return Navigator.VOID if there are no values to navigate to.</p>
+</li>
+<li>
+<p>If the method navigates to any values, it must return the result of calling <code>next.invokeNext</code> on the first navigated value.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this case, the <code>select</code> implementation checks the list has at least two elements. If not, it returns <code>Navigator.VOID</code> to indicate navigation is stopped. Otherwise, it continues navigation to the first two elements of the list and returns the first result.</p>
+</div>
+<div class="paragraph">
+<p>The <code>transform</code> method must:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Call <code>next.invokeNext</code> on navigated values to compute their new values.</p>
+</li>
+<li>
+<p>Replace navigated values with their replacement values from <code>next.invokeNext</code>.</p>
+</li>
+<li>
+<p>Return the fully updated data structure.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this case, the <code>transform</code> implementation checks the list has enough elements. If not, it returns the list unchanged. Otherwise, it uses <code>next.invokeNext</code> to compute the new values of indexes 0 and 1. So that this navigator supports removal of those elements, it checks whether the navigated values transformed to <code>Navigator.VOID</code>. If they did, they are removed from the list instead of updated.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This navigator only works on <em>mutable lists</em>, while the lists/maps/sets used in Rama are generally immutable objects. So you wouldn’t be able to mutate them in this way. But if you were storing a mutable list type as a value in a PState, then this navigator would work on those values.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Finally, to use this navigator in a path you use either the <code>customNav</code> or <code>customNavBuilder</code> methods on <code>Path</code>. <code>customNav</code> receives a <code>Navigator</code> as an argument directly, while <code>customNavBuilder</code> receives a function that returns a dynamically constructed <code>Navigator</code> object. First, here’s an example of <code>customNav</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data1 = <span class="hljs-keyword">new</span> ArrayList();
+data1.add(<span class="hljs-number">10</span>);
+data1.add(<span class="hljs-number">11</span>);
+data1.add(<span class="hljs-number">12</span>);
+List data2 = <span class="hljs-keyword">new</span> ArrayList();
+data2.add(<span class="hljs-number">1</span>);
+Block.select(data1, Path.customNav(<span class="hljs-keyword">new</span> MyListNav())).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(data2, Path.customNav(<span class="hljs-keyword">new</span> MyListNav())).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 10
+Val 1: 11</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, the first <code>select</code> navigates to the first two elements of <code>data1</code> while the second <code>select</code> navigates nowhere because <code>data2</code> has less than two elements.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at using <code>customNavBuilder</code> to construct a <code>Navigator</code> object dynamically using the values of vars at runtime. The example will use the following <code>Navigator</code> which navigates to a key in a map (about equivalent to the <code>key</code> navigator):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomKey</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Navigator</span>&lt;<span class="hljs-title">Map</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Object _k;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CustomKey</span><span class="hljs-params">(Object k)</span> </span>{
+        _k = k;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">select</span><span class="hljs-params">(Map obj, Next next)</span> </span>{
+        <span class="hljs-keyword">return</span> next.invokeNext(obj.get(_k));
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Map <span class="hljs-title">transform</span><span class="hljs-params">(Map obj, Next next)</span> </span>{
+        obj.put(_k, next.invokeNext(obj.get(_k)));
+        <span class="hljs-keyword">return</span> obj;
+    }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s an example of constructing instances of this <code>Navigator</code> dynamically using <code>customNavBuilder</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+data.put(<span class="hljs-string">"bc"</span>, <span class="hljs-number">2</span>);
+
+Block.select(data,
+  Path.customNavBuilder((String k) -&gt; <span class="hljs-keyword">new</span> CustomKey(k), <span class="hljs-string">"a"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 1:"</span>, <span class="hljs-string">"*v"</span>)
+     .select(data,
+       Path.customNavBuilder(
+        (String arg1, String arg2) -&gt; <span class="hljs-keyword">new</span> CustomKey(arg1 + arg2),
+        <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val 2:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: 1
+Val 2: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>customNavBuilder</code> allows you to make use of the values of vars when constructing <code>Navigator</code> objects, such as values coming from depot records or selected from PStates. The first argument to <code>customNavBuilder</code> is the builder function, and subsequent arguments are passed into that function at runtime (similar to how <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#each-com.rpl.rama.ops.RamaFunction0-">Block#each</a> works).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_value_collection"><a class="anchor" href="#_value_collection"></a>Value collection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Paths have another feature called "value collection" that works alongside navigation. These special methods let you collect and manipulate a list of values that’s maintained on the side. If you collect any values, those are returned alongside navigated values during <code>select</code> calls. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+data.put(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>);
+
+Block.select(data,
+             Path.collectOne(Path.key(<span class="hljs-string">"b"</span>))
+                 .key(<span class="hljs-string">"a"</span>)).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: [2 1]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>collectOne</code> adds a single value to the special list of collected values. It requires the provided path to navigate to exactly one value. You can see here that because of the collected value, the result of <code>select</code> is a list rather than just the navigated value 1. When Rama sees any values are collected, it adds the navigated value to the end of the special list to produce the result.</p>
+</div>
+<div class="paragraph">
+<p>Value collection allows you to capture additional information along the route of navigation that are stored as parents or cousins to the values you navigate to. For example, you can use value collection to capture map keys as you traverse into their values.</p>
+</div>
+<div class="paragraph">
+<p>Here’s another example making use of the other value collectors <code>collect</code> and <code>putCollected</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map data = <span class="hljs-keyword">new</span> HashMap();
+data.put(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+data.put(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>);
+
+Block.select(data,
+  Path.collect(Path.mapKeys())
+      .multiPath(Path.key(<span class="hljs-string">"a"</span>), Path.key(<span class="hljs-string">"b"</span>))
+      .putCollected(<span class="hljs-string">"xyz"</span>)
+      .collectOne(Path.stay())).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: [[a b] xyz 1 1]
+Val: [[a b] xyz 2 2]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see here, <code>collect</code> adds a list of navigated values to the collected values list. <code>putCollected</code> adds the provided value to the collected values. You should also notice here that collected values are independent across every branch of navigation. Collected values will be shared until there’s a branch, and then each branch will add to their own collected values list.</p>
+</div>
+<div class="paragraph">
+<p>The last two special methods having to do with value collection are <code>dispenseCollected</code> and <code>isCollected</code>. <code>dispenseCollected</code> clears the collected values list from that point on in navigation. It is only useful alongside <code>isCollected</code>, which works like a filter navigator except it takes the list of collected values as input rather than the navigated value. So one pattern you might use is to use value collection to collect information for the purpose of using <code>isCollected</code> as a filter navigator, and then you dispose all the collected values afterwards.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reactivity"><a class="anchor" href="#_reactivity"></a>Reactivity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The reactive query functions <code>proxy</code> and <code>proxyAsync</code> on PState are implemented at the path level. Only built-in navigators support fine-grained reactivity –&nbsp;the codepaths needed to implement that for custom navigators aren’t currently exposed. You can use a custom navigator in a <code>proxy</code> call, but the diff you get from that point in the path will be a coarse-grained <code>NewValueDiff</code>. See <a href="pstates.html#_reactive_queries" class="page">the page on PStates</a> for more details on reactivity.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Paths can be intimidating when you first learn them. There are a lot of different navigators, and we certainly did cover a lot of material on this page. The good news is you don’t need to master or even know every navigator to get huge value out of paths. You can go very far with even just the basic value navigators and a couple filter navigators. Once you get more practice using paths such that you internalize their mental model, you’ll find learning new navigators to be a cinch.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned, not every navigator was covered on this page. Be sure to check out the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html">Javadoc for Path</a> for the complete listing.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

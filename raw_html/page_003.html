@@ -1,0 +1,1259 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Doing work in Rama: Depots, ETLs, and PStates :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item is-active is-current-path" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="tutorial1.html">Tutorial</a></li>
+    <li><a href="tutorial2.html">Depots, ETLs, and PStates</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_storing_results_in_pstates" class="">Storing results in PStates</a></li><li data-level="2"><a href="#_creating_a_partitioned_state" class="">Creating a partitioned state</a></li><li data-level="2"><a href="#_updating_pstates" class="">Updating PStates</a></li><li data-level="2"><a href="#_querying_pstates" class="">Querying PStates</a></li><li data-level="2"><a href="#_more_pstate_capabilities" class="">More PState capabilities</a></li><li data-level="2"><a href="#_rama_programming" class="">Rama programming</a></li><li data-level="1"><a href="#_what_is_a_data_system_really" class="">What is a data system, really?</a></li><li data-level="1"><a href="#_theory_in_practice_pstates_are_views" class="">Theory in practice: PStates are views</a></li><li data-level="2"><a href="#_analytics_app_example" class="is-active">Analytics app example</a></li><li data-level="2"><a href="#_schemas_define_pstate_structure">Schemas define PState structure</a></li><li data-level="2"><a href="#_etls_update_pstates">ETLs update PStates</a></li><li data-level="2"><a href="#_queries_can_be_distributed_computations_too">Queries can be distributed computations, too</a></li><li data-level="1"><a href="#_arbitrary_java">Arbitrary Java</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Doing work in Rama: Depots, ETLs, and PStates</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_storing_results_in_pstates">Storing results in PStates</a></li><li data-level="2"><a href="#_creating_a_partitioned_state">Creating a partitioned state</a></li><li data-level="2"><a href="#_updating_pstates">Updating PStates</a></li><li data-level="2"><a href="#_querying_pstates">Querying PStates</a></li><li data-level="2"><a href="#_more_pstate_capabilities">More PState capabilities</a></li><li data-level="2"><a href="#_rama_programming">Rama programming</a></li><li data-level="1"><a href="#_what_is_a_data_system_really">What is a data system, really?</a></li><li data-level="1"><a href="#_theory_in_practice_pstates_are_views">Theory in practice: PStates are views</a></li><li data-level="2"><a href="#_analytics_app_example">Analytics app example</a></li><li data-level="2"><a href="#_schemas_define_pstate_structure">Schemas define PState structure</a></li><li data-level="2"><a href="#_etls_update_pstates">ETLs update PStates</a></li><li data-level="2"><a href="#_queries_can_be_distributed_computations_too">Queries can be distributed computations, too</a></li><li data-level="1"><a href="#_arbitrary_java">Arbitrary Java</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the last section you got your first taste of how to do work with Rama, but it
+wasn’t very meaningful work. Unless you’re employed by Big Hello World, it’s
+likely that you need to write more substantial applications. Applications need
+to gather data, process it, and store it for efficient retrieval, and this
+section will introduce you to the tools you’ll need to do that. (Those of you
+working for Big Word Count: rejoice, for we are going to start with a word count
+app as an example.)</p>
+</div>
+<div class="paragraph">
+<p>It isn’t sufficient, however, to merely show you what the tools are and how to
+use them if you’re to become productive with them. In the same way that Marie
+Kondo’s advice to fold your socks and thank your trash makes more sense within a
+larger context of full-life transformation, Rama’s tools make more sense within
+a larger context of application development. We’ll therefore look at the <em>why</em>
+of Rama’s tools in addition to the <em>how</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_storing_results_in_pstates"><a class="anchor" href="#_storing_results_in_pstates"></a>Storing results in PStates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the last example, you looked at how to gather input data by appending to
+depots. You had a glimpse of how to process data by creating an ETL that simply
+printed the customary greeting between programmers. Most applications, however,
+need to store processed data somewhere so that it can be retrieved and used by
+clients or other parts of the system. Rama’s construct for such data storage is
+the <a href="pstates.html" class="page">partitioned state</a> (abbreviated as <em>PState</em>), and this page will introduce
+you to PState fundamentals.</p>
+</div>
+<div class="paragraph">
+<p>So what exactly is a PState? PStates are a little similar to tables in an RDBMS
+in that both are named, discrete data containers within a larger data management
+system (unlike in, say, Redis, which is a key-value store where all data lives in
+the same container).</p>
+</div>
+<div class="paragraph">
+<p>That surface characteristic is where their similarities end. PStates differ from
+tables in that they are <em>arbitrarily compound data structures of arbitrary size</em>, meaning
+that you can use them to store as much data as you need,
+organized however you need. It’s possible, for example, to structure a PState as
+a map where the values are lists, and the lists contain sets, and so on. You
+store data in the shape you want to use it, without having to deal with the
+impedance mismatches present when working with many databases.</p>
+</div>
+<div class="paragraph">
+<p>To illustrate this idea, let’s look at some examples. Let’s start with a
+stripped-down word count, one that doesn’t even include a tokenizing step, so we
+can focus on PStates. Here’s the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">package</span> rama.examples.tutorial;
+
+<span class="hljs-keyword">import</span> com.rpl.rama.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.<span class="hljs-keyword">module</span>.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.test.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleWordCountModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*wordDepot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"wordCountStream"</span>);
+    s.pstate(<span class="hljs-string">"$$wordCounts"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+    s.source(<span class="hljs-string">"*wordDepot"</span>).out(<span class="hljs-string">"*token"</span>)
+     .hashPartition(<span class="hljs-string">"*token"</span>)
+     .compoundAgg(<span class="hljs-string">"$$wordCounts"</span>, CompoundAgg.map(<span class="hljs-string">"*token"</span>, Agg.count()));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span> (InProcessCluster cluster = InProcessCluster.create()) {
+      cluster.launchModule(<span class="hljs-keyword">new</span> SimpleWordCountModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+      String moduleName = SimpleWordCountModule<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>()</span>;
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*wordDepot"</span>);
+      depot.append(<span class="hljs-string">"one"</span>);
+      depot.append(<span class="hljs-string">"two"</span>);
+      depot.append(<span class="hljs-string">"two"</span>);
+      depot.append(<span class="hljs-string">"three"</span>);
+      depot.append(<span class="hljs-string">"three"</span>);
+      depot.append(<span class="hljs-string">"three"</span>);
+
+      PState wc = cluster.clusterPState(moduleName, <span class="hljs-string">"$$wordCounts"</span>);
+      System.out.println(<span class="hljs-string">"one: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"one"</span>)));
+      System.out.println(<span class="hljs-string">"two: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"two"</span>)));
+      System.out.println(<span class="hljs-string">"three: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"three"</span>)));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This definition includes parts you’ve seen before: in <code>define</code>, you create a
+<a href="depots.html" class="page">depot</a> (named <code>"*wordDepot"</code>) and a <a href="stream.html" class="page">streaming topology</a> (assigned to <code>wordCountStream</code>). In <code>main</code>,
+you follow the same basic pattern of launching a module and appending to
+a depot.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_partitioned_state"><a class="anchor" href="#_creating_a_partitioned_state"></a>Creating a partitioned state</h3>
+<div class="paragraph">
+<p>The module definition also includes a new bit:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$wordCounts"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You create a PState by calling the <code>pstate</code> method on a topology instance. In
+this case, you’re creating a PState named <code>"$$wordCounts"</code> with a schema of
+<code>PState.mapSchema(String.class, Long.class)</code>. The <code>"$$wordCounts"</code>
+identifier is used to reference the PState both from within a topology and from
+outside it, and you’ll see examples of how PStates are referenced throughout the
+tutorial.</p>
+</div>
+<div class="paragraph">
+<p>As for the schema, that defines the data structures used to store your data. The
+schema <code>PState.mapSchema(String.class, Long.class)</code> specifies that the PState
+is a map, storing data as key-value pairs – perfect for associating every word
+with its count. As you go through the tutorial you’ll encounter more kinds of
+schemas.</p>
+</div>
+<div class="paragraph">
+<p>PStates belong to topologies. When you call <code>s.pstate</code>, the PState you create is
+associated with the <code>s</code> topology. Even though PStates belong to topologies, you
+must give them names that are unique within a module.</p>
+</div>
+<div class="paragraph">
+<p>PStates are essentially materialized views of depots, with depots being the
+source of truth. In this world, it doesn’t make sense for anything but the
+owning topology to write to them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updating_pstates"><a class="anchor" href="#_updating_pstates"></a>Updating PStates</h3>
+<div class="paragraph">
+<p>We now have a PState to store some data, but how do you actually modify the data
+in it? How do you perform CUD (create, update, delete; we’ll save read for later)
+operations?</p>
+</div>
+<div class="paragraph">
+<p>This is actually a deep topic, and it would be overwhelming to cover it all at
+this point, so we’ll start with just the parts that will help build the
+foundations of your mental model for how to do work in Rama.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start with the core concept governing how you update PStates: you write
+ETLs that set up a relationship between depots and PStates, creating a pipeline
+that updates PStates as new entries are added to the depot. For example, this
+abstract timeline shows how the <code>"$$wordCounts"</code> PState changes as words are
+appended to the depot:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Time</th>
+<th class="tableblock halign-left valign-top">Event</th>
+<th class="tableblock halign-left valign-top"><code>"$$wordCounts"</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("one")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("two")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1, "two": 1}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("two")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1, "two": 2}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("three")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1, "two": 2, "three": 1}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("three")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1, "two": 2, "three": 2}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>append("three")</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{"one": 1, "two": 2, "three": 3}</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Let’s examine the code which achieves this result to see how the core idea of
+creating data pipelines is implemented:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*wordDepot"</span>).out(<span class="hljs-string">"*token"</span>)
+ .hashPartition(<span class="hljs-string">"*token"</span>)
+ .compoundAgg(<span class="hljs-string">"$$wordCounts"</span>, CompoundAgg.map(<span class="hljs-string">"*token"</span>, Agg.count()));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There are three distinct steps in this ETL:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>.source("*wordDepot").out("*token")</code>: This establishes how data added to the
+depot can be referenced in the ETL. Its meaning is, on an ongoing basis,
+read entries from <code>"*wordDepot"</code> and name each entry <code>"*token"</code>. Each call to
+<code>depot.append</code> produces a new depot entry.</p>
+</li>
+<li>
+<p><code>.hashPartition("*token")</code>: This <em>relocates</em> the rest of the
+computation using a <a href="partitioners.html" class="page">partitioner</a> – perhaps to another thread, perhaps to another machine. We’ll
+cover this more when we discuss distributed programming.</p>
+</li>
+<li>
+<p><code>.compoundAgg("$$wordCounts", CompoundAgg.map("*token", Agg.count()))</code>: This
+is what updates the PState. PStates are data structures, and aggregators are
+a high-level way of specifying where and how to write to specific locations
+in the data structure. They let you write your update in the shape of the
+data you’re trying to produce. <code>CompoundAgg.map("*token", Agg.count())</code>
+means, "traverse this data structure to the location indicated by <code>"*token"</code>
+and perform <code>Agg.count()</code>." <code>Agg.count()</code> increments whatever value is found
+there. If the location doesn’t yet have a value, it sets the value to 1.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can probably feel a breeze from all the hand waving in that last
+step. For an explanation of the details of what’s going on here, you can
+jump ahead to <a href="aggregators.html" class="page">this guide to aggregators</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also update a PState’s values by using <em>path transforms</em>. You’ll learn
+about <a href="paths.html" class="page">those</a> later, too. As a preview: paths can navigate by key or index, but
+also all elements, filter, transformed views, subsequences, and more.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_querying_pstates"><a class="anchor" href="#_querying_pstates"></a>Querying PStates</h3>
+<div class="paragraph">
+<p>At the end of the code example is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PState wc = cluster.clusterPState(moduleName, <span class="hljs-string">"$$wordCounts"</span>);
+System.out.println(<span class="hljs-string">"one: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"one"</span>)));
+System.out.println(<span class="hljs-string">"two: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"two"</span>)));
+System.out.println(<span class="hljs-string">"three: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"three"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first line, <code>PState wc = cluster.clusterPState(moduleName,
+"$$wordCounts");</code>, assigns a reference to the PState to <code>wc</code>. We then use
+<code>wc.selectOne</code> to retrieve the count of each word we’ve appended to the depot,
+and then print it.</p>
+</div>
+<div class="paragraph">
+<p>It’s not obvious from this example, but queries retrieve data from arbitrary
+points within the PState’s structure using <em>paths</em>. If you’re familiar with
+XPath paths or CSS selectors, Rama paths serve a similar function: they let you
+specify a node or collection of nodes from an arbitrary graph.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you constructed a PState that mapped book titles to word counts
+then you could use a path to retrieve the count for a word within a particular
+book; if your PState included <code>{"Frankenstein; or, The Modern Prometheus":
+{"rejoiced": 3}}</code>, then the following query would return <code>3</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">wc.selectOne(Path.key(<span class="hljs-string">"Frankenstein; or, The Modern Prometheus"</span>, <span class="hljs-string">"rejoiced"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Rama’s PStates allow you to capture data in arbitrary structures. Being able to
+shape the data in your data store however you want is powerful, but to make it
+useful you need to be able to navigate the structures in a way that’s easily
+comprehensible. Paths let you do that. Here’s an example of a slightly more
+complex path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">wc.selectOne(Path.key(<span class="hljs-string">"Lord of the Rings"</span>).subselect(Path.sortedMapRange(<span class="hljs-string">"Frodo"</span>, <span class="hljs-string">"Gandalf"</span>).mapVals()).view(Ops.SUM))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Suppose this query ran on a PState containing these contents:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{<span class="hljs-attr">"Lord of the Rings"</span>:
+   {<span class="hljs-attr">"Elf"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"Frodo"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"Frodo2"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">"Gandalf"</span>: <span class="hljs-number">4</span>
+   }}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Because Java doesn’t have an object literal notation, we’ll be using JSON inspired syntax to
+concisely convey the shapes that data structures might take. Note that Rama does
+not actually store data as JSON.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>This gets the sum for all words alphabetically between <code>"Frodo"</code> and <code>"Gandalf"</code> for the book <code>"Lord of the Rings"</code>. In this case, it returns <code>5</code>. Don’t worry if the specifics of how this path works feel hazy right now. You can get a complete understanding of paths later from <a href="paths.html" class="page">this page</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_more_pstate_capabilities"><a class="anchor" href="#_more_pstate_capabilities"></a>More PState capabilities</h3>
+<div class="paragraph">
+<p>There are other powerful capabilities of PStates important for many applications. These include "subindexing", which allows inner data structures in PStates to be of huge size, and "fine-grained reactive queries", which allows for continuous queries that are pushed "diffs" about changes to the result of the query. These capabilities and more are described on <a href="pstates.html" class="page">this page</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rama_programming"><a class="anchor" href="#_rama_programming"></a>Rama programming</h3>
+<div class="paragraph">
+<p>The word count example, simple as it is, demonstrates the fundamentals of how
+you do meaningful work in Rama:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>You gather data by appending to depots.</p>
+</li>
+<li>
+<p>You process data by writing ETLs that read from one or more depots and perform
+computations…​</p>
+</li>
+<li>
+<p>…​and you store the results in PStates for later retrieval.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/module-diagrams/single-depot-etl.svg" alt="single depot etl">
+</div>
+<div class="title">Figure 1. The basic process for doing work in Rama: 1) Append records to depot 2) ETLs read records from depot 3) Transform data and store in PStates</div>
+</div>
+<div class="paragraph">
+<p>Note that modules can have multiple depots and ETLs, and ETLs can read from
+multiple depots. The image below depicts a module with two depots and two ETLs.
+The left ETL reads from one depot and writes to two PStates, while the one on
+the right reads from both depots and writes to one PState:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/module-diagrams/multiple-depots-etls.svg" alt="multiple depots etls">
+</div>
+</div>
+<div class="paragraph">
+<p>This is the basic form that Rama development takes. Whether you’re building the
+next Twitter or mining terabytes of sales data or, well, counting words, you’ll
+be appending data to depots, processing that data, and putting the results in
+PStates.</p>
+</div>
+<div class="paragraph">
+<p>This deserves elaboration: Rama is designed so that you can meet <em>all</em> of your
+data handling needs <em>within a single system</em>. Not just within a single data
+store — within a single system, meaning that storage and computation
+participate in the same design and are part of a single coherent model; you
+don’t have to glue disparate systems together. You don’t have to figure out how
+to manage some unholy combination of Kafka, Cassandra, and Redis; you get to
+just use one tool. If you do need to integrate with other systems, for legacy reasons
+or otherwise, Rama provides <a href="integrating.html" class="page">a simple and powerful integration API</a>
+for that purpose.</p>
+</div>
+<div class="paragraph">
+<p>Understanding why Rama was designed this way and the implications this design
+has for how you write applications will help you become proficient at building
+your own systems. It will also help you understand future topics like
+partitioning because you’ll be able to put them into context. Therefore, the
+next section will expand on Rama’s design and how it fits into the broader
+context of application development.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_a_data_system_really"><a class="anchor" href="#_what_is_a_data_system_really"></a>What is a data system, really?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama is designed to make it substantially easier for you to create data systems. At the most basic level, a data system enables <em>questions</em> to be asked on your data in a <em>reasonable</em> amount of time. There are many properties you care about for each question you want to ask:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Timeliness</strong>: how long it takes for data to be included in the results of a question</p>
+</li>
+<li>
+<p><strong>Latency</strong>: how long it takes to receive an answer to a question</p>
+</li>
+<li>
+<p><strong>Accuracy</strong>: how accurate an answer is –&nbsp;approximations are sometimes needed due to the fundamental limits of computation. Sometimes an answer can be more accurate by increasing the latency of the answer.</p>
+</li>
+<li>
+<p><strong>Throughput</strong>: how many questions can be answered per second</p>
+</li>
+<li>
+<p><strong>Scalability</strong>: how throughput is increased by adding resources to the system</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The kinds of questions you ask can vary tremendously in both form and function. Here’s a tiny sample of the kinds of questions a data system might answer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What is Alice’s birthday?</p>
+</li>
+<li>
+<p>What is the bank account balance of James?</p>
+</li>
+<li>
+<p>How many pageviews did "http://foo.com" receive between January 3rd, 2012 and March 16th, 2021?</p>
+</li>
+<li>
+<p>What URLs best match the keywords "how to write scalable applications"?</p>
+</li>
+<li>
+<p>Who are the last 20 people to follow Samantha?</p>
+</li>
+<li>
+<p>What five books should be recommended to Joe to maximize sales?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some of these questions are simple retrievals of information previously seen, while others can be complex aggregations of many pieces of data seen over a long period of time. Ultimately, every aspect of how a data system functions comes down to two things: capturing new data, and answering questions on data previously captured.</p>
+</div>
+<div class="paragraph">
+<p>For most questions you want to receive an answer as fast as possible. So some sort of pre-built index is needed so you can get at the information you need quickly without having to sift through irrelevant data. So at a high level, every data system (existing systems as well as Rama) looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/module-diagrams/data-systems.svg" alt="data systems">
+</div>
+</div>
+<div class="paragraph">
+<p>There is a ton of variety in how each of these pieces can work: how you ingest new data, how you process data to compute and maintain indexes, how indexes are structured, and how computation is performed to utilize indexes to quickly answer questions.</p>
+</div>
+<div class="paragraph">
+<p>One common architecture for a data system is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The primary data store is a relational database (RDBMS)</p>
+</li>
+<li>
+<p>A key-value store like Redis is used as a cache or queue</p>
+</li>
+<li>
+<p>Custom programs coordinate everything: processing data, sending CRUD requests to the data stores, interacting with external clients, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With an RDBMS, the way you organize your data for storage frequently does not match the way you organize your data for consumption, so you must reorganize it into useful data structures on retrieval, whether through your SQL queries or through further processing in your program. If these operations become expensive, then you might denormalize your tables or introduce caches in your system (materialized views, Memcached, Redis) to improve performance. Your coordinating program then becomes responsible for ensuring consistency across these different views. The complexity of this can be daunting, and corruption involving inconsistent views is often the result.</p>
+</div>
+<div class="paragraph">
+<p>It can also be difficult to scale an RDBMS, so NoSQL databases are frequently used instead. In this model only the index is different: custom programs are still built and operated for processing data and interacting with clients. Each NoSQL database provides a "data model" which is a specific way to organize data for consumption, like "key/value", "graph", "document", or "column-oriented". Each of these data models can only handle some use cases, and multiple NoSQL databases are often needed to be able to be able to support all an application’s use cases. The cost and complexity of operating multiple distributed databases is significant, and future use cases may require new distributed databases to be adopted or built from the ground up.</p>
+</div>
+<div class="paragraph">
+<p>Traditional data systems require developers to tetris many different systems together – frequently dozens – in order to produce an application that can answer questions with the appropriate timeliness, accuracy, latency, and throughput. And it works, sort of. As you combine systems though, it becomes more complicated and difficult to coordinate them. Each system has unique abstractions and interfaces. Getting all the pieces to interact correctly, such that your data is consistent and an outage in one system doesn’t bring everything else down (to name a couple issues) is hard.</p>
+</div>
+<div class="paragraph">
+<p>The key breakthrough of Rama is generalizing and integrating every aspect of data systems to such an extent that you can build entire data systems end-to-end with just Rama:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data is stored in <a href="pstates.html" class="page">PStates</a>, organized into whatever data structures are useful for consumers. Whereas a database (either RDBMS and NoSQL) offers one particular data model, each PState can be <em>any data model</em>. Ultimately a data model is just a particular data structure: "key/value" is a map, "column-oriented" is a map of sorted maps, and "document" is a map of maps. Each PState you create can be whatever arbitrary combination of data structures you want, and you can have as many PStates as you need.</p>
+</li>
+<li>
+<p>Rama’s <a href="stream.html" class="page">stream</a> and <a href="microbatch.html" class="page">microbatch</a> topologies enable PStates to be built using arbitrary, fully scalable distributed computation. Rama’s topology API is Turing-complete and extremely flexible.</p>
+</li>
+<li>
+<p>New data enters Rama through <a href="depots.html" class="page">depots</a>, and depots can be consumed by as many topologies as you need to materialize as many PStates as you need.</p>
+</li>
+<li>
+<p>Rama’s query API for retrieving information from PStates is fast and flexible. A query can be as simple as retrieving one piece of data from one partition of one PState, or it can be an <a href="query.html" class="page">on-demand distributed computation</a> aggregating data across many partitions of many PStates.</p>
+</li>
+<li>
+<p>Every piece of Rama is fully scalable.</p>
+</li>
+<li>
+<p>Because there’s only one system, Rama, deployment and monitoring is all built-in and massively simplified compared to having to manually coordinate many systems.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So that’s an overview of Rama’s design philosophy, and how its constructs – depots, ETLs, and PStates – work together to meet your needs. The examples you’ve seen so far, however, don’t fully demonstrate how it’s possible that Rama can meet all of your data needs. How would you work with user profiles? How would you create a simple forum? What about a recommendation engine?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_theory_in_practice_pstates_are_views"><a class="anchor" href="#_theory_in_practice_pstates_are_views"></a>Theory in practice: PStates are views</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s direct our attention to some concrete examples to deepen our understanding
+of Rama’s constructs and how to use them to develop an application.</p>
+</div>
+<div class="paragraph">
+<p>Central to the Rama development workflow is identifying useful views of your data, and then creating PStates for those views. By "useful views of your data", we refer to the data structures that make the most sense for how the data is actually consumed by clients. If clients are best served by a simple key/value pair mapping strings to numbers like you saw in the word count example, you would specify your PState be structured as a map of <code>String</code> to <code>Long</code>. If you needed a richer, more complex data structure, Rama can handle that too.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you are building a web app analytics application, you might have
+a depot that receives navigation events that look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json"><span class="hljs-comment">// event 1</span>
+{<span class="hljs-attr">"path"</span>:      <span class="hljs-string">"/product/1"</span>,
+ <span class="hljs-attr">"duration"</span>:  <span class="hljs-number">3500</span>,
+ <span class="hljs-attr">"sessionId"</span>: <span class="hljs-string">"abc"</span>}
+
+<span class="hljs-comment">// event 2</span>
+{<span class="hljs-attr">"path"</span>:      <span class="hljs-string">"/about-us"</span>,
+ <span class="hljs-attr">"duration"</span>:  <span class="hljs-number">1800</span>,
+ <span class="hljs-attr">"sessionId"</span>: <span class="hljs-string">"def"</span>}
+
+<span class="hljs-comment">// event 3</span>
+{<span class="hljs-attr">"path"</span>:      <span class="hljs-string">"/cart"</span>,
+ <span class="hljs-attr">"duration"</span>:  <span class="hljs-number">2100</span>,
+ <span class="hljs-attr">"sessionId"</span>: <span class="hljs-string">"abc"</span>}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Two useful views of this raw event data are a Session History and a Page Hit
+Count. Your application’s clients would want views that look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json"><span class="hljs-comment">// Page Hit Count</span>
+{<span class="hljs-attr">"/product/1"</span>: <span class="hljs-number">1</span>,
+ <span class="hljs-attr">"/cart"</span>:      <span class="hljs-number">1</span>,
+ <span class="hljs-attr">"/about-us"</span>:  <span class="hljs-number">1</span>}
+
+<span class="hljs-comment">// Session History</span>
+<span class="hljs-comment">// "abc" is the session id, and the value is a sequence of paths</span>
+{<span class="hljs-attr">"abc"</span>: [{<span class="hljs-attr">"path"</span>:     <span class="hljs-string">"/product/1"</span>,
+          <span class="hljs-attr">"duration"</span>: <span class="hljs-number">3500</span>},
+         {<span class="hljs-attr">"path"</span>:     <span class="hljs-string">"/cart"</span>,
+          <span class="hljs-attr">"duration"</span>: <span class="hljs-number">2100</span>}]
+ <span class="hljs-string">"def"</span>: [{<span class="hljs-attr">"path"</span>:     <span class="hljs-string">"/about-us"</span>,
+          <span class="hljs-attr">"duration"</span>: <span class="hljs-number">1800</span>}]}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first view gives you an idea of how popular a given page is, and the second
+allows you to precisely review individuals' histories of interactions with your
+site. You can create a PState for each of these views, storing these data
+structures directly.</p>
+</div>
+<div class="sect2">
+<h3 id="_analytics_app_example"><a class="anchor" href="#_analytics_app_example"></a>Analytics app example</h3>
+<div class="paragraph">
+<p>Let’s look at how these ideas play out in a slightly more sophisticated example.
+The module below implements the hypothetical analytics application we’ve been
+discussing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">package</span> rama.examples.tutorial;
+
+<span class="hljs-keyword">import</span> com.rpl.rama.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.<span class="hljs-keyword">module</span>.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.test.*;
+<span class="hljs-keyword">import</span> java.util.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PageAnalyticsModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$pageViewCount"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    s.pstate(<span class="hljs-string">"$$sessionHistory"</span>,
+             PState.mapSchema(
+               String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+               <span class="hljs-title">PState</span>.<span class="hljs-title">listSchema</span>(<span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))))</span>;
+
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*pageVisit"</span>)
+     .each((Map&lt;String, Object&gt; visit) -&gt; visit.get(<span class="hljs-string">"sessionId"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*sessionId"</span>)
+     .each((Map&lt;String, Object&gt; visit) -&gt; visit.get(<span class="hljs-string">"path"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*path"</span>)
+     .each((Map&lt;String, Object&gt; visit) -&gt; {
+       Map ret = <span class="hljs-keyword">new</span> HashMap(visit);
+       ret.remove(<span class="hljs-string">"sessionId"</span>);
+       <span class="hljs-keyword">return</span> ret;
+     }, <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*thinPageVisit"</span>)
+     .compoundAgg(<span class="hljs-string">"$$pageViewCount"</span>, CompoundAgg.map(<span class="hljs-string">"*path"</span>, Agg.count()))
+     .compoundAgg(<span class="hljs-string">"$$sessionHistory"</span>, CompoundAgg.map(<span class="hljs-string">"*sessionId"</span>, Agg.list(<span class="hljs-string">"*thinPageVisit"</span>)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span> (InProcessCluster cluster = InProcessCluster.create()) {
+      cluster.launchModule(<span class="hljs-keyword">new</span> PageAnalyticsModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+      String moduleName = PageAnalyticsModule<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>()</span>;
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      Map&lt;String, Object&gt; pageVisit = <span class="hljs-keyword">new</span> HashMap&lt;String, Object&gt;();
+      pageVisit.put(<span class="hljs-string">"sessionId"</span>, <span class="hljs-string">"abc123"</span>);
+      pageVisit.put(<span class="hljs-string">"path"</span>, <span class="hljs-string">"/posts"</span>);
+      pageVisit.put(<span class="hljs-string">"duration"</span>, <span class="hljs-number">4200</span>);
+
+      depot.append(pageVisit);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this code regular Java hash maps are used to represent page visits –&nbsp;in a production module we would recommend using first-class types instead. But for the purposes of illustration, hash maps will serve nicely.</p>
+</div>
+<div class="paragraph">
+<p>The first non-boilerplate block of code defines PStates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$pageViewCount"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+s.pstate(<span class="hljs-string">"$$sessionHistory"</span>,
+         PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+                          <span class="hljs-title">PState</span>.<span class="hljs-title">listSchema</span>(<span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This defines <code>$$pageViewCount</code> as a map where the keys are strings and the
+values are numbers. It then defines <code>$$sessionHistory</code> as a nested structure.
+The top level is a map where keys are strings and values are lists. The lists
+can contain maps where the keys are strings and the values can be of any type.</p>
+</div>
+<div class="paragraph">
+<p>After this, we create the ETL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*pageVisit"</span>)
+ .each((Map visit) -&gt; visit.get(<span class="hljs-string">"sessionId"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*sessionId"</span>)
+ .each((Map visit) -&gt; visit.get(<span class="hljs-string">"path"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*path"</span>)
+ .compoundAgg(<span class="hljs-string">"$$pageViewCount"</span>, CompoundAgg.map(<span class="hljs-string">"*path"</span>, Agg.count()))
+ .compoundAgg(<span class="hljs-string">"$$sessionHistory"</span>, CompoundAgg.map(<span class="hljs-string">"*sessionId"</span>, Agg.list(<span class="hljs-string">"*pageVisit"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This defines how to populate the PStates. As page visits come in, we update the
+<code>$$pageViewCount</code> that correspond’s to the visit’s <code>path</code>, and we append the
+page visit to the <code>$$sessionHistory</code> for the visit’s <code>*sessionId</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let’s look a little closer at both the schemas and the ETL.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_schemas_define_pstate_structure"><a class="anchor" href="#_schemas_define_pstate_structure"></a>Schemas define PState structure</h3>
+<div class="paragraph">
+<p>You specify a PState’s structure with its <em>schema</em>. PStates can be <em>maps</em>,
+<em>lists</em> or <em>sets</em>. (A map is a key-value data structure like a dictionary.)
+Their contents can be of any type — strings, numbers, or even nested data
+structures.</p>
+</div>
+<div class="paragraph">
+<p>We’ve seen a schema getting passed in when creating a PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$wordCounts"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This specifies that <code>"$$wordCounts"</code> is a map PState where the keys and values
+can be of any type. More examples of schemas include:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>PState.mapSchema(String.class, Long.class)</code></dt>
+<dd>
+<p>specifies a map where keys
+must be Strings and values must be Longs. This is a better schema for
+<code>"$$wordCounts"</code>. It is also a good schema for our Page Hit Count
+PState.</p>
+</dd>
+<dt class="hdlist1"><code>PState.listSchema(Object.class)</code></dt>
+<dd>
+<p>specifies a list where each value can be
+of any type</p>
+</dd>
+<dt class="hdlist1"><code>PState.listSchema(Long.class)</code></dt>
+<dd>
+<p>specifies a list where each value must be
+a Long</p>
+</dd>
+<dt class="hdlist1"><code>PState.setSchema(Object.class)</code></dt>
+<dd>
+<p>specifies a set where each value can be
+of any type</p>
+</dd>
+<dt class="hdlist1"><code>PState.setSchema(String.class)</code></dt>
+<dd>
+<p>specifies a set where each value must be
+a String</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>When specifying what types are allowed in a PState, you can use classes like
+<code>String.class</code> as seen above, or you can use another schema. For example:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>PState.listSchema(PState.mapSchema(String.class, Object.class))</code></dt>
+<dd>
+<p>specifies
+a list where each value must be a map. The maps' keys must be strings, and
+values must be any type. This would be a good schema for the Session History
+PState in our analytics application.</p>
+</dd>
+<dt class="hdlist1"><code>PState.mapSchema(Object.class, PState.setSchema(String.class))</code></dt>
+<dd>
+<p>specifies a
+map where each key can be any type and each value must be a set of strings.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The simplest kind of schema is <code>Long.class</code>, and an appropriate use case for
+that would be a global count.</p>
+</div>
+<div class="paragraph">
+<p>The reason Rama supports storing rich data structures like this is that it
+furthers the design goal of allowing you to build your entire application using
+a single system. "Single system" doesn’t just mean that your data store lives in
+the same process as the rest of your application; it also means that you don’t
+have to contort your data into whatever limited data structures your data store
+requires. You can take regular day-in day-out programming concepts and bring
+them into backend programming, which frees you up to focus more on the actual
+business logic of your application rather than the arcana of integrating with
+external systems.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_etls_update_pstates"><a class="anchor" href="#_etls_update_pstates"></a>ETLs update PStates</h3>
+<div class="paragraph">
+<p>While PState schemas define the shapes of the views you want to store, ETLs
+populate those views. Let’s revisit the ETL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*pageVisit"</span>)
+ .each((Map visit) -&gt; visit.get(<span class="hljs-string">"sessionId"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*sessionId"</span>)
+ .each((Map visit) -&gt; visit.get(<span class="hljs-string">"path"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*path"</span>)
+ .compoundAgg(<span class="hljs-string">"$$pageViewCount"</span>, CompoundAgg.map(<span class="hljs-string">"*path"</span>, Agg.count()))
+ .compoundAgg(<span class="hljs-string">"$$sessionHistory"</span>, CompoundAgg.map(<span class="hljs-string">"*sessionId"</span>, Agg.list(<span class="hljs-string">"*pageVisit"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>For you to understand this code to the point that you feel fluent with (it’s
+obvious what’s happening just from reading it, and you could write it yourself
+if you needed to) requires a thorough explanation of the programming model
+behind ETLs, along with guidance on using the full suite of tools available when
+constructing ETLs. And we’ll get to that <a href="tutorial3.html#Section1" class="page">soon</a>!</p>
+</div>
+<div class="paragraph">
+<p>Right now, though, let’s continue constructing the outlines of how to do work in Rama. Let’s first go through each line above and then consider the bigger picture on how ETLs fit into Rama programming.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_etl_translated"><a class="anchor" href="#_the_etl_translated"></a>The ETL, translated</h4>
+<div class="paragraph">
+<p>The ETL begins with this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*pageVisit"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>source</code> method means "read records from the depot named <code>"*depot"</code> on an
+ongoing basis. When a record is read, <em>bind</em> it to the name <code>"*pageVisit"</code>."
+Binding a value is like assigning a variable: it’s associating a value with a
+name within some scope. In this case, the name is the string <code>"*pageVisit"</code> and
+the scope is everything that follows in the ETL definition. Let’s call these bindings <em>vars</em>.
+They’re <em>variables</em> in the sense that their value will change each time this ETL
+runs.</p>
+</div>
+<div class="paragraph">
+<p>The next line two lines are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.each((Map visit) -&gt; visit.get(<span class="hljs-string">"sessionId"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*sessionId"</span>)
+.each((Map visit) -&gt; visit.get(<span class="hljs-string">"path"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*path"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Both of these lines have the same form: they call <code>each</code> with two arguments, an
+operator and a var. <code>each</code> works by performing the supplied computation on
+the supplied var. After each call to <code>each</code>, we call <code>out</code> and provide a
+var name. Just like in the first step, this binds the result of <code>each</code>, making it
+available to the rest of the ETL.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, we have:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.compoundAgg(<span class="hljs-string">"$$pageViewCount"</span>, CompoundAgg.map(<span class="hljs-string">"*path"</span>, Agg.count()))
+.compoundAgg(<span class="hljs-string">"$$sessionHistory"</span>, CompoundAgg.map(<span class="hljs-string">"*sessionId"</span>, Agg.list(<span class="hljs-string">"*pageVisit"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>These calls to <code>compoundAgg</code> update our PStates. The strings <code>"*path"</code> and
+<code>"*sessionId"</code> that we pass in to <code>CompoundAgg.map</code> are the vars we bound in
+the previous steps.</p>
+</div>
+<div class="paragraph">
+<p>If this notion of vars binding values within some scope still seems a little
+hazy, you can think of the ETL as being semantically equivalent to the following
+Java pseudocode with regard to variables and scopes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">runETL</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> pageVisit = Depot.read(<span class="hljs-string">"*depot"</span>);
+    <span class="hljs-keyword">var</span> sessionId = pageVisit.get(<span class="hljs-string">"sessionId"</span>);
+    <span class="hljs-keyword">var</span> path = pageVisit.get(<span class="hljs-string">"path"</span>);
+    PState.update(<span class="hljs-string">"$$pageViewCount"</span>, CompoundAgg.map(path, Agg.count()));
+    PState.update(<span class="hljs-string">"$$sessionHistory"</span>, CompoundAgg.map(sessionId, Agg.list(pageVisit)));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In the same way that <code>sessionId</code> is assigned a value using the current
+<code>pageVisit</code> in this pseudocode, the var <code>"*sessionId"</code> is assigned a value
+for the current <code>"*pageVisit"</code> in the web analytics ETL.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_etls_specify_distributed_computations"><a class="anchor" href="#_etls_specify_distributed_computations"></a>ETLs specify distributed computations</h4>
+<div class="paragraph">
+<p>A reasonable question to ask is, why not just use vanilla Java here? Why add
+this extra layer?</p>
+</div>
+<div class="paragraph">
+<p>In the same way that the JVM provides resource abstractions on top of the
+underlying operating system, Rama provides resource abstractions on top of a
+cluster of JVM processes. ETLs are a computation abstraction that Rama provides
+for executing a distributed data pipeline across multiple JVMs. ETLs allow you
+to specify the source for a data pipeline (with the <code>source</code> method), place
+values in a data pipeline (<code>out</code>), and access the values in the
+pipeline (<code>each</code>). They also allow you to store values in PStates
+(<code>compoundAgg</code>). In upcoming sections, you’ll also see how ETLs allow you to
+transparently relocate parts of the pipeline to other JVMs in your cluster.</p>
+</div>
+<div class="paragraph">
+<p>The need for a special API isn’t evident from the examples so far because they’ve been
+artificially constrained so that the work is performed on only a single
+thread of a single machine. This was so to focus on the idea of how to
+use depots, ETLs, and PStates to produce useful views of data. But the broader
+conception of performing work in Rama is that you’re <em>coordinating distributed
+tasks across an arbitrary number of processes and machines to produce useful,
+distributed views of data.</em></p>
+</div>
+<div class="paragraph">
+<p>One <strong>very important</strong> detail here is that the ETL API is implemented <em>in Java</em>,
+and that means that there are ways in which we get to leverage the full power of
+Java. Specifically, the values that flow through the pipeline are Java objects,
+and you transform them using Java methods. That’s what’s happening with this
+line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.each((Map visit) -&gt; visit.get(<span class="hljs-string">"sessionId"</span>), <span class="hljs-string">"*pageVisit"</span>).out(<span class="hljs-string">"*sessionId"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>each</code> method is accessing the <code>"*pageVisit"</code> value in the pipeline, which
+is a Java HashMap. It’s accessing it with the lambda expression
+<code>(Map visit) → visit.get("sessionId")</code> and placing the value in
+the pipeline, bound to <code>"*sessionId"</code>. While this is a very simple example,
+it’s possible to write an arbitrarily complex Java method to transform values.</p>
+</div>
+<div class="paragraph">
+<p>Just as PStates allow you to store data in arbitrarily nested structures, ETLs
+allow you to write pipelines that transform data using arbitrary Java.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_queries_can_be_distributed_computations_too"><a class="anchor" href="#_queries_can_be_distributed_computations_too"></a>Queries can be distributed computations, too</h3>
+<div class="paragraph">
+<p>Being able to use arbitrary Java in your ETLs affords you great power as you
+write the parts of your program that read from depots, transform those records,
+and store the results in PStates. But what about when you’re reading that data?
+Do queries get the same kind of love?</p>
+</div>
+<div class="paragraph">
+<p>If you look at how we queried word count data, it might seem like the answer is
+no:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PState wc = cluster.clusterPState(moduleName, <span class="hljs-string">"$$wordCounts"</span>);
+System.out.println(<span class="hljs-string">"one: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"one"</span>)));
+System.out.println(<span class="hljs-string">"two: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"two"</span>)));
+System.out.println(<span class="hljs-string">"three: "</span> + wc.selectOne(Path.key(<span class="hljs-string">"three"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Do not let these simple examples fool you! In fact, you can use the same API you
+use for ETLs to construct queries that perform arbitrary computations. Such
+queries are called <a href="query.html" class="page">query topologies</a>. Here’s an example query topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">topologies.query(<span class="hljs-string">"followersYouKnow"</span>, <span class="hljs-string">"*you"</span>, <span class="hljs-string">"*otherUser"</span>).out(<span class="hljs-string">"*userSet"</span>)
+          .hashPartition(<span class="hljs-string">"$$following"</span>, <span class="hljs-string">"*you"</span>)
+          .localSelect(<span class="hljs-string">"$$followingById"</span>, Path.key(<span class="hljs-string">"*you"</span>).sortedMapRangeFrom(<span class="hljs-number">0</span>, <span class="hljs-number">300</span>).mapVals()).out(<span class="hljs-string">"*following"</span>)
+          .hashPartition(<span class="hljs-string">"$$followers"</span>, <span class="hljs-string">"*otherUser"</span>)
+          .localSelect(<span class="hljs-string">"$$followers"</span>, Path.must(<span class="hljs-string">"*otherUser"</span>, <span class="hljs-string">"*following"</span>))
+          .originPartition()
+          .agg(Agg.set(<span class="hljs-string">"*following"</span>)).out(<span class="hljs-string">"*userSet"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This query topology will return a list of "followers you know" – people you follow who are following a given user.</p>
+</div>
+<div class="paragraph">
+<p>Don’t worry about figuring out precisely how this query works yet. The point of
+the example is to show you that this query topology takes the same form as an
+ETL and uses the same elements, like <code>.out</code> and <code>.hashPartition</code>.</p>
+</div>
+<div class="paragraph">
+<p>As it turns out, ETLs are also topologies, and you can see that in a part of the
+word count source that we’ve glossed over until now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+  setup.declareDepot(<span class="hljs-string">"*wordDepot"</span>, Depot.random());
+  StreamTopology s = topologies.stream(<span class="hljs-string">"wordCountStream"</span>);
+  s.pstate(<span class="hljs-string">"$$wordCounts"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+  s.source(<span class="hljs-string">"*wordDepot"</span>).out(<span class="hljs-string">"*token"</span>)
+   .hashPartition(<span class="hljs-string">"*token"</span>)
+   .compoundAgg(<span class="hljs-string">"$$wordCounts"</span>, CompoundAgg.map(<span class="hljs-string">"*token"</span>, Agg.count()));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is the <code>define</code> method for a module, and the second argument is
+<code>topologies</code>. You use <code>topologies.stream</code> to define a <em>streaming ETL topology</em>,
+and you use <code>topologies.query</code> to define a query topology.</p>
+</div>
+<div class="paragraph">
+<p>You can think of "topology" as short for "distributed computation topology", a
+computation graph where each node defines some operation. These distributed
+computations have the general form of <em>reading data from somewhere and
+performing operations on it</em>. With ETLs, you’re reading data from depots, and
+the operations include transformations and writes to PStates. With queries,
+you’re reading data from PStates, and you can perform the same kinds of
+transformations as you can in ETLs, including transforming the data with
+arbitrary Java.</p>
+</div>
+<div class="paragraph">
+<p>Writing topologies is the core part of Rama development, and the next couple
+pages will cover this topic in detail.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arbitrary_java"><a class="anchor" href="#_arbitrary_java"></a>Arbitrary Java</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You might be wondering, why is this document so obsessed with
+"arbitrary Java"? Well here’s why: Rama’s design closes the gap between "normal
+programming" and "database programming". It removes the boundary between
+"application system" and "data system", colocating application-level
+computations with the same resources responsible for retrieving and storing
+data.</p>
+</div>
+<div class="paragraph">
+<p>An earlier section discussed how your system is all just Rama, and this is an
+extension of that. Rama’s model is simple in that it’s comprised of fewer
+pieces, and it’s powerful in that you can use all of Java pretty much
+everywhere. It’s not a half-measure like a stored procedure, which has to be
+written in the database’s language, lives outside of version control,
+and is likely managed by another team in your organization. You and your team
+have full control of how to interact with your data layer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, you learned the flow of how data moves through a Rama module. All data arrives into depots, topologies process that data to create PStates, and clients query those PStates to power applications. What makes Rama so powerful is how general-purpose all these facilities are: the expressive topology API gives you full control over where and how code executes, PStates can be shaped optimally for each use case, and the path-based query API can take full advantage of your PStates no matter what shape they’re in. In subsequent pages you’ll dive deeper into all these topics.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

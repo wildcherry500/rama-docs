@@ -1,0 +1,1128 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>REST API :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="rest.html">REST API</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_structure_of_rest_api" class="">Structure of REST API</a></li><li data-level="1"><a href="#_json_encoding_arguments" class="">JSON-encoding arguments</a></li><li data-level="1"><a href="#_depot_appends" class="">Depot appends</a></li><li data-level="1"><a href="#_pstate_queries" class="">PState queries</a></li><li data-level="2"><a href="#_map_navigators" class="">Map navigators</a></li><li data-level="2"><a href="#_list_navigators" class="is-active">List navigators</a></li><li data-level="2"><a href="#_set_navigators">Set navigators</a></li><li data-level="2"><a href="#_filter_navigators">Filter navigators</a></li><li data-level="2"><a href="#_view_navigators">View navigators</a></li><li data-level="2"><a href="#_control_navigators">Control navigators</a></li><li data-level="2"><a href="#_value_collection_navigators">Value collection navigators</a></li><li data-level="1"><a href="#_query_topology_invokes">Query topology invokes</a></li><li data-level="1"><a href="#_limitations_of_rest_api">Limitations of REST API</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">REST API</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_structure_of_rest_api">Structure of REST API</a></li><li data-level="1"><a href="#_json_encoding_arguments">JSON-encoding arguments</a></li><li data-level="1"><a href="#_depot_appends">Depot appends</a></li><li data-level="1"><a href="#_pstate_queries">PState queries</a></li><li data-level="2"><a href="#_map_navigators">Map navigators</a></li><li data-level="2"><a href="#_list_navigators">List navigators</a></li><li data-level="2"><a href="#_set_navigators">Set navigators</a></li><li data-level="2"><a href="#_filter_navigators">Filter navigators</a></li><li data-level="2"><a href="#_view_navigators">View navigators</a></li><li data-level="2"><a href="#_control_navigators">Control navigators</a></li><li data-level="2"><a href="#_value_collection_navigators">Value collection navigators</a></li><li data-level="1"><a href="#_query_topology_invokes">Query topology invokes</a></li><li data-level="1"><a href="#_limitations_of_rest_api">Limitations of REST API</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama has a built-in REST API for doing depot appends, PState queries, and query topology invokes with HTTP requests. This allow Rama modules to be read and written to from any programming language, as well as allowing ad-hoc queries to be done with tools like <code>curl</code>.</p>
+</div>
+<div class="paragraph">
+<p>The REST API uses JSON to represent arguments and responses. All requests are done using POST requests so that JSON can be provided in the body.</p>
+</div>
+<div class="paragraph">
+<p>Here are a few examples of using <code>curl</code> to invoke the REST API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/depot/*registerDepot/append' -d '{"data": {"userid":"alice"}}'
+{"profileTopology":"success"}
+
+&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/pstate/$$profiles/selectOne' -d '["alice", "location"]'
+"New York City, NY"
+
+&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/query/usersWithAge/invoke' -d '[31]'
+["cagney", "davis", "tracy", "lemmon"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>REST API requests are handled by <a href="terminology.html#_supervisor" class="page">Supervisor</a> daemons. The <a href="terminology.html#_conductor" class="page">Conductor</a> also implements the same REST API, and it will return a 308 redirect to the appropriate Supervisor to handle the request. So a REST request could be done directly on the Conductor using <code>curl</code> like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -L -X POST -H "Content-Type: text/plain" 'http://1.1.1.1:8888/rest/com.mycompany.MyModule/pstate/$$profiles/selectOne' -d '["alice", "location"]'
+"New York City, NY"</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The additional <code>-L</code> flag tells <code>curl</code> to follow redirects.</p>
+</div>
+<div class="paragraph">
+<p>The Conductor should not be used for lots of requests since it’s a central point of contention and computing the redirect puts load on the <a href="terminology.html#_metastore" class="page">metastore</a>. It’s fine to use for low-throughput, ad-hoc usage like this, but in general it should only be used for the initial request to find the Supervisors on which to send all future requests. This is detailed in the next section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structure_of_rest_api"><a class="anchor" href="#_structure_of_rest_api"></a>Structure of REST API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to reduce the number of cross-cluster connections, a REST request for a module is handled only by a Supervisor that is currently running a worker of that module. REST requests made to the Conductor or to a Supervisor not running that module will return a 308 redirect.</p>
+</div>
+<div class="paragraph">
+<p>A 308 redirect includes the following headers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">"Location": "http://1.2.3.4:2000/rest/com.mycompany.MyModule/depot/*registerDepot/append"
+"Supervisor-Locations": '["1.2.3.4:2000", "1.2.3.5:2000", "1.2.3.6:3000"]'</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>"Location"</code> is a standard header in redirects that can be automatically followed by programs like <code>curl</code>. <code>"Supervisor-Locations"</code> is a header custom to Rama that a programmatic HTTP client should use for all future HTTP requests for this module. It’s a JSON-encoded list of host/port strings for all Supervisors running this module. Each hostname returned is the internal host configured for that Supervisor. To evenly distribute the load of handling REST requests, REST requests should be evenly distributed across all those Supervisors (e.g. by selecting a random one for each request).</p>
+</div>
+<div class="paragraph">
+<p>If a Supervisor is no longer running that module, like if the Conductor reassigned it during a scaling or reassign operation, the Supervisor will return a redirect of this form. If a Supervisor is down and a request returns a 500 status code, an HTTP client should try another Supervisor or make the request to the Conductor to get an updated list of Supervisors to try.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_json_encoding_arguments"><a class="anchor" href="#_json_encoding_arguments"></a>JSON-encoding arguments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JSON can only represent a limited number of types. Since it’s common to use precise numeric types in Rama modules, like ints, longs, and shorts, and since other types like functions need to be referenced, Rama has a special way to represent those non-standard types. By default, numbers are interpreted as 32-bit integers, and floating-point values are interpreted as 64-bit doubles.</p>
+</div>
+<div class="paragraph">
+<p>A non-standard type is represented with a string of the form <code>"#__&lt;type character&gt;&lt;value&gt;"</code>. Here’s a way to JSON encode a list containing a long (64-bit integer), a character, and a byte (8-bit integer):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">'["#__L123456789", "#__Ca", "#__B19"]'</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If the value-string cannot be parsed into that type, such as if the type doesn’t have enough bits to represent that value, Rama will throw an exception while parsing the JSON and the request will fail.</p>
+</div>
+<div class="paragraph">
+<p>Rama parses these strings regardless of how they’re nested. So even if a special string is specified in a data structure six levels deep, it will be converted properly.</p>
+</div>
+<div class="paragraph">
+<p>Here are all the special types that can be represented:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type character</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parsed type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Byte (8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__B19"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Short (16-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__S5190"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Long (64-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__L123456789"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Float (32-bit floating-point)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__F123.456"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Character</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__CQ"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clojure keyword (e.g. <code>:a</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__Ka"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Function</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"#__fcom.mycompany.ops.MyRamaFunction"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Function references can be to three kinds of functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaFunction.html">RamaFunction</a> implementation: the referenced class must have a zero-arg constructor.</p>
+</li>
+<li>
+<p>Clojure function: the value string must be a fully-qualified reference to a Clojure function, e.g. <code>clojure.core/even?</code></p>
+</li>
+<li>
+<p>Built-in function from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/Ops.html">Ops</a> class: in this case, the value string is of the form <code>Ops.IS_EVEN</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that the special encodings are only used for requests, and they’re not used for responses. Responses for all REST API methods are JSON encoded without any special handling for non-standard types.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_depot_appends"><a class="anchor" href="#_depot_appends"></a>Depot appends</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <a href="depots.html" class="page">depot</a> append is posted to a URL of the form <code>http://&lt;host&gt;:&lt;port&gt;/rest/&lt;module name&gt;/depot/&lt;depot name&gt;/append</code>. The body of the request is a JSON-encoded map containing <code>"data"</code> and optionally <code>"ackLevel"</code>.</p>
+</div>
+<div class="paragraph">
+<p>The accepted ack levels are <code>"ack"</code>, <code>"appendAck"</code>, and <code>"none"</code>.  When unspecified <code>"ackLevel"</code> defaults to <code>"ack"</code>, the same default as used for native depot clients. The meaning of the ack levels are described in <a href="depots.html#_appends" class="page">this section</a>.</p>
+</div>
+<div class="paragraph">
+<p>The response to a depot append are JSON-encoded <a href="depots.html#_streaming_ack_returns" class="page">streaming ack returns</a>. Just like native clients, this will be an empty map for ack levels other than <code>"ack"</code>. The returned object maps topology names to their ack return value.</p>
+</div>
+<div class="paragraph">
+<p>Here are some examples of doing depot appends with <code>curl</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/depot/*registerDepot/append' -d '{"data": {"userid":"alice"}}'
+{"profileTopology":"success"}
+
+&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/depot/*registerDepot/append' -d '{"data": {"userid":"alice"}, "ackLevel": "appendAck"}'
+{}
+
+&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.Module2/depot/*anotherDepot/append' -d '{"data": [1,2,"#__L1234567"], "ackLevel": "none"}'
+{}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pstate_queries"><a class="anchor" href="#_pstate_queries"></a>PState queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="pstates.html" class="page">PStates</a> can be queried with the REST API with the full richness of paths. Paths are represented using a JSON format. To learn paths, we recommend reading the <a href="paths.html" class="page">Paths</a> page and playing with them using Rama’s <code>TestPState</code> with either the <a href="testing.html#_testpstate" class="page">Java API version</a> or <a href="clj-testing.html" class="page">Clojure API version</a>.</p>
+</div>
+<div class="paragraph">
+<p>There are two REST API methods available for querying PStates, <code>select</code> and <code>selectOne</code>. Like their counterparts in the native API, <code>select</code> returns a list of navigated values and <code>selectOne</code> returns a single navigated value. <code>selectOne</code> errors if zero or more than one value is selected.</p>
+</div>
+<div class="paragraph">
+<p>Here are examples of invoking these methods using <code>curl</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/pstate/$$p/select' -d '["alice", ["all"], "#__fOps.IS_EVEN"]'
+[4, 2, 18, 2]
+
+&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/pstate/$$profiles/selectOne' -d '["alice", "location"]'
+"New York City, NY"</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like Rama’s native PState APIs, paths are represented in JSON as a list of navigators. A navigator can be either <em>implicit</em> or <em>explicit</em>.</p>
+</div>
+<div class="paragraph">
+<p>An implicit navigator can either be a string, a Clojure keyword, or a function. Strings and keywords get wrapped in the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#key-java.lang.Object...-">key</a> navigator, and functions get wrapped in the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterPred-com.rpl.rama.ops.RamaFunction1-">filterPred</a> navigator. For example, here is a JSON path comprised solely of implicit navigators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">["a", "b", "#__fOps.IS_EVEN"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to the Java path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Path.key(<span class="hljs-string">"a"</span>).key(<span class="hljs-string">"b"</span>).filterPred(Ops.IS_EVEN)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is also equivalent to the Clojure path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">[<span class="hljs-string">"a"</span> <span class="hljs-string">"b"</span> even?]</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Explicit navigators are represented as a list of the form <code>[&lt;operation string&gt; &lt;args&gt;…​]</code>. The operation string determines how each argument is interpreted, whether as a value or another path. For example, the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#must-java.lang.Object…​-">"must"</a> navigator accepts one or more keys as arguments. Here are valid ways to use <code>"must"</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">["must", "a", "b"]
+["must", "k"]
+["must", "key1", "key2", "key3"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterSelected-com.rpl.rama.Path-">"filterSelected"</a> navigator interprets all of its arguments as a single path. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">["filterSelected", "a", ["all"], #__fOps.IS_EVEN"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to the Java path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Path.filterSelected(Path.key(<span class="hljs-string">"a"</span>).all().filterPred(Ops.IS_EVEN))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is also equivalent to the Clojure path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">selected?</span> <span class="hljs-string">"a"</span> ALL even?)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#multiPath-com.rpl.rama.Path...-">"multiPath"</a>, on the other hand, interprets each argument as a separate path. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">["multiPath", "a", "b", "c"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to the Java path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Path.multiPath(Path.key(<span class="hljs-string">"a"</span>), Path.key(<span class="hljs-string">"b"</span>), Path.key(<span class="hljs-string">"c"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is also equivalent to the Clojure path:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">multi-path</span> <span class="hljs-string">"a"</span> <span class="hljs-string">"b"</span> <span class="hljs-string">"c"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The following is a complete listing of all navigators available, categorized by type. All navigators can be referred to by their name in either the Java API or Clojure API. The "Arguments" column specifies how each argument is interpreted:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>None</code>: the navigator takes no arguments</p>
+</li>
+<li>
+<p><code>Value…​</code>: any number of values can be provided as arguments</p>
+</li>
+<li>
+<p><code>Path…​</code>: all arguments are interpreted as a single path</p>
+</li>
+<li>
+<p><code>Paths…​</code>: each argument is interpreted as its own path and there can be a variadic number of them</p>
+</li>
+<li>
+<p>Otherwise, the arguments are specified individually as either a <code>Value</code> or a <code>Path</code>. Some navigators have an optional final argument specified as <code>?Value</code> or <code>?Path</code>. For example, <code>sortedMapRange</code> below accepts either two or three arguments.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The meaning of the arguments is identical to how they’re described in the corresponding Javadoc / Clojuredoc.</p>
+</div>
+<div class="paragraph">
+<p>Some navigators appear in multiple sections because they can be used on multiple data types.</p>
+</div>
+<div class="sect2">
+<h3 id="_map_navigators"><a class="anchor" href="#_map_navigators"></a>Map navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#all--">all / ALL</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["all"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#key-java.lang.Object...-">key / keypath</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["key", "a", "b"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#mapKey-java.lang.Object-">mapKey / map-key</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["mapKey", "k1"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#mapKeys--">mapKeys / MAP-KEYS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["mapKeys"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#mapVals--">mapVals / MAP-VALS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["mapVals"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#must-java.lang.Object...-">must</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["must", "k1", "k2", "k3"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRange-java.lang.Object-java.lang.Object-">sortedMapRange / sorted-map-range</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedMapRange", 123, 987, {"inclusive-start?": false}]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is options map accepting <code>"inclusive-start?"</code> and <code>"inclusive-end?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRangeFrom-java.lang.Object-">sortedMapRangeFrom / sorted-map-range-from</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedMapRangeFrom", "k", 100]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is either value for max amount or options map accepting <code>"max-amt"</code> and <code>"inclusive?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRangeFromStart-java.lang.Object-">sortedMapRangeFromStart / sorted-map-range-from-start</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedMapRangeFromStart", 100]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRangeTo-java.lang.Object-">sortedMapRangeTo / sorted-map-range-to</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedMapRangeTo", "s", {"max-amt": 10, "inclusive?": true}]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is either value for max amount or options map accepting <code>"max-amt"</code> and <code>"inclusive?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#subMap-java.lang.Object...-">submap</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["submap", "k1", "k2"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_list_navigators"><a class="anchor" href="#_list_navigators"></a>List navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#all--">all / ALL</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["all"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#afterElem--">afterElem / AFTER-ELEM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["afterElem"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#beforeElem--">beforeElem / BEFORE-ELEM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["beforeElem"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#beforeIndex-java.lang.Object-">beforeIndex / before-index</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["beforeIndex", 3]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#beginning--">beginning / BEGINNING</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["beginning"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#end--">end / END</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["end"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filteredList-com.rpl.rama.Path-">filteredList / filterer</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filteredList", ["must", "a"], "#__fOps.IS_ODD"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#first--">first / FIRST</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["first"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#index-java.lang.Object-">index / index-nav</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["index", 7]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#indexedVals--">indexedVals / INDEXED-VALS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["indexedVals"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#last--">last / LAST</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["last"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#nth-java.lang.Object-">nth / nthpath</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["nth", 4, 0, 2]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sublist-java.lang.Object-java.lang.Object-">sublist / srange</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sublist", 1, 8]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sublistDynamic-com.rpl.rama.ops.RamaFunction1-com.rpl.rama.ops.RamaFunction2-">sublistDynamic / srange-dynamic</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sublistDynamic", "#__fcom.mycompany.MyFunction1", "#__fcom.mycompany.MyFunction2"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_set_navigators"><a class="anchor" href="#_set_navigators"></a>Set navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#all--">all / ALL</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["all"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#setElem-java.lang.Object-">setElem / set-elem</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["setElem", "e1"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRange-java.lang.Object-java.lang.Object-">sortedSetRange / sorted-set-range</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedSetRange", "e1", "hh", {"inclusive-end?": true}]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is options map accepting <code>"inclusive-start?"</code> and <code>"inclusive-end?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRangeFrom-java.lang.Object-">sortedSetRangeFrom / sorted-set-range-from</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedSetRangeFrom", "e", 10]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is either value for max amount or options map accepting <code>"max-amt"</code> and <code>"inclusive?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRangeFromStart-java.lang.Object-">sortedSetRangeFromStart / sorted-set-range-from-start</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedSetRangeFromStart", "e", 10]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRangeTo-java.lang.Object-">sortedSetRangeTo / sorted-set-range-to</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, ?Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["sortedSetRangeTo", "q", {"max-amt": 10, "inclusive?": true}]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final argument is either value for max amount or options map accepting <code>"max-amt"</code> and <code>"inclusive?"</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#subset-java.lang.Object...-">subset</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["subset", "e1", "e3"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#voidSetElem--">voidSetElem / NONE-ELEM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["voidSetElem"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_filter_navigators"><a class="anchor" href="#_filter_navigators"></a>Filter navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterEqual-java.lang.Object-">filterEqual / pred=</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterEqual", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterGreaterThan-java.lang.Object-">filterGreaterThan / pred&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterGreaterThan", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterGreaterThanOrEqual-java.lang.Object-">filterGreaterThanOrEqual / pred&gt;=</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterGreaterThanOrEqual", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterLessThan-java.lang.Object-">filterLessThan / pred&lt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterLessThan", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterLessThanOrEqual-java.lang.Object-">filterLessThanOrEqual / pred&lt;=</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterLessThanOrEqual", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterNotEqual-java.lang.Object-">filterNotEqual / prednot=</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterNotEqual", 9]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterNotEqual-java.lang.Object-">filterPred / pred</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterPred", "#__fOps.IS_ODD"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterSelected-com.rpl.rama.Path-">filterSelected / selected?</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterSelected", ["all"], ["filterEqual" 2]]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#filterNotSelected-com.rpl.rama.Path-">filterNotSelected / not-selected?</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["filterSelected", ["all"], ["filterEqual" 2]]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_view_navigators"><a class="anchor" href="#_view_navigators"></a>View navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#nullToList--">nullToList / NIL-&gt;VECTOR</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["nullToList"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#nullToSet--">nullToSet / NIL-&gt;SET</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["nullToSet"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#nullToVal-java.lang.Object-">nullToValue / nil-&gt;val</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["nullToValue", 0]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#transformed-com.rpl.rama.Path-">transformed / multi-transformed</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["transformed", ["all"], "a", ["termVal", "v"]]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#view-com.rpl.rama.ops.RamaFunction1-">view</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["view", "#__fOps.PLUS", 2]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>These navigators are used in paths passed to <code>"transformed"</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#term-com.rpl.rama.ops.RamaFunction1-">term</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["term", "#__fOps.INC"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#termVal-java.lang.Object-">termVal / termval</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["termVal", 100]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#termVoid--">termVoid, NONE&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["termVoid"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_control_navigators"><a class="anchor" href="#_control_navigators"></a>Control navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#ifPath-com.rpl.rama.Path-com.rpl.rama.Path-">ifPath / if-path</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path, Path, ?Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["ifPath", ["a", "#__fOps.IS_EVEN"], "b", "c"]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last argument is optional "else" path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#multiPath-com.rpl.rama.Path...-">multiPath / multi-path</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paths…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["multiPath", ["a", ["ALL"]], "b"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#stay--">stay, STAY</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["stay"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#stop--">stop, STOP</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["stop"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#subselect-com.rpl.rama.Path-">subselect</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["subselect", ["ALL"], "a"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#withPageSize-java.lang.Object-com.rpl.rama.Path-">withPageSize / with-page-size</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value, Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["withPageSize", 3, [["mapVals"]]]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_value_collection_navigators"><a class="anchor" href="#_value_collection_navigators"></a>Value collection navigators</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Names</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arguments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#collect-com.rpl.rama.Path-">collect</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["collect", ["ALL"], "a"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#collectOne-com.rpl.rama.Path-">collectOne / collect-one</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["collectOne", "k"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#dispenseCollected--">dispenseCollected, DISPENSE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["dispenseCollected"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#isCollected-com.rpl.rama.ops.RamaFunction1-">isCollected</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["isCollected", "#__fcom.mycompany.MyPredicate"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#putCollected-java.lang.Object-">putCollected / putVal</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">["putCollected", "foo"]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_query_topology_invokes"><a class="anchor" href="#_query_topology_invokes"></a>Query topology invokes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <a href="query.html" class="page">query topology</a> invoke is posted to a URL of the form <code>http://&lt;host&gt;:&lt;port&gt;/rest/&lt;module name&gt;/query/&lt;query topology name&gt;/invoke</code>. The body of the request is a JSON-encoded list of arguments to that query topology. The response is the JSON-encoded result of the topology invoke.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of invoking query topology "usersWithAge" with one argument:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/query/usersWithAge/invoke' -d '[31]'
+["cagney", "davis", "tracy", "lemmon"]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s an example of invoking query topology "urlReach" with three arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&gt;&gt; curl -X POST -H "Content-Type: text/plain" 'http://1.2.3.4:2000/rest/com.mycompany.MyModule/query/urlReach/invoke' -d '["foo.com", "7/1/2024", "8/1/2024"]'
+9849019</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_limitations_of_rest_api"><a class="anchor" href="#_limitations_of_rest_api"></a>Limitations of REST API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The REST API has a few limitations compared to the native Java and Clojure clients:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can’t use types outside of what can be represented in Rama’s JSON format. For PState queries, you can work around this by using the <code>"view"</code> navigator to convert custom types into a string representation that your client can interpret.</p>
+</li>
+<li>
+<p>Custom navigators cannot be referenced by JSON paths yet.</p>
+</li>
+<li>
+<p>PState reactivity is not exposed yet.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On this page you saw how depot appends could be done with any ack level, how PState queries could be done with the full compositionality and expressiveness of paths, and how query topologies could be invoked by just passing a list of arguments.</p>
+</div>
+<div class="paragraph">
+<p>Rama’s REST API exposes a huge amount of Rama’s functionality with very few limitations. It enables frontends to be written in any language, such as Python, Ruby, or JavaScript. This also makes it easier for an organization to adopt Rama, as the frontend team can continue using existing tooling.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

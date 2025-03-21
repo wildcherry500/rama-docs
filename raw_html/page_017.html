@@ -1,0 +1,1917 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PStates :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="pstates.html">PStates</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_pstates_versus_databases" class="">PStates versus databases</a></li><li data-level="1"><a href="#_declaring_pstates" class="">Declaring PStates</a></li><li data-level="2"><a href="#_subindexing" class="">Subindexing</a></li><li data-level="2"><a href="#_pstate_options" class="">PState options</a></li><li data-level="1"><a href="#_using_pstates_in_topologies" class="">Using PStates in topologies</a></li><li data-level="2"><a href="#_basic_querying" class="">Basic querying</a></li><li data-level="2"><a href="#_yielding_select" class="">Yielding select</a></li><li data-level="2"><a href="#_transforming" class="">Transforming</a></li><li data-level="2"><a href="#_querying_from_other_modules" class="">Querying from other modules</a></li><li data-level="1"><a href="#_using_pstate_clients" class="">Using PState clients</a></li><li data-level="2"><a href="#_how_client_queries_are_routed" class="">How client queries are routed</a></li><li data-level="2"><a href="#_non_blocking_api" class="">Non-blocking API</a></li><li data-level="1"><a href="#_reactive_queries" class="">Reactive queries</a></li><li data-level="2"><a href="#_diffs" class="">Diffs</a></li><li data-level="2"><a href="#_processing_diffs" class="">Processing diffs</a></li><li data-level="2"><a href="#_fault_handling" class="">Fault handling</a></li><li data-level="2"><a href="#_proxystate_cleanup_and_garbage_collection" class="">ProxyState cleanup and garbage collection</a></li><li data-level="2"><a href="#_handling_of_bad_proxies" class="">Handling of bad proxies</a></li><li data-level="1"><a href="#_schema_validation" class="">Schema validation</a></li><li data-level="1"><a href="#_migrations" class="is-active">Migrations</a></li><li data-level="2"><a href="#_pstate_locations_that_can_have_migrations">PState locations that can have migrations</a></li><li data-level="2"><a href="#_nested_migrations">Nested migrations</a></li><li data-level="2"><a href="#_updating_a_module_mid_migration">Updating a module mid-migration</a></li><li data-level="2"><a href="#_migration_telemetry">Migration telemetry</a></li><li data-level="2"><a href="#_completing_a_migration">Completing a migration</a></li><li data-level="2"><a href="#_controlling_rate_of_migrations">Controlling rate of migrations</a></li><li data-level="2"><a href="#_implicit_migrations">Implicit migrations</a></li><li data-level="2"><a href="#_playing_with_migrations_using_ipc">Playing with migrations using IPC</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="2"><a href="#_configurations">Configurations</a></li><li data-level="2"><a href="#_dynamic_options">Dynamic options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">PStates</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_pstates_versus_databases">PStates versus databases</a></li><li data-level="1"><a href="#_declaring_pstates">Declaring PStates</a></li><li data-level="2"><a href="#_subindexing">Subindexing</a></li><li data-level="2"><a href="#_pstate_options">PState options</a></li><li data-level="1"><a href="#_using_pstates_in_topologies">Using PStates in topologies</a></li><li data-level="2"><a href="#_basic_querying">Basic querying</a></li><li data-level="2"><a href="#_yielding_select">Yielding select</a></li><li data-level="2"><a href="#_transforming">Transforming</a></li><li data-level="2"><a href="#_querying_from_other_modules">Querying from other modules</a></li><li data-level="1"><a href="#_using_pstate_clients">Using PState clients</a></li><li data-level="2"><a href="#_how_client_queries_are_routed">How client queries are routed</a></li><li data-level="2"><a href="#_non_blocking_api">Non-blocking API</a></li><li data-level="1"><a href="#_reactive_queries">Reactive queries</a></li><li data-level="2"><a href="#_diffs">Diffs</a></li><li data-level="2"><a href="#_processing_diffs">Processing diffs</a></li><li data-level="2"><a href="#_fault_handling">Fault handling</a></li><li data-level="2"><a href="#_proxystate_cleanup_and_garbage_collection">ProxyState cleanup and garbage collection</a></li><li data-level="2"><a href="#_handling_of_bad_proxies">Handling of bad proxies</a></li><li data-level="1"><a href="#_schema_validation">Schema validation</a></li><li data-level="1"><a href="#_migrations">Migrations</a></li><li data-level="2"><a href="#_pstate_locations_that_can_have_migrations">PState locations that can have migrations</a></li><li data-level="2"><a href="#_nested_migrations">Nested migrations</a></li><li data-level="2"><a href="#_updating_a_module_mid_migration">Updating a module mid-migration</a></li><li data-level="2"><a href="#_migration_telemetry">Migration telemetry</a></li><li data-level="2"><a href="#_completing_a_migration">Completing a migration</a></li><li data-level="2"><a href="#_controlling_rate_of_migrations">Controlling rate of migrations</a></li><li data-level="2"><a href="#_implicit_migrations">Implicit migrations</a></li><li data-level="2"><a href="#_playing_with_migrations_using_ipc">Playing with migrations using IPC</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="2"><a href="#_configurations">Configurations</a></li><li data-level="2"><a href="#_dynamic_options">Dynamic options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Partitioned states ("PStates") index data to support all the various queries needed by applications. They are stored durably on disk and <a href="replication.html" class="page">replicated</a>. Much of Rama programming revolves around deciding how many PStates to create, how they will be structured, and how they will be updated. By being based on composable distributed data structures, PStates offer a tremendous amount of flexibility in how data is indexed as compared to traditional databases, and they’re a key reason why Rama is such a general platform able to build complex applications in a small amount of code on just a single tool.</p>
+</div>
+<div class="paragraph">
+<p>PStates also provide a powerful new capability called "fine-grained reactive queries" that has never existed before. This feature enables applications to be reactive up and down the stack. Fine-grained reactive queries are fully incremental and revolve around the concept of a "diff" between versions of a value.</p>
+</div>
+<div class="paragraph">
+<p>On this page you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The difference between Rama’s "flexible indexing model" versus the "fixed indexing model" of traditional databases</p>
+</li>
+<li>
+<p>Declaring PStates and defining schemas</p>
+</li>
+<li>
+<p>Using subindexing to efficiently store huge nested data structures</p>
+</li>
+<li>
+<p>Querying and updating PStates in topologies</p>
+</li>
+<li>
+<p>Using PState clients</p>
+</li>
+<li>
+<p>Fine-grained reactive queries</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pstates_versus_databases"><a class="anchor" href="#_pstates_versus_databases"></a>PStates versus databases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Databases vary a great deal in functionality offered. Each database provides a "data model", such as key/value, document, column-oriented, relational, etc, and their APIs are oriented around what’s possible with each specific data model. If you’re using a database whose data model is unable to support a new use case, you’ll need to introduce another database into your architecture.</p>
+</div>
+<div class="paragraph">
+<p>A more flexible way to think about indexing is in terms of data structures. A "data model" is really just a specific combination of data structures:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Key/value</strong>: Map</p>
+</li>
+<li>
+<p><strong>Document</strong>: Map of maps</p>
+</li>
+<li>
+<p><strong>Column-oriented</strong>: Map of subindexed sorted maps</p>
+</li>
+<li>
+<p><strong>Relational</strong>: Map of maps, with secondary indexes being additional maps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some databases, such as Redis, offer a bit more flexibility. Redis allows values to be a variety of in-memory data structures, such as lists and sets. But you’re ultimately restricted to those particular combinations along with everything needing to fit into memory.</p>
+</div>
+<div class="paragraph">
+<p>These data models are "fixed indexing models" –&nbsp;you have to make do with these particular combinations of data structures and try to fit your application’s use cases to them.</p>
+</div>
+<div class="paragraph">
+<p>Rama takes a drastically different approach by exposing a "flexible indexing model", where every PState you create can be whatever combination of data structures you need. You can easily make as many PStates as needed to satisfy all your use cases. The particular data structure combination needed by any particular use case can be highly specific, so this flexibility is essential for being able to support all the varied needs of an application.</p>
+</div>
+<div class="paragraph">
+<p>The data structure orientation of PStates also brings backend programming back in line with regular, everyday programming. One of the pillars of programming is choosing which data structures to use to represent your program data, whether maps, lists, sets, or others. Rama brings that basic concept back into the world of backend development.</p>
+</div>
+<div class="paragraph">
+<p>Another huge difference between PStates and databases is how they’re updated. A database functions as global mutable state that can be written from anywhere, whereas a PState can only be updated by the ETL topology that owns it. While at first glance this seems like a restriction, it’s actually a major simplification of backend architecture that doesn’t constrain you at all.</p>
+</div>
+<div class="paragraph">
+<p>Any write you could do to a database you can easily model in Rama as a depot append being consumed by an ETL topology to update a PState. Doing it this way offers some major benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The depot represents an immutable log of all events that happened in your application. You can use this for analytics later, or as a source to recompute PStates were you to need to index information differently or fix corruption caused by a bug in your ETL code.</p>
+</li>
+<li>
+<p>All writes to PStates being centralized in one ETL topology makes it much easier to grasp how data flows through your system.</p>
+</li>
+<li>
+<p>Stream and microbatch topologies have very different operational characteristics, and centralizing all PState writes into one topology allows Rama to significantly optimize how those writes are implemented.</p>
+</li>
+<li>
+<p>ETL topologies are inherently scalable and use the <a href="operating-rama.html#_scaling_modules" class="page">exact same scaling mechanism</a> as used to scale PStates and depots.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want to change how an ETL topology updates PStates or add new functionality, you simply <a href="operating-rama.html#_updating_modules" class="page">update the module</a>.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the integration of PStates, depots, and topologies onto the same set of processes/threads means there’s very little cost to the additional step of new data going to a depot first.</p>
+</div>
+<div class="paragraph">
+<p>Finally, another major difference between PStates and databases is how reactivity is provided. Reactivity refers to being pushed notifications immediately when state you care about within an index changes. Databases provide, at best, "coarse-grained reactivity". These are typically called "triggers" and only tell you that a whole value has changed. They don’t tell you how that value has changed in any more detail. In Postgres or MySQL, for example, they only tell you that a particular row/column changed.</p>
+</div>
+<div class="paragraph">
+<p>PStates, on the other hand, provide "fine-grained reactivity". No matter how nested a value is in a PState, with the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/PState.html#proxy-com.rpl.rama.Path-">proxy</a> operation you receive fine-grained information about how that value changed in the form of "diffs". Diffs contain information like "The values at the keys 'k' and 'k2' in the subscribed map were updated" or "The value 'apple' was added to a set at the key 'fruit' on the map at index 3 on the subscribed list". Reactive queries are discussed in depth <a href="#_reactive_queries">later on this page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_declaring_pstates"><a class="anchor" href="#_declaring_pstates"></a>Declaring PStates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PStates are declared as part of a <a href="stream.html" class="page">stream</a> or <a href="microbatch.html" class="page">microbatch</a> topology. The API is the same in both cases. Here’s an example of declaring a few PStates for a stream topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicPStateDeclarationsModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p1"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    s.pstate(<span class="hljs-string">"$$p2"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;
+    s.pstate(
+      <span class="hljs-string">"$$p3"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+          "<span class="hljs-title">count</span>", <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>,
+          "<span class="hljs-title">someList</span>", <span class="hljs-title">PState</span>.<span class="hljs-title">listSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>),
+          "<span class="hljs-title">someSet</span>", <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))))</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Every PState declaration requires a var beginning with <code>"$$"</code> and a <em>schema</em>. The schema specifies the combination of data structures for the PState. PStates are distributed objects that will have one partition on every task of its module (unless you declare it as <code>global</code>, <a href="#_pstate_options">described below</a>). So <code>"$$p1"</code> in the example will have a single <code>Long</code> in each partition of the PState, and the other two PStates will have a map in each partition.</p>
+</div>
+<div class="paragraph">
+<p>Schemas can be combined and nested any which way you need. At the leaves of schema declarations will always be references to Java classes. These examples show all the different kinds of schemas available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mapSchema</code>: Declares a map with a key class and a schema or class for the value.</p>
+</li>
+<li>
+<p><code>setSchema</code>: Declares a set with the specified type as values. Values of <code>setSchema</code> cannot be other schemas.</p>
+</li>
+<li>
+<p><code>listSchema</code>: Declares a list with the specified type or schemas as values.</p>
+</li>
+<li>
+<p><code>fixedKeysSchema</code>: Declares a map with a fixed set of keys, where each key has a separate schema for its value.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The top-level schema of a PState can only be a <code>mapSchema</code>, <code>fixedKeysSchema</code>, or class reference (we have it on our roadmap to change this so all schemas are usable at the top-level). You can still store lists and sets at the top-level, but that would be by using something like an <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">ArrayList</a> or a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html">HashSet</a> at the top-level. In this case, Rama won’t index the elements of the collection separately like it does for top-level <code>mapSchema</code> or <code>fixedKeysSchema</code> (more on this in the next section).</p>
+</div>
+<div class="sect2">
+<h3 id="_subindexing"><a class="anchor" href="#_subindexing"></a>Subindexing</h3>
+<div class="paragraph">
+<p>There are two ways in which schemas are implemented by Rama from an indexing perspective. Either the entire value is indexed, or each element of the collection is indexed separately. Top-level <code>mapSchema</code> or <code>fixedKeysSchema</code> index elements separately, and marking a nested schema as "subindexed" will cause that nested data structure to index its elements separately. All other schemas / class references index as single values.</p>
+</div>
+<div class="paragraph">
+<p>PState schemas specify subindexing like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+s.pstate(
+  <span class="hljs-string">"$$p2"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+      <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      <span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+s.pstate(
+  <span class="hljs-string">"$$p3"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+      <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      <span class="hljs-title">PState</span>.<span class="hljs-title">listSchema</span>(<span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>())))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>"$$p"</code> contains a subindexed set inside of a map, <code>"$$p2"</code> contains a subindexed map inside of a map, and <code>"$$p3"</code> contains a subindexed list inside a non-subindexed map inside of a map. You can also have subindexed structures inside other subindexed structures –&nbsp;this functionality composes infinitely.</p>
+</div>
+<div class="paragraph">
+<p>The granularity of indexing determines how much work is done for reads and writes. If a structure is not subindexed, the entire structure needs to be read from disk even if you’re just querying for one element of it. For example, consider this query on <code>"$$p3"</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">p3.selectOne(Path.key(<span class="hljs-string">"a"</span>).key(<span class="hljs-string">"b"</span>).nth(<span class="hljs-number">1</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Suppose the contents of <code>"$$p3"</code> on that partition are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{<span class="hljs-attr">"a"</span>: {<span class="hljs-attr">"b"</span>: &lt;subindexed [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]&gt;,
+       <span class="hljs-attr">"c"</span>: &lt;subindexed [<span class="hljs-number">3</span>]&gt;,
+       <span class="hljs-attr">"d"</span>: &lt;subindexed [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]&gt;,
+       <span class="hljs-attr">"e"</span>: &lt;subindexed [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>]&gt;},
+ <span class="hljs-attr">"x"</span>: {<span class="hljs-attr">"f"</span>: &lt;subindexed [<span class="hljs-number">8</span>]&gt;},
+ <span class="hljs-attr">"y"</span>: {<span class="hljs-attr">"g"</span>: &lt;subindexed [<span class="hljs-number">9</span>]&gt;,
+       <span class="hljs-attr">"h"</span>: &lt;subindexed [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>]&gt;}}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The query navigates into the partition, step by step. The first step <code>key("a")</code> operates on the top-level map which indexes its elements separately, so it will read the value for <code>"a"</code>. Because that submap in the schema is not sub-indexed, that value stores the entire contents of the map. So <code>key("a")</code> will read from disk:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{<span class="hljs-attr">"b"</span>: &lt;subindexed [<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>]&gt;,
+ <span class="hljs-attr">"c"</span>: &lt;subindexed [<span class="hljs-number">3</span>]&gt;,
+ <span class="hljs-attr">"d"</span>: &lt;subindexed [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]&gt;,
+ <span class="hljs-attr">"e"</span>: &lt;subindexed [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>]&gt;}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If the data structure being resolved only has a small number of elements, like less than 50,&nbsp;the performance difference from being subindexed or not will be insignificant. But if it has a large number of elements, like 10 million, there will be a massive performance difference.</p>
+</div>
+<div class="paragraph">
+<p>The next step <code>key("b")</code> reads the value for <code>"b"</code>. Because that list is subindexed, it actually only reads from the already fetched map a unique identifier for the subindexed structure called the "reference ID". So instead of reading from disk the entire list, which could contains millions of elements, it only reads a small 8 byte value per subindexed structure. The data structure at that point of navigation acts just like a normal list, but to resolve list queries it uses its internal reference ID to find the individual elements on disk.</p>
+</div>
+<div class="paragraph">
+<p>The next step <code>nth(1)</code> does a lookup on that subindexed list, which reads the value <code>11</code> from disk. The values <code>10</code> and <code>12</code> as well as all the other values in the other subindexed lists are never read from disk in this query.</p>
+</div>
+<div class="paragraph">
+<p>Subindexed maps and sets are sorted. You can do efficient range queries on them using the navigators <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRange-java.lang.Object-java.lang.Object-">sortedMapRange</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRangeFrom-java.lang.Object-java.lang.Object-">sortedMapRangeFrom</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedMapRangeTo-java.lang.Object-">sortedMapRangeTo</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRange-java.lang.Object-java.lang.Object-">sortedSetRange</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRangeFrom-java.lang.Object-java.lang.Object-">sortedSetRangeFrom</a>, and <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#sortedSetRangeTo-java.lang.Object-">sortedSetRangeTo</a>. These navigators are extremely smart about how they iterate on data on disk to resolve the substructure, generally doing just a single disk seek and a scan to resolve the entire substructure. For an example of usage, see <a href="paths.html#_range_queries" class="page">this section from the Paths page</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_size_tracking"><a class="anchor" href="#_size_tracking"></a>Size tracking</h4>
+<div class="paragraph">
+<p>Subindexed structures also provide special functionality for getting their sizes efficiently. By default, "size tracking" is turned on and fetching the size of a subindexed structure is an extremely fast operation running in O(1) time. Here’s an example of getting the size of a subindexed set from <code>"$$p1"</code> in the above example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">p1.selectOne(Path.key(<span class="hljs-string">"a"</span>).view(Ops.SIZE))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can use <code>Ops.SIZE</code> to get the set’s size just like you could use the same operation on any regular Java data structure like an <code>ArrayList</code> or <code>HashSet</code>.</p>
+</div>
+<div class="paragraph">
+<p>Size tracking requires Rama to perform additional work behind the scenes when doing writes to a subindexed structure, such as performing a read to see if the key or set value already exists. So it can be turned off when declaring the PState schema to improve write performance. Here’s an example of a PState with a subindexed set with size tracking turned off:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>(<span class="hljs-title">SubindexOptions</span>.<span class="hljs-title">withoutSizeTracking</span>())))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This PState will perform writes to subindexed sets slightly faster, but getting the size of a subindexed set will be an O(n) operation. So if a subindexed set has millions of elements, getting the size will be extremely slow. We generally recommend keeping size tracking on unless the PState is in an extremely hot path and size tracking is absolutely not needed on those subindexed structures.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_deleting_subindexed_structures"><a class="anchor" href="#_deleting_subindexed_structures"></a>Deleting subindexed structures</h4>
+<div class="paragraph">
+<p>You can remove subindexed structures just like how you would remove any other value. For example, in the PState <code>$$p</code> defined above, you could remove a nested subindexed set with a call like <code>.localTransform("$$p", Path.key("a").termVoid())</code>.</p>
+</div>
+<div class="paragraph">
+<p>However, this call will not delete the individual elements of that subindexed set from disk. Those elements would continue to use disk space but be unreachable.</p>
+</div>
+<div class="paragraph">
+<p>Because deleting the individual elements of a subindexed structure could be very expensive, potentially involving millions of individual deletes or more, Rama puts the burden of deleting the individual elements of subindexed structures on topology code.</p>
+</div>
+<div class="paragraph">
+<p>In many cases, you might not care about the extra disk usage and care more about the operation completing quickly. If cleaning up the disk usage does matter, then you’ll need to delete the individual elements before removing the subindexed structure from the PState.</p>
+</div>
+<div class="paragraph">
+<p>When deleting the individual elements of a subindexed structure, it’s important to consider two things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>First, you want to make sure you don’t utilize a task thread for too long while performing deletes. As described in <a href="intermediate-dataflow.html#_yieldifovertime" class="page">this section</a>, you’ll want to use <code>yieldIfOvertime</code> and <code>loop</code> to safely delete the elements.</p>
+</li>
+<li>
+<p>Second, you have to be sure not to cause the topology to time out due to there being so many deletes. It’s recommended to spread the deletes across multiple topology iterations if there are too many to realistically do within a topology’s timeout.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pstate_options"><a class="anchor" href="#_pstate_options"></a>PState options</h3>
+<div class="paragraph">
+<p>PStates have a few options available when declaring them. PStates use the builder pattern so you can easily string multiple options together.</p>
+</div>
+<div class="paragraph">
+<p>The <code>global</code> option causes the PState to have a single partition on task 0 rather than a partition on every task. It’s used like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$p"</span>, Object<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>()</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>An example use case for a global PState would be storing the "top 10" of some entity being tracked. It’s also commonly used for things like global counts and sums.</p>
+</div>
+<div class="paragraph">
+<p>The option <code>initialValue</code> specifies the value to initialize each PState partition to when the module is first launched. It’s used like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$p"</span>, Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">initialValue</span>(0)</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>initialValue</code> can only be used if the PState schema is a class reference. It’s commonly used with <code>global</code>, but there’s also many use cases for non-global PStates that aren’t top-level maps. One example is the PState used for ID generation in <code>ModuleUniqueIdPState</code> from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a>.</p>
+</div>
+<div class="paragraph">
+<p>The option <code>makePrivate</code> makes the PState inaccessible for reads for anything other than the owning topology. Here’s an example of usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(<span class="hljs-string">"$$p"</span>, Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>().<span class="hljs-title">makePrivate</span>()</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Trying to access a private PState via <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a> or from another module will result in an exception.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the last PState option available is <code>keyPartitioner</code>. This changes how PState clients determine to which PState partition to send a query. For example, consider the following PState client query:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">pstate.select(Path.key(<span class="hljs-string">"a"</span>).all());</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The query extracts the key <code>"a"</code> from the query path and uses the configured key partitioner to route the query to the right partition. The default key partitioner is hash-based, and you can use the <code>keyPartitioner</code> option to implement things like sorted partitioning schemes.</p>
+</div>
+<div class="paragraph">
+<p>The key partitioner is a function taking in as arguments the number of partitions for the PState and the extracted key. It returns the partition number to send the query. Here’s an example of configuring a key partitioner that routes every request to the last partition:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomKeyPartitionerModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LastPartitionFunction</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaFunction2</span>&lt;<span class="hljs-title">Integer</span>, <span class="hljs-title">Object</span>, <span class="hljs-title">Integer</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">invoke</span><span class="hljs-params">(Integer numPartitions, Object key)</span> </span>{
+      <span class="hljs-keyword">return</span> numPartitions - <span class="hljs-number">1</span>;
+    }
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>, Object<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">keyPartitioner</span>(<span class="hljs-title">LastPartitionFunction</span>.<span class="hljs-title">class</span>)</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The configured key partitioner is also used when calling <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#select-java.lang.Object-com.rpl.rama.Path-">select</a> in topologies, described more in the next section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_pstates_in_topologies"><a class="anchor" href="#_using_pstates_in_topologies"></a>Using PStates in topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PStates are used in stream and microbatch topologies through Rama’s dataflow API methods <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#localSelect-java.lang.String-com.rpl.rama.Path-">localSelect</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#select-java.lang.Object-com.rpl.rama.Path-">select</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#localTransform-java.lang.String-com.rpl.rama.Path-">localTransform</a>, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#agg-java.lang.String-com.rpl.rama.Agg-">agg</a>, and <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#compoundAgg-java.lang.String-com.rpl.rama.CompoundAgg-">compoundAgg</a>. The first three methods use <a href="paths.html" class="page">paths</a> to target values to query and update within PStates.</p>
+</div>
+<div class="sect2">
+<h3 id="_basic_querying"><a class="anchor" href="#_basic_querying"></a>Basic querying</h3>
+<div class="paragraph">
+<p><code>localSelect</code> queries the PState partition located on the current task. It emits one time for every navigated value. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+ .localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).all()).out(<span class="hljs-string">"*v"</span>)
+ .each(Ops.PRINTLN, <span class="hljs-string">"Emitted:"</span>, <span class="hljs-string">"*v"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This topology code queries for every element inside a nested collection within <code>"$$p"</code>. If the collection for a key has zero elements or doesn’t exist, the <code>localSelect</code> call won’t emit at all. If it has ten elements, <code>localSelect</code> will emit ten times.</p>
+</div>
+<div class="paragraph">
+<p><code>localSelect</code> is a synchronous call. Nothing else can happen on a task while a <code>localSelect</code> is running, meaning no other PStates on that task can change. You can string together multiple <code>localSelect</code> calls to look at values from multiple PStates synchronized to a moment in time.</p>
+</div>
+<div class="paragraph">
+<p><code>select</code> works just like <code>localSelect</code> except partitions the computation first based on the query path. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+ .select(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).all()).out(<span class="hljs-string">"*v"</span>)
+ .each(Ops.PRINTLN, <span class="hljs-string">"Emitted:"</span>, <span class="hljs-string">"*v"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The path given to <code>select</code> must start with <code>key</code>, and the key provided will be used with the configured key partitioner on the PState to choose the target task. The key partitioner defaults to a hash-based partitioner and is equivalent to using <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#hashPartition-java.lang.String-java.lang.Object-">hashPartition</a>. Also, <code>select</code> always emits on the task it partitions to and not on the task it started from (unless those happen to be the same).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_yielding_select"><a class="anchor" href="#_yielding_select"></a>Yielding select</h3>
+<div class="paragraph">
+<p><code>localSelect</code> and <code>select</code> callsites accept an option "allow yield" which is useful for queries that need to operate over a large amount of data from the PState. For example, you may want to emit every element of a subindexed set that could have hundreds of thousands of entries in it. The "allow yield" option allows queries like this to be done without holding the task thread for an extended amount of time. See <a href="intermediate-dataflow.html#_yieldifovertime" class="page">this section</a> for a discussion of why it’s important to not hold the task thread for more than a few milliseconds at a time.</p>
+</div>
+<div class="paragraph">
+<p>When the "allow yield" option is specified, the <code>localSelect</code> or <code>select</code> call will execute over the course of many individual events – potentially thousands of them. Here is an example of specifying the option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"cagney"</span>).all(), SelectOptions.allowYield()).out(<span class="hljs-string">"*v"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The results of the query are identical to as if that option were not specified. The only change is how it executes. Even though the query executes over many events, it operates over a stable view of the PState. So any transforms that happen to the PState after the query begins will not be seen by the query.</p>
+</div>
+<div class="paragraph">
+<p>It’s important to note that when that option is set, subsequent code may not be synchronous with the start of the query. When <code>allowYield</code> is specified, multiple PStates cannot be guaranteed to be read from at the same point in time like you can when that option is not specified.</p>
+</div>
+<div class="paragraph">
+<p>Yielding selects automatically break up large chunks of work with pagination, such as when navigating to every element of a subindexed structure with <code>.all()</code>. The default page size is specified with the dynamic option <code>pstate.yielding.select.page.size</code>, and it can be adjusted mid-path with the <code>.withPageSize</code> navigator. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"cagney"</span>).all().withPageSize(<span class="hljs-number">100</span>, Path.all().mapVals()).mapKeys(), SelectOptions.allowYield()).out(<span class="hljs-string">"*v"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If the default page size is set to 250, the first <code>.all()</code> and the <code>.mapKeys()</code> will use a page size of 250, while the second <code>.all()</code> and the <code>.mapVals()</code> will use a page size of 100. Different page sizes may be more optimal for data of different sizes, with experimentation needed to determine the best setting for any particular use case. Rama’s default performs well for most use cases.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transforming"><a class="anchor" href="#_transforming"></a>Transforming</h3>
+<div class="paragraph">
+<p>PStates are updated by using <code>localTransform</code>, <code>agg</code>, or <code>compoundAgg</code>. As <a href="#_pstates_versus_databases">mentioned earlier</a>, they can only be written to by their owning topology. Stream and microbatch topologies implement PState writes very differently in order to achieve high performance.</p>
+</div>
+<div class="paragraph">
+<p><code>localTransform</code> uses transform paths to specify updates. Just like queries, transform paths use navigation to target subvalues within a PState. See the documentation <a href="paths.html#_transform_paths" class="page">on the Paths page</a> for details.</p>
+</div>
+<div class="paragraph">
+<p>A higher level mechanism for updating PStates is by using aggregators through <code>agg</code> or <code>compoundAgg</code>. See the <a href="aggregators.html" class="page">Aggregators page</a> for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_querying_from_other_modules"><a class="anchor" href="#_querying_from_other_modules"></a>Querying from other modules</h3>
+<div class="paragraph">
+<p>Lastly, querying PStates from other modules is almost exactly the same. You can use <code>localSelect</code> and <code>select</code> in the same way, with only a minor difference in how you tell Rama which partition of the target PState to interact with. Since queries on mirror PStates execute asynchronously anyway, they always use yielding selects. Specifying the <code>.allowYield()</code> option manually is thereby not allowed.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="module-dependencies.html" class="page">Module dependencies page</a> for details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_pstate_clients"><a class="anchor" href="#_using_pstate_clients"></a>Using PState clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A PState client is retrieved from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a> on a real cluster, or from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/test/InProcessCluster.html">InProcessCluster</a> in a test environment. Connecting to a Rama cluster to fetch PState clients is discussed more on <a href="operating-rama.html" class="page">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>A PState client performs <em>point queries</em>. It fetches information from one partition of one PState. This is in contrast to <a href="query.html" class="page">query topologies</a> which can do much more sophisticated queries spanning many PStates and many partitions. But whereas query topologies are defined as part of a module, PState client queries can be specified in ad-hoc ways. The <a href="paths.html" class="page">Path</a> API for specifying point queries is extremely powerful and flexible. PState clients use <a href="#_yielding_select">yielding selects</a>, so there’s no restriction on how large the queries can be.</p>
+</div>
+<div class="paragraph">
+<p>This section will cover the non-reactive query API on PState clients, and the next section will cover reactive queries. The non-reactive API consists of a few variations of <code>select</code> and <code>selectOne</code>. <code>select</code> returns a list of navigated results, while <code>selectOne</code> returns one value and requires the provided <a href="paths.html" class="page">Path</a> navigates to exactly one value. Here’s an example of using both these methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClientBasicSelectExamplesModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>)))</span>;
+
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v"</span>)
+     .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.set(<span class="hljs-string">"*v"</span>)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> ClientBasicSelectExamplesModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState p = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-string">"cagney"</span>, <span class="hljs-number">1</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"cagney"</span>, <span class="hljs-number">7</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"cagney"</span>, <span class="hljs-number">3</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"cagney"</span>, <span class="hljs-number">8</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"davis"</span>, <span class="hljs-number">10</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"davis"</span>, <span class="hljs-number">12</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"davis"</span>, <span class="hljs-number">14</span>));
+
+      System.out.println(
+        <span class="hljs-string">"select (davis): "</span> +  p.select(Path.key(<span class="hljs-string">"davis"</span>)));
+      System.out.println(<span class="hljs-string">"selectOne (davis): "</span> + p.selectOne(Path.key(<span class="hljs-string">"davis"</span>)));
+      System.out.println(
+        <span class="hljs-string">"select (cagney): "</span> +
+          p.select(Path.key(<span class="hljs-string">"cagney"</span>).all().filterPred(Ops.IS_ODD)));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module produces a simple PStating mapping keys to sets. The <code>main</code> method launches the module in an <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/test/InProcessCluster.html">InProcessCluster</a>, adds some test data, and performs some queries using <code>select</code> and <code>selectOne</code>. Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">select (davis): [#{12 14 10}]
+selectOne (davis): #{12 14 10}
+select (cagney): [7 1 3]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first two queries are comparisons of the returns of <code>select</code> and <code>selectOne</code> for the same path. <code>select</code> returns a list of navigated values, and <code>selectOne</code> returns the sole navigated value. That’s why the first <code>select</code> returns a list with one element (the <code>#{…​}</code> syntax indicates a set) and the <code>selectOne</code> call returns just the set.</p>
+</div>
+<div class="paragraph">
+<p>The last <code>select</code> uses <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html#all--">all</a> to navigate to all the odd elements in the set for <code>"cagney"</code>. The result is a list of all navigated values.</p>
+</div>
+<div class="paragraph">
+<p>Note that <code>select</code> on a PState client returns results differently than <code>localSelect</code> or <code>select</code> within a topology. The topology methods emit once for each navigated value, while <code>select</code> on a PState client returns all navigated values as a list.</p>
+</div>
+<div class="paragraph">
+<p>This example barely scratches the surface on what you can express with paths. Paths can descend into subvalues, navigate to substructures, do range queries, aggregate subvalues, and more. Be sure to read the <a href="paths.html" class="page">Paths page</a> to explore their potential.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaFunction.html">Function objects</a> are commonly used within paths for filtering and views. For instance, the above example uses <code>Ops.IS_ODD</code>. For a function object, or any object for that matter, to be usable within a path the class of that object must be on the classpath of both the client and the module. Lambdas are not usable in PState client paths for this reason. It’s reasonable to include function implementations within a module deploy solely for use by PState clients, as this would be part of the functionality exposed to users of the module.</p>
+</div>
+<div class="sect2">
+<h3 id="_how_client_queries_are_routed"><a class="anchor" href="#_how_client_queries_are_routed"></a>How client queries are routed</h3>
+<div class="paragraph">
+<p>When using <code>select</code> or <code>selectOne</code>, the PState client must decide to which PState partition to send the query request. If the PState has only one partition, by being declared <code>global</code> or the module having only one task, then the query is always sent to that partition and there are no restrictions on the path used for the query.</p>
+</div>
+<div class="paragraph">
+<p>When the PState has more than one partition, the <code>select</code> and <code>selectOne</code> variants that only take in a path as input (like shown in the previous section) use the path to determine which PState partition to query. They require the path begin with the <code>key</code> navigator, and the key from that navigator is extracted and used to choose the PState partition. This key is given to the "key partitioner" configured during the PState declaration to make that choice. The key partitioner defaults to a hash-based partitioner if not configured, which is equivalent to using <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#hashPartition-java.lang.String-java.lang.Object-">hashPartition</a> in a topology.</p>
+</div>
+<div class="paragraph">
+<p>There’s another variant of <code>select</code> and <code>selectOne</code> which take in the partitioning key as an additional argument. This variant uses this explicit partitioning key along with the configured key partitioner to route the query, and there are no restrictions on the path used for the query.</p>
+</div>
+<div class="paragraph">
+<p>An example of where an explicit partitioning key is useful comes from our <a href="downloads-maven-local-dev.html" class="page">Twitter-scale Mastodon implementation</a>. Mastodon identifies "statuses" (Mastodon’s name for tweets) by a combination of "user ID" and "status ID". The "Core" module in Mastodon handles both user profiles and status indexing. Three of the PStates in "Core" are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"$$accountIdToAccount"</code>: a map from user ID to profile information</p>
+</li>
+<li>
+<p><code>"$$accountIdToStatuses"</code>: a map from user ID to a subindexed map of status ID to status content versions</p>
+</li>
+<li>
+<p><code>"$$statusIdToFavoriters"</code>: a <code>KeyToLinkedEntitySetPStateGroup</code> (from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a>), which is a map from status ID to a linked set of user IDs who have liked that status</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All these PStates are kept colocated by the user ID of a status. Colocating them greatly improves the efficiency of rendering timelines for users, which involves fetching all associated profile information and status stats (like count, boost count, etc.) for a collection of statuses. However, the <code>"$$statusIdToFavoriters"</code> PState doesn’t include the user ID as part of its PState structure because it’s unnecessary and inefficient. Status IDs are already unique within the module. So the <code>"$$statusIdToFavoriters"</code> PState is partitioned by a value (the user ID) that isn’t part of the data within it.</p>
+</div>
+<div class="paragraph">
+<p>The explicit partitioning key variants of <code>select</code> and <code>selectOne</code> allow the <code>"$$statusIdToFavoriters"</code> PState to be queried by a PState client like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">statusIdToFavoriters.selectOne(userId, Path.key(statusId).view(Ops.SIZE));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This queries the number of likes for a particular status. The user ID is used as the partitioning key, and the status ID is used to navigate the PState partition. More generally, the explicit partitioning key variants of <code>select</code> and <code>selectOne</code> are useful whenever a PState is partitioned by something other than top-level keys in its structure.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_non_blocking_api"><a class="anchor" href="#_non_blocking_api"></a>Non-blocking API</h3>
+<div class="paragraph">
+<p>The <code>select</code> and <code>selectOne</code> variants shown so far will block the thread while waiting for a response from the cluster. There are also non-blocking variants of these that return <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> objects.</p>
+</div>
+<div class="paragraph">
+<p>Here are a few examples of using the non-blocking API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletableFuture f = p.selectAsync(Path.key(<span class="hljs-string">"cagney"</span>).all().filterPred(Ops.IS_ODD));
+CompletableFuture f2 = p.selectOneAsync(Path.key(<span class="hljs-string">"davis"</span>));
+CompletableFuture f3 = likes.selectOneAsync(<span class="hljs-string">"cagney"</span>, Path.key(<span class="hljs-number">123</span>).view(Ops.SIZE));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> has a rich API for composing with other <code>CompletableFuture</code> objects and for registering callbacks for notification of success or failure.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reactive_queries"><a class="anchor" href="#_reactive_queries"></a>Reactive queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The reactive query operations on a PState client are called <code>proxy</code>. They work exactly like <code>selectOne</code>, except instead of returning a static value they return a stateful object called <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ProxyState.html">ProxyState</a> whose value updates in the background as the corresponding value on the cluster changes. Like <code>selectOne</code>, there is also a variant accepting an explicit partitioning key, and there are non-blocking variants called <code>proxyAsync</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="paths.html" class="page">path</a> used for a <code>proxy</code> call must navigate to exactly one value, but otherwise has no restrictions. You can proxy a literal subvalue, or you can proxy a substructure or view. The full flexibility of paths is at your disposal when forming reactive queries.</p>
+</div>
+<div class="paragraph">
+<p>There’s a huge difference between the level of reactivity provided by <code>proxy</code> versus reactive features like <a href="https://www.postgresql.org/docs/current/sql-createtrigger.html">triggers</a> provided by databases. The reactivity provided by <code>proxy</code> is <em>fine-grained</em>. When the state on a PState changes, instead of sending the full new value back to a subscribed <code>ProxyState</code>, it instead sends back the minimal "diff" encapsulating the change. This diff is incrementally applied to the <code>ProxyState</code>, and you can inspect and react to these diffs as well.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at an example to understand this more concretely:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicReactiveModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>)))</span>;
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>)
+     .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count())));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> BasicReactiveModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState p = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>));
+
+      ProxyState&lt;Map&gt; proxy = p.proxy(Path.key(<span class="hljs-string">"a"</span>));
+      System.out.println(<span class="hljs-string">"Initial value: "</span> + proxy.get());
+
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"d"</span>));
+      Thread.sleep(<span class="hljs-number">50</span>);
+      System.out.println(<span class="hljs-string">"New value: "</span> + proxy.get());
+
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>));
+      Thread.sleep(<span class="hljs-number">50</span>);
+      System.out.println(<span class="hljs-string">"New value: "</span> + proxy.get());
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>main</code> method launches a simple module which maintains a PState containing a map of maps. It then uses <code>proxy</code> to get a <code>ProxyState</code> for the key "a". This object has one method <code>get</code> to retrieve the current value for that path. <code>get</code> does not re-query the path –&nbsp;the <code>ProxyState</code> is pushed incremental changes from the server.</p>
+</div>
+<div class="paragraph">
+<p>Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Initial value: {"b" 1, "c" 1}
+New value: {"b" 1, "c" 1, "d" 1}
+New value: {"b" 1, "c" 2, "d" 1}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>When the <code>proxy</code> initially resolves, the value inside the <code>ProxyState</code> is <code>{"b" 1, "c" 1}</code>. Then the depot is appended <code>["a", "d"]</code> which adds a new entry to the map inside the <code>ProxyState</code>. The server does not send the full new map back (<code>{"b" 1, "c" 1, "d" 1}</code>). Instead it sends an object called <code>KeyDiff</code> which says "the key 'd' was added with the value 1". This diff is then applied to the current value of the <code>ProxyState</code> to reconstruct the corresponding value on the PState. This is far more efficient than sending the full map back, especially if the map has a large number of entries.</p>
+</div>
+<div class="paragraph">
+<p>The callbacks for subscribers of a PState partition are triggered as soon as the data changes on the server. Since that is asynchronous to receiving the ack for the depot append, this code inserts a short sleep to give time for that asynchronous callback to be received and processed by the <code>ProxyState</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let’s look at this example again but with a callback registered with the <code>proxy</code> call so you can see the diffs being sent back:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CallbackReactiveModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>)))</span>;
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>)
+     .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count())));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> CallbackReactiveModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState p = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>));
+
+      ProxyState&lt;Map&gt; proxy = p.proxy(Path.key(<span class="hljs-string">"a"</span>), <span class="hljs-keyword">new</span> ProxyState.Callback&lt;Map&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">change</span><span class="hljs-params">(Map newVal, Diff diff, Map oldVal)</span> </span>{
+          System.out.println(<span class="hljs-string">"Received callback: "</span> + newVal + <span class="hljs-string">", "</span> + diff + <span class="hljs-string">", "</span> + oldVal);
+        }
+      });
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"d"</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>));
+
+      Thread.sleep(<span class="hljs-number">50</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This example runs the exact same module with the same <code>ProxyState</code> and the same depot appends. It additionally adds a callback onto the <code>proxy</code> call which is invoked immediately after a diff is received and applied to the value in the <code>ProxyState</code>. The callback receives as input the new value of the <code>ProxyState</code>, the diff data, and the value of the <code>ProxyState</code> before the diff was applied.</p>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Received callback: {"b" 1, "c" 1}, ResyncDiff[], null
+Received callback: {"b" 1, "c" 1, "d" 1}, KeyDiff[d | NewValueDiff[1]], {"b" 1, "c" 1}
+Received callback: {"b" 1, "c" 2, "d" 1}, KeyDiff[c | NewValueDiff[2]], {"b" 1, "c" 1, "d" 1}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first callback received is the initial value for the <code>ProxyState</code>. The <code>ResyncDiff</code> object indicates the value was recomputed from scratch by executing the path like a <code>selectOne</code> call.</p>
+</div>
+<div class="paragraph">
+<p>The subsequent callbacks show the incremental data pushed from the PState to this <code>ProxyState</code>. The depot append of <code>["a", "d"]</code> pushes <code>KeyDiff[d | NewValueDiff[1]]</code> back. <code>KeyDiff</code> contains two fields: the affected key, and the diff for the value of that key. The <code>NewValueDiff</code> here says the value for "d" changed to 1. In the callback you can see the difference between the old value and new value is exactly this diff. You can also see each subsequent callback receives the new value from the previous callback as its old value, as expected.</p>
+</div>
+<div class="paragraph">
+<p>Every callback for a <code>proxy</code> call runs in the background on a dedicated thread from a thread pool. This guarantees diffs are processed in exactly the order in which they were sent back from the PState.</p>
+</div>
+<div class="sect2">
+<h3 id="_diffs"><a class="anchor" href="#_diffs"></a>Diffs</h3>
+<div class="paragraph">
+<p>The diff types in Rama represent all the different ways a map, list, set, or multi-set can change. A map can have keys updated, values updated, or entries removed. A list can have elements appended, inserted, updated, reordered, or removed. Sets and multi-sets can have elements added or removed.</p>
+</div>
+<div class="paragraph">
+<p>All these diffs are broadly categorized as <em>top-level diffs</em> or <em>low-level diffs</em>. A top-level diff captures change as compactly as possible, while a low-level diff specifies change in terms of locations like keys or indexes. Many diffs can be converted into one or more other diffs during processing. For example, a <code>SequenceInsertDiff</code> represents a single element being inserted in between two indexes in a list and contains two fields: an index and a value. Since inserting an element in the middle of a list grows the list by one element and changes the value for every index after the insertion point (by shifting every value by one index), one <code>SequenceInsertDiff</code> can be converted into a collection of many <code>KeyDiff</code> and one <code>AppendDiff</code>.</p>
+</div>
+<div class="paragraph">
+<p>Diffs sent as callbacks from a PState to a <code>ProxyState</code> are always top-level diffs. The full set of diffs available in Rama are shown in the diagram below, with arrows indicating how diffs convert to other diff types:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/pstates-diagrams/diff-hierarchy.png" alt="diff hierarchy">
+</div>
+</div>
+<div class="paragraph">
+<p>The diffs colored in blue are top-level diffs. The diffs colored in green can also be top-level diffs, but have special meaning:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ResyncDiff</code>: Used the first time a proxy callback is invoked, or any time a <code>ProxyState</code> is resynced from scratch due to some sort of error (see <a href="#_fault_handling">Fault Handling</a> below).</p>
+</li>
+<li>
+<p><code>DestroyedDiff</code>: Used for the final callback after <code>close</code> is called on a <code>ProxyState</code>.</p>
+</li>
+<li>
+<p><code>UngracefulTerminationDiff</code>: Used for the final callback when a <code>ProxyState</code> self-terminates due to having too many errors (almost always caused by a code issue with the path).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/diffs/package-frame.html">Javadoc</a> for each diff type explains what the diff means, what fields it has, and how it converts to other diffs. You’ll see in the next section how you can choose which diff types you wish to process and how Rama will automatically do any diff conversion necessary.</p>
+</div>
+<div class="paragraph">
+<p>The diffs produced on a PState are determined entirely by the paths used in <code>localTransform</code> callsites or the aggregators used in <code>agg</code> or <code>compoundAgg</code> callsites. The diffs are computed incrementally as part of the transform, and they’re only computed if there are any subscribers on the PState. Not every transform affects every subscriber, and only a portion of a diff may be applicable to any particular subscriber. Let’s take a look at an example of this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MultiSubscriberModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.IDENTITY));
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$p"</span>, Map<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>()</span>;
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+     .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).nullToVal(<span class="hljs-number">0</span>).term(Ops.INC));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> MultiSubscriberModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState p = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p"</span>);
+
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"b"</span>);
+      depot.append(<span class="hljs-string">"c"</span>);
+
+      ProxyState&lt;Map&gt; proxyTop = p.proxy(Path.stay(), <span class="hljs-keyword">new</span> ProxyState.Callback&lt;Map&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">change</span><span class="hljs-params">(Map newVal, Diff diff, Map oldVal)</span> </span>{
+          System.out.println(<span class="hljs-string">"'top' callback: "</span> + newVal + <span class="hljs-string">", "</span> + diff + <span class="hljs-string">", "</span> + oldVal);
+        }
+      });
+
+      ProxyState&lt;Integer&gt; proxyA = p.proxy(Path.key(<span class="hljs-string">"a"</span>), <span class="hljs-keyword">new</span> ProxyState.Callback&lt;Integer&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">change</span><span class="hljs-params">(Integer newVal, Diff diff, Integer oldVal)</span> </span>{
+          System.out.println(<span class="hljs-string">"'a' callback: "</span> + newVal + <span class="hljs-string">", "</span> + diff + <span class="hljs-string">", "</span> + oldVal);
+        }
+      });
+
+      ProxyState&lt;Integer&gt; proxyB = p.proxy(Path.key(<span class="hljs-string">"b"</span>), <span class="hljs-keyword">new</span> ProxyState.Callback&lt;Integer&gt;() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">change</span><span class="hljs-params">(Integer newVal, Diff diff, Integer oldVal)</span> </span>{
+          System.out.println(<span class="hljs-string">"'b' callback: "</span> + newVal + <span class="hljs-string">", "</span> + diff + <span class="hljs-string">", "</span> + oldVal);
+        }
+      });
+
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"c"</span>);
+      depot.append(<span class="hljs-string">"b"</span>);
+
+      Thread.sleep(<span class="hljs-number">50</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The module in this example produces a global PState with a map of counts. The <code>main</code> method creates proxies on the top-level of the PState and to the values for the "a" and "b" keys. Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">'top' callback: {"a" 1, "b" 1, "c" 1}, ResyncDiff[], null
+'a' callback: 1, ResyncDiff[], null
+'b' callback: 1, ResyncDiff[], null
+'a' callback: 2, NewValueDiff[2], 1
+'top' callback: {"a" 2, "b" 1, "c" 1}, KeyDiff[a | NewValueDiff[2]], {"a" 1, "b" 1, "c" 1}
+'a' callback: 3, NewValueDiff[3], 2
+'top' callback: {"a" 3, "b" 1, "c" 1}, KeyDiff[a | NewValueDiff[3]], {"a" 2, "b" 1, "c" 1}
+'top' callback: {"a" 3, "b" 1, "c" 2}, KeyDiff[c | NewValueDiff[2]], {"a" 3, "b" 1, "c" 1}
+'top' callback: {"a" 3, "b" 2, "c" 2}, KeyDiff[b | NewValueDiff[2]], {"a" 3, "b" 1, "c" 2}
+'b' callback: 2, NewValueDiff[2], 1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here you can see the diffs produced at the top-level of the PState are always <code>KeyDiff</code>, but the proxies for "a" and "b" only receive the portion of that diff that affects their values. Underneath the hood, PStates separate subscriptions by key to efficiently skip them when the transform doesn’t affect them.</p>
+</div>
+<div class="paragraph">
+<p>The top-level diffs are <code>KeyDiff</code> because that’s the diff produced by the <code>key</code> navigator in this case. If <code>key</code> were used in conjunction with <code>termVoid</code>, it would produce a <code>KeyRemoveDiff</code> instead. The <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Path.html">Javadoc</a> for each navigator lists the diffs they produce.</p>
+</div>
+<div class="paragraph">
+<p><code>agg</code> and <code>compoundAgg</code> callsites can also be used to update PStates. Underneath the hood these callsites compile to <code>localTransform</code> calls using paths. <code>CompoundAgg.map</code> compiles to <code>key</code> and <code>CompoundAgg.list</code> compiles to multiple calls to <code>nth</code>.</p>
+</div>
+<div class="paragraph">
+<p>The specificity of produced diffs depends on the specificity of the corresponding transforms. If a transform precisely targets a subvalue, the diff will be very specific. However, if it does something coarse-grained like a <code>termVal</code> on an entire substructure just to change one value nested within, the diff will be coarse-grained and inefficient to process by subscribers. Fortunately, highly specific paths are easier and more natural to use anyway.</p>
+</div>
+<div class="paragraph">
+<p>Another note about this example: the top-level schema is <code>Map.class</code> instead of <code>PState.mapSchema(String.class, Integer.class)</code> because you cannot proxy objects which index their elements separately (top-level map or subindexed schemas). You can proxy values within them, just not the object itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_processing_diffs"><a class="anchor" href="#_processing_diffs"></a>Processing diffs</h3>
+<div class="paragraph">
+<p>Capturing diffs in <code>proxy</code> callbacks and analyzing them is the basis for powering higher level reactivity in an application. For example, your diff processing could trigger fine-grained changes to your frontend UI.</p>
+</div>
+<div class="paragraph">
+<p>Diffs contain a <a href="https://en.wikipedia.org/wiki/Double_dispatch">double dispatch</a> based API for processing. This API makes it easy to specify which diffs you want to process while having Rama automatically convert any diffs for you. Let’s take a look at an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyProcessor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Diff</span>.<span class="hljs-title">Processor</span>, <span class="hljs-title">KeyDiff</span>.<span class="hljs-title">Processor</span> </span>{
+  <span class="hljs-keyword">public</span> List processedKeys = <span class="hljs-keyword">new</span> ArrayList();
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processKeyDiff</span><span class="hljs-params">(KeyDiff diff)</span> </span>{
+    processedKeys.add(diff.getKey());
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">unhandled</span><span class="hljs-params">()</span> </span>{
+    processedKeys = <span class="hljs-keyword">null</span>;
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processKeysDiff</span><span class="hljs-params">()</span> </span>{
+  Map m = <span class="hljs-keyword">new</span> HashMap(<span class="hljs-number">2</span>);
+  m.put(<span class="hljs-string">"a"</span>, <span class="hljs-keyword">new</span> NewValueDiff(<span class="hljs-number">1</span>));
+  m.put(<span class="hljs-string">"x"</span>, <span class="hljs-keyword">new</span> NewValueDiff(<span class="hljs-number">2</span>));
+  m.put(<span class="hljs-string">"d"</span>, <span class="hljs-keyword">new</span> NewValueDiff(<span class="hljs-number">3</span>));
+  m.put(<span class="hljs-string">"y"</span>, <span class="hljs-keyword">new</span> NewValueDiff(<span class="hljs-number">4</span>));
+  Diff diff = <span class="hljs-keyword">new</span> KeysDiff(m);
+
+  MyProcessor processor = <span class="hljs-keyword">new</span> MyProcessor();
+  diff.process(processor);
+  System.out.println(<span class="hljs-string">"Processed keys 1: "</span> + processor.processedKeys);
+
+  MyProcessor processor2 = <span class="hljs-keyword">new</span> MyProcessor();
+  <span class="hljs-keyword">new</span> UnknownDiff().process(processor2);
+  System.out.println(<span class="hljs-string">"Processed keys 2: "</span> + processor2.processedKeys);
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Diffs are processed by calling <code>process</code> on them with an object implementing the processing logic. Every diff type defines an inner interface <code>Processor</code> with a method specific to that diff. <code>KeyDiff.Processor</code> defines <code>processKeyDiff</code>, <code>AppendDiff.Processor</code> defines <code>processAppendDiff</code>, and so on. To specify the diff types in the hierarchy you wish to handle, your processor just implements the <code>Processor</code> interfaces for those diff types. In addition, the processor object must implement <code>Diff.Processor</code> which defines the method <code>unhandled</code>.</p>
+</div>
+<div class="paragraph">
+<p>After calling <code>process</code>, Rama will expand that diff until every expanded diff can be handled by the provided processor. If that’s impossible, no processing is done and <code>unhandled</code> is called instead.</p>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Processed keys 1: [x, a, y, d]
+Processed keys 2: null</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In the first case, you can see the processor only implements <code>KeyDiff.Processor</code> but was able to process a <code>KeysDiff</code>. If you consult the diagram earlier on this page, you’ll see this is because <code>KeysDiff</code> expands to many <code>KeyDiff</code>. In the second case, the provided processor cannot handle <code>UnknownDiff</code> so the <code>unhandled</code> method is called and the result is set to <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>process</code> will process diffs in the order in which they happened. This can be significant for a case like a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/diffs/SequenceInsertDiff.html">SequenceInsertDiff</a> and a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/diffs/SequenceChangeDiff.html">SequenceChangeDiff</a>, where the order in which those happened can completely change the result. For the above example, each key in a <code>KeysDiff</code> is independent so the order in which each key’s diff happened doesn’t affect the result. So <code>KeysDiff</code> is expanded in an arbitrary order.</p>
+</div>
+<div class="paragraph">
+<p>Although the diffs produced for a <code>proxy</code> are entirely predictable from the paths used in the PState transforms, it’s critical to still handle the case where <code>unhandled</code> is called on your processor. During normal operation, the diffs sent back to a <code>ProxyState</code> will be the fine-grained diffs expected from the transform paths. However, if something goes wrong –&nbsp;like a network error or overloaded cluster –&nbsp;a <code>ProxyState</code> can be forced to resync from scratch. In these cases it will re-execute the path and produce a <code>ResyncDiff</code>. Your processing code in this case should analyze the new value in its entirety and perhaps do a comparison against the old value. If you are using reactivity to render a UI, this could involve re-rendering an entire component from scratch.</p>
+</div>
+<div class="paragraph">
+<p>As long as your cluster is appropriately provisioned, these recompute scenarios should be extremely rare. The vast majority of the time you should expect your reactivity code to receive fine-grained diffs. But for an application to be completely robust, it’s important to handle these rare failure scenarios as well.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fault_handling"><a class="anchor" href="#_fault_handling"></a>Fault handling</h3>
+<div class="paragraph">
+<p><code>proxy</code> has an extremely robust implementation, carefully designed to ensure the value inside <code>ProxyState</code> matches the value that would be produced from freshly executing the path used to create the <code>ProxyState</code>.</p>
+</div>
+<div class="paragraph">
+<p>Internally, diffs are sent back to a <code>ProxyState</code> along with a CRC. The CRC is checked after applying the diff, and if it doesn’t match the <code>ProxyState</code> will resync from scratch. This ensures integrity of the <code>ProxyState</code> in the face of any of the numerous failures that could happen in a distributed system.</p>
+</div>
+<div class="paragraph">
+<p>A <code>ProxyState</code> also heartbeats to its subscribed PState partition on a fixed interval. This continuously validates it’s still subscribed on the PState partition, and it also lets the server know the <code>ProxyState</code> is still active so as not to cleanup the subscription. If the heartbeat finds the subscription is not there, the <code>ProxyState</code> will resync from scratch.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_proxystate_cleanup_and_garbage_collection"><a class="anchor" href="#_proxystate_cleanup_and_garbage_collection"></a><code>ProxyState</code> cleanup and garbage collection</h3>
+<div class="paragraph">
+<p>An active <code>ProxyState</code> uses resources on the process of the subscribed PState partition. The PState partition uses memory to track the subscription and uses CPU to process diffs for the subscription. The PState client for an active <code>ProxyState</code> also uses resources to regularly heartbeat and process incoming diffs.</p>
+</div>
+<div class="paragraph">
+<p>All state for a <code>ProxyState</code> on both the client and server can be cleaned up by calling <code>close</code> on it. It’s best to call <code>close</code> as soon as a <code>ProxyState</code> is no longer needed in order to clean up resources as promptly as possible. Calling <code>close</code> also sends a final <code>DestroyedDiff</code> to the callback for the associated <code>proxy</code> call.</p>
+</div>
+<div class="paragraph">
+<p>A PState partition will still clean up stale subscriptions that weren’t closed properly. If a PState partition hasn’t received a heartbeat from a <code>ProxyState</code> after a configurable timeout, it will clean up all resources used for the subscription and stop considering it for diff processing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_of_bad_proxies"><a class="anchor" href="#_handling_of_bad_proxies"></a>Handling of bad proxies</h3>
+<div class="paragraph">
+<p>Rama provides protection against a bad proxy path (that causes an exception when being executed) repeatedly failing. By default, if a proxy errors 10 times within 120 seconds, it is forcibly terminated and an <code>UngracefulTerminationDiff</code> is sent to its callback if specified. This is true whether the error happened on the initial query for the proxy or the reactive processing to handle changes. The failure window size and threshold can <a href="#_configurations">be configured</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_schema_validation"><a class="anchor" href="#_schema_validation"></a>Schema validation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, a PState schema is fully enforced on every write. So if you try to write a list to a location that’s declared as a map schema, you’ll get an exception on write. Or if you try to write a string that’s declared as an integer, you’ll also get an exception.</p>
+</div>
+<div class="paragraph">
+<p>There are two types of validation done by PStates that can be expensive, and both of these can be turned off. We recommend keeping these configurations on during development, and you should consider turning them off when deploying to production if you need better performance from the PStates in that module.</p>
+</div>
+<div class="paragraph">
+<p>The first is validating that subindexed structures aren’t moved to another location. For example, suppose you had a PState declared with the schema:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PState.mapSchema(PState.setSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">subindexed</span>())</span></code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Then suppose you had an existing subindexed set at key <code>"a"</code>. Code like this is invalid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.localSelect(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"a"</span>)).out(<span class="hljs-string">"*s"</span>)
+.localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"b"</span>).termVal(<span class="hljs-string">"*s"</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The same subindexed structure cannot be stored in multiple locations, since that prevents Rama from being able to do optimized size tracking. So Rama by default disallows that with a runtime check that involves a disk read. You can disable this check by setting the config <code>pstate.validate.subindexed.structure.locations</code> in the config overrides for the module to false.</p>
+</div>
+<div class="paragraph">
+<p>Another part of schema checking that can be expensive are large non-subindexed data structures. For examples, consider a schema like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+                 <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>,
+                                  <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+                                                   <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))))</span></code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The values in the top-level map are stored as single values and contain doubly nested data structures. Every time one of those values is written, Rama iterates through the entire value to check that every key and value at every level of the data structure matches the schema. This can use a lot of CPU and significantly reduce the throughput of the ETL.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, declaring large non-subindexed values like this is not common when developing Rama modules. If you do have a module with a PState like this, you can disable these checks by setting the config <code>pstate.maximal.schema.validations</code> to false. When that config is false, Rama will still do some schema validation, like checking the types of keys and values, but it won’t do that expensive iteration through non-subindexed values.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_migrations"><a class="anchor" href="#_migrations"></a>Migrations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A PState can be migrated to a new schema as part of a <a href="operating-rama.html#_updating_modules" class="page">module update</a>. A migration can include arbitrary user-specified transformation functions indicating how locations in the PState should change. PState migrations take effect immediately, with all subsequent reads after the module update returning migrated values. Rama accomplishes this by applying the migration function on read while it migrates the PState on disk in the background. The existence of a migration doesn’t slow down the module update at all.</p>
+</div>
+<div class="paragraph">
+<p>The possible migrations include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Changing the type and value of objects within a PState</p>
+</li>
+<li>
+<p>Converting locations of a PState from non-subindexed to subindexed</p>
+</li>
+<li>
+<p>Adding and removing keys from fixed keys schemas</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A migration could do multiple of these at the same time, such as converting a non-subindexed set of numbers to a subindexed list of strings.</p>
+</div>
+<div class="paragraph">
+<p>A migration is specified as part of a PState’s schema. For example, suppose your module currently has a PState declared like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Long<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You could migrate the values of that PState to strings ending with "!" like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Long<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+      <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">myMigrationId</span>",
+      (<span class="hljs-title">Object</span> <span class="hljs-title">o</span>) -&gt; </span>{
+        <span class="hljs-keyword">if</span>(o <span class="hljs-keyword">instanceof</span> String) <span class="hljs-keyword">return</span> o;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> o.toString() + <span class="hljs-string">"!"</span>;
+      })));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>PState.migrated</code> is the entire API for migrations. Its parameters are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The new schema for the location, in this case <code>String.class</code></p>
+</li>
+<li>
+<p>The migration ID, which is used to determine if a migration should be restarted or continue where it left off if the module is updated mid-migration. If this remains the same, it continues where it left off. Otherwise, it restarts from the beginning of the PState. Here the migration ID is specified as <code>"myMigrationId"</code>.</p>
+</li>
+<li>
+<p>The migration function, which specifies how to change old values to the new schema. Here it’s a Java lambda with plain Java code to do the transformation. It could also be specified as a method reference, a built-in function from the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/Ops.html">Ops class</a>, or as a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaFunction1.html">RamaFunction1</a> class implementation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As mentioned, as soon as the module update is done all reads will return fully migrated values. The migration does not delay the module update at all, and Rama will migrate the values on disk in the background. Since Rama doesn’t know precisely which parts of the PState have been migrated on disk, it applies the migration function on every read until the disk migration is complete. For this reason migration functions must be idempotent, which is why the function in this example starts off with <code>if(o instanceof String)</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>PState.migrated</code> has several options that can be specified on it for migrating a location to a subindexed structure or adding/removing keys from a fixed keys map. For example, suppose you had this PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You could migrate the value to a subindexed set like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+      <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>(),
+      "<span class="hljs-title">anotherMigration</span>",
+      (<span class="hljs-title">Object</span> <span class="hljs-title">num</span>) -&gt; </span>{
+        <span class="hljs-keyword">if</span>(num <span class="hljs-keyword">instanceof</span> Set) <span class="hljs-keyword">return</span> num;
+        <span class="hljs-keyword">else</span> {
+          Set ret = <span class="hljs-keyword">new</span> HashSet();
+          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;num; i++) {
+            ret.add(<span class="hljs-string">""</span> + i);
+          }
+          <span class="hljs-keyword">return</span> ret;
+        }
+      }
+      ).migrateToSubindexed()));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case the values pre-migration were numbers, and they become a subindexed set of strings from "0" until one minus the original number. Though Rama could infer from comparing the two schemas that the location is being changed to a subindexed structure, the <code>migrateToSubindexed()</code> option is required in order to make mistakes less likely.</p>
+</div>
+<div class="paragraph">
+<p>Adding/removing keys from a fixed keys schema is similar. For example, suppose you start with this PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+      "<span class="hljs-title">age</span>", <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">location</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">occupation</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>
+    )))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You could do a migration that lowercases all values of <code>"location"</code>, removes the <code>"occupation"</code> field, and adds a <code>"score"</code> field with a starting value of 10 like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+      <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+        "<span class="hljs-title">age</span>", <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">location</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">occupation</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>
+      ),
+      "<span class="hljs-title">fixedKeyExampleMigration</span>",
+      (<span class="hljs-title">clojure</span>.<span class="hljs-title">lang</span>.<span class="hljs-title">IPersistentMap</span> <span class="hljs-title">m</span>) -&gt; </span>{
+        <span class="hljs-keyword">if</span>(m.containsKey(<span class="hljs-string">"score"</span>)) <span class="hljs-keyword">return</span> m;
+        <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">return</span> m.without(<span class="hljs-string">"occupation"</span>)
+                  .assoc(<span class="hljs-string">"score"</span>, <span class="hljs-number">10</span>)
+                  .assoc(<span class="hljs-string">"location"</span>, ((String) m.get(<span class="hljs-string">"location"</span>)).toLowerCase());
+        }
+      }).addFixedKeys(<span class="hljs-string">"score"</span>)
+        .removeFixedKeys(<span class="hljs-string">"occupation"</span>)
+      ));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Again, Rama could infer what keys are being added and removed, but it requires the options to be explicit to minimize the chance of a mistake. The migration function uses the existence of the <code>"score"</code> key to detect if the value has already been migrated, and otherwise performs the necessary transformations as plain Java code.</p>
+</div>
+<div class="paragraph">
+<p>The specific type of the input map to that lambda function depends on how it was originally constructed, which is entirely under your control in your topology code. If the map was constructed by a path, such as <code>Path.key("k1", "k2").termVal(10)</code>, the first time it runs on that location within the PState it will make an immutable map type implementing <a href="https://www.javadoc.io/static/org.clojure/clojure/1.11.3/clojure/lang/IPersistentMap.html">clojure.lang.IPersistentMap</a>. That type of map uses structural sharing so that puts/removes are highly efficient while returning a new immutable instance. Most importantly, <strong>transforms</strong> with Rama paths (such as with <code>.key</code>) only work on these immutable data structures and won’t work on a mutable structure such as <code>java.util.HashMap</code>. So it’s important your migration function not change the types of data structures such that topology code which later writes to that location can’t function. That’s why the migration function in this example returns a new <code>clojure.lang.IPersistentMap</code> rather than converting it to something like a <code>java.util.HashMap</code>.</p>
+</div>
+<div class="paragraph">
+<p>If your topology code explicitly made that location a different type, such as with the path <code>Path.key("k1").term((o) → new HashMap())</code>, then your migration code should make sure to maintain the <code>HashMap</code> type if topology code depends on it.</p>
+</div>
+<div class="sect2">
+<h3 id="_pstate_locations_that_can_have_migrations"><a class="anchor" href="#_pstate_locations_that_can_have_migrations"></a>PState locations that can have migrations</h3>
+<div class="paragraph">
+<p>As discussed above in the section on <a href="#_subindexing">subindexing</a>, a location in a PState is either indexed as a whole or has its elements indexed individually. The only parts of a PState that can have migrations declared with <code>PState.migrated</code> are full values. You can’t declare a migration on a location that’s indexed as part of a bigger value. The only locations that can have migrations are values of top-level maps or values of subindexed structures.</p>
+</div>
+<div class="paragraph">
+<p>For example, here’s a valid migration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+      <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>,
+      <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+        <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">myMigration</span>",
+        (<span class="hljs-title">o</span>) -&gt; <span class="hljs-title">o</span>.<span class="hljs-title">toString</span>())
+    ).<span class="hljs-title">subindexed</span>()))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Since the containing map is subindexed, the value of that map can be migrated. On the other hand, this is not a valid migration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+      <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>,
+      <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+        <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">myMigration</span>",
+        (<span class="hljs-title">o</span>) -&gt; <span class="hljs-title">o</span>.<span class="hljs-title">toString</span>())
+    )))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Since the containing map is not subindexed, the targeted value is part of a greater value and a migration cannot be performed. That migration could instead be written like this by moving the migration up to the complete value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+      <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>, <span class="hljs-title">String</span>.<span class="hljs-title">class</span>),
+      "<span class="hljs-title">myMigration</span>",
+      (<span class="hljs-title">clojure</span>.<span class="hljs-title">lang</span>.<span class="hljs-title">IPersistentMap</span> <span class="hljs-title">m</span>) -&gt; </span>{
+        IPersistentMap ret = m;
+        <span class="hljs-keyword">for</span>(Object k: m.keySet()) {
+          ret = ret.assoc(k, ret.get(k).toString());
+        }
+        <span class="hljs-keyword">return</span> ret;
+      })));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Likewise, since locations with a fixed keys schema are indexed as a single value, you cannot declare a migration on a value in a fixed keys schema. This is invalid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+      "<span class="hljs-title">age</span>",
+      <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>,
+
+      "<span class="hljs-title">location</span>",
+      <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+        <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">myMigration</span>",
+        (<span class="hljs-title">o</span>) -&gt; <span class="hljs-title">o</span>.<span class="hljs-title">toString</span>()))))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Instead, you’d have to declare the migration on the fixed keys schema as a whole.</p>
+</div>
+<div class="paragraph">
+<p>Finally, keys of top-level or subindexed maps and values of subindexed sets cannot be migrated. So a migration like this is invalid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$users"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(
+      <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+        <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+        "<span class="hljs-title">myMigration</span>",
+        (<span class="hljs-title">o</span>) -&gt; <span class="hljs-title">o</span>.<span class="hljs-title">toString</span>())
+      ).<span class="hljs-title">subindexed</span>()))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If you try to deploy an invalid migration to a Rama cluster, the deploy will be rejected.</p>
+</div>
+<div class="paragraph">
+<p>If you need to do a migration that’s not supported by the migration API, the best approach is usually to recompute a new PState from depot data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nested_migrations"><a class="anchor" href="#_nested_migrations"></a>Nested migrations</h3>
+<div class="paragraph">
+<p>There can be any number of migrations on the same PState, including nested within one another. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$movieReviews"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+      <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+        "<span class="hljs-title">audience</span>",
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>(),
+
+        "<span class="hljs-title">critics</span>",
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+          <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+          <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+            <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+            "<span class="hljs-title">nestedMigrationId</span>",
+            (<span class="hljs-title">String</span> <span class="hljs-title">s</span>) -&gt; <span class="hljs-title">s</span>.<span class="hljs-title">toLowerCase</span>())
+        ).<span class="hljs-title">subindexed</span>())
+      "<span class="hljs-title">topLevelMigrationId</span>",
+      (<span class="hljs-title">clojure</span>.<span class="hljs-title">lang</span>.<span class="hljs-title">IPersistentMap</span> <span class="hljs-title">m</span>) -&gt; <span class="hljs-title">m</span>.<span class="hljs-title">without</span>("<span class="hljs-title">aliens</span>")).<span class="hljs-title">removeFixedKeys</span>("<span class="hljs-title">aliens</span>")
+    ))</span></code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this example you can see the fixed keys schema is being migrated by removing the <code>"aliens"</code> key, and the values of a subindexed map nested within are being migrated as well. Migration IDs are tracked per location and are used to determine what to do when a module is updated while it is still migrating values on disk, as described in the next section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updating_a_module_mid_migration"><a class="anchor" href="#_updating_a_module_mid_migration"></a>Updating a module mid-migration</h3>
+<div class="paragraph">
+<p>You don’t need to wait for a migration to finish to update a module. If you leave the PState definition the same and don’t change any migration IDs, the migration will continue where it left off after the module update. However, if you change any migration IDs the entire migration will restart for the entire PState.</p>
+</div>
+<div class="paragraph">
+<p>You might want to restart a migration for various reasons – you had a bug in your migration code, you want to tweak how you’re migrating those values, or you want to additionally migrate other parts of the PState.</p>
+</div>
+<div class="paragraph">
+<p>For a restarted migration, some of the values seen by the migration function will have been migrated the first time around and some will not have been migrated yet. If you restart multiple times, there could be even more kinds of values. A restarted migration function must idempotently handle any of the kinds of values that could be seen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_migration_telemetry"><a class="anchor" href="#_migration_telemetry"></a>Migration telemetry</h3>
+<div class="paragraph">
+<p>Rama’s <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a> provides detailed information on migration progress. The main page and module page show if any migrations are still in-progress for any of their PStates:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/migration-telemetry1.png" alt="migration telemetry1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/migration-telemetry2.png" alt="migration telemetry2">
+</div>
+</div>
+<div class="paragraph">
+<p>The module instance page shows which PStates are in progress or done with migrations:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/migration-telemetry3.png" alt="migration telemetry3">
+</div>
+</div>
+<div class="paragraph">
+<p>Diving into a PState page shows which partitions of that PState are still working on the migration:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/migration-telemetry4.png" alt="migration telemetry4">
+</div>
+</div>
+<div class="paragraph">
+<p>Scrolling below that shows time-series telemetry on the migration progress:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/migration-telemetry5.png" alt="migration telemetry5">
+</div>
+</div>
+<div class="paragraph">
+<p>The first chart gives an estimate on the total progress of the migration based on the number of top-level keys that have had everything below them fully migrated versus the total number of top-level keys. It’s an estimate rather than an exact calculation because Rama only knows the approximate number of keys in a top-level map. The second chart shows the number of top-level keys that are fully migrated over time. The last chart shows the number of migration paths that have been applied to the PState. There could be many migration paths per top-level key if there are multiple values being migrated under a top-level key (e.g. all the values of a subindexed map nested within).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_completing_a_migration"><a class="anchor" href="#_completing_a_migration"></a>Completing a migration</h3>
+<div class="paragraph">
+<p>When the Cluster UI shows a migration as complete for a PState, you’re free to remove the <code>PState.migrated</code> wrappers from the PState’s schema on the next module update. If you try to remove those before the migration is complete, Rama will reject the module update.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_controlling_rate_of_migrations"><a class="anchor" href="#_controlling_rate_of_migrations"></a>Controlling rate of migrations</h3>
+<div class="paragraph">
+<p>Migrations happen as part of topology execution. Before each <a href="stream.html#_operation" class="page">streaming batch</a> or <a href="microbatch.html#_operation_and_fault_tolerance" class="page">microbatch</a> completes, a limited amount of migration work is done on a PState. If multiple PStates have migrations specified, the PStates are migrated one at a time. When a migration completes on a PState after some number of batches, it moves on to the next PState.</p>
+</div>
+<div class="paragraph">
+<p>Each round of migration work iterates over part of the PState and applies transform paths to change and replicate the values on disk. The amount of iteration done in each round can be controlled by dynamic options. There are separate dynamic options for streaming and microbatching because they have different defaults:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topology.stream.migration.max.paths.per.batch</code>: The maximum number of migration paths to apply in a single streaming batch</p>
+</li>
+<li>
+<p><code>topology.stream.migration.max.paths.per.second</code>: The target number of migration paths to apply per second across all streaming batches</p>
+</li>
+<li>
+<p><code>topology.microbatch.migration.max.paths.per.batch</code>: The maximum number of migration paths to apply in a single microbatch</p>
+</li>
+<li>
+<p><code>topology.microbatch.migration.max.paths.per.second</code>: The target number of migration paths to apply per second across all microbatches</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A migration uses additional task thread load, and the defaults increase task thread load by about 10% for common types of migrations. However, this can vary depending on the specifics of the migration, such as the cost of running the migration function.</p>
+</div>
+<div class="paragraph">
+<p>If the module doesn’t have spare task thread load before the update, we recommend <a href="operating-rama.html#_scaling_modules" class="page">scaling the module</a> first before deploying the migration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_implicit_migrations"><a class="anchor" href="#_implicit_migrations"></a>Implicit migrations</h3>
+<div class="paragraph">
+<p>Schema changes that are equivalent to or a generalization of that part of the PState schema can be done without declaring a formal migration on that location. These types of schema changes don’t cause any disk migration to be done in the background. For example, if the original PState schema is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can do a module update with this schema without declaring a migration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Likewise, if your original PState schema is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">Map</span>.<span class="hljs-title">class</span>))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can do an implicit migration like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Object</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>)))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>On the other hand, trying to change that schema to this would be rejected:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.pstate(
+  <span class="hljs-string">"$$p"</span>,
+  PState.mapSchema(
+    Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>)))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>When Rama only knows the original type was <code>Map.class</code>, it can’t be migrated to a <code>PState.mapSchema</code> with anything other than <code>Object.class</code> keys and values since Rama doesn’t know what types were stored in those locations.</p>
+</div>
+<div class="paragraph">
+<p>You can also migrate a location from <code>PState.mapSchema</code> with any key/value schemas to <code>Map.class</code>, as that is a generalization.</p>
+</div>
+<div class="paragraph">
+<p>These examples were just for maps, but the same holds true for equivalent or generalized schemas for lists and sets as well.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_playing_with_migrations_using_ipc"><a class="anchor" href="#_playing_with_migrations_using_ipc"></a>Playing with migrations using IPC</h3>
+<div class="paragraph">
+<p>You can try out migrations using <a href="testing.html" class="page">in-process cluster</a> (IPC). You can simulate multiple versions of the same module by overriding the <code>getModuleName()</code> method in the module definition. In a real project, the different versions of a module would be separated in version control, but to play with any sort of module update you’ll need both versions on the same classpath.</p>
+</div>
+<div class="paragraph">
+<p>For example, here’s one version of a module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModuleV1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getModuleName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">"MyModule"</span>; }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;
+
+      s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-string">"*v"</span>));
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Now suppose you want to update it to this version of the module along with a migration to the PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyModuleV2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getModuleName</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">"MyModule"</span>; }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.FIRST));
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>,
+               PState.mapSchema(
+                 String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+                 <span class="hljs-title">PState</span>.<span class="hljs-title">migrated</span>(
+                   <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+                   "<span class="hljs-title">myMigrationId</span>",
+                   (<span class="hljs-title">o</span>) -&gt; </span>{
+                     <span class="hljs-keyword">if</span>(o <span class="hljs-keyword">instanceof</span> String) <span class="hljs-keyword">return</span> o;
+                     <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-string">""</span> + o + <span class="hljs-string">"!"</span>;
+                   })));
+
+      s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v"</span>)
+       .each(Ops.TO_STRING, <span class="hljs-string">"*v"</span>, <span class="hljs-string">"!"</span>).out(<span class="hljs-string">"*s"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-string">"*s"</span>));
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The migration turns the number values in the PState into a string and appends a <code>"!"</code> to them. You can try out this migration in IPC like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+  RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> MyModuleV1();
+  cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+  String moduleName = <span class="hljs-keyword">module</span>.getModuleName();
+
+  Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+  PState p = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p"</span>);
+
+  depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>));
+  depot.append(Arrays.asList(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>));
+  depot.append(Arrays.asList(<span class="hljs-string">"c"</span>, <span class="hljs-number">3</span>));
+
+  System.out.println(<span class="hljs-string">"a before update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"a"</span>)));
+  System.out.println(<span class="hljs-string">"b before update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"b"</span>)));
+  System.out.println(<span class="hljs-string">"c before update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"c"</span>)));
+
+  cluster.updateModule(<span class="hljs-keyword">new</span> MyModuleV2());
+
+  System.out.println(<span class="hljs-string">"a after update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"a"</span>)));
+  System.out.println(<span class="hljs-string">"b after update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"b"</span>)));
+  System.out.println(<span class="hljs-string">"c after update: "</span> + p.selectOne(Path.key(<span class="hljs-string">"c"</span>)));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This starts the first version of the module, appends some data, and then updates the module to the new version. It prints out the values of those keys before and after the update:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">a before update: 1
+b before update: 2
+c before update: 3
+a after update: 1!
+b after update: 2!
+c after update: 3!</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The "after update" values will print with the migration applied whether or not the migration has actually completed on disk yet.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tuning_options"><a class="anchor" href="#_tuning_options"></a>Tuning options</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configurations"><a class="anchor" href="#_configurations"></a>Configurations</h3>
+<div class="paragraph">
+<p>Here are the configurations available for PStates. Configurations for modules are fixed upon module deploy and can only be changed with a module update. They cannot be customized on a topology by topology basis. Likewise, configurations for clients also can only be changed by creating a new <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pstate.rocksdb.options.builder</code>: PStates with a top-level map in the schema use <a href="https://rocksdb.org/">RocksDB</a> as the underlying durable storage. This config lets you provide the full name of a class implementing <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RocksDBOptionsBuilder.html">com.rpl.rama.RocksDBOptionsBuilder</a> to configure the RocksDB instances. By default, RocksDB is configured to use two-level indexing and have a 256MB block cache.</p>
+</li>
+<li>
+<p><code>foreign.pstate.operation.timeout.millis</code>: Timeout to use for foreign PState queries</p>
+</li>
+<li>
+<p><code>foreign.proxy.thread.pool.size</code>: Size of the thread pool on PState clients to handle <code>ProxyState</code> callbacks.</p>
+</li>
+<li>
+<p><code>foreign.proxy.failure.window.seconds</code>: Length of window for which to count proxy failures to determine if it should be forcibly terminated</p>
+</li>
+<li>
+<p><code>foreign.proxy.failure.window.threshold</code>: Number of failures within the failure window which will cause proxy to be forcibly terminated</p>
+</li>
+<li>
+<p><code>pstate.validate.subindexed.structure.locations</code>: As explained above, this defaults to true and determines whether Rama will validate that subindexed structures aren’t moved.</p>
+</li>
+<li>
+<p><code>pstate.maximal.schema.validations</code>: Also as explained above, this config defaults to true and determines whether schemas are checked completely on every write.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dynamic_options"><a class="anchor" href="#_dynamic_options"></a>Dynamic options</h3>
+<div class="paragraph">
+<p>Dynamic options can be edited from the <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a> and take effect immediately. They can be configured on a topology by topology basis. The dynamic options available for PStates are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pstate.excessive.write.time.warning.millis</code>: PState writes (calls to <code>localTransform</code>) that take longer than this threshold will be logged.</p>
+</li>
+<li>
+<p><code>pstate.reactivity.queue.limit</code>: This puts a limit on the number of PState subscribers (from <code>proxy</code> calls) that can be queued up for asynchronous diff processing. This option only applies to streaming PStates. <code>localTransform</code> calls process subscribers synchronously with the transform up to a time limit, and any remaining subscribers are processed asynchronously so as not to hold the task thread excessively. When the limit is reached, those subscribers are dropped from processing that diff and will resync the next time they receive a diff. To avoid these resyncs, a module should be scaled to be able to handle the load of the number of expected <code>proxy</code> calls.</p>
+</li>
+<li>
+<p><code>pstate.yielding.select.page.size</code>: Controls default page size for selects using the <code>.allowYield()</code> option.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Building Rama applications largely revolves around determining how many PStates to create and what structure they should have. Rama makes it easy to make as few or as many PStates as you need.</p>
+</div>
+<div class="paragraph">
+<p>The better you learn the <a href="paths.html" class="page">Path API</a>, the more you’ll get a feel for what kinds of PState structures work well for different kinds of situations. Paths are extremely flexible and expressive, and mastering them lets you see the full range of possibilities for what queries can be supported by any particular PState structure.</p>
+</div>
+<div class="paragraph">
+<p>The availability of fine-grained reactive queries on PStates can also significantly impact how you design your overall application. They enable a level of reactive efficiency and interactivity which has never been possible before.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

@@ -1,0 +1,1867 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dataflow language :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item is-active is-current-path" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="clj-defining-modules.html">Clojure API</a></li>
+    <li><a href="clj-dataflow-lang.html">Dataflow language</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_basic_structure_of_dataflow_code" class="">Basic structure of dataflow code</a></li><li data-level="1"><a href="#_continuation_passing_style" class="">Continuation-passing style</a></li><li data-level="1"><a href="#_branching" class="">Branching</a></li><li data-level="1"><a href="#_unification" class="">Unification</a></li><li data-level="1"><a href="#_destructuring" class="">Destructuring</a></li><li data-level="1"><a href="#_conditionals" class="">Conditionals</a></li><li data-level="1"><a href="#_loops" class="">Loops</a></li><li data-level="1"><a href="#_inline_hooks" class="">Inline hooks</a></li><li data-level="1"><a href="#_custom_operations" class="">Custom operations</a></li><li data-level="1"><a href="#_special_clj_output_stream" class="">Special :clj&gt; output stream</a></li><li data-level="1"><a href="#_differences_between_clojure_and_ramas_dataflow_api" class="">Differences between Clojure and Rama’s dataflow API</a></li><li data-level="1"><a href="#_partitioners" class="">Partitioners</a></li><li data-level="1"><a href="#_aggregators" class="is-active">Aggregators</a></li><li data-level="1"><a href="#_batch_blocks">Batch blocks</a></li><li data-level="1"><a href="#_interacting_with_pstates">Interacting with PStates</a></li><li data-level="1"><a href="#_integrating_with_java_api">Integrating with Java API</a></li><li data-level="1"><a href="#_yielding_thread">Yielding thread</a></li><li data-level="1"><a href="#_integrating_non_blocking_calls_to_external_services">Integrating non-blocking calls to external services</a></li><li data-level="1"><a href="#_segmacros">Segmacros</a></li><li data-level="2"><a href="#_generating_vars">Generating vars</a></li><li data-level="2"><a href="#_defbasicsegmacro">defbasicsegmacro</a></li><li data-level="2"><a href="#_defblock">defblock</a></li><li data-level="2"><a href="#_notable_built_in_segmacros">Notable built-in segmacros</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Dataflow language</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_basic_structure_of_dataflow_code">Basic structure of dataflow code</a></li><li data-level="1"><a href="#_continuation_passing_style">Continuation-passing style</a></li><li data-level="1"><a href="#_branching">Branching</a></li><li data-level="1"><a href="#_unification">Unification</a></li><li data-level="1"><a href="#_destructuring">Destructuring</a></li><li data-level="1"><a href="#_conditionals">Conditionals</a></li><li data-level="1"><a href="#_loops">Loops</a></li><li data-level="1"><a href="#_inline_hooks">Inline hooks</a></li><li data-level="1"><a href="#_custom_operations">Custom operations</a></li><li data-level="1"><a href="#_special_clj_output_stream">Special :clj&gt; output stream</a></li><li data-level="1"><a href="#_differences_between_clojure_and_ramas_dataflow_api">Differences between Clojure and Rama’s dataflow API</a></li><li data-level="1"><a href="#_partitioners">Partitioners</a></li><li data-level="1"><a href="#_aggregators">Aggregators</a></li><li data-level="1"><a href="#_batch_blocks">Batch blocks</a></li><li data-level="1"><a href="#_interacting_with_pstates">Interacting with PStates</a></li><li data-level="1"><a href="#_integrating_with_java_api">Integrating with Java API</a></li><li data-level="1"><a href="#_yielding_thread">Yielding thread</a></li><li data-level="1"><a href="#_integrating_non_blocking_calls_to_external_services">Integrating non-blocking calls to external services</a></li><li data-level="1"><a href="#_segmacros">Segmacros</a></li><li data-level="2"><a href="#_generating_vars">Generating vars</a></li><li data-level="2"><a href="#_defbasicsegmacro">defbasicsegmacro</a></li><li data-level="2"><a href="#_defblock">defblock</a></li><li data-level="2"><a href="#_notable_built_in_segmacros">Notable built-in segmacros</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>ETL and query topologies are defined using Rama’s dataflow API. This API is a full Turing-complete language of its own, just like Clojure, with the ability to seamlessly express arbitrary distributed computation. This page will explore all aspects of this language.</p>
+</div>
+<div class="paragraph">
+<p>Examples on this page can be run from the <a href="https://github.com/redplanetlabs/rama-clojure-starter">rama-clojure-starter</a> project with <code>lein repl</code>. You should require the following namespaces to run the examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">use</span></span> 'com.rpl.rama)
+(<span class="hljs-name"><span class="hljs-builtin-name">use</span></span> 'com.rpl.rama.path)
+(<span class="hljs-name">require</span> '[com.rpl.rama.ops <span class="hljs-symbol">:as</span> ops])
+(<span class="hljs-name">require</span> '[com.rpl.rama.aggs <span class="hljs-symbol">:as</span> aggs])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_structure_of_dataflow_code"><a class="anchor" href="#_basic_structure_of_dataflow_code"></a>Basic structure of dataflow code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clojure and most other languages are based on the "call and response" paradigm. You call a function with some number of arguments, and it returns a single result back. Rama is based on "call and emit", which is a generalization of "call and response".</p>
+</div>
+<div class="paragraph">
+<p>With "call and emit", you call an operation with some number of arguments and it emits values to downstream code. It can emit one value, many values, or even zero values. Additionally, it can emit to multiple independent "output streams". "Call and response" is "call and emit" with the restrictions of one output stream, exactly one emit to that output stream, exactly one field in that emit, and that emit being the last thing done by the operation.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start with an example of code emitting to a single output stream:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo [*arg]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">inc</span></span> *arg))
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">dec</span></span> *arg)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> <span class="hljs-number">5</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Emitted:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>foo</code> takes in one argument that’s bound to the variable <code>*arg</code>. It then emits two times using <code>:&gt;</code> as an operator. Rama operations can emit to any number of output streams any number of times. <code>:&gt;</code> is the default output stream, and you can specify named output streams with operations like <code>:another-stream&gt;</code> or <code>:a-different-stream&gt;</code>. A caller of an operation captures values to output streams by using output stream keywords in their invoke. In this case, the caller of <code>foo</code> captures values into the default output stream and binds emits to the variable <code>*v</code>. This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Emitted: 6
+Emitted: 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-deframaop">deframaop</a> defines a custom operation using the dataflow API. <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3F.3C-">?←</a> compiles and executes a block of dataflow code. This code calls the custom operation <code>foo</code>, binds emitted values to the variable <code>*v</code>, and prints the results.</p>
+</div>
+<div class="paragraph">
+<p>Dataflow code consists of a sequence of "segments", analogous to a "form" in Clojure (since Rama dataflow is still Clojure, segments are also technically forms). A segment consists of an operation, input fields, and any number of "output declarations". An "output declaration" begins with an "output stream" followed by an optional "anchor" and any number of "variables" to bind for emits to that stream. Here are some examples of segments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *sum)
+
+(<span class="hljs-name">bar</span> <span class="hljs-symbol">:a&gt;</span> &lt;aaa&gt; *v1 *v2
+     <span class="hljs-symbol">:b&gt;</span> &lt;anchor-b&gt; *v2
+     <span class="hljs-symbol">:&gt;</span> *a)
+
+(<span class="hljs-name">println</span> <span class="hljs-string">"Hello"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>An "output stream" is a keyword ending with <code>&gt;</code>. These examples have output streams <code>:&gt;</code>, <code>:a&gt;</code>, and <code>:b&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>An "anchor" labels a point in dataflow code with a unique ID. An anchor is a symbol wrapped in <code>&lt;</code> and <code>&gt;</code>. It has no effect at runtime and is just used to implement branching and merging in dataflow.</p>
+</div>
+<div class="paragraph">
+<p>A "variable" is a symbol beginning with <code>*</code>, <code>%</code>, or <code>$$</code>. <code>*</code> signifies a value, <code>%</code> signifies an anonymous operation, and <code>$$</code> signifies a PState. This naming structure allows Rama to distinguish between dataflow variables and regular Clojure symbols that refer to constants that should be inserted into dataflow code. For example, you can do this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> some-constant <span class="hljs-number">10</span>)
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> some-constant <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *res)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *res))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 13</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can also nest expressions in dataflow code just like you can with Clojure. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">-</span></span> <span class="hljs-number">10</span> <span class="hljs-number">4</span>) (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">1</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)) <span class="hljs-symbol">:&gt;</span> *res)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *res))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 36</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Nested expressions like this implicitly capture a single value emitted to <code>:&gt;</code> and use that value at that position. The return of a regular Clojure function is implicitly translated to an emit to <code>:&gt;</code>. <code>:&gt;</code> is called the "default output stream".</p>
+</div>
+<div class="paragraph">
+<p>Clojure macros get expanded first during Rama compilation, so you can write code like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> (<span class="hljs-name"><span class="hljs-builtin-name">-&gt;</span></span> <span class="hljs-number">10</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">3</span>) (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> <span class="hljs-number">4</span>))))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 52</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_continuation_passing_style"><a class="anchor" href="#_continuation_passing_style"></a>Continuation-passing style</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The "call and emit" paradigm is related to "continuation-passing style". <a href="https://blog.redplanetlabs.com/2024/10/10/rama-on-clojures-terms-and-the-magic-of-continuation-passing-style/">This blog post</a> explores this in detail by showing how Rama dataflow code works by comparing against equivalent Clojure code written in continuation-passing style.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_branching"><a class="anchor" href="#_branching"></a>Branching</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s take a look at more complicated dataflow code with branching:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo [*arg]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">inc</span></span> *arg))
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> <span class="hljs-number">10</span> *arg))
+  (<span class="hljs-symbol">:other&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">dec</span></span> *arg)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> <span class="hljs-number">5</span> <span class="hljs-symbol">:other&gt;</span> &lt;other&gt; *v <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">anchor&gt;</span> &lt;default-root&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Default output stream 1:"</span> *v)
+  (<span class="hljs-name">hook&gt;</span> &lt;default-root&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Default output stream 2:"</span> *v)
+  (<span class="hljs-name">hook&gt;</span> &lt;other&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Other output stream:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s a visualization of the code in the <code>?←</code> block:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/dataflow-diagrams/clj-branching.png" alt="clj branching">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-hook.3E">hook&gt;</a> and <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-anchor.3E">anchor&gt;</a> in this code are used to create a branching dataflow graph. Usually when you write a new segment, it attaches to the most recent node created in the dataflow graph. <code>hook&gt;</code>, however, changes the attach point of the subsequent segment. <code>anchor&gt;</code> creates a no-op node with the specified anchor.</p>
+</div>
+<div class="paragraph">
+<p>The order of emits for the <code>foo</code> callsite is determined by the order in which <code>foo</code> emits to those streams. So the code attached to <code>:&gt;</code> will run twice, and then the code attached to <code>:other&gt;</code> will run once. There is nothing controlling the ordering on the two branches attached to <code>&lt;default-root&gt;</code>, however. This is called an "unordered branching", and the order in which the branches are run is nondeterministic. Unordered branchings are common in ETL code for multiple independent branches of processing that are not related to each other.</p>
+</div>
+<div class="paragraph">
+<p>So when this code is run, there are two possible outputs. The first possible output is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Default output stream 1: 6
+Default output stream 2: 6
+Default output stream 1: 50
+Default output stream 2: 50
+Other output stream: 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The other possible output is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Default output stream 2: 6
+Default output stream 1: 6
+Default output stream 2: 50
+Default output stream 1: 50
+Other output stream: 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unification"><a class="anchor" href="#_unification"></a>Unification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can merge dataflow branches together with "unification", specified with <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-unify.3E">unify&gt;</a>. Here’s a basic example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> multi-out []
+  (<span class="hljs-symbol">:a&gt;</span> <span class="hljs-number">1</span>)
+  (<span class="hljs-symbol">:b&gt;</span> <span class="hljs-number">2</span>))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">multi-out</span> <span class="hljs-symbol">:a&gt;</span> &lt;a&gt; *v <span class="hljs-symbol">:b&gt;</span> &lt;b&gt; *v)
+  (<span class="hljs-name">unify&gt;</span> &lt;a&gt; &lt;b&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 1
+Val: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All emits flowing through <code>unify&gt;</code> flow into its continuation as if the continuation to <code>unify&gt;</code> were attached independently to each of the anchors specified. You can unify as many anchors as you want with <code>unify&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>Rama has rigorous rules on variable scope and how variable scope works with unification. A variable is considered in scope after a unify only if it is bound on all branches leading to the <code>unify&gt;</code>. For example, this code will fail to compile because <code>*v</code> is defined on only one of the branches:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> multi-out []
+  (<span class="hljs-symbol">:a&gt;</span> <span class="hljs-number">1</span>)
+  (<span class="hljs-symbol">:b&gt;</span> <span class="hljs-number">2</span>))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">multi-out</span> <span class="hljs-symbol">:a&gt;</span> &lt;a&gt; *v <span class="hljs-symbol">:b&gt;</span> &lt;b&gt; *v2)
+  (<span class="hljs-name">unify&gt;</span> &lt;a&gt; &lt;b&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>It’s impossible for the continuation to <code>unify&gt;</code> to run in this case for emits to <code>:b&gt;</code> since <code>*v</code> doesn’t exist along that path.</p>
+</div>
+<div class="paragraph">
+<p>The same rules apply for shadowing. Consider this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-symbol">:orig</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-symbol">:new</span> <span class="hljs-symbol">:&gt;</span> &lt;a&gt; *v <span class="hljs-symbol">:b&gt;</span> &lt;b&gt; *v2)
+  (<span class="hljs-name">unify&gt;</span> &lt;a&gt; &lt;b&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val 1:"</span> *v)
+
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-symbol">:new2</span> <span class="hljs-symbol">:&gt;</span> &lt;a2&gt; *v <span class="hljs-symbol">:b&gt;</span> &lt;b2&gt; *v)
+  (<span class="hljs-name">unify&gt;</span> &lt;a2&gt; &lt;b2&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val 2:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val 1: :orig
+Val 2: :new2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In the first unify, <code>*v</code> is shadowed only on the <code>:&gt;</code> branch. Because it is not shadowed on all branches, the version of <code>*v</code> that’s in scope after the first <code>unify&gt;</code> is the original binding of <code>:orig</code>. In the second <code>unify&gt;</code>, on the other hand, <code>*v</code> is shadowed in all branches. So the value of <code>*v</code> in this case is the shadowed version <code>:new2</code>. This behavior keeps <code>unify&gt;</code> consistent between binding new variables and shadowing existing variables.</p>
+</div>
+<div class="paragraph">
+<p>More generally than this, Rama is strict about variable scope and will throw compilation errors if you ever reference a variable that’s out of scope.</p>
+</div>
+<div class="paragraph">
+<p>Finally, with <code>unify&gt;</code> you can see that Rama dataflow code is a graph of computation. So whereas code for traditional languages creates what’s called an "abstract syntax tree" (AST), Rama code creates an "abstract syntax graph" (ASG). This data structure is explicitly reified internally as part of Rama compilation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_destructuring"><a class="anchor" href="#_destructuring"></a>Destructuring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can destructure data structures in Rama code just like you can in Clojure. Here are a few examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> {<span class="hljs-symbol">:a</span> <span class="hljs-number">1</span> <span class="hljs-symbol">:b</span> <span class="hljs-number">2</span>} <span class="hljs-symbol">:&gt;</span> {<span class="hljs-symbol">:keys</span> [*a *b] <span class="hljs-symbol">:as</span> *m})
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Destructure 1:"</span> *a *b *m)
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> {<span class="hljs-symbol">:k</span> [<span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span>]} <span class="hljs-symbol">:&gt;</span> {[*a *b *c] <span class="hljs-symbol">:k</span>})
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Destructure 2:"</span> *a *b *c))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Destructure 1: 1 2 {:b 2, :a 1}
+Destructure 2: 7 8 9</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Rama uses the name of the variable without the leading <code>*</code> to determine what keyword to look up in the destructured data structure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditionals"><a class="anchor" href="#_conditionals"></a>Conditionals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama has a few ways to specify conditional logic. The most common one is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Cif">&lt;&lt;if</a>. Here are a few examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;if</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>)
+    (<span class="hljs-name">println</span> <span class="hljs-string">"True"</span>)
+   (<span class="hljs-name">else&gt;</span>)
+    (<span class="hljs-name">println</span> <span class="hljs-string">"False"</span>))
+  (<span class="hljs-name">&lt;&lt;if</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>)
+    (<span class="hljs-name">println</span> <span class="hljs-string">"A"</span>))
+  (<span class="hljs-name">&lt;&lt;if</span> <span class="hljs-literal">false</span>
+    (<span class="hljs-name">println</span> <span class="hljs-string">"B"</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">False
+A</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Just like Clojure’s <code>if</code>, <code>&lt;&lt;if</code> executes either a "then" branch or an optional "else" branch based on the truthiness of the provided value. <code>(else&gt;)</code> is used to separate a block of "then" code from a block of "else" code. The "then" and "else" branches are automatically unified together, regardless of whether an "else" block is specified.</p>
+</div>
+<div class="paragraph">
+<p><code>&lt;&lt;if</code> is built upon the primitive operation <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-if.3E">if&gt;</a>. <code>if&gt;</code> works just like any other Rama operation by having <code>:then&gt;</code> and <code>:else&gt;</code> output streams. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">if&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>) <span class="hljs-symbol">:else&gt;</span> &lt;e&gt; <span class="hljs-symbol">:then&gt;</span>)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"True branch"</span>)
+  (<span class="hljs-name">hook&gt;</span> &lt;e&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"False branch"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">True branch</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Unlike Clojure and other programming languages, <code>if&gt;</code> is not a special form. It can be passed around as an anonymous operation just like anything else. However, when it’s used statically like in this example the Rama compiler recognizes that and generates optimized bytecode for the callsite that’s equivalent to what Clojure generates for <code>if</code>.</p>
+</div>
+<div class="paragraph">
+<p>Another operation for performing conditional logic is <code>ifexpr</code>, which works just like Clojure’s <code>if</code>. It’s meant to be used as a nested expression which "returns" a value, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res 1:"</span> (<span class="hljs-name">ifexpr</span> <span class="hljs-literal">true</span> (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>) <span class="hljs-number">2</span>))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res 2:"</span> (<span class="hljs-name">ifexpr</span> <span class="hljs-literal">false</span> <span class="hljs-number">10</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res 1: 1
+Res 2: nil</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Finally, Rama has an analogue to <code>cond</code> called <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Ccond">&lt;&lt;cond</a>. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;cond</span>
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>))
+    (<span class="hljs-name">println</span> <span class="hljs-string">"A"</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">1</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">&gt;</span></span> <span class="hljs-number">2</span> <span class="hljs-number">1</span>))
+    (<span class="hljs-name">println</span> <span class="hljs-string">"B"</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>))
+    (<span class="hljs-name">println</span> <span class="hljs-string">"C"</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *v))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">B
+Val: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Just like <code>&lt;&lt;if</code>, all branches of <code>&lt;&lt;cond</code> are automatically unified together. So variables defined along all branches will be in scope after the <code>&lt;&lt;cond</code> block. This also means that if none of the cases match, the code after <code>&lt;&lt;cond</code> will not execute. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;cond</span>
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">1</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">3</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This doesn’t print anything.</p>
+</div>
+<div class="paragraph">
+<p>Likewise, as is the same for all dataflow code, the continuation to a <code>&lt;&lt;cond</code> callsite can execute multiple times if the code within a branch emits multiple times. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo []
+  (<span class="hljs-symbol">:&gt;</span>)
+  (<span class="hljs-symbol">:&gt;</span>))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;cond</span>
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">1</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> <span class="hljs-literal">true</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v)
+    (<span class="hljs-name">foo</span>))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 2
+Val: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>&lt;&lt;cond</code> also accepts a "default" branch that runs if none of the other branches match. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;cond</span>
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">1</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> <span class="hljs-literal">false</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">default&gt;</span>)
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *v))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Sometimes you don’t want any implicit unification on the <code>default&gt;</code> branch. A common scenario for this is when the default branch is meant to throw an exception but you still want common variables in the other branches to be in scope after the <code>&lt;&lt;cond</code>. You can do this like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;cond</span>
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">1</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">case&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>))
+    (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v)
+
+    (<span class="hljs-name">default&gt;</span> <span class="hljs-symbol">:unify</span> <span class="hljs-literal">false</span>)
+    (<span class="hljs-name">throw!</span> (<span class="hljs-name">ex-info</span> <span class="hljs-string">"Exception"</span> {})))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Val:"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Without the <code>:unify false</code>, this code would throw a compilation exception about <code>*v</code> not being in scope.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_loops"><a class="anchor" href="#_loops"></a>Loops</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama has a looping construct called <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-loop.3C-">loop←</a> that’s similar to Clojure’s <code>loop</code>, except with dataflow semantics. Whereas Clojure’s <code>loop</code> returns the terminal value of the loop, Rama’s <code>loop←</code> emits values explicitly can can emit multiple times and multiple fields per emit. Here’s a basic example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">loop&lt;-</span> [*i <span class="hljs-number">0</span> <span class="hljs-symbol">:&gt;</span> *v]
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Loop iter:"</span> *i)
+    (<span class="hljs-symbol">:&gt;</span> *i)
+    (<span class="hljs-name">&lt;&lt;if</span> (<span class="hljs-name"><span class="hljs-builtin-name">&lt;</span></span> *i <span class="hljs-number">3</span>)
+      (<span class="hljs-name">continue&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">inc</span></span> *i))))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Emit"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Loop iter: 0
+Emit 0
+Loop iter: 1
+Emit 1
+Loop iter: 2
+Emit 2
+Loop iter: 3
+Emit 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The order of the prints here indicates how execution works: when emitting from the loop with <code>:&gt;</code>, the continuation of the loop is invoked immediately. This is the same behavior as when an operation emits. The <code>continue&gt;</code> call happens after the continuation of the loop finishes executing.</p>
+</div>
+<div class="paragraph">
+<p><code>loop←</code> receives a binding vector of zero or more vars, with each var given an initial value. Unlike the bindings for a Clojure <code>loop</code>, the binding vector also includes bindings for the output variables of the loop. Just like Rama operations, a loop can emit zero or more fields per emit. Here’s an example of a loop with multiple binding variables and emitting multiple fields:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">loop&lt;-</span> [*i <span class="hljs-number">1</span>
+           *j <span class="hljs-number">1</span>
+           <span class="hljs-symbol">:&gt;</span> *v1 *v2]
+    (<span class="hljs-name">&lt;&lt;if</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> *i <span class="hljs-number">5</span>)
+      (<span class="hljs-symbol">:&gt;</span> *i *j)
+     (<span class="hljs-name">else&gt;</span>)
+      (<span class="hljs-name">continue&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">inc</span></span> *i) (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> *j *i))))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Emit"</span> *v1 *v2))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Emit 5 24</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>continue&gt;</code> executes another iteration of the loop. Unlike Clojure’s <code>recur</code>, you can actually <code>continue&gt;</code> multiple times per iteration of a loop under certain conditions. Specifically, if the body of the loop goes async (like with a <a href="#_partitioners">partitioner</a>), the body can call <code>continue&gt;</code> multiple times in one iteration. An example use case where this comes up is a query topology doing a parallel graph search, where each iteration of the loop continues along all outgoing edges.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_inline_hooks"><a class="anchor" href="#_inline_hooks"></a>Inline hooks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama has a small convenience feature called "inline hooks" when you want to attach a single segment to an output stream without needing to deal with hooks/anchors explicitly. The syntax for this is <code>:&gt;&gt;</code> and looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo []
+  (<span class="hljs-symbol">:a&gt;</span> <span class="hljs-number">1</span>)
+  (<span class="hljs-symbol">:&gt;</span>))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> <span class="hljs-symbol">:a&gt;</span> *v <span class="hljs-symbol">:&gt;&gt;</span> (<span class="hljs-name">println</span> <span class="hljs-string">":a&gt;"</span> *v)
+       <span class="hljs-symbol">:&gt;</span>)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Normal output"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">:a&gt; 1
+Normal output</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This code is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo []
+  (<span class="hljs-symbol">:a&gt;</span> <span class="hljs-number">1</span>)
+  (<span class="hljs-symbol">:&gt;</span>))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> <span class="hljs-symbol">:a&gt;</span> &lt;a&gt; *v
+       <span class="hljs-symbol">:&gt;</span>)
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Normal output"</span>)
+  (<span class="hljs-name">hook&gt;</span> &lt;a&gt;)
+  (<span class="hljs-name">println</span> <span class="hljs-string">":a&gt;"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>An inline hook is inserted after the variables for an output declaration and can consist of only a single segment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_operations"><a class="anchor" href="#_custom_operations"></a>Custom operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a variety of ways to decompose dataflow logic into separate operations. Some of these ways involve writing regular Clojure code, and other ways involve writing operations with Rama’s dataflow API.</p>
+</div>
+<div class="paragraph">
+<p>The first way to decompose logic is with plain Clojure functions. You can always call a Clojure function from dataflow code, as the "call and response" paradigm of Clojure functions is a subset of the "call and emit" paradigm of Rama. When you call a Clojure function, it’s return value is implicitly emitted as a single field to the <code>:&gt;</code> stream. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> *v <span class="hljs-number">10</span> <span class="hljs-symbol">:&gt;</span> *v2)
+  (<span class="hljs-name">println</span> *v2))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">60</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>"Fragment" is the term for objects that can be invoked and emit an arbitrary amount to arbitrary output streams. These are broken down into two categories: "ramafn", which are fragments that emit to <code>:&gt;</code> exactly one time and perform no more work afterwards (like a Clojure function), and "ramaop", which has no restrictions on emits.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-defoperation">defoperation</a> is a way to define a "ramaop" in Clojure. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defoperation</span> foo-op
+  [out&gt; <span class="hljs-symbol">:&gt;</span>
+   a&gt; <span class="hljs-symbol">:a&gt;</span>]
+  [arg1 arg2]
+  (<span class="hljs-name"><span class="hljs-builtin-name">doseq</span></span> [i (<span class="hljs-name"><span class="hljs-builtin-name">range</span></span> arg2)]
+   (<span class="hljs-name">a&gt;</span> i (<span class="hljs-name"><span class="hljs-builtin-name">str</span></span> i <span class="hljs-string">"!"</span>)))
+  (<span class="hljs-name">out&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">str</span></span> arg1 <span class="hljs-string">"?"</span>)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo-op</span> <span class="hljs-string">"abc"</span> <span class="hljs-number">3</span>
+          <span class="hljs-symbol">:a&gt;</span> *i *v <span class="hljs-symbol">:&gt;&gt;</span> (<span class="hljs-name">println</span> <span class="hljs-string">":a&gt;"</span> *i *v)
+          <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">println</span> <span class="hljs-string">":&gt;"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">:a&gt; 0 0!
+:a&gt; 1 1!
+:a&gt; 2 2!
+:&gt; abc?</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first binding vector binds symbols to output streams, in this case <code>out&gt;</code> to the <code>:&gt;</code> stream and <code>a&gt;</code> to the <code>:a&gt;</code> stream. The next binding vector is the arguments to the <code>defoperation</code>. Note that <code>defoperation</code> does a code transformation internally to connect the <code>out&gt;</code> and <code>a&gt;</code> symbols to the appropriate output streams, so those symbols aren’t functions that can be passed to other functions. When <code>out&gt;</code> and <code>a&gt;</code> are "called", the arguments are emitted to the corresponding output streams.</p>
+</div>
+<div class="paragraph">
+<p>The next way to define a ramaop is with <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-deframaop">deframaop</a>. This defines the ramaop with dataflow code. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframaop</span> foo [*list]
+  (<span class="hljs-name">ops/explode</span> *list <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">&lt;&lt;if</span> (<span class="hljs-name"><span class="hljs-builtin-name">=</span></span> *v <span class="hljs-symbol">:a</span>)
+    (<span class="hljs-symbol">:a&gt;</span>)
+   (<span class="hljs-name">else&gt;</span>)
+    (<span class="hljs-symbol">:&gt;</span> *v)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> [<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-symbol">:a</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]
+       <span class="hljs-symbol">:a&gt;</span> <span class="hljs-symbol">:&gt;&gt;</span> (<span class="hljs-name">println</span> <span class="hljs-string">":a&gt;"</span>)
+       <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">println</span> <span class="hljs-string">":&gt;"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">:&gt; 1
+:&gt; 2
+:a&gt;
+:&gt; 3
+:&gt; 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Emits from a <code>deframaop</code> are done by using the output stream as an operation. Internally, these callsites become interface invokes at the bytecode level.</p>
+</div>
+<div class="paragraph">
+<p>You can define a ramafn with dataflow code with <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-deframafn">deframafn</a>. The definition is exactly the same as <code>deframaop</code>, but the body must emit to <code>:&gt;</code> exactly once, and that must be the last thing the <code>deframafn</code> definition does. A <code>deframafn</code> can emit to other output streams arbitrarily. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframafn</span> foo [*v1 *v2]
+  (<span class="hljs-symbol">:a&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *v1 *v2))
+  (<span class="hljs-symbol">:a&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">-</span></span> *v1 *v2))
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> *v1 *v2)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">foo</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span>
+       <span class="hljs-symbol">:a&gt;</span> *v <span class="hljs-symbol">:&gt;&gt;</span> (<span class="hljs-name">println</span> <span class="hljs-string">":a&gt;"</span>)
+       <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">println</span> <span class="hljs-string">":&gt;"</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">:a&gt;
+:a&gt;
+:&gt; 15</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If a <code>deframafn</code> emits to <code>:&gt;</code> zero times or more than once, there will be a runtime error. A <code>deframafn</code> can also be called directly from Clojure, though the only output Clojure can capture is the value emitted to <code>:&gt;</code>. For example, the previous <code>deframafn</code> can be called like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">println</span> (<span class="hljs-name">foo</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">15</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Anonymous operations can be defined in dataflow code with <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Cramaop">&lt;&lt;ramaop</a> and <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Cramafn">&lt;&lt;ramafn</a>. These have the same syntax as <code>deframaop</code> and <code>deframafn</code>, and just like Clojure functions they capture their lexical closures. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">10</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">&lt;&lt;ramafn</span> %f [*a]
+    (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *a *v)))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> (%f <span class="hljs-number">1</span>) (%f <span class="hljs-number">2</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 11 12</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A variable beginning with <code>%</code> signifies an anonymous operation, whether <code>ramafn</code> or <code>ramaop</code>. They can be passed around just like Clojure functions. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframafn</span> foo [%f]
+  (<span class="hljs-symbol">:&gt;</span> (%f <span class="hljs-number">10</span>)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;ramafn</span> %f [*a]
+    (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> *a <span class="hljs-number">5</span>)))
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> (<span class="hljs-name">foo</span> %f)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 50</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this code, the compilation of <code>foo</code> doesn’t know whether <code>%f</code> is a ramaop or ramafn so it generates bytecode that works for either case. If you know for sure that an anonymous operation is a ramafn, you can hint it with <code>ramafn&gt;</code> to enable the Rama compiler to generate more efficient bytecode. <code>foo</code> in the previous example can be written more efficiently like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframafn</span> foo [%f]
+  (<span class="hljs-name">ramafn&gt;</span> %f)
+  (<span class="hljs-symbol">:&gt;</span> (%f <span class="hljs-number">10</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Note that <code>&lt;&lt;ramaop</code> and <code>&lt;&lt;ramafn</code> end up with randomized class names, so they should not ever be written into PStates or depots. Otherwise, they won’t be able to be deserialized after a module update when the underlying classes can potentially change.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, when a Clojure function gets used as a constant, it gets wrapped as a <code>ramafn</code> so it can be invoked like an anonymous operation. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">deframafn</span> foo [%f]
+  (<span class="hljs-name">ramafn&gt;</span> %f)
+  (<span class="hljs-symbol">:&gt;</span> (%f <span class="hljs-number">10</span>)))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> (<span class="hljs-name">foo</span> inc)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 11</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_clj_output_stream"><a class="anchor" href="#_special_clj_output_stream"></a>Special <code>:clj&gt;</code> output stream</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When using <code>?←</code>, you can return a value back to the caller of the <code>?←</code> using the special <code>:clj&gt;</code> output stream. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-symbol">:clj&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">*</span></span> <span class="hljs-number">10</span> *v)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This expression will return the value <code>30</code>.</p>
+</div>
+<div class="paragraph">
+<p>Since <code>?←</code> compiles its body each time it’s called, it shouldn’t be used for production code that needs to interoperate between Clojure and Rama. Its use should be limited to experimentation and unit tests.</p>
+</div>
+<div class="paragraph">
+<p>The way to return values from Rama to Clojure in production would be to define a <code>ramafn</code> and call it from Clojure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_differences_between_clojure_and_ramas_dataflow_api"><a class="anchor" href="#_differences_between_clojure_and_ramas_dataflow_api"></a>Differences between Clojure and Rama’s dataflow API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here’s a list of important differences between Clojure and Rama’s dataflow API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can’t do Java interop in Rama code (e.g. <code>(.size l)</code>). Instead, you should make a wrapper function in Clojure and call that wrapper function from Rama.</p>
+</li>
+<li>
+<p>You can’t use Clojure’s <code>fn</code> in Rama code since it’s a special form. Instead, use <code>&lt;&lt;ramaop</code> or <code>&lt;&lt;ramafn</code> as described in the previous section.</p>
+</li>
+<li>
+<p>Rama dataflow has no support for primitives.</p>
+</li>
+<li>
+<p>None of Clojure’s special forms will work in Rama dataflow. Macros that expand to special forms, like <code>and</code> and <code>or</code> which expand to <code>if</code>, also cannot be used. Rama has alternatives for <code>and</code> and <code>or</code> called <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-and.3E">and&gt;</a> and <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-or.3E">or&gt;</a> that have the exact same short-circuiting semantics.</p>
+</li>
+<li>
+<p>Clojure inserts var indirection for all non-local symbol references. Rama only inserts var indirection for functions/operations in the operation position of a segment. Notably, symbol references used as fields do not have var indirection and get inserted as constants in the code instead. This impacts how <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs">with-redefs</a> works with Rama code.</p>
+</li>
+<li>
+<p>Because Rama doesn’t use var indirection for constants, values in Rama code used as constants must be able to be "serialized" into bytecode. Currently this is only supported for basic types (e.g. strings, numbers), records, Clojure data structures, functions, and implementations of <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaSerializable.html">RamaSerializable</a>. Notably, mutable objects like volatiles are not allowed. When using <code>?←</code>, Rama will support arbitrary constants with an "object cache" so that the compiled bytecode can reference those unsupported constants. However, the object cache cannot be used for modules as it requires shared memory. So trying to use something like a volatile in module code will lead to an "object cache not allowed" error.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_partitioners"><a class="anchor" href="#_partitioners"></a>Partitioners</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Partitioners are operations that potentially emit on a different task on a different machine. Some partitioners can emit multiple times across multiple tasks in parallel. Just like other fragments, partitioners are an instance of the "call and emit" paradigm. Unlike the other fragments you’ve seen so far, partitioners emit asynchronously. However, code using partitioners is still read linearly, and partitioners compose arbitrarily with any other dataflow code like conditionals and loops.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of using a few partitioners in dataflow code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">identity</span></span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *v)
+(|hash *k)
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *k) (<span class="hljs-name">termval</span> *v)] $$p)
+(|all)
+(<span class="hljs-name">local-transform&gt;</span> (<span class="hljs-name">term</span> inc) $$counter)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The naming convention for partitioners is to prefix them with <code>|</code>. The task before and after a partitioner may be different, and Rama takes care of all the networking and serialization necessary to move the computation. In this case, <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Chash">|hash</a> chooses the target task according to the hash of the provided value. So the same key will always go to the same task, and different keys will be evenly distributed across all tasks. <code>|hash</code> moves from one task to exactly one other task. <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Call">|all</a>, on the other hand, moves the computation to all tasks (including the current one). So if the module has 64 tasks, <code>|all</code> emits 64 times.</p>
+</div>
+<div class="paragraph">
+<p>Internally, Rama does variable scope analysis to determine what needs to be serialized/transferred across a partitioner boundary. In this case, <code>*v</code> is transferred across the <code>|hash</code> because it’s used afterward, but it is not transferred across <code>|all</code> since the code after makes no reference to it.</p>
+</div>
+<div class="paragraph">
+<p>For a complete explanation of how partitioners function, see <a href="partitioners.html" class="page">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Most of the partitioners have a <code>$$</code> variant, such as <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Chash.24.24">|hash$$</a>. These variants take in a depot or PState as the first argument and partition based on the number of partitions of that object. For depots and PStates belonging to the same module, who have the same number of partitions as tasks of the module (unless declared as "global"), there’s no difference. The <code>$$</code> variants are usually used with <a href="module-dependencies.html" class="page">mirror</a> depots or PStates.</p>
+</div>
+<div class="paragraph">
+<p>For a complete listing of built-in partitioners available, consult the <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Call">API docs</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also write custom partitioners using <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Ccustom">|custom</a> and <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.7Ccustom.24.24">|custom$$</a>. These are passed a function that chooses the target partition. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">&lt;&lt;ramafn</span> %custom
+  [*num-partitions *arg1 *arg2]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">mod</span></span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *arg1 *arg2) *num-partitions)))
+(|custom %custom <span class="hljs-number">10</span> <span class="hljs-number">-11</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first argument is the number of partitions, and the additional arguments are whatever is passed to <code>|custom</code>. The return value must be between 0 and the number of partitions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aggregators"><a class="anchor" href="#_aggregators"></a>Aggregators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aggregators are a way to update PStates, and they can also be used on their own in <a href="#_batch_blocks">batch blocks</a> or query topologies. In some cases they let you specify transformations in a little less code, and in other cases they enable huge increases in performance and expressivity. See the <a href="aggregators.html" class="page">main page on aggregators</a> for a general discussion of the concepts of aggregators and different scenarios where they can be used.</p>
+</div>
+<div class="paragraph">
+<p>In the Clojure API aggregators are used like any other operation. The <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.aggs.html">com.rpl.rama.aggs</a> namespace contains many built-in aggregators. Here’s an example of using an aggregator to update a PState containing a top-level number in each partition:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">aggs/+sum</span> $$p *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This adds <code>*v</code> to the number already in <code>$$p</code>. With <code>local-transform&gt;</code> this would be expressed as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">&lt;&lt;ramafn</span> %adder [*n]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *n *v)))
+(<span class="hljs-name">local-transform&gt;</span> (<span class="hljs-name">term</span> %adder) $$p)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The naming convention of aggregators is to prefix them with <code>+</code>. This isn’t necessary, but we find this helps with readability.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.2Bcompound">+compound</a> enables aggregation of nested values, expressing a transform in the shape of the structure being written. For example, here’s how to add numbers to values in a map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">+compound</span> $$p {*k (<span class="hljs-name">aggs/+sum</span> *v)})</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">&lt;&lt;ramafn</span> %adder [*n]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *n *v)))
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *k) (<span class="hljs-name">nil-&gt;val</span> <span class="hljs-number">0</span>) (<span class="hljs-name">term</span> %adder)] $$p)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Aggregators understand the concept of a "zero val", so they automatically take care of initializing a value when writing to a non-existent location for the first time.</p>
+</div>
+<div class="paragraph">
+<p><code>+compound</code> can also do multiple aggregations at the same time, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">+compound</span> $$p {*k {<span class="hljs-symbol">:a</span> [(<span class="hljs-name">aggs/+sum</span> *v) (<span class="hljs-name">aggs/+count</span>)]
+                    <span class="hljs-symbol">:b</span> (<span class="hljs-name">aggs/+max</span> *v2)})</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In a batch block in a microbatch topology, <code>+compound</code> also supports capturing newly updated values and the keys leading up to those updated locations. One context where this is invaluable is "top N" analytics, and the feature is described fully <a href="aggregators.html#_capturing_newly_updated_pstate_keys_and_values" class="page">in this section</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the Clojure API, this is done with the special <code>:new-val&gt;</code> stream, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">+compound</span> $$p {*k {<span class="hljs-symbol">:a</span> (<span class="hljs-name">aggs/+sum</span> *v <span class="hljs-symbol">:new-val&gt;</span> *new-sum)})</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The postagg phase of the batch block containing this <code>+compound</code> call will explode every updated <code>*k</code> along with its updated <code>*new-sum</code> value.</p>
+</div>
+<div class="paragraph">
+<p>Another helpful facility for doing aggregation is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.2Bgroup-by">+group-by</a>. This isn’t used for updating existing PStates, but is often useful as part of a larger batched computation. Here’s an example of using <code>+group-by</code> to get counts and sums grouped by a key:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">1</span>] [<span class="hljs-symbol">:b</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:a</span> <span class="hljs-number">3</span>] [<span class="hljs-symbol">:a</span> <span class="hljs-number">4</span>] [<span class="hljs-symbol">:b</span> <span class="hljs-number">10</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">9</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v])
+    (<span class="hljs-name">+group-by</span> *k
+      (<span class="hljs-name">aggs/+count</span> <span class="hljs-symbol">:&gt;</span> *count)
+      (<span class="hljs-name">aggs/+sum</span> *v <span class="hljs-symbol">:&gt;</span> *sum))
+    (<span class="hljs-name">println</span> *k *count *sum)
+    ))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">:a 3 8
+:b 2 12
+:c 1 9</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can define custom aggregators using <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-accumulator">accumulator</a> or <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-combiner">combiner</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>accumulator</code> defines an aggregator like a <code>reduce</code> function, by specifying how to merge in one piece of data into a total value. Here’s an example of defining <code>+sum</code> as a custom accumulator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> +my-sum
+  (<span class="hljs-name">accumulator</span>
+    (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [v] (<span class="hljs-name">term</span> (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [v2] (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> v v2))))
+    <span class="hljs-symbol">:init-fn</span> (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] <span class="hljs-number">0</span>)
+    ))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The function provided to <code>accumulator</code> returns a path that performs the update. The function can be of any arity, and the arguments passed to the function are the ones passed to <code>+my-sum</code> at the dataflow callsite. <code>:init-fn</code> specifies what to initialize the aggregated value to when first aggregating to a non-existent location.</p>
+</div>
+<div class="paragraph">
+<p><code>combiner</code> defines an aggregator by merging two values of the same form into another value of the same form. Unlike <code>accumulator</code>, an aggregation defined with <code>combiner</code> can be executed in parallel. Rama will automatically use two-phase aggregation when all aggregators in a batch block are combiners, and this provides massive speedups in scenarios such as global aggregation.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of defining <code>+sum</code> as a custom combiner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">def</span></span> +my-combiner-sum
+  (<span class="hljs-name">combiner</span> + <span class="hljs-symbol">:init-fn</span> (<span class="hljs-name"><span class="hljs-builtin-name">fn</span></span> [] <span class="hljs-number">0</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case the combiner function is just Clojure’s <code>+</code> function, and the <code>:init-fn</code> is just like the <code>accumulator</code> version.</p>
+</div>
+<div class="paragraph">
+<p>Two built-in aggregators of note are <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.aggs.html#var-.2Btop-monotonic">+top-monotonic</a> and <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.aggs.html#var-.2Blimit">+limit</a>. These work a little bit differently than other aggregators and can are extremely useful in certain scenarios.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_batch_blocks"><a class="anchor" href="#_batch_blocks"></a>Batch blocks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>"Batch blocks" are another execution mode for dataflow that can be used in microbatch or query topologies. Whereas normal dataflow code executes completely imperatively, batch blocks are partially declarative and have the same capabilities as relational languages like SQL. They support inner joins, outer joins, and subbatches, albeit expressed differently. They also support two-phase aggregation, which among other things enables highly scalable global aggregation.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="intermediate-dataflow.html#_batch_blocks" class="page">this section</a> for an explanation of the semantics of batch blocks and their three phases of operation: pre-agg, agg, and post-agg.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at some examples of using batch blocks through the Clojure API. Here’s an example of performing a few aggregations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">ops/range&gt;</span> <span class="hljs-number">0</span> <span class="hljs-number">10</span> <span class="hljs-symbol">:&gt;</span> *v)
+    (<span class="hljs-name">aggs/+sum</span> *v <span class="hljs-symbol">:&gt;</span> *sum)
+    (<span class="hljs-name">aggs/+count</span> <span class="hljs-symbol">:&gt;</span> *count)
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *sum *count)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: 45 10</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s an example of an inner join between two datasets:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">1</span>] [<span class="hljs-symbol">:a</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:b</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">3</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v1])
+
+    (<span class="hljs-name">gen&gt;</span>)
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">10</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">4</span>] [<span class="hljs-symbol">:d</span> <span class="hljs-number">100</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v2])
+
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *k *v1 *v2)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: :a 1 10
+Res: :a 2 10
+Res: :c 3 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>gen&gt;</code> creates a new root branch in the batch block and is the same as <code>freshBatchSource</code> in the Java API. When the compiler comes to the <code>println</code> segment, it sees that <code>*v1</code> is not in scope on the current branch. So it searches for a possible join between all branches to bring all needed variables in scope.</p>
+</div>
+<div class="paragraph">
+<p>Likewise, you can do an outer join using <code>**</code> variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">1</span>] [<span class="hljs-symbol">:a</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:b</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">3</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v1])
+
+    (<span class="hljs-name">gen&gt;</span>)
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">10</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">4</span>] [<span class="hljs-symbol">:d</span> <span class="hljs-number">100</span>]] <span class="hljs-symbol">:&gt;</span> [*k **v2])
+
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *k *v1 **v2)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: :a 1 10
+Res: :a 2 10
+Res: :c 3 4
+Res: :b 2 nil</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s an example of combining a join with aggregation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">1</span>] [<span class="hljs-symbol">:a</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:b</span> <span class="hljs-number">2</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">3</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v1])
+
+    (<span class="hljs-name">gen&gt;</span>)
+    (<span class="hljs-name">ops/explode</span> [[<span class="hljs-symbol">:a</span> <span class="hljs-number">10</span>] [<span class="hljs-symbol">:c</span> <span class="hljs-number">4</span>] [<span class="hljs-symbol">:d</span> <span class="hljs-number">100</span>]] <span class="hljs-symbol">:&gt;</span> [*k *v2])
+
+    (<span class="hljs-name">+group-by</span> *k
+      (<span class="hljs-name">aggs/+sum</span> *v1 <span class="hljs-symbol">:&gt;</span> *sum1)
+      (<span class="hljs-name">aggs/+sum</span> *v2 <span class="hljs-symbol">:&gt;</span> *sum2))
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *k *sum1 *sum2)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: :a 3 20
+Res: :c 3 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Subbatches allow for multiple rounds of aggregation within one <code>&lt;&lt;batch</code> execution. Here’s an example of a batch block with a subatch:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defgenerator</span> counts-subbatch [source]
+  (<span class="hljs-name">batch&lt;-</span> [*k *count]
+    (<span class="hljs-name">source</span> <span class="hljs-symbol">:&gt;</span> *k)
+    (<span class="hljs-name">+group-by</span> *k
+      (<span class="hljs-name">aggs/+count</span> <span class="hljs-symbol">:&gt;</span> *count))))
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;batch</span>
+    (<span class="hljs-name">counts-subbatch</span> [<span class="hljs-symbol">:b</span> <span class="hljs-symbol">:a</span> <span class="hljs-symbol">:b</span> <span class="hljs-symbol">:b</span> <span class="hljs-symbol">:c</span> <span class="hljs-symbol">:a</span>] <span class="hljs-symbol">:&gt;</span> *k *count)
+    (<span class="hljs-name">aggs/+limit</span> [<span class="hljs-number">2</span>] *k *count <span class="hljs-symbol">:+options</span> {<span class="hljs-symbol">:sort</span> *count <span class="hljs-symbol">:reverse?</span> <span class="hljs-literal">true</span>})
+    (<span class="hljs-name">println</span> <span class="hljs-string">"Res:"</span> *k *count)
+    ))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints the top two elements in the source vector by frequency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Res: :b 3
+Res: :a 2</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-defgenerator">defgenerator</a> defines a Clojure function that should return a subbatch defined with <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-batch.3C-">batch←</a>. Subbatches have their own pre-agg, agg, and post-agg phases independent of whatever parent subbatch they may be read from. A function marked as a "generator" like this can be used as source in another batch block, and the vector of variables at the start of a call to <code>batch←</code> indicates what fields that subbatch emits.</p>
+</div>
+<div class="paragraph">
+<p>You can nest as many generators as you want in the definition of a batch block.</p>
+</div>
+<div class="paragraph">
+<p>What makes code like this useful versus doing the same thing with <code>sort</code>/<code>frequencies</code> is that the code can execute in a massively scalable way, with the global aggregation of the <code>+limit</code> happening via scalable two-phase aggregation.</p>
+</div>
+<div class="paragraph">
+<p>Note that <code>&lt;&lt;batch</code> blocks in a module need to specify partitioners. See <a href="intermediate-dataflow.html#_batch_blocks" class="page">the main section</a> on batch blocks for details.</p>
+</div>
+<div class="paragraph">
+<p>In a microbatch topology, you can also materialize the results of a batch block into a temporary PState for reuse later in the microbatch. The operation for this is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-materialize.3E">materialize&gt;</a>. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">source&gt;</span> *some-source <span class="hljs-symbol">:&gt;</span> %microbatch)
+(<span class="hljs-name">&lt;&lt;batch</span>
+  (%microbatch <span class="hljs-symbol">:&gt;</span> [*k *v])
+  (<span class="hljs-name">+group-by</span> *k
+    (<span class="hljs-name">+sum</span> *v <span class="hljs-symbol">:&gt;</span> *sum))
+  (<span class="hljs-name">materialize&gt;</span> *k *sum <span class="hljs-symbol">:&gt;</span> $$t))
+(<span class="hljs-name">anchor&gt;</span> &lt;s&gt;)
+(<span class="hljs-name">&lt;&lt;branch</span> &lt;s&gt;
+ (<span class="hljs-name">&lt;&lt;batch</span>
+   ($$t <span class="hljs-symbol">:&gt;</span> *k *sum)
+   (<span class="hljs-name">println</span> <span class="hljs-string">"Read materialized A: "</span> *k *sum)
+   ))
+(<span class="hljs-name">&lt;&lt;branch</span> &lt;s&gt;
+ (<span class="hljs-name">&lt;&lt;batch</span>
+   ($$t <span class="hljs-symbol">:&gt;</span> *k *sum)
+   (<span class="hljs-name">println</span> <span class="hljs-string">"Read materialized B: "</span> *k *sum)
+   ))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>materialize&gt;</code> emits a PState that can then be referenced in other batch blocks. It accepts an arbitrary number of fields, and then reading that PState later emits the same number of fields. A materialized PState is read by using it as an operation within a batch block – this acts as a generator that emits all materialized values across all partitions of the PState.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interacting_with_pstates"><a class="anchor" href="#_interacting_with_pstates"></a>Interacting with PStates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>PStates are read and written in topologies through first-class operations in the dataflow API. Interaction is done using <a href="https://github.com/redplanetlabs/specter">Specter</a> paths. Rama contains an internal fork of Specter in the namespace <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.path.html">com.rpl.rama.path</a> that adds powerful reactive capabilities to them. For the most part, the internal and open-source versions are API-equivalent.</p>
+</div>
+<div class="paragraph">
+<p>The basic operation for reading from a PState is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-local-select.3E">local-select&gt;</a>. This reads from the PState partition colocated on the executing event’s current task. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">local-select&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) ALL] $$p <span class="hljs-symbol">:&gt;</span> *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Unlike the open-source Specter function <a href="https://github.com/redplanetlabs/specter/wiki/List-of-Macros#select">select</a>, which returns a sequence of navigated values, <code>local-select&gt;</code> emits per navigated value. So if the path navigates to zero values, <code>local-select&gt;</code> won’t emit at all. You can get a sequence of results with <code>local-select&gt;</code> by wrapping the path in <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.path.html#var-subselect">subselect</a>, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">local-select&gt;</span> (<span class="hljs-name">subselect</span> (<span class="hljs-name">keypath</span> *user-id) ALL) $$p <span class="hljs-symbol">:&gt;</span> *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The second operation for reading from a PState is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-select.3E">select&gt;</a>. <code>select&gt;</code> is the same as <code>local-select&gt;</code> except partitions the computation before performing the read, similar to how <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-foreign-select">foreign-select</a> chooses a target partition. This means the task before and after the <code>select&gt;</code> call can be different. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">select&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) ALL] $$p <span class="hljs-symbol">:&gt;</span> *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If <code>$$p</code> is configured with the default key partitioner (hash-based), this is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(|hash$$ $$p *user-id)
+(<span class="hljs-name">local-select&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) ALL] $$p <span class="hljs-symbol">:&gt;</span> *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><a href="pstates.html#_yielding_select" class="page">Yielding selects</a> can be done with the <code>:allow-yield?</code> option, which breaks up the query into multiple events so as not to hold the task thread for an excessive amount of time. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">local-select&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) ALL MAP-VALS] $$p {<span class="hljs-symbol">:allow-yield?</span> <span class="hljs-literal">true</span>} <span class="hljs-symbol">:&gt;</span> *v)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The basic operation for writing to a PState is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-local-transform.3E">local-transform&gt;</a>. Transform paths for this operation are like transform paths for <a href="https://github.com/redplanetlabs/specter/wiki/List-of-Macros#multi-transform">multi-transform</a> in open-source Specter. Terminal navigators in the path must be either <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.path.html#var-term">term</a>, <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.path.html#var-termval">termval</a>, or <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-NONE.3E">NONE&gt;</a>. <code>NONE&gt;</code> is equivalent to <code>(termval NONE)</code> and exists because <code>NONE</code> cannot be used in Rama dataflow code.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a few examples of using <code>local-transform&gt;</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) (<span class="hljs-name">termval</span> *profile)] $$profiles)
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) NONE-ELEM (<span class="hljs-name">termval</span> *other-user-id)] $$followers)
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) MAP-VALS even? (<span class="hljs-name">term</span> inc)] $$p)
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) <span class="hljs-symbol">:some-field</span> NONE&gt;] $$p2)
+(<span class="hljs-name">&lt;&lt;ramafn</span> %add-val
+  [*v]
+  (<span class="hljs-symbol">:&gt;</span> (<span class="hljs-name"><span class="hljs-builtin-name">+</span></span> *v <span class="hljs-number">10</span>)))
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *user-id) <span class="hljs-symbol">:some-field</span> (<span class="hljs-name">term</span> %add-val)] $$p2)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>That last example shows how you would apply arbitrary logic to a navigated value with <code>&lt;&lt;ramafn</code>, potentially using information in the closure.</p>
+</div>
+<div class="paragraph">
+<p>Note that you should not store <code>&lt;&lt;ramafn</code> or <code>&lt;&lt;ramaop</code> anonymous operations directly in a depot or PState. The underlying class names for those operations are not stable between compilations, and you won’t be able to read those out of the depot or PState after a module update.</p>
+</div>
+<div class="paragraph">
+<p>Another operation for writing to a PState is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-local-clear.3E">local-clear&gt;</a>. This should only be used on a top-level value PState, like with a schema <code>Object</code>, and resets the PState to its configured initial value.</p>
+</div>
+<div class="paragraph">
+<p>Finally, you can also update PStates using aggregators. This specifies the write in terms of the shape of the data structure being written and automatically handles initializing non-existent locations. Under the hood, these callsites compile to <code>local-transform&gt;</code> calls. You can either use <a href="#_aggregators">aggregators</a> directly or through <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.2Bcompound">+compound</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrating_with_java_api"><a class="anchor" href="#_integrating_with_java_api"></a>Integrating with Java API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama’s dataflow API has a couple facilities for integrating with utilities written using Rama’s Java API, like in the <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> project.</p>
+</div>
+<div class="paragraph">
+<p>The first is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-java-macro.21">java-macro!</a>, and this splices in code generated via the Java API into a block of Clojure API code. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">java-macro!</span> (<span class="hljs-name">.genId</span> module-unique-id-pstate <span class="hljs-string">"*id"</span>))
+(<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *id) (<span class="hljs-name">termval</span> *profile)] $$profile)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The argument to <code>java-macro!</code> is a Clojure expression that resolves to a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html">Block</a>. The Java API specifies variables as strings, with the same naming format as Clojure API variables, so in this case the <code>java-macro!</code> call is binding a new variable called <code>*id</code> which is then in scope for subsequent dataflow code.</p>
+</div>
+<div class="paragraph">
+<p>The second facility available handles the inverse situation of providing the Java API a <code>Block</code> from Clojure API defined dataflow code. This facility is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-java-block.3C-">java-block←</a>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">java-macro!</span>
+  (<span class="hljs-name">.handleExpirations</span>
+    topology-scheduler
+    <span class="hljs-string">"*id"</span>
+    <span class="hljs-string">"*current-time-millis"</span>
+    (<span class="hljs-name">java-block&lt;-</span>
+      (<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *id) (<span class="hljs-name">term</span> inc)] $$p)
+      (<span class="hljs-name">local-transform&gt;</span> [(<span class="hljs-name">keypath</span> *id) (<span class="hljs-name">termval</span> <span class="hljs-literal">true</span>)] $$expirations)
+      )))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There’s no difference in dataflow code written with <code>java-block←</code> versus regular dataflow code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_yielding_thread"><a class="anchor" href="#_yielding_thread"></a>Yielding thread</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="intermediate-dataflow.html#_yieldifovertime" class="page">This section</a> discusses how Rama topology execution breaks down into discrete events and the importance of individual events not holding the thread for too long. The Clojure API provides the operation <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-yield-if-overtime">yield-if-overtime</a> analogous to the corresponding Java API method.</p>
+</div>
+<div class="paragraph">
+<p><code>yield-with-overtime</code> yields the thread if too much time has been taken by the current event (default 5ms). When computation resumes, it emits one time. Like other operations in Rama such as partitioners, you’re able to read the code linearly even though the execution of work is highly asynchronous.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrating_non_blocking_calls_to_external_services"><a class="anchor" href="#_integrating_non_blocking_calls_to_external_services"></a>Integrating non-blocking calls to external services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When writing a topology, it’s critical you never block a task thread by waiting on another thread or process. A task thread is used for depot appends, other topologies, PState queries, and internal system tasks. Blocking the task thread would block all those other functions from being carried out. So when you need to interact with a system running somewhere else, Rama’s dataflow API provides the operation <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-completable-future.3E">completable-future&gt;</a> to do so in an efficient, non-blocking way.</p>
+</div>
+<div class="paragraph">
+<p><code>completable-future&gt;</code> takes in a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> object, and when the <code>CompletableFuture</code> delivers emits its result to <code>:&gt;</code>. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">completable-future&gt;</span> (<span class="hljs-name">my-remote-database-call</span> *user-id) <span class="hljs-symbol">:&gt;</span> *res)
+(<span class="hljs-name">local-transform&gt;</span> [<span class="hljs-symbol">:user-id</span> (<span class="hljs-name">termval</span> *res)] $$p)</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>completable-future&gt;</code> efficiently ties the success of the asynchronous operation with the success of the topology. If the call succeeds, the value is delivered and the topology proceeds with whatever is after the <code>completable-future&gt;</code> call. If the call fails by delivering an exception to the <code>CompletableFuture</code>, the topology will detect that failure and retry if appropriate.</p>
+</div>
+<div class="paragraph">
+<p><code>completable-future&gt;</code> isn’t limited to usage with external systems. It’s a generic facility for integrating arbitrary asynchronous work within a topology.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_segmacros"><a class="anchor" href="#_segmacros"></a>Segmacros</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama dataflow has a macro system called "segmacros" for making dataflow operations that expand to one or more dataflow segments. You can use Clojure macros as well, but segmacros are generally a more natural mechanism since they parse input/output streams for you. Segmacros work very differently than Clojure macros.</p>
+</div>
+<div class="paragraph">
+<p>Segmacros return segments in the form of vector data. Let’s take a look at an example of using the most general-purpose segmacro operation, <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-defbasicblocksegmacro">defbasicblocksegmacro</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defbasicblocksegmacro</span> bunch-of-ops [field1 field2 field3 <span class="hljs-symbol">:&gt;</span> out-var]
+  [[+ field1 field2 <span class="hljs-symbol">:&gt;</span> '*v#]
+   [* '*v# field3 <span class="hljs-symbol">:&gt;</span> out-var]])
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">bunch-of-ops</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-symbol">:&gt;</span> *v)
+  (<span class="hljs-name">println</span> *v))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure"><span class="hljs-number">9</span></code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>bunch-of-ops</code> is of course better written as a function. This example is just demonstrating the basics of segmacros.</p>
+</div>
+<div class="paragraph">
+<p>The body of a segmacro is a normal Clojure function. <code>defbasicblocksegmacro</code> returns a sequence of segments as data. Variables are specified as explicit symbols, but otherwise the syntax of segments is the same. Any operations are used directly, as opposed to a Clojure macro which would use a symbolic reference to a function.</p>
+</div>
+<div class="paragraph">
+<p>The binding vector of <code>defbasicblocksegmacro</code> parses the inputs and output declarations of the callsite into the specified arguments. Inputs and output declarations on a segmacro don’t have any further meaning with a segmacro besides syntax. You could use a field in an output declaration as an input into one of the generated segments, for example.</p>
+</div>
+<div class="paragraph">
+<p>As you can see from this example, you can make generated variables local to the segmacro with the <code>#</code> suffix, just like you can with Clojure macros.</p>
+</div>
+<div class="paragraph">
+<p>The phases of Rama dataflow compilation are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clojure macro expansion</p>
+</li>
+<li>
+<p>Segmacro expansion</p>
+</li>
+<li>
+<p>Bytecode compilation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Segmacros have some helpful facilities for expressing segments dynamically. The first is <code>block&gt;</code>, which splices a sequence of segments into a larger sequence of segments. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> helper* []
+  [[identity '*t# <span class="hljs-symbol">:&gt;</span> '*t2#]])
+
+(<span class="hljs-name">defbasicblocksegmacro</span> my-segmacro [<span class="hljs-symbol">:&gt;</span> out-var]
+  [[+ <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> '*t#]
+   [block&gt; (<span class="hljs-name">helper*</span>)]
+   [* '*t2# <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> out-var]])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defbasicblocksegmacro</span> my-segmacro [<span class="hljs-symbol">:&gt;</span> out-var]
+  [[+ <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> '*t#]
+   [identity '*t# <span class="hljs-symbol">:&gt;</span> '*t2#]
+   [* '*t2# <span class="hljs-number">2</span> <span class="hljs-symbol">:&gt;</span> out-var]])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>block&gt;</code> is useful when generating segments dynamically.</p>
+</div>
+<div class="paragraph">
+<p>Another useful facility is <a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-seg.23">seg#</a>, which makes it easy to specify a nested segment. The <code>bunch-of-ops</code> example can be written with this as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defbasicblocksegmacro</span> bunch-of-ops [field1 field2 field3 <span class="hljs-symbol">:&gt;</span> out-var]
+  [[* (<span class="hljs-name">seg#</span> + field1 field2) field3 <span class="hljs-symbol">:&gt;</span> out-var]])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The return value of <code>defbasicblocksegmacro</code> is known to be a sequence of segments, so nothing needs to be done to distinguish segments from plain vector data for it. In a nested context, however, Rama has no way to tell that a plain vector is supposed to be a segment as opposed to an actual vector. <code>seg#</code> is used to distinguish the two cases.</p>
+</div>
+<div class="paragraph">
+<p>Another helpful facility is <code>:++fields</code> for providing a vector of fields to an input or output stream. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defbasicblocksegmacro</span> my-segmacro [<span class="hljs-symbol">:&gt;</span> out-var]
+  [[* <span class="hljs-symbol">:&lt;</span> <span class="hljs-symbol">:++fields</span> [<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>] <span class="hljs-symbol">:&gt;</span> <span class="hljs-symbol">:++fields</span> [out-var]]])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is useful when the fields are generated dynamically and is much easier than constructing the segment using operations like <code>concat</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_generating_vars"><a class="anchor" href="#_generating_vars"></a>Generating vars</h3>
+<div class="paragraph">
+<p>Rama has equivalents to <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gensym">gensym</a> for generating Rama variables. These include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-gen-anchorvar">gen-anchorvar</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-gen-anyvar">gen-anyvar</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-gen-anyvars">gen-anyvars</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-gen-fragvar">gen-fragvar</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-gen-pstatevar">gen-pstatevar</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_defbasicsegmacro"><a class="anchor" href="#_defbasicsegmacro"></a>defbasicsegmacro</h3>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-defbasicsegmacro">defbasicsegmacro</a> is just like <code>defbasicblocksegmacro</code> except only returns a single segment. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name">defbasicsegmacro</span> bunch-of-ops [field1 field2 field3 <span class="hljs-symbol">:&gt;</span> out-var]
+  [* (<span class="hljs-name">seg#</span> + field1 field2) field3 <span class="hljs-symbol">:&gt;</span> out-var])</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_defblock"><a class="anchor" href="#_defblock"></a>defblock</h3>
+<div class="paragraph">
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-defblock">defblock</a> provides a convenient way to write a segmacro that takes in a block of dataflow code as input. For example, here’s a simple segmacro that times the execution of a block of code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-clojure hljs" data-lang="clojure">(<span class="hljs-name"><span class="hljs-builtin-name">defn</span></span> current-time-millis [] (<span class="hljs-name">System/currentTimeMillis</span>))
+
+(<span class="hljs-name">defblock</span> &lt;&lt;time [label block]
+  [[current-time-millis <span class="hljs-symbol">:&gt;</span> '*t1]
+   [&lt;&lt;atomic [block&gt; block]]
+   [current-time-millis <span class="hljs-symbol">:&gt;</span> '*t2]
+   [println label <span class="hljs-string">"elapsed:"</span> (<span class="hljs-name">seg#</span> - '*t2 '*t1) <span class="hljs-string">"ms"</span>]
+   ])
+
+(<span class="hljs-name">?&lt;-</span>
+  (<span class="hljs-name">&lt;&lt;time</span> <span class="hljs-string">"myblock"</span>
+    (<span class="hljs-name">ops/range&gt;</span> <span class="hljs-number">0</span> <span class="hljs-number">10</span> <span class="hljs-symbol">:&gt;</span> *v)
+    (<span class="hljs-name">ops/range&gt;</span> <span class="hljs-number">0</span> *v <span class="hljs-symbol">:&gt;</span> *v2)
+    ))</code></pre>
+<div class="source-toolbox"><span class="source-lang">clojure</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>defblock</code> receives any number of input arguments, and the final argument will be a sequence of segments after the input arguments. <code>block&gt;</code> is useful for splicing that code in with the generated segments.</p>
+</div>
+<div class="paragraph">
+<p>The naming convention in Rama is to prefix the name of a <code>defblock</code> with <code>&lt;&lt;</code>. This indicates that the operation doesn’t make sense to be used in a nested segment and takes in a block of code as input.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notable_built_in_segmacros"><a class="anchor" href="#_notable_built_in_segmacros"></a>Notable built-in segmacros</h3>
+<div class="paragraph">
+<p>Here are some of the notable built-in segmacros provided by Rama that haven’t been mentioned yet, with descriptions on the linked API docs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Catomic">&lt;&lt;atomic</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Cbranch">&lt;&lt;branch</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Cswitch">&lt;&lt;switch</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-or.3E">or&gt;</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-and.3E">and&gt;</a></p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/clojuredoc/com.rpl.rama.html#var-.3C.3Csubsource">&lt;&lt;subsource</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, you learned the ins and outs of Rama’s dataflow API. You’ve seen that it’s a powerful language of its own based on the "call and emit" paradigm, which is a generalization of the "call and response" paradigm of Clojure and most other languages.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

@@ -1,0 +1,1208 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aggregators :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="aggregators.html">Aggregators</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_using_aggregators" class="">Using aggregators</a></li><li data-level="1"><a href="#_defining_aggregators" class="">Defining aggregators</a></li><li data-level="1"><a href="#_built_in_aggregators" class="">Built-in aggregators</a></li><li data-level="1"><a href="#_high_performance_two_phase_aggregation_with_combiners" class="">High-performance two-phase aggregation with combiners</a></li><li data-level="1"><a href="#_other_special_features_of_aggregators_inside_batched_contexts" class="">Other special features of aggregators inside batched contexts</a></li><li data-level="2"><a href="#_capturing_newly_updated_pstate_keys_and_values" class="">Capturing newly updated PState keys and values</a></li><li data-level="2"><a href="#_aggregating_batch_specific_values_or_temporary_pstates" class="is-active">Aggregating batch-specific values or temporary PStates</a></li><li data-level="1"><a href="#_special_aggregators">Special aggregators</a></li><li data-level="2"><a href="#_topmonotonic">topMonotonic</a></li><li data-level="2"><a href="#_limitagg">limitAgg</a></li><li data-level="1"><a href="#_group_by_operator">"Group by" operator</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Aggregators</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_using_aggregators">Using aggregators</a></li><li data-level="1"><a href="#_defining_aggregators">Defining aggregators</a></li><li data-level="1"><a href="#_built_in_aggregators">Built-in aggregators</a></li><li data-level="1"><a href="#_high_performance_two_phase_aggregation_with_combiners">High-performance two-phase aggregation with combiners</a></li><li data-level="1"><a href="#_other_special_features_of_aggregators_inside_batched_contexts">Other special features of aggregators inside batched contexts</a></li><li data-level="2"><a href="#_capturing_newly_updated_pstate_keys_and_values">Capturing newly updated PState keys and values</a></li><li data-level="2"><a href="#_aggregating_batch_specific_values_or_temporary_pstates">Aggregating batch-specific values or temporary PStates</a></li><li data-level="1"><a href="#_special_aggregators">Special aggregators</a></li><li data-level="2"><a href="#_topmonotonic">topMonotonic</a></li><li data-level="2"><a href="#_limitagg">limitAgg</a></li><li data-level="1"><a href="#_group_by_operator">"Group by" operator</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>While <a href="paths.html" class="page">paths</a> are the core and most flexible way to update PStates, aggregators provide an alternative way to update PStates at a higher level of abstraction. For some use cases aggregators enable you to express the same transformation in slightly less code, while for other use cases aggregators enable huge increases in performance and expressivity. On this page you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The two types of aggregators: accumulators and combiners</p>
+</li>
+<li>
+<p>How to define your own aggregators</p>
+</li>
+<li>
+<p>The built-in aggregators available</p>
+</li>
+<li>
+<p>How combiners automatically implement huge optimizations for global aggregation in batch blocks</p>
+</li>
+<li>
+<p>Other special features of aggregators for use in microbatch or query topologies</p>
+</li>
+<li>
+<p>Special aggregators <code>topMonotonic</code> and <code>limitAgg</code></p>
+</li>
+<li>
+<p>"Group by" operator</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_aggregators"><a class="anchor" href="#_using_aggregators"></a>Using aggregators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aggregators are used from Rama’s dataflow API with the methods <code>agg</code> and <code>compoundAgg</code>. The most common way to use aggregators is to update PStates, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AggregateModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.pstate(<span class="hljs-string">"$$count"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+    s.pstate(<span class="hljs-string">"$$countByKey"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+     .agg(<span class="hljs-string">"$$count"</span>, Agg.count())
+     .compoundAgg(<span class="hljs-string">"$$countByKey"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> AggregateModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState count = cluster.clusterPState(moduleName, <span class="hljs-string">"$$count"</span>);
+      PState countByKey = cluster.clusterPState(moduleName, <span class="hljs-string">"$$countByKey"</span>);
+
+      depot.append(<span class="hljs-string">"james cagney"</span>);
+      depot.append(<span class="hljs-string">"bette davis"</span>);
+      depot.append(<span class="hljs-string">"spencer tracy"</span>);
+      depot.append(<span class="hljs-string">"james cagney"</span>);
+
+      System.out.println(<span class="hljs-string">"Count: "</span> + count.selectOne(Path.stay()));
+      System.out.println(<span class="hljs-string">"Count by key: "</span> + countByKey.select(Path.all()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>main</code> method here runs some test data through the module using <code>InProcessCluster</code>. Runnning this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Count: 4
+Count by key: [["bette davis" 1] ["james cagney" 2] ["spencer tracy" 1]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>agg</code> is used to update the top-level value in a PState, and <code>compoundAgg</code> is used to aggregate subvalues inside the PState. In this case <code>agg</code> is used to aggregate a global count of all depot records, and <code>compoundAgg</code> is used to aggregate a map from key to count.</p>
+</div>
+<div class="paragraph">
+<p>All aggregators are inserted into dataflow code with the <code>Agg</code> class. All the built-in aggregators are static methods on that class.</p>
+</div>
+<div class="paragraph">
+<p><code>compoundAgg</code> is similar to <a href="paths.html" class="page">paths</a> in that you target subvalues to update. However, <code>compoundAgg</code> is much more limited than paths by only being able to specify the shape of aggregation in terms of maps and lists. Here’s an example of using both maps and lists in a <code>compoundAgg</code> call:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.compoundAgg(
+  <span class="hljs-string">"$$p"</span>,
+  CompoundAgg.map(
+    <span class="hljs-string">"*k"</span>,
+    CompoundAgg.list(
+      Agg.count(),
+      CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)))))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This would produce a PState looking something like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{<span class="hljs-attr">"a"</span>: [<span class="hljs-number">10</span>, {<span class="hljs-attr">"b"</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">"c"</span>: <span class="hljs-number">3</span>}],
+ <span class="hljs-attr">"d"</span>: [<span class="hljs-number">20</span>, {<span class="hljs-attr">"e"</span>: <span class="hljs-number">100</span>}]}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A nice thing about aggregators over paths is aggregators know how to initialize values that didn’t exist before. With paths, the update of <code>"$$countByKey"</code> in the above example would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.localTransform(<span class="hljs-string">"$$countByKey"</span>, Path.key(<span class="hljs-string">"*k"</span>).nullToVal(<span class="hljs-number">0</span>).term(Ops.PLUS, <span class="hljs-string">"*v"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is a little more verbose than the aggregator approach. Note that when updating a top-level value in a PState, like with the <code>"$$count"</code> aggregation, you’re responsible for initializing the PState value because the value exists from the start.</p>
+</div>
+<div class="paragraph">
+<p>You can see from these examples how aggregators offer a little more abstraction, but in these examples they only improve the code in minor ways. However, updating existing PStates isn’t the only way to make use of aggregators. Later on this page you’ll see the use cases where aggregators offer big advantages for performance and for the ability to express different kinds of computations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_defining_aggregators"><a class="anchor" href="#_defining_aggregators"></a>Defining aggregators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aggregators specify two things: how to update an existing value with new data, and what the start value should be. Accumulators and combiners are the two ways of defining aggregators. Combiners are less expressive than accumulators, but by sacrificing expressivity Rama can implement huge optimizations in certain situations.</p>
+</div>
+<div class="paragraph">
+<p>Like <code>RamaFunction</code> and <code>RamaOperation</code> types, accumulators are defined for a specific number of arguments. They have an <code>accumulate</code> method corresponding to their arity along with an <code>initVal</code> method. For example, here’s how you could define "count" as an accumulator if it wasn’t already a built-in aggregator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccumCount</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaAccumulatorAgg0</span>&lt;<span class="hljs-title">Integer</span>&gt; </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">accumulate</span><span class="hljs-params">(Integer currVal)</span> </span>{
+    <span class="hljs-keyword">return</span> currVal + <span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">initVal</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Now you can use this in dataflow code like: <code>.agg("$$p", Agg.accumulator(new AccumCount()))</code>. <code>accumulate</code> takes in the current aggregated value wherever it exists and return the new aggregated value.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an accumulator which aggregates based on two runtime arguments and a parameter provided in the constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccumCustom</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaAccumulatorAgg2</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Integer</span>, <span class="hljs-title">String</span>&gt; </span>{
+  <span class="hljs-keyword">private</span> String _divider;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AccumCustom</span><span class="hljs-params">(String divider)</span> </span>{
+    _divider = divider;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">accumulate</span><span class="hljs-params">(String currVal, Integer arg0, String arg1)</span> </span>{
+    <span class="hljs-keyword">return</span> currVal + _divider + arg0 + _divider + arg1;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">initVal</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This would be invoked with code like <code>.agg("$$p", Agg.accumulator(new AccumCustom("/"), "*v1", "*v2"))</code>.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look at defining combiners. Unlike accumulators, combiners always take in a single argument as input. The output of a combiner is always the same "kind" of value as the input. With a combiner Rama has the flexibility to break up the aggregation and parallelize it, by partially aggregating some data with the combiner and then aggregating those partial aggregates using the same combiner. With accumulators all aggregation must happen in sequence since the output of an accumulator can’t be fed back into the same accumulator.</p>
+</div>
+<div class="paragraph">
+<p>Here’s how to define a sum aggregator as a combiner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CombinerSum</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaCombinerAgg</span>&lt;<span class="hljs-title">Integer</span>&gt; </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">combine</span><span class="hljs-params">(Integer curr, Integer arg)</span> </span>{
+    <span class="hljs-keyword">return</span> curr + arg;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">zeroVal</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You could make use of this combiner with code like <code>.agg("$$p", Agg.combiner(new CombinerSum(), "*v"))</code>. The required methods to implement for a combiner are <code>combine</code>, which specifies how to combine two values together into an aggregated value, and <code>zeroVal</code>. The arguments to <code>combine</code> could be brand new data or could be partial aggregations. This depends on the context in which the combiner is used, as you’ll see later.</p>
+</div>
+<div class="paragraph">
+<p>There’s a third optional method on combiners called <code>isFlushRequired</code>. You should override this to return <code>true</code> if the combiner value can grow to unbounded size, such as if you were aggregating a map of data with ever-increasing elements. If this method returns <code>true</code>, Rama will limit the amount of partial aggregation it does and flush aggregated values sooner to avoid using too much memory. More on this later.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_built_in_aggregators"><a class="anchor" href="#_built_in_aggregators"></a>Built-in aggregators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All built-in aggregators are available as static methods on the <code>Agg</code> class. Like all dataflow code in Rama, the arguments can be static values or references to variables. Here are some of the notable built-in aggregators available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>count</strong>: Increments aggregated value by one for each input. Uses a combiner underneath the hood.</p>
+</li>
+<li>
+<p><strong>sum</strong>: Combiner that aggregates by adding the inputs together.</p>
+</li>
+<li>
+<p><strong>last</strong>: Aggregated value is the last input processed.</p>
+</li>
+<li>
+<p><strong>and</strong> / <strong>or</strong>: Combiners that aggregate boolean values.</p>
+</li>
+<li>
+<p><strong>min</strong> / <strong>max</strong>: Combiners that aggregate numbers.</p>
+</li>
+<li>
+<p><strong>voided</strong>: Aggregator version of <code>Path.termVoid()</code> that removes elements from collections.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a complete listing of built-in aggregators available, consult <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Agg.html">the Javadoc</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_high_performance_two_phase_aggregation_with_combiners"><a class="anchor" href="#_high_performance_two_phase_aggregation_with_combiners"></a>High-performance two-phase aggregation with combiners</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama will automatically implement a major optimization called "two-phase aggregation" for combiners in batch blocks. This applies to batch blocks in microbatching as well as query topologies (which are implicitly batch blocks). To best understand this section, read about batch blocks first in <a href="intermediate-dataflow.html" class="page">Intermediate dataflow programming</a>.</p>
+</div>
+<div class="paragraph">
+<p>Let’s compare and contrast two microbatch topologies to explore this. The first does not perform the optimization:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*mb"</span>)
+  .explodeMicrobatch(<span class="hljs-string">"*mb"</span>).out(<span class="hljs-string">"*v"</span>)
+  .globalPartition()
+  .agg(<span class="hljs-string">"$$p"</span>, Agg.sum(<span class="hljs-string">"*v"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The second does perform the optimization:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*mb"</span>)
+  .batchBlock(
+    Block.explodeMicrobatch(<span class="hljs-string">"*mb"</span>).out(<span class="hljs-string">"*v"</span>)
+         .globalPartition()
+         .agg(<span class="hljs-string">"$$p"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Both of these topologies are computing the exact same global sum of all depot records into the <code>"$$p"</code> PState. The first will perform very badly and not scale, while the second will perform extremely well and scale. The difference is two-phase aggregation.</p>
+</div>
+<div class="paragraph">
+<p>Regular dataflow code like the first example is non-declarative; Rama does what you instruct in the order in which you instruct it. So in the first example all data is read from the microbatch, piped through the <code>globalPartition()</code> partitioner to a single task, and then aggregated into <code>"$$p"</code>. All the data having to go to a single task – before any aggregation happens – makes the topology fundamentally non-scalable.</p>
+</div>
+<div class="paragraph">
+<p>But batched dataflow code is partially declarative –&nbsp;the splitting of the computation into pre-agg, agg, and post-agg phases gives Rama freedom to execute the code in different ways. When all aggregators in the agg phase are combiners, Rama executes the pre-agg and agg phases differently. In this example, instead of sending all data through the <code>globalPartition()</code> partitioner before aggregation, data is partially aggregated before going across the partitioner. So the code actually executes more like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.batchBlock(
+  Block.explodeMicrobatch(<span class="hljs-string">"*mb"</span>).out(<span class="hljs-string">"*v"</span>)
+       .agg(<span class="hljs-string">"$$__combinerBuffer"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*partialSum"</span>)
+       .globalPartition()
+       .agg(<span class="hljs-string">"$$p"</span>, Agg.sum(<span class="hljs-string">"*partialSum"</span>)))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>Note that this is not valid code</strong>. This is pseudocode to illustrate what Rama is doing under the hood. When Rama can implement two-phase aggregation, it uses a hidden in-memory PState called a "combiner buffer" to do as much partial aggregation as possible before sending data over the final partitioner. So in this case, suppose your microbatch consisted of 64,000 records spread evenly across 64 depot partitions. In the non-<code>batchBlock</code> implementation, all 64,000 records would travel across <code>.globalPartition()</code> to a single task. In the <code>batchBlock</code> implementation, each task would aggregate all 1,000 records into a single number and send only that single number across <code>globalPartition()</code>. So rather than the final task having to work through 64,000 records it only has to work through 64 records.</p>
+</div>
+<div class="paragraph">
+<p>Rama will always perform two-phase aggregation when all aggregators in the agg phase are combiners. If the final partitioner can go to multiple tasks (e.g. <code>.hashPartition</code>), then the partial aggregation is done per outgoing task. Two-phase aggregation is much less impactful when the final partitioner can go to multiple tasks, though it will still reduce network traffic somewhat. But for global aggregation, two-phase aggregation is a game-changing optimization. If you need global aggregation, always use combiners in batch blocks.</p>
+</div>
+<div class="paragraph">
+<p>Note that if any aggregator in the agg phase is an accumulator, Rama will not do two-phase aggregation. The existence of an accumulator makes it impossible.</p>
+</div>
+<div class="paragraph">
+<p>The last aspect of two-phase aggregation is how Rama determines when to flush partial aggregations across the final partitioner. When every combiner in the agg phase returns <code>false</code> for <code>isFlushRequired</code>, then the flush only happens at the completion of the pre-agg phase. If any combiner returns <code>true</code> for <code>isFlushRequired</code>, then the flush uses the <code>topology.combiner.limit</code> <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">dynamic option</a> for the flush frequency. For example, if that option is set to 100, then the combiner buffer on a task will be flushed every 100 aggregations. Note that it’s unlikely you’ll ever have to tweak that option –&nbsp;the default should be optimal for most scenarios. And since most combiners aggregate to a single value (e.g. <code>sum</code>, <code>max</code>, <code>min</code>, etc.), the option is usually not relevant.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_special_features_of_aggregators_inside_batched_contexts"><a class="anchor" href="#_other_special_features_of_aggregators_inside_batched_contexts"></a>Other special features of aggregators inside batched contexts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aggregators offer other important features in batch blocks within microbatch and query topologies. Let’s start by looking at the ability to concisely capture newly updated PState keys and values.</p>
+</div>
+<div class="sect2">
+<h3 id="_capturing_newly_updated_pstate_keys_and_values"><a class="anchor" href="#_capturing_newly_updated_pstate_keys_and_values"></a>Capturing newly updated PState keys and values</h3>
+<div class="paragraph">
+<p>Aggregators have a method <code>captureNewValInto</code> that lets you elegantly process PState entries that changed in a microbatch. A use case where this feature helps a lot is "top N" computations. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TopNWordsModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">wordCounts</span><span class="hljs-params">(String microbatchVar)</span> </span>{
+    Block b = Block.explodeMicrobatch(microbatchVar).out(<span class="hljs-string">"*word"</span>)
+                   .hashPartition(<span class="hljs-string">"*word"</span>)
+                   .compoundAgg(<span class="hljs-string">"$$wordCounts"</span>,
+                                CompoundAgg.map(
+                                  <span class="hljs-string">"*word"</span>,
+                                  Agg.count().captureNewValInto(<span class="hljs-string">"*count"</span>)));
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*word"</span>, <span class="hljs-string">"*count"</span>);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.IDENTITY));
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"topWords"</span>);
+    mb.pstate(<span class="hljs-string">"$$wordCounts"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    mb.pstate(<span class="hljs-string">"$$topWords"</span>, List<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>()</span>;
+
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*mb"</span>)
+      .batchBlock(
+        Block.subBatch(wordCounts(<span class="hljs-string">"*mb"</span>)).out(<span class="hljs-string">"*word"</span>, <span class="hljs-string">"*count"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Captured:"</span>, <span class="hljs-string">"*word"</span>, <span class="hljs-string">"*count"</span>)
+             .each(Ops.TUPLE, <span class="hljs-string">"*word"</span>, <span class="hljs-string">"*count"</span>).out(<span class="hljs-string">"*tuple"</span>)
+             .globalPartition()
+             .agg(<span class="hljs-string">"$$topWords"</span>,
+                  Agg.topMonotonic(<span class="hljs-number">3</span>, <span class="hljs-string">"*tuple"</span>)
+                     .idFunction(Ops.FIRST)
+                     .sortValFunction(Ops.LAST)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> TopNWordsModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState topWords = cluster.clusterPState(moduleName, <span class="hljs-string">"$$topWords"</span>);
+
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"orange"</span>);
+      depot.append(<span class="hljs-string">"strawberry"</span>);
+      depot.append(<span class="hljs-string">"papaya"</span>);
+      depot.append(<span class="hljs-string">"banana"</span>);
+      depot.append(<span class="hljs-string">"banana"</span>);
+      depot.append(<span class="hljs-string">"plum"</span>);
+      depot.append(<span class="hljs-string">"plum"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"plum"</span>);
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"topWords"</span>, <span class="hljs-number">12</span>);
+      System.out.println(<span class="hljs-string">"Top words: "</span> + topWords.selectOne(Path.stay()));
+
+      depot.append(<span class="hljs-string">"orange"</span>);
+      depot.append(<span class="hljs-string">"orange"</span>);
+      depot.append(<span class="hljs-string">"orange"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"orange"</span>);
+      depot.append(<span class="hljs-string">"orange"</span>);
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"topWords"</span>, <span class="hljs-number">18</span>);
+      System.out.println(<span class="hljs-string">"Top words: "</span> + topWords.selectOne(Path.stay()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Disregard the <code>topMonotonic</code> aggregator here for the moment – this aggregator will be explained fully later on this page. This module maintains two PStates: <code>"$$wordCounts"</code> to track the count of each word across all time, and <code>"$$topWords"</code> to store a list of the top three <code>[word, count]</code> tuples by word count.</p>
+</div>
+<div class="paragraph">
+<p>The key to this module is how the subbatch updates <code>"$$wordCounts"</code> for every word in the microbatch and emits the updated count for each word. How the subbatch updates <code>"$$wordCounts"</code> is the same as any other aggregation into a PState in a subbatch –&nbsp;the only new thing here is the <code>.captureNewValInto("*count")</code> code. What <code>captureNewValInto</code> does is introduce some logic into the post-agg phase of the subbatch. When that option is set on at least one aggregator, Rama keeps track of all keys that were updated during that microbatch. Then at the start of the post-agg phase, Rama fetches the updated values for every set of keys and binds the keys to the same vars as used in the pre-agg phase. So if in this example the keys "apple" and "banana" were updated in a microbatch to values 5 and 10, the post-agg phase would process the following data:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">"*word"</th>
+<th class="tableblock halign-left valign-top">"*count"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"apple"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"banana"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This module is coded to print all tuples emitted from the subbatch so you can see what’s happening in each microbatch. Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Captured: apple 4
+Captured: banana 2
+Captured: strawberry 1
+Captured: orange 1
+Captured: plum 3
+Captured: papaya 1
+Top words: [["apple" 4] ["plum" 3] ["banana" 2]]
+Captured: orange 4
+Captured: apple 5
+Captured: orange 6
+Top words: [["orange" 6] ["apple" 5] ["plum" 3]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, every word in each microbatch is emitted exactly one time from the subbatch even if there were multiple depot records for that word. <code>topMonotonic</code> takes care of merging in updated word counts into the list of top words.</p>
+</div>
+<div class="paragraph">
+<p><code>captureNewValInto</code> works with multiple keys and/or multiple aggregators. You can see this in the following example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CaptureNewValIntoModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+                                      <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">List</span>.<span class="hljs-title">class</span>)))</span>;
+
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*mb"</span>)
+      .batchBlock(
+        Block.explodeMicrobatch(<span class="hljs-string">"*mb"</span>).out(<span class="hljs-string">"*tuple"</span>)
+             .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>, <span class="hljs-string">"*v"</span>)
+             .hashPartition(<span class="hljs-string">"*k1"</span>)
+             .compoundAgg(
+               <span class="hljs-string">"$$p"</span>,
+               CompoundAgg.map(
+                 <span class="hljs-string">"*k1"</span>,
+                 CompoundAgg.map(
+                   <span class="hljs-string">"*k2"</span>,
+                   CompoundAgg.list(
+                     Agg.count().captureNewValInto(<span class="hljs-string">"*count"</span>),
+                     Agg.sum(<span class="hljs-string">"*v"</span>).captureNewValInto(<span class="hljs-string">"*sum"</span>)))))
+             .each(Ops.PRINTLN, <span class="hljs-string">"Captured:"</span>, <span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>, <span class="hljs-string">"*count"</span>, <span class="hljs-string">"*sum"</span>));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> CaptureNewValIntoModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      System.out.println(<span class="hljs-string">"Start"</span>);
+      cluster.pauseMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-number">3</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-number">2</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"d"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-number">9</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-number">4</span>));
+      cluster.resumeMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">4</span>);
+
+      System.out.println(<span class="hljs-string">"Second set of appends"</span>);
+      cluster.pauseMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      depot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-number">1</span>));
+      depot.append(Arrays.asList(<span class="hljs-string">"f"</span>, <span class="hljs-string">"g"</span>, <span class="hljs-number">11</span>));
+      cluster.resumeMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">6</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Start
+Captured: d b 1 9
+Captured: a c 1 2
+Captured: a b 2 7
+Second set of appends
+Captured: a b 3 8
+Captured: f g 1 11</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like the last example, this prints the results of the <code>captureNewValInto</code> calls from the post-agg phase of the batch block. The <code>main</code> method uses microbatch pause/resume to control exactly what data constitutes each microbatch. You can see each set of keys is printed once per microbatch with the updated values of both aggregators.</p>
+</div>
+<div class="paragraph">
+<p>There’s one restriction with <code>captureNewValInto</code> –&nbsp;there can be no branching into multiple maps in the <code>compoundAgg</code> call. For example, this is invalid and will throw an exception:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.compoundAgg(
+  <span class="hljs-string">"$$p"</span>,
+  CompoundAgg.map(
+    <span class="hljs-string">"*k"</span>,
+    CompoundAgg.list(
+      CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count().captureNewValInto(<span class="hljs-string">"*count"</span>)),
+      CompoundAgg.map(<span class="hljs-string">"*k3"</span>, Agg.sum(<span class="hljs-string">"*v"</span>).captureNewValInto(<span class="hljs-string">"*sum"</span>))
+      )))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Because the post-agg phase is on a single branch, there’s no way for Rama to provide both <code>["*k", "*k2", "*count"]</code> and <code>["*k", "*k3", "*sum"]</code>. So Rama disallows this.</p>
+</div>
+<div class="paragraph">
+<p>The same is true for using multiple keys in a single map, like this example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.compoundAgg(
+  <span class="hljs-string">"$$p"</span>,
+  CompoundAgg.map(
+    <span class="hljs-string">"*k"</span>,
+    CompoundAgg.map(
+      <span class="hljs-string">"*k2"</span>, Agg.count().captureNewValInto(<span class="hljs-string">"*count"</span>),
+      <span class="hljs-string">"*k3"</span>, Agg.sum(<span class="hljs-string">"*v"</span>).captureNewValInto(<span class="hljs-string">"*sum"</span>)
+      )))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Both these examples will error when trying to launch the module.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_aggregating_batch_specific_values_or_temporary_pstates"><a class="anchor" href="#_aggregating_batch_specific_values_or_temporary_pstates"></a>Aggregating batch-specific values or temporary PStates</h3>
+<div class="paragraph">
+<p>Aggregators have an entirely different mode of operation besides updating existing PStates. They can also be used to aggregate a value specific to a batch – which is how query topologies make use of aggregators – or can even aggregate a temporary PState specific to a microbatch.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of aggregating a batch-specific value in a <a href="query.html" class="page">query topology</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QueryAggValueModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*nums"</span>).out(<span class="hljs-string">"*res"</span>)
+              .each(Ops.EXPLODE, <span class="hljs-string">"*nums"</span>).out(<span class="hljs-string">"*num"</span>)
+              .originPartition()
+              .agg(Agg.sum(<span class="hljs-string">"*num"</span>)).out(<span class="hljs-string">"*res"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> QueryAggValueModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Long&gt; query = cluster.clusterQuery(moduleName, <span class="hljs-string">"q"</span>);
+
+      System.out.println(<span class="hljs-string">"Query 1: "</span> + query.invoke(Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)));
+      System.out.println(<span class="hljs-string">"Query 2: "</span> + query.invoke(Arrays.asList(<span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">25</span>)));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query 1: 6
+Query 2: 70</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Code like this is the bread and butter of coding query topologies. Rather than aggregate into an existing PState, this code uses <code>.agg</code> without a PState argument and uses <code>.out</code> to capture the aggregated value into a new variable. Aggregators can emit values rather than write into PStates in any batch context.</p>
+</div>
+<div class="paragraph">
+<p>In microbatch topologies you can also aggregate a temporary PState from an aggregator that you can use throughout the rest of processing. Since this sounds pretty abstract, let’s explore this through an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TmpPStateModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(<span class="hljs-string">"$$maxes"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    mb.pstate(<span class="hljs-string">"$$mins"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*mb"</span>)
+      .batchBlock(
+        Block.explodeMicrobatch(<span class="hljs-string">"*mb"</span>).out(<span class="hljs-string">"*k"</span>)
+             .hashPartition(<span class="hljs-string">"*k"</span>)
+             .compoundAgg(CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count())).out(<span class="hljs-string">"$$keyCounts"</span>))
+      .batchBlock(
+        Block.allPartition()
+             .localSelect(<span class="hljs-string">"$$keyCounts"</span>, Path.all()).out(<span class="hljs-string">"*tuple"</span>)
+             .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>)
+             .hashPartition(<span class="hljs-string">"*k"</span>)
+             .compoundAgg(<span class="hljs-string">"$$maxes"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.max(<span class="hljs-string">"*count"</span>))))
+      .batchBlock(
+        Block.allPartition()
+             .localSelect(<span class="hljs-string">"$$keyCounts"</span>, Path.all()).out(<span class="hljs-string">"*tuple"</span>)
+             .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>)
+             .hashPartition(<span class="hljs-string">"*k"</span>)
+             .compoundAgg(<span class="hljs-string">"$$mins"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.min(<span class="hljs-string">"*count"</span>))));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> TmpPStateModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState maxes = cluster.clusterPState(moduleName, <span class="hljs-string">"$$maxes"</span>);
+      PState mins = cluster.clusterPState(moduleName, <span class="hljs-string">"$$mins"</span>);
+
+      System.out.println(<span class="hljs-string">"Start"</span>);
+      cluster.pauseMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"plum"</span>);
+      cluster.resumeMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">3</span>);
+
+      System.out.println(<span class="hljs-string">"apple max: "</span> + maxes.selectOne(Path.key(<span class="hljs-string">"apple"</span>)));
+      System.out.println(<span class="hljs-string">"apple min: "</span> + mins.selectOne(Path.key(<span class="hljs-string">"apple"</span>)));
+
+      System.out.println(<span class="hljs-string">"Second set of appends"</span>);
+      cluster.pauseMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      depot.append(<span class="hljs-string">"apple"</span>);
+      depot.append(<span class="hljs-string">"banana"</span>);
+      depot.append(<span class="hljs-string">"banana"</span>);
+      cluster.resumeMicrobatchTopology(moduleName, <span class="hljs-string">"mb"</span>);
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">6</span>);
+
+      System.out.println(<span class="hljs-string">"apple max: "</span> + maxes.selectOne(Path.key(<span class="hljs-string">"apple"</span>)));
+      System.out.println(<span class="hljs-string">"apple min: "</span> + mins.selectOne(Path.key(<span class="hljs-string">"apple"</span>)));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Start
+apple max: 2
+apple min: 2
+Second set of appends
+apple max: 2
+apple min: 1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this module, the temporary PState <code>"$$keyCounts"</code> is produced from the first batch block. Notice that this PState is not declared anywhere. It will be a pure in-memory PState specific to a particular microbatch. This PState always starts off as empty at the beginning of a microbatch.</p>
+</div>
+<div class="paragraph">
+<p>Because batch blocks are coordinated, the second batch block doesn’t start until the first one completes, and the third batch block doesn’t start until the second one completes. The second and third batch blocks are able to re-use <code>"$$keyCounts"</code> to update <code>"$$min"</code> and <code>"$$max"</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>You may be noticing this example could be written as a single batch block with a subbatch to compute the key counts. You may also be noticing this example is completely contrived, that the concept of maintaining the mins and maxes of key counts at a microbatch level is strange. In these respects this isn’t a great example, but the example does demonstrate how you can re-use a computation from one batch block in other independent batch blocks. It’s a different way to share intermediate results during a microbatch without having to code everything in a single batch block with subbatches.</p>
+</div>
+<div class="paragraph">
+<p>A similar way to make temporary PStates without using aggregators is the <code>materialize</code> method, which is discussed further in <a href="intermediate-dataflow.html#_materialize" class="page">Intermediate dataflow programming</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_aggregators"><a class="anchor" href="#_special_aggregators"></a>Special aggregators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two special aggregators provided by Rama that implement higher-level behavior. The first is <code>topMonotonic</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_topmonotonic"><a class="anchor" href="#_topmonotonic"></a><code>topMonotonic</code></h3>
+<div class="paragraph">
+<p><code>topMonotonic</code> aggregates a list of the top N elements. Like any other aggregator, it can aggregate into an existing PState or output a value specific to a batch. <code>topMonotonic</code> uses a combiner under the hood, which means it’s extremely efficient at global aggregation in a batched context. Let’s look at the <code>topMonotonic</code> portion of the <code>TopNWordsModule</code> from an earlier example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.each(Ops.TUPLE, <span class="hljs-string">"*word"</span>, <span class="hljs-string">"*count"</span>).out(<span class="hljs-string">"*tuple"</span>)
+.globalPartition()
+.agg(<span class="hljs-string">"$$topWords"</span>,
+     Agg.topMonotonic(<span class="hljs-number">3</span>, <span class="hljs-string">"*tuple"</span>)
+        .idFunction(Ops.FIRST)
+        .sortValFunction(Ops.LAST))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The arguments to <code>topMonotonic</code> are the number of elements to rank and the variable representing the elements to aggregate. In this case the variable <code>"*tuple"</code> contains a word and its most recent count.</p>
+</div>
+<div class="paragraph">
+<p>The <code>idFunction</code> and <code>sortValFunction</code> declarations are critical. Suppose <code>"$$topWords"</code> currently contained the list <code>[["apple", 3], ["banana", 2], ["plum" 1]]</code>, and it was aggregating in the tuple <code>["apple", 6]</code>. The <code>idFunction</code> call lets it know that tuple corresponds to the same element as the first tuple in the list. The <code>sortValFunction</code> call lets it know to rank the tuples by the last element in the list (the count). Besides <code>idFunction</code> and <code>sortValFunction</code>, <code>topMonotonic</code> also accepts the option <code>ascending()</code> if you want to rank in ascending order instead of descending order.</p>
+</div>
+<div class="paragraph">
+<p>The "monotonic" portion of <code>topMonotonic</code> refers to the condition for which <code>topMonotonic</code> guarantees the computed list will reflect the true top elements. Because microbatch and stream topologies process data incrementally, <code>topMonotonic</code> can only provide this guarantee if sort values are strictly ascending (or if the <code>ascending()</code> option is set, descending). For example, suppose the current top words are <code>[["apple", 6], ["banana", 5], ["plum" 4]]</code>. Suppose the top word that’s not tracked in this list is "mango" with a count of 3. Now suppose the only update in the microbatch is the tuple <code>["apple", 1]</code>. The correct list of top words would be <code>[["banana", 5], ["plum" 4], ["mango", 3]]</code>, but there’s no way to compute that without iterating over the entire <code>"$$wordCounts"</code> PState. The word "apple" going from a count of six to a count of one is non-monotonic.</p>
+</div>
+<div class="paragraph">
+<p>Of course, if <code>topMonotonic</code> is being used in a non-incremental context like a query topology, it will always compute the correct list.</p>
+</div>
+<div class="paragraph">
+<p>Finally, <code>topMonotonic</code> works a little differently in non-batched contexts, whether non-batched microbatch topologies or stream topologies. To understand the difference, you need to understand some implementation details of <code>topMonotonic</code> that are important for performance.</p>
+</div>
+<div class="paragraph">
+<p><code>topMonotonic</code> does not maintain a perfectly sorted list of N elements with each element aggregated. To do so would require a linear scan of the list for every aggregation, which has time complexity of <code>O(N)</code>. <code>O(N)</code> for every element aggregated is too high of a cost to be practical. Instead, <code>topMonotonic</code> appends elements to its list with each aggregation. When the list reaches size <code>2 * N</code>, <code>topMonotonic</code> does a "sort and drop" of the list to produce a list the top N elements from the list of <code>2 * N</code> elements (some of which could be repeat IDs). This means <code>topMonotonic</code> incurs a cost of <code>O(N * log(N))</code> every N elements, which is an amortized cost of <code>O(log N)</code> per element. <code>O(log N)</code> is much more reasonable than <code>O(N)</code>.</p>
+</div>
+<div class="paragraph">
+<p>In a batch context, there’s a concrete end to the agg phase. In this context, when <code>topMonotonic</code> is a top-level aggregator (not used inside <code>CompoundAgg</code>) it will do a final "sort and drop" to ensure the final list is a properly sorted top N list. Outside of this context, <code>topMonotonic</code> can’t do this. So in compound aggregators, non-batched microbatch topologies, or stream topologies the "top N" list stored in a PState can be in the intermediate state. This puts the burden on the client querying the PState to perform the sort and drop to get the actual top N list (or the client can only look at the first N elements of the list to get a slightly out of date result).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_limitagg"><a class="anchor" href="#_limitagg"></a><code>limitAgg</code></h3>
+<div class="paragraph">
+<p>The second special aggregator provided by Rama is <code>limitAgg</code>. <code>limitAgg</code> works completely differently than other aggregators. <code>limitAgg</code> does not interact with PStates so is not part of the <code>Agg</code> class. Instead, <code>limitAgg</code> is part of the top-level dataflow API in <code>Block</code>. <code>limitAgg</code> can only be used in batched contexts.</p>
+</div>
+<div class="paragraph">
+<p><code>limitAgg</code> filters a batch of processing to a smaller batch. Let’s explore it with an example. This example is fairly contrived and is just intended to demonstrate what <code>limitAgg</code> does and what features it supports.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LimitModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">limitTuples</span><span class="hljs-params">(String tuplesVar)</span> </span>{
+    Block b = Block.each(Ops.EXPLODE, tuplesVar).out(<span class="hljs-string">"*tuple"</span>)
+                   .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>, <span class="hljs-string">"*v3"</span>)
+                   .globalPartition()
+                   .limitAgg(LimitAgg.create(<span class="hljs-number">3</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v3"</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v3"</span>);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*tuples"</span>).out(<span class="hljs-string">"*res"</span>)
+              .subBatch(limitTuples(<span class="hljs-string">"*tuples"</span>)).out(<span class="hljs-string">"*x"</span>, <span class="hljs-string">"*y"</span>)
+              .originPartition()
+              .agg(Agg.sum(<span class="hljs-string">"*x"</span>)).out(<span class="hljs-string">"*res1"</span>)
+              .agg(Agg.sum(<span class="hljs-string">"*y"</span>)).out(<span class="hljs-string">"*res2"</span>)
+              .each(Ops.TUPLE, <span class="hljs-string">"*res1"</span>, <span class="hljs-string">"*res2"</span>).out(<span class="hljs-string">"*res"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> LimitModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;List&gt; query = cluster.clusterQuery(moduleName, <span class="hljs-string">"q"</span>);
+
+      System.out.println(
+        <span class="hljs-string">"Query: "</span> +
+          query.invoke(
+            Arrays.asList(
+              Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>),
+              Arrays.asList(<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>),
+              Arrays.asList(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>),
+              Arrays.asList(<span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>))));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The query topology takes as input a list of tuples, where each tuple contains three numbers. The subbatch uses <code>limitAgg</code> to keep at most three tuples from the input. <code>limitAgg</code> takes as input the amount of data to keep followed by the vars to keep for the post-agg phase. In this case the pre-agg phase consists of vars <code>"*tuples"</code>, <code>"*tuple"</code>, <code>"*v1"</code>, <code>"*v2"</code>, and <code>"*v3"</code>. The <code>limitAgg</code> call keeps three sets of <code>"*v1"</code> and <code>"*v3"</code> for the post-agg phase.</p>
+</div>
+<div class="paragraph">
+<p>Under the hood <code>limitAgg</code> executes code in both the agg phase and post-agg phases. In the agg phase, it collects a list of tuples of data. In the post-agg phase, it explodes that list into the same var names that were used for those fields in the pre-agg phase. <code>limitAgg</code> uses a combiner for the agg phase, which means it’s efficient for global aggregation.</p>
+</div>
+<div class="paragraph">
+<p>Running this example prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query: [17 20]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>By default <code>limitAgg</code> keeps the first N elements it sees. When performing a <code>limitAgg</code> across data from many tasks (e.g. in a global aggregation), the elements it will select is undefined since it’s a race between which tasks forward their data first.</p>
+</div>
+<div class="paragraph">
+<p><code>limitAgg</code> supports three options: <code>sort</code>, <code>reverse</code>, and <code>indexVar</code>. Let’s modify the previous example to see these in action:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LimitWithOptionsModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">limitTuples</span><span class="hljs-params">(String tuplesVar)</span> </span>{
+    Block b = Block.each(Ops.EXPLODE, tuplesVar).out(<span class="hljs-string">"*tuple"</span>)
+                   .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>, <span class="hljs-string">"*v3"</span>)
+                   .globalPartition()
+                   .limitAgg(LimitAgg.create(<span class="hljs-number">3</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v3"</span>)
+                                     .sort(<span class="hljs-string">"*v2"</span>)
+                                     .reverse()
+                                     .indexVar(<span class="hljs-string">"*index"</span>))
+                   .each(Ops.PRINTLN, <span class="hljs-string">"Post agg data:"</span>, <span class="hljs-string">"*index"</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v3"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v3"</span>);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*tuples"</span>).out(<span class="hljs-string">"*res"</span>)
+              .subBatch(limitTuples(<span class="hljs-string">"*tuples"</span>)).out(<span class="hljs-string">"*x"</span>, <span class="hljs-string">"*y"</span>)
+              .originPartition()
+              .agg(Agg.sum(<span class="hljs-string">"*x"</span>)).out(<span class="hljs-string">"*res1"</span>)
+              .agg(Agg.sum(<span class="hljs-string">"*y"</span>)).out(<span class="hljs-string">"*res2"</span>)
+              .each(Ops.TUPLE, <span class="hljs-string">"*res1"</span>, <span class="hljs-string">"*res2"</span>).out(<span class="hljs-string">"*res"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> LimitWithOptionsModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;List&gt; query = cluster.clusterQuery(moduleName, <span class="hljs-string">"q"</span>);
+
+      System.out.println(
+        <span class="hljs-string">"Query: "</span> +
+          query.invoke(
+            Arrays.asList(
+              Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>),
+              Arrays.asList(<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>),
+              Arrays.asList(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>),
+              Arrays.asList(<span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>))));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Post agg data: 0 1000 1000
+Post agg data: 1 10 12
+Post agg data: 2 6 5
+Query: [1016 1017]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This code modifies the subbatch from the previous example to make use of all the <code>limitAgg</code> options. The <code>sort</code> option causes it to sort the incoming data by the given vars before selecting N elements. As you can see the sort vars (just <code>"*v2"</code> in this case) don’t have to be part of the set of fields being selected, and the sort vars won’t be bound in the post-agg phase. By default <code>sort</code> is ascending, so the <code>reverse</code> option changes that to a descending sort. Lastly, <code>indexVar</code> binds another variable for the post-agg phase. The first set of fields emitted will have index 0, the second will have index 1, and so on (the index var is unused in this example other than for the <code>Ops.PRINTLN</code> call).</p>
+</div>
+<div class="paragraph">
+<p><code>topMonotonic</code> and <code>limitAgg</code> perform similar functions in different ways. Whereas <code>topMonotonic</code> aggregates data into a list, <code>limitAgg</code> keeps data split into individual elements. In general, you’ll find <code>topMonotonic</code> to be more useful. In ETL contexts it can write into PStates whereas <code>limitAgg</code> does not interact with PStates. For "top N" use cases in query topologies, <code>topMonotonic</code> tends to be more useful since it aggregates a single list of results.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_group_by_operator"><a class="anchor" href="#_group_by_operator"></a>"Group by" operator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Like how SQL has a "GROUP BY" operation, Rama has a similar operation which works about the same. Let’s explore through an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GroupByModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">aggregatedTuples</span><span class="hljs-params">(String tuplesVar)</span> </span>{
+    Block b = Block.each(Ops.EXPLODE, tuplesVar).out(<span class="hljs-string">"*tuple"</span>)
+                   .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*val"</span>)
+                   .groupBy(<span class="hljs-string">"*k"</span>,
+                     Block.agg(Agg.count()).out(<span class="hljs-string">"*count"</span>)
+                          .agg(Agg.sum(<span class="hljs-string">"*val"</span>)).out(<span class="hljs-string">"*sum"</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>, <span class="hljs-string">"*sum"</span>);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*tuples"</span>).out(<span class="hljs-string">"*topTwoTuples"</span>)
+              .subBatch(aggregatedTuples(<span class="hljs-string">"*tuples"</span>)).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>, <span class="hljs-string">"*sum"</span>)
+              .each(Ops.TUPLE, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>, <span class="hljs-string">"*sum"</span>).out(<span class="hljs-string">"*tuple"</span>)
+              .originPartition()
+              .agg(Agg.topMonotonic(<span class="hljs-number">2</span>, <span class="hljs-string">"*tuple"</span>)
+                      .idFunction(Ops.FIRST)
+                      .sortValFunction(Ops.LAST)).out(<span class="hljs-string">"*topTwoTuples"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> GroupByModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Long&gt; query = cluster.clusterQuery(moduleName, <span class="hljs-string">"q"</span>);
+
+      System.out.println(
+        <span class="hljs-string">"Query: "</span> +
+        query.invoke(
+          Arrays.asList(
+            Arrays.asList(<span class="hljs-string">"apple"</span>, <span class="hljs-number">1</span>),
+            Arrays.asList(<span class="hljs-string">"banana"</span>, <span class="hljs-number">9</span>),
+            Arrays.asList(<span class="hljs-string">"apple"</span>, <span class="hljs-number">6</span>),
+            Arrays.asList(<span class="hljs-string">"plum"</span>, <span class="hljs-number">1</span>),
+            Arrays.asList(<span class="hljs-string">"plum"</span>, <span class="hljs-number">1</span>),
+            Arrays.asList(<span class="hljs-string">"plum"</span>, <span class="hljs-number">1</span>))));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query: [["banana" 1 9] ["apple" 2 7]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>groupBy</code> causes the aggregation phase to split by the keys you specify. As you can see in this example, for each word in the input tuples two aggregations are done. Then a <code>topMonotonic</code> is done to compute the two tuples with the highest sums.</p>
+</div>
+<div class="paragraph">
+<p><code>groupBy</code> automatically inserts a hash partitioning by the keys you specify. It also inserts some code into the post-agg phase to emit every key along with all aggregated values for that key. Any aggregator can be used inside <code>groupBy</code>, including <code>limitAgg</code>.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, <code>groupBy</code> allows you to group by up to six vars. So code like this is valid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.groupBy(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>, <span class="hljs-string">"*k3"</span>,
+  Block.agg(Agg.count()).out(<span class="hljs-string">"*count"</span>))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case the post-agg phase will emit the count for every combination of keys <code>"*k1"</code>, <code>"*k2"</code>, and <code>"*k3"</code> in the batch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On this page you learned the ins and outs of aggregators and all the different ways they can be used. For non-batched PState updates, they are sometimes more concise than paths but otherwise offer little benefit. In other contexts though, you saw how aggregators offer huge performance gains or powerful ways of expressing different kinds of computations.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned, not every built-in aggregator was covered on this page. Be sure to check out the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Agg.html">Javadoc for Agg</a> for the complete listing.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

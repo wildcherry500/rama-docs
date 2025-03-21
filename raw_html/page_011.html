@@ -1,0 +1,1853 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Intermediate dataflow programming :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="intermediate-dataflow.html">Intermediate dataflow programming</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_commonly_used_utilities_within_ramas_api" class="">Commonly used utilities within Rama’s API</a></li><li data-level="2"><a href="#_ops_explode_ops_tuple_and_ops_expand" class="">Ops.EXPLODE, Ops.TUPLE, and Ops.EXPAND</a></li><li data-level="2"><a href="#_subsource" class="">subSource</a></li><li data-level="2"><a href="#_yieldifovertime" class="">yieldIfOvertime</a></li><li data-level="2"><a href="#_keeptrue" class="">keepTrue</a></li><li data-level="2"><a href="#_atomicblock" class="">atomicBlock</a></li><li data-level="2"><a href="#_branch" class="">branch</a></li><li data-level="1"><a href="#_batch_blocks" class="">Batch blocks</a></li><li data-level="2"><a href="#_pre_agg_phase" class="">Pre-agg phase</a></li><li data-level="2"><a href="#_agg_phase" class="">Agg phase</a></li><li data-level="2"><a href="#_post_agg_phase" class="">Post-agg phase</a></li><li data-level="2"><a href="#_subbatches" class="is-active">Subbatches</a></li><li data-level="2"><a href="#_invalid_batch_blocks">Invalid batch blocks</a></li><li data-level="2"><a href="#_outer_joins">Outer joins</a></li><li data-level="2"><a href="#_materialize">materialize</a></li><li data-level="1"><a href="#_macros">Macros</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Intermediate dataflow programming</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_commonly_used_utilities_within_ramas_api">Commonly used utilities within Rama’s API</a></li><li data-level="2"><a href="#_ops_explode_ops_tuple_and_ops_expand">Ops.EXPLODE, Ops.TUPLE, and Ops.EXPAND</a></li><li data-level="2"><a href="#_subsource">subSource</a></li><li data-level="2"><a href="#_yieldifovertime">yieldIfOvertime</a></li><li data-level="2"><a href="#_keeptrue">keepTrue</a></li><li data-level="2"><a href="#_atomicblock">atomicBlock</a></li><li data-level="2"><a href="#_branch">branch</a></li><li data-level="1"><a href="#_batch_blocks">Batch blocks</a></li><li data-level="2"><a href="#_pre_agg_phase">Pre-agg phase</a></li><li data-level="2"><a href="#_agg_phase">Agg phase</a></li><li data-level="2"><a href="#_post_agg_phase">Post-agg phase</a></li><li data-level="2"><a href="#_subbatches">Subbatches</a></li><li data-level="2"><a href="#_invalid_batch_blocks">Invalid batch blocks</a></li><li data-level="2"><a href="#_outer_joins">Outer joins</a></li><li data-level="2"><a href="#_materialize">materialize</a></li><li data-level="1"><a href="#_macros">Macros</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>On the <a href="tutorial4.html" class="page">Dataflow programming</a> page, you learned the basics of using Rama’s dataflow API. On this page, we’ll delve deeper to look at the rest of the functionality available in Rama for dataflow programming. You’ll learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Commonly used utilities within Rama’s API</p>
+</li>
+<li>
+<p>Batch blocks, a declarative form of dataflow programming with similar semantics as relational languages (like SQL)</p>
+</li>
+<li>
+<p>Factoring reusable chunks of dataflow code with macros</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commonly_used_utilities_within_ramas_api"><a class="anchor" href="#_commonly_used_utilities_within_ramas_api"></a>Commonly used utilities within Rama’s API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s start by taking a look at some additional helpful utilities in Rama’s API. We’ll start by looking at some built-in operations from the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/Ops.html">Ops</a> class.</p>
+</div>
+<div class="sect2">
+<h3 id="_ops_explode_ops_tuple_and_ops_expand"><a class="anchor" href="#_ops_explode_ops_tuple_and_ops_expand"></a>Ops.EXPLODE, Ops.TUPLE, and Ops.EXPAND</h3>
+<div class="paragraph">
+<p>The first built-in operation to explore is <code>Ops.EXPLODE</code>. This operation simply emits every element of a list. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Elem:"</span>, <span class="hljs-string">"*v"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"X"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Elem: 1
+X
+Elem: 2
+X
+Elem: 3
+X
+Elem: 4
+X</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, the subsequent code is executed for each element emitted. <code>Ops.EXPLODE</code> is useful when you want to process the elements of a list individually.</p>
+</div>
+<div class="paragraph">
+<p>Another useful built-in operation is <code>Ops.TUPLE</code>, which packages together many elements into a single list. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+     .each(Ops.TUPLE, <span class="hljs-string">"*a"</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Tuple:"</span>, <span class="hljs-string">"*tuple"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Tuple: [1 3 2]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The inverse of <code>Ops.TUPLE</code> is <code>Ops.EXPAND</code>, which emits a var for every element of the provided list. Unlike <code>Ops.EXPLODE</code>, <code>Ops.EXPAND</code> binds every element of the list to a separate var. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List tuple = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+Block.each(Ops.EXPAND, tuple).out(<span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>, <span class="hljs-string">"*c"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Elements:"</span>, <span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>, <span class="hljs-string">"*c"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Elements: 1 2 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You should only use <code>Ops.EXPAND</code> when you know how many elements are in the input list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subsource"><a class="anchor" href="#_subsource"></a><code>subSource</code></h3>
+<div class="paragraph">
+<p>A common need in ETL code is dispatching dataflow logic based on the type of the data being processed. While you can accomplish this with <code>ifTrue</code> blocks, such code can become cumbersome after just a couple types. For example, here’s code that dispatches with <code>ifTrue</code> based on whether the data is an <code>Integer</code>, <code>String</code>, or <code>Long</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3L</span>);
+Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+     .ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.IS_INSTANCE_OF, Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>, "*<span class="hljs-title">v</span>"),
+       <span class="hljs-title">Block</span>.<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">Integer</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"),
+       <span class="hljs-title">Block</span>.<span class="hljs-title">ifTrue</span>(<span class="hljs-title">new</span> <span class="hljs-title">Expr</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">IS_INSTANCE_OF</span>, <span class="hljs-title">String</span>.<span class="hljs-title">class</span>, "*<span class="hljs-title">v</span>"),
+         <span class="hljs-title">Block</span>.<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">String</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"),
+         <span class="hljs-title">Block</span>.<span class="hljs-title">ifTrue</span>(<span class="hljs-title">new</span> <span class="hljs-title">Expr</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">IS_INSTANCE_OF</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>, "*<span class="hljs-title">v</span>"),
+           <span class="hljs-title">Block</span>.<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">Long</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"),
+           <span class="hljs-title">Block</span>.<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">Unexpected</span> <span class="hljs-title">type</span>"))))
+     .<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">After</span>")
+     .<span class="hljs-title">execute</span>()</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">String case a
+After
+Integer case 1
+After
+Long case 3
+After</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All the nesting makes this code hard to read. Here’s a cleaner way to do this with <code>subSource</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3L</span>);
+Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+     .subSource(<span class="hljs-string">"*v"</span>,
+       SubSource.create(Integer<span class="hljs-class">.<span class="hljs-keyword">class</span>)
+                .<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">Integer</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"),
+       <span class="hljs-title">SubSource</span>.<span class="hljs-title">create</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>)
+                .<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">String</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"),
+       <span class="hljs-title">SubSource</span>.<span class="hljs-title">create</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>)
+                .<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">Long</span> <span class="hljs-title">case</span>", "*<span class="hljs-title">v</span>"))
+     .<span class="hljs-title">each</span>(<span class="hljs-title">Ops</span>.<span class="hljs-title">PRINTLN</span>, "<span class="hljs-title">After</span>")
+     .<span class="hljs-title">execute</span>()</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The elimination of the nesting makes it much easier to understand what’s happening here. The first argument to <code>subSource</code> is the object on which to dispatch. Then follows a series of <code>SubSource</code> blocks, which are just like a normal <code>Block</code> except created with the type to match on. <code>subSource</code> will execute the first <code>SubSource</code> block that matches the type of the object, and the <code>SubSource</code> blocks are checked in order.</p>
+</div>
+<div class="paragraph">
+<p>As an example of how you would use <code>subSource</code> in a module, suppose you’re tracking "Follow" and "Unfollow" events to maintain a PState of followers for each user (like Twitter). You would keep these events on the same depot to preserve the order in which they happened. The ETL code that maintains that PState could use <code>subSource</code> to implement the differing behavior for how those events affect the PState. "Follow" events would add users into that PState, while "Unfollow" events would remove users.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_yieldifovertime"><a class="anchor" href="#_yieldifovertime"></a><code>yieldIfOvertime</code></h3>
+<div class="paragraph">
+<p>One of the most empowering things about using Rama is how it colocates computation and data together. While you’re executing code on a task thread, whether an ETL or a query topology, you own that thread. This colocation enables fantastic efficiency since PState operations are local to that thread. And since no other events can run on that thread, you can attain properties like atomicity where your ETL event updates multiple PStates on a task and it’s impossible for subsequent events to ever see those PStates out of sync.</p>
+</div>
+<div class="paragraph">
+<p>However, as the saying goes: with great power comes great responsibility. You have to make sure your events don’t block a task thread for an excessive amount of time. Doing so blocks other events from running on that task thread, like PState reads and other ETLs. For instance, suppose part of a microbatch topology you were writing needs to fetch all the elements of a large subindexed map as part of processing. Suppose those subindexed maps sometimes contain 2M elements, and suppose fetching all those elements takes 1000ms. While that microbatch topology event is running, it will delay all currently queued PState reads on that task by 1000ms. Colocated stream topologies will also be delayed by 1000ms. But microbatch topologies have loose latency requirements compared to PState reads or stream topologies, so it’s much better for your microbatch topology to break up large amounts of work like that into multiple small events. This allows those other events with tighter latency requirements to execute in between the microbatch topology events.</p>
+</div>
+<div class="paragraph">
+<p>This particular use case is easily handled by using the <a href="pstates.html#_yielding_select" class="page">.allowYield()</a> option on the select call, but to illustrate the general problem let’s see what it would look like to solve the problem without that facility by paginating through the PState manually. Rama provides a way to do this with <code>yieldIfOvertime</code>. Let’s first look at how to analyze what constitutes a single event when looking at dataflow code. This will help you understand where those <code>yieldIfOvertime</code> calls should go. For example, consider the following ETL that manually paginates through a PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-number">0</span>))
+ .hashPartition(<span class="hljs-string">"$$p2"</span>, <span class="hljs-string">"*k"</span>)
+ .loopWithVars(LoopVars.<span class="hljs-keyword">var</span>(<span class="hljs-string">"*i"</span>, <span class="hljs-number">0</span>),
+   Block.ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.LESS_THAN, <span class="hljs-string">"*i"</span>, <span class="hljs-number">100</span>),
+     Block.localSelect(<span class="hljs-string">"$$p2"</span>, Path.key(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*i"</span>).sortedMapRangeFrom(<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>)).out(<span class="hljs-string">"*m"</span>)
+          .emitLoop(<span class="hljs-string">"*m"</span>)
+          .continueLoop(<span class="hljs-keyword">new</span> Expr(Ops.INC, <span class="hljs-string">"*i"</span>))
+   )).out(<span class="hljs-string">"*m"</span>)
+ .shufflePartition()
+ .each(Ops.PRINTLN, <span class="hljs-string">"Event"</span>)
+ .hashPartition(<span class="hljs-string">"*k"</span>)
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).term(Ops.INC));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All code in between two "async boundaries" will run in the same event. An async boundary is where code moves to another task, or where a remote operation is performed. Async boundaries in Rama can be partitioners, <code>localSelect</code> calls on <a href="module-dependencies.html" class="page">mirror PStates</a>, or <a href="integrating.html" class="page">calls to external queues or databases</a>. Because these are the only async boundaries it’s easy to see what will constitute an event.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now analyze this particular code assuming that <code>"$$p2"</code> is a colocated PState and not a mirror. In this case the events are broken up by the partitioner calls like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+
+ <span class="hljs-comment">// event 1</span>
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-number">0</span>))
+
+ .hashPartition(<span class="hljs-string">"$$p2"</span>, <span class="hljs-string">"*k"</span>)
+
+ <span class="hljs-comment">// event 2</span>
+ .loopWithVars(LoopVars.<span class="hljs-keyword">var</span>(<span class="hljs-string">"*i"</span>, <span class="hljs-number">0</span>),
+   Block.ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.LESS_THAN, <span class="hljs-string">"*i"</span>, <span class="hljs-number">100</span>),
+     Block.localSelect(<span class="hljs-string">"$$p2"</span>, Path.key(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*i"</span>).sortedMapRangeFrom(<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>)).out(<span class="hljs-string">"*m"</span>)
+          .emitLoop(<span class="hljs-string">"*m"</span>)
+          .continueLoop(<span class="hljs-keyword">new</span> Expr(Ops.INC, <span class="hljs-string">"*i"</span>))
+   )).out(<span class="hljs-string">"*m"</span>)
+
+ .shufflePartition()
+
+ <span class="hljs-comment">// event 3</span>
+ .each(Ops.PRINTLN, <span class="hljs-string">"Event"</span>)
+
+ .hashPartition(<span class="hljs-string">"*k"</span>)
+
+ <span class="hljs-comment">// event 4</span>
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).term(Ops.INC));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If an event only has a handful of PState calls and some dataflow computation, you don’t need to worry about it. The only concerning event here is event 2, since it’s doing 100 non-trivial PState queries in a loop. As currently written, this event will not complete until the loop has completely finished.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, fixing this is extremely easy. You just need to add a call to <code>yieldIfOvertime</code> somewhere in the loop body, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>))</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-number">0</span>))
+ .hashPartition(<span class="hljs-string">"$$p2"</span>, <span class="hljs-string">"*k"</span>)
+ .loopWithVars(LoopVars.<span class="hljs-keyword">var</span>(<span class="hljs-string">"*i"</span>, <span class="hljs-number">0</span>),
+   Block.ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.LESS_THAN, <span class="hljs-string">"*i"</span>, <span class="hljs-number">100</span>),
+     Block.yieldIfOvertime()
+          .localSelect(<span class="hljs-string">"$$p2"</span>, Path.key(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*i"</span>).sortedMapRangeFrom(<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>)).out(<span class="hljs-string">"*m"</span>)
+          .emitLoop(<span class="hljs-string">"*m"</span>)
+          .continueLoop(<span class="hljs-keyword">new</span> Expr(Ops.INC, <span class="hljs-string">"*i"</span>))
+   )).out(<span class="hljs-string">"*m"</span>)
+ .shufflePartition()
+ .each(Ops.PRINTLN, <span class="hljs-string">"Event"</span>)
+ .hashPartition(<span class="hljs-string">"*k"</span>)
+ .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).term(Ops.INC));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>That’s it! Now whenever the loop body executes, it checks if the current event is using too much time. If so, it suspends the event to allow other events to execute. Later the event will resume and continue where it left off.</p>
+</div>
+<div class="paragraph">
+<p><code>yieldIfOvertime</code> bases what "too much time" means from the "worker.event.target.max.millis" <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">dynamic option</a> (default 5ms). So if the event has not used up that much time yet, <code>yieldIfOvertime</code> is a quick no-op operation.</p>
+</div>
+<div class="paragraph">
+<p>Let’s also analyze this code if <code>"$$p2"</code> is a mirror PState. In this case, the <code>localSelect</code> call inside the loop is an async boundary, so event 2 will naturally suspend through each iteration of the loop. So a <code>yieldIfOvertime</code> call would not be necessary in this case.</p>
+</div>
+<div class="paragraph">
+<p>Rama’s <a href="operating-rama.html#_activating_self_monitoring" class="page">self-monitoring</a> can tell you if any of your code is improperly blocking task threads for excessive amounts of time. The "Event latency" chart breaks down event times for every category of event flowing through Rama. Categories containing the <code>:topology-event</code> tag correspond to your ETL or query topology code, and the chart will tell you the distribution of latencies for those events.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_keeptrue"><a class="anchor" href="#_keeptrue"></a><code>keepTrue</code></h3>
+<div class="paragraph">
+<p><code>keepTrue</code> is a simple dataflow method that stops a branch of computation if the argument is false. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+     .keepTrue(<span class="hljs-keyword">new</span> Expr(Ops.IS_EVEN, <span class="hljs-string">"*v"</span>))
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 2
+Val: 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see, the branches of computation for the vals 1 and 3 are terminated by the <code>keepTrue</code> call. <code>keepTrue</code> is commonly used alongside an <code>Expr</code> call to encode a condition for the callsite. Of course, you can also give <code>keepTrue</code> a value directly. This example can also be written as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+     .each(Ops.IS_EVEN, <span class="hljs-string">"*v"</span>).out(<span class="hljs-string">"*cond"</span>)
+     .keepTrue(<span class="hljs-string">"*cond"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Val:"</span>, <span class="hljs-string">"*v"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This has identical semantics as the version using <code>Expr</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_atomicblock"><a class="anchor" href="#_atomicblock"></a><code>atomicBlock</code></h3>
+<div class="paragraph">
+<p>Sometimes you want to perform a dynamic amount of work and only continue with additional dataflow code once that work is complete. <code>atomicBlock</code> provides a way to do this for certain situations. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);
+Block.each((RamaFunction0) ArrayList::<span class="hljs-keyword">new</span>).out(<span class="hljs-string">"*list"</span>)
+     .atomicBlock(
+       Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+            .each(Ops.INC, <span class="hljs-string">"*v"</span>).out(<span class="hljs-string">"*v2"</span>)
+            .each((List l, Object o) -&gt; l.add(o), <span class="hljs-string">"*list"</span>, <span class="hljs-string">"*v2"</span>))
+     .each(Ops.PRINTLN, <span class="hljs-string">"List:"</span>, <span class="hljs-string">"*list"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">List: #object[java.util.ArrayList 0x6f37fb78 [2, 4, 5, 6]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This code creates a new list that increments every element from <code>data</code>. As you can see, the body of the <code>atomicBlock</code> runs one time for every element in <code>data</code>, and the code after the <code>atomicBlock</code> runs one time after all the work in the <code>atomicBlock</code> has completed. It doesn’t matter if the body reaches its end one time, zero times, or 100 times –&nbsp;the code after the <code>atomicBlock</code> will always run one time after completion of the body.</p>
+</div>
+<div class="paragraph">
+<p>A critical subtlety of <code>atomicBlock</code> is it only coordinates on the <strong>synchronous computation</strong> within the body. So once all the <strong>synchronous</strong> work has completed, the code after the <code>atomicBlock</code> executes. Let’s explore this through an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AtomicBlockModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*list"</span>)
+     .atomicBlock(
+       Block.each(Ops.EXPLODE, <span class="hljs-string">"*list"</span>).out(<span class="hljs-string">"*v"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"A:"</span>, <span class="hljs-string">"*v"</span>)
+            .shufflePartition()
+            .each(Ops.PRINTLN, <span class="hljs-string">"B:"</span>, <span class="hljs-string">"*v"</span>))
+     .each(Ops.PRINTLN, <span class="hljs-string">"After atomicBlock"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> AtomicBlockModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running the <code>main</code> method prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">A: 1
+A: 2
+A: 3
+A: 4
+After atomicBlock
+B: 1
+B: 2
+B: 3
+B: 4</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This output demonstrates exactly how <code>atomicBlock</code> interacts with async boundaries like partitioners. Here you can see the body of the <code>atomicBlock</code> explodes every element of the provided list. Each of those branches of computation reaches the partitioner, whereupon they become a new outgoing event. Since the body is considered complete once all synchronous work has completed, the body is done after every element has been exploded and their branches of computation have reached the partitioner. This is why you see "After atomicBlock" printed at that point.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, you can see that the code after the partitioner no longer has any relation to the <code>atomicBlock</code>. Those events get to run once the event running the <code>atomicBlock</code> completes, which is only after "After atomicBlock" is printed. Importantly, the code after the <code>atomicBlock</code> never executes again as it’s only executed synchronously with the synchronous completion of the <code>atomicBlock</code> body.</p>
+</div>
+<div class="paragraph">
+<p><code>atomicBlock</code> will have a similar interaction with <code>yieldIfOvertime</code>. If you have a large amount of work to complete on a task, you want to coordinate on the completion of that work, and you want to be careful not to block the task thread for too long, you’ll generally be better off using a loop plus <code>yieldIfOvertime</code> rather than an <code>atomicBlock</code> plus <code>yieldIfOvertime</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_branch"><a class="anchor" href="#_branch"></a><code>branch</code></h3>
+<div class="paragraph">
+<p>In <a href="tutorial4.html#_branching_dataflow_graphs" class="page">the tutorial</a>, you learned about using hooks and anchors to control a dataflow graph in a fine-grained way. You can use hooks and anchors to create branching dataflow graphs such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+     .anchor(<span class="hljs-string">"root"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Result 1:"</span>, <span class="hljs-keyword">new</span> Expr(Ops.DEC, <span class="hljs-string">"*a"</span>))
+     .hook(<span class="hljs-string">"root"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Result 2:"</span>, <span class="hljs-string">"*a"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>anchor</code> call labels the <code>.out("*a")</code> node as <code>"root"</code>, and the subsequent <code>each</code> calls each attach to that node. You can visualize this code like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/intermediate-dataflow/manual-branch.png" alt="manual branch">
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing specifies the order in which to run those branches, so Rama picks randomly. 50% of the time you run this code you’ll see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Result 1: 0
+Result 2: 1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>And the other 50% of the time you’ll see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Result 2: 1
+Result 1: 0</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>Block</code> provides a helper method <code>branch</code> for specifying code like this a little differently. The above code can be rewritten as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+     .anchor(<span class="hljs-string">"root"</span>)
+     .branch(<span class="hljs-string">"root"</span>,
+       Block.each(Ops.PRINTLN, <span class="hljs-string">"Result 1:"</span>, <span class="hljs-keyword">new</span> Expr(Ops.DEC, <span class="hljs-string">"*a"</span>)))
+     .each(Ops.PRINTLN, <span class="hljs-string">"Result 2:"</span>, <span class="hljs-string">"*a"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The dataflow graph for this code is identical to the previous example. <code>branch</code> attaches its subblock to the specified anchor, and subsequent code to the <code>branch</code> attaches to the code right before the <code>branch</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this case <code>branch</code> doesn’t really improve the code at all, but for larger branches the extra indentation from the subblock can help a lot with readability.</p>
+</div>
+<div class="paragraph">
+<p>Branching like this can make topology code faster by running things in parallel instead of serially. Let’s compare two implementations of the same stream topology to see the difference:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-comment">// implementation 1</span>
+StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+ .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>)
+ .hashPartition(<span class="hljs-string">"*k1"</span>)
+ .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, Agg.sum(<span class="hljs-number">1</span>)))
+ .hashPartition(<span class="hljs-string">"*k2"</span>)
+ .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.sum(-<span class="hljs-number">1</span>)));
+
+
+<span class="hljs-comment">// implementation 2</span>
+StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(Object<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+ .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k1"</span>, <span class="hljs-string">"*k2"</span>)
+ .anchor(<span class="hljs-string">"root"</span>)
+ .hashPartition(<span class="hljs-string">"*k1"</span>)
+ .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k1"</span>, Agg.sum(<span class="hljs-number">1</span>)))
+ .branch(<span class="hljs-string">"root"</span>,
+   Block.hashPartition(<span class="hljs-string">"*k2"</span>)
+        .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.sum(-<span class="hljs-number">1</span>))));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first implementation partitions to the task for <code>"*k1"</code>, then increments the value for <code>"*k1"</code> in the PState, then partitions to the task for <code>"*k2"</code>, and finally decrements the value for <code>"*k2"</code> in the PState.</p>
+</div>
+<div class="paragraph">
+<p>The second implementation, on the other hand, performs the partitions for <code>"*k1"</code> and <code>"*k2"</code> in the same event. The order in which those partitions happen is undefined, but it doesn’t matter what order Rama chooses since the subsequent code in each branch is independent. The updates for both <code>"*k1"</code> and <code>"*k2"</code> then happen in parallel, reducing the latency of this stream topology compared to the first example.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_batch_blocks"><a class="anchor" href="#_batch_blocks"></a>Batch blocks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Batch blocks are an execution mode for dataflow code that enables some powerful new functionality. Whereas the dataflow code you’ve seen so far is imperative, with operations executing in exactly the order you specify them, batch blocks are partially declarative. This means you specify your computation at a more abstract level and Rama decides how that translates to a sequence of operations. As you’re about to see, some of the functionality enabled includes inner joins, outer joins, two-phase aggregation, and the ability to coordinate around batches of computation. The semantics of batch blocks are similar to relational languages like SQL, though expressed differently.</p>
+</div>
+<div class="paragraph">
+<p>Microbatch topologies can use batch blocks through the <code>batchBlock</code> method, query topologies are implicitly batch blocks, and stream topologies do not support them.</p>
+</div>
+<div class="paragraph">
+<p>Batch blocks can also be used in blocks disconnected from modules, so let’s start with a simple example in that context to understand the basic concepts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+Block.each(Ops.PRINTLN, <span class="hljs-string">"Starting batch block"</span>)
+     .batchBlock(
+        Block.each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Data:"</span>, <span class="hljs-string">"*v"</span>)
+             .agg(Agg.count()).out(<span class="hljs-string">"*count"</span>)
+             .agg(Agg.sum(<span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*sum"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Count:"</span>, <span class="hljs-string">"*count"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Sum:"</span>, <span class="hljs-string">"*sum"</span>))
+     .each(Ops.PRINTLN, <span class="hljs-string">"Finished batch block"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Starting batch block
+Data: 1
+Data: 2
+Data: 3
+Data: 4
+Count: 4
+Sum: 10
+Finished batch block</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A batch block runs in three phases: the "pre-agg phase", the "agg phase", and the "post-agg phase". Each phase completes before the next phase executes.</p>
+</div>
+<div class="paragraph">
+<p>The code you write in a batch block is divided into phases based on where you put your aggregator calls. An aggregator call can either be a call to <code>agg</code> or <code>compoundAgg</code>. The code before the aggregator calls will be the pre-agg phase, and the code after will be the post-agg phase. So here’s how the phases break down in this example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List data = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+Block.each(Ops.PRINTLN, <span class="hljs-string">"Starting batch block"</span>)
+     .batchBlock(
+        Block
+             <span class="hljs-comment">// pre-agg phase</span>
+             .each(Ops.EXPLODE, data).out(<span class="hljs-string">"*v"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Data:"</span>, <span class="hljs-string">"*v"</span>)
+
+             <span class="hljs-comment">// agg phase</span>
+             .agg(Agg.count()).out(<span class="hljs-string">"*count"</span>)
+             .agg(Agg.sum(<span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*sum"</span>)
+
+             <span class="hljs-comment">// post-agg phase</span>
+             .each(Ops.PRINTLN, <span class="hljs-string">"Count:"</span>, <span class="hljs-string">"*count"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Sum:"</span>, <span class="hljs-string">"*sum"</span>))
+     .each(Ops.PRINTLN, <span class="hljs-string">"Finished batch block"</span>)
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>With the understanding that the phases complete in order, you can see why the lines in the output were printed in that order. The lines with "Data:" are part of the pre-agg phase, and the "Count:" and "Sum:" lines are part of the post-agg phase. You can also see how the code after a <code>batchBlock</code> only executes once the entire <code>batchBlock</code> completes.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now dive deeper into each phase.</p>
+</div>
+<div class="sect2">
+<h3 id="_pre_agg_phase"><a class="anchor" href="#_pre_agg_phase"></a>Pre-agg phase</h3>
+<div class="paragraph">
+<p>The pre-agg phase reads one or more "batch sources" and combines them together into a single branch of computation for the agg phase. Separate batch sources can be combined either through <em>merges</em> or <em>joins</em>.</p>
+</div>
+<div class="paragraph">
+<p>The example you’ve seen had just a single batch source. Let’s take a look at an example with two batch sources that are merged together:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List source1 = Arrays.asList(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+List source2 = Arrays.asList(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+Block.batchBlock(
+       Block.each(Ops.EXPLODE, source1).out(<span class="hljs-string">"*v"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Source 1:"</span>, <span class="hljs-string">"*v"</span>)
+            .anchor(<span class="hljs-string">"source1"</span>)
+
+            .freshBatchSource()
+            .each(Ops.EXPLODE, source2).out(<span class="hljs-string">"*v"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Source 2:"</span>, <span class="hljs-string">"*v"</span>)
+            .anchor(<span class="hljs-string">"source2"</span>)
+
+            .unify(<span class="hljs-string">"source1"</span>, <span class="hljs-string">"source2"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Merged:"</span>, <span class="hljs-string">"*v"</span>)
+
+            .agg(Agg.sum(<span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*sum"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Sum:"</span>, <span class="hljs-string">"*sum"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Source 2: 2
+Merged: 2
+Source 2: 3
+Merged: 3
+Source 1: 1
+Merged: 1
+Source 1: 2
+Merged: 2
+Sum: 8</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There are a few things to note here. First is the use of <code>freshBatchSource</code> to create a new batch source. The code subsequent to that call constitutes the implementation of the batch source. This batch block can be visualized like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/intermediate-dataflow/merge.png" alt="merge">
+</div>
+</div>
+<div class="paragraph">
+<p>Each batch source is a root of computation, and the order in which Rama executes the roots is arbitrary. The resulting computation is the same regardless of the order Rama chooses. In a module, the batch sources can be distributed and run in parallel.</p>
+</div>
+<div class="paragraph">
+<p>In this case, you can see Rama chooses "Source 2" to run first. You can also see how unification works exactly the same in a batch block as it does in regular dataflow code. Rather than compute the batch sources in their entirety before executing the merge, the data being emitted from the batch sources flows directly into the unification. The merge itself follows all the normal rules of unification, namely that the vars in scope after the <code>unify</code> call are the vars common to each branch.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s see what happens when you have multiple batch sources that aren’t merged together. In this case, Rama will try to join them together.</p>
+</div>
+<div class="paragraph">
+<p>Before diving into joins, note that joins are needed much less frequently in Rama as in relational database systems. This is because your indexes (PStates) are generally shaped much closer to what your queries need than you find in relational databases. With that said, the need does come up sometimes so Rama has full support for all kinds of joins. Let’s start exploring them with another example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List source1 = Arrays.asList(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>),
+                             Arrays.asList(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>),
+                             Arrays.asList(<span class="hljs-string">"c"</span>, <span class="hljs-number">3</span>));
+List source2 = Arrays.asList(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">10</span>),
+                             Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">11</span>),
+                             Arrays.asList(<span class="hljs-string">"c"</span>, <span class="hljs-number">30</span>));
+Block.batchBlock(
+  Block.each(Ops.EXPLODE, source1).out(<span class="hljs-string">"*tuple1"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple1"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v1"</span>)
+
+       .freshBatchSource()
+       .each(Ops.EXPLODE, source2).out(<span class="hljs-string">"*tuple2"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple2"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v2"</span>)
+
+       .each(Ops.PRINTLN, <span class="hljs-string">"Joined:"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Joined: a 1 10
+Joined: a 1 11
+Joined: c 3 30</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>First of all, this batch block has no aggregators in it. This means it has no agg phase or post-agg phase and is a pre-agg only batch block. Batch blocks of this form still have the same semantics for the pre-agg phase where all batch sources must combine through merges and joins into a single branch.</p>
+</div>
+<div class="paragraph">
+<p>This code does an inner join of the two batch sources on the key <code>"*k"</code>. Now you’re probably wondering –&nbsp;how is this code performing a join? Where’s the "INNER JOIN" statement? The answer is joins are implicit in Rama and based on the names of the vars in each batch source. This is a much more concise way to specify joins than having to explicitly specify joins and the join vars to use. Even though they’re implicit, Rama has the same expressive power with joins as SQL. It can do inner joins, outer joins, or any combination thereof.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a visualization of this example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/intermediate-dataflow/join.png" alt="join">
+</div>
+</div>
+<div class="paragraph">
+<p>To understand what’s happening here, let’s look at how Rama build the dataflow graph for a batch block. Like regular dataflow code, Rama builds the dataflow graph by attaching nodes in the order in which you write them. In this example, the first node is <code>.each(Ops.EXPLODE, source1)</code>, the second node is <code>.out("*tuple1")</code>, the third is <code>.each(Ops.EXPAND, "*tuple1")</code>, and so on. The first node always starts a new batch source, and subsequent nodes attempt to attach to the last attached node. A node can only be attached if the branch contains all vars needed by the new node.</p>
+</div>
+<div class="paragraph">
+<p><code>freshBatchSource</code> is a directive to force the next node to begin a new batch source at the root. <code>unify</code> works exactly as it does in regular dataflow code by merging the specified parent nodes into a single child node.</p>
+</div>
+<div class="paragraph">
+<p>Finally, there’s the logic of what happens when the next node is unable to attach to the last attached node. In this case Rama attempts to perform joins between batch sources until all the vars needed for the next node are available in one branch. Whether Rama can perform a join between two batch sources, and the kind of join that’s performed, depends on the names of the vars in each batch source. If there are many batch sources and many possible joins, Rama does a search for a join ordering that produces a valid pre-agg configuration.</p>
+</div>
+<div class="paragraph">
+<p>In this example, when Rama looks to attach <code>.each(Ops.PRINTLN, "Joined:", "*k", "*v1", "*v2")</code> it sees the current branch only has vars <code>"*tuple2"</code>, <code>"*k"</code>, and <code>"*v2"</code>. Since the branch is missing <code>"*v1"</code>, Rama tries to join the two batch sources together.</p>
+</div>
+<div class="paragraph">
+<p>Batch sources can join when they share at least one var in common. Then they will join on all the common vars. In this example, the only common var is <code>"*k"</code> so that’s the only var used for the join. Had this example used the var name <code>"*tuple"</code> instead of <code>"*tuple1"</code> and <code>"*tuple2"</code>, then the join would have been on both <code>"*k"</code> and <code>"*tuple"</code>. This would change the semantics of the join and the results of the example.</p>
+</div>
+<div class="paragraph">
+<p>We’ll come back to joins later on this page to explore outer joins. Before we get to that let’s continue exploring the phases of batch blocks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_agg_phase"><a class="anchor" href="#_agg_phase"></a>Agg phase</h3>
+<div class="paragraph">
+<p>At the end of the pre-agg phase is a single branch of computation which feeds into the declared aggregators. In <a href="tutorial1.html" class="page">the tutorial</a>, you saw how aggregators can be used to update existing PStates. They can do that within batch blocks as well, but they can also be used to compute aggregated values over the data emitted by the pre-agg phase.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of a module using a batch block to update an existing PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalSumModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(<span class="hljs-string">"$$sum"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>().<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Beginning microbatch"</span>)
+     .batchBlock(
+       Block.explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*v"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Pre-agg:"</span>, <span class="hljs-string">"*v"</span>)
+            .globalPartition()
+            .agg(<span class="hljs-string">"$$sum"</span>, Agg.sum(<span class="hljs-string">"*v"</span>))
+            .localSelect(<span class="hljs-string">"$$sum"</span>, Path.stay()).out(<span class="hljs-string">"*sum"</span>)
+            .each(Ops.PRINTLN, <span class="hljs-string">"Post-agg:"</span>, <span class="hljs-string">"*sum"</span>));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> GlobalSumModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState sum = cluster.clusterPState(moduleName, <span class="hljs-string">"$$sum"</span>);
+
+      depot.append(<span class="hljs-number">1</span>);
+      depot.append(<span class="hljs-number">2</span>);
+      depot.append(<span class="hljs-number">3</span>);
+      depot.append(<span class="hljs-number">4</span>);
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">4</span>);
+      System.out.println(<span class="hljs-string">"Sum: "</span> + sum.selectOne(Path.stay()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module uses <code>Ops.PRINTLN</code> calls to track what’s happening at the beginning of the microbatch, in the pre-agg phase, in the post-agg phase, and from a client after the microbatch completes. Because microbatches run continuously, even when there’s no data, the outputs can vary. Here’s one sample output from running <code>main</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Beginning microbatch
+Post-agg: 0
+Beginning microbatch
+Pre-agg: 4
+Pre-agg: 1
+Pre-agg: 3
+Pre-agg: 2
+Post-agg: 10
+Beginning microbatch
+Sum: 10
+Post-agg: 10</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first microbatch ran with no data, so the PState didn’t update and its value was 0 in the post-agg. The next microbatch picks up all the data appended in the <code>main</code> method. You can see the post-agg code runs once after the agg phase completes. Then another microbatch starts at that point at the same time the PState client queries for the sum.</p>
+</div>
+<div class="paragraph">
+<p>There’s a few interesting things to note here. First of all, this microbatch is doing a global aggregation across all data on all partitions of a depot. If Rama were sending all data to a single task before aggregating, this would not be scalable. However, "combiner aggregators" can execute much more efficiently in batch blocks by performing an optimization called "two-phase aggregation". In this case, partial sums are computed on each task before sending data across <code>globalPartition()</code> to a single task. You can read more about this on the <a href="aggregators.html" class="page">Aggregators page</a>.</p>
+</div>
+<div class="paragraph">
+<p>The second interesting note is how the post-agg phase runs. In this example it runs only on the task where the global PState <code>"$$sum"</code> lives. This is a consequence of the final partitioner of the pre-agg phase. If the final partitioner is <code>globalPartition</code>, the post-agg phase will only run on that one task. If the final partitioner is another partitioner like <code>hashPartition</code>, it will run on every task. Because a final partitioner is required for Rama to know where to run the post-agg phase, a final partitioner must be declared in the pre-agg phase if your batch block contains any aggregators (i.e. is not a pre-agg only batch block).</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example module whose post-agg phase runs on every task:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostAggAllTasksModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+      .each(Ops.PRINTLN, <span class="hljs-string">"Beginning microbatch"</span>)
+      .batchBlock(
+        Block.explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*k"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Pre-agg:"</span>, <span class="hljs-string">"*k"</span>)
+             .hashPartition(<span class="hljs-string">"*k"</span>)
+             .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()))
+             .localSelect(<span class="hljs-string">"$$p"</span>, Path.stay()).out(<span class="hljs-string">"*m"</span>)
+             .each(Ops.PRINTLN, <span class="hljs-string">"Post-agg:"</span>, <span class="hljs-string">"*m"</span>));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> PostAggAllTasksModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"b"</span>);
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"g"</span>);
+      depot.append(<span class="hljs-string">"d"</span>);
+      depot.append(<span class="hljs-string">"d"</span>);
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">6</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here’s a sample output from running this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Beginning microbatch
+Post-agg: {}
+Post-agg: {}
+Beginning microbatch
+Pre-agg: a
+Pre-agg: g
+Pre-agg: b
+Pre-agg: d
+Pre-agg: a
+Pre-agg: d
+Post-agg: {b 1, d 2}
+Post-agg: {a 2, g 1}
+Beginning microbatch
+Post-agg: {b 1, d 2}
+Post-agg: {a 2, g 1}</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module is launched with two tasks, and as you can see every post-agg phase prints two lines corresponding to the value of the PState partition for <code>"$$p"</code>. Because a <code>hashPartition</code> call can go to any task, the post-agg phase will run on every task. Importantly, it doesn’t matter which tasks actually did aggregation during the agg phase –&nbsp;the post-agg phase will run on every task regardless.</p>
+</div>
+<div class="paragraph">
+<p>The agg phase can have as many aggregators as you wish, and each aggregator will consume all the input from the pre-agg phase. Your aggregator calls can be a mix of <code>agg</code> and <code>compoundAgg</code> calls. Rama also has a <code>groupBy</code> feature similar to "GROUP BY" from SQL. This allows you to divide up aggregation according to one or more keys. You can read more about this on the <a href="aggregators.html" class="page">Aggregators page</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_post_agg_phase"><a class="anchor" href="#_post_agg_phase"></a>Post-agg phase</h3>
+<div class="paragraph">
+<p>The post-agg phase has mostly been covered already. To summarize, the post-agg phase runs after the agg phase completes on tasks according to the final partitioner of the pre-agg phase. The variables in scope when the post-agg phase begins are any vars emitted by aggregators during the agg phase. Nothing from the pre-agg phase is in scope because all that data has been aggregated.</p>
+</div>
+<div class="paragraph">
+<p>Partitioners are not allowed in the post-agg phase. The post-agg phase is for post-processing of aggregated data. This is frequently done in subbatches, as will be explained in the next section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subbatches"><a class="anchor" href="#_subbatches"></a>Subbatches</h3>
+<div class="paragraph">
+<p>Subbatches in Rama provide the capability to do more than one round of aggregation for a batch block. With subbatches you can aggregate your aggregates. They’re analagous to subqueries in SQL and allow batch blocks to consume the results of other batch blocks. Subbatches greatly increase the expressive power of batch blocks.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a simple example of a subbatch in action:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> SubBatch <span class="hljs-title">wordCount</span><span class="hljs-params">(List source)</span> </span>{
+  Block b = Block.each(Ops.EXPLODE, source).out(<span class="hljs-string">"*k"</span>)
+                 .compoundAgg(CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count())).out(<span class="hljs-string">"*m"</span>)
+                 .each(Ops.EXPLODE_MAP, <span class="hljs-string">"*m"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">simpleSubbatchExample</span><span class="hljs-params">()</span> </span>{
+  List source = Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span> ,<span class="hljs-string">"c"</span>, <span class="hljs-string">"a"</span>);
+  Block.batchBlock(
+    Block.subBatch(wordCount(source)).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*c"</span>)
+         .each(Ops.PRINTLN, <span class="hljs-string">"From subbatch:"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*c"</span>)
+         .agg(Agg.max(<span class="hljs-string">"*c"</span>)).out(<span class="hljs-string">"*maxCount"</span>)
+         .each(Ops.PRINTLN, <span class="hljs-string">"Max count:"</span>, <span class="hljs-string">"*maxCount"</span>))
+       .execute();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>From a list of words, this code computes the count of each word and then finds the highest count. The key line is <code>Block.subBatch(wordCount(source)).out("*k", "*c")</code>. This starts off that batch source with whatever is emitted from the output of the given subbatch. A subbatch is its own batch block with its own pre-agg, agg, and post-agg phases (pre-agg only subbatches are allowed too).</p>
+</div>
+<div class="paragraph">
+<p>The subbatch code computes the word counts (you could also do this with <a href="aggregators.html#_group_by_operator" class="page">groupBy</a>). <code>EXPLODE_MAP</code> works like <code>EXPLODE</code> except operates over a map and emits the keys and the values. The expression <code>new SubBatch(b, "*k", "*count")</code> specifies the subbatch is implemented with the given <code>Block</code> and emits the given vars. The given vars must be in scope at the end of the provided <code>Block</code>.</p>
+</div>
+<div class="paragraph">
+<p>This simple API unlocks a lot of power for batch blocks. Subbatches compose infinitely –&nbsp;batch blocks can consume many subbatches, subbatches can build off of other subbatches, and so on. You can even compute subbatches dynamically.</p>
+</div>
+<div class="paragraph">
+<p>Subbatches work exactly the same in modules and follow all the same rules of regular batch blocks, like needing a final partitioner if it has aggregators. Let’s take a look at using a subbatch in a module.</p>
+</div>
+<div class="paragraph">
+<p>The following example is based off of the "who to follow" implementation <a href="downloads-maven-local-dev.html" class="page">in our Twitter-scale Mastodon implementation</a>. "Who to follow" provides personalized recommendations based on who’s most followed by a user’s current follows. It continuously iterates through all users on the platform and recomputes each user’s recommendations every so often (frequency depends on number of users and number of resources allocated to the module). Since "who to follow" isn’t useful for new users who don’t follow many users yet, and since you want new users to get recommendations as soon as possible, part of the implementation is detecting when a user has broken certain thresholds of follow counts in order to recompute their recommendations immediately. This example implements that threshold detection.</p>
+</div>
+<div class="paragraph">
+<p>The module consumes a depot of "follow events", represented as a tuple of two user ID strings. When a user ID is detected to pass certain numbers of follows, it will be written to the <code>"$$forceRecomputeUsers"</code> PState. The part that recomputes recommendations consumes that PState.</p>
+</div>
+<div class="paragraph">
+<p>To keep the example simple, we’ll show just the threshold detection part. Check out the <a href="downloads-maven-local-dev.html" class="page">Mastodon code</a> to see the full "who to follow" implementation. Here’s the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FollowThresholdModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">followCounts</span><span class="hljs-params">(String microbatchVar)</span> </span>{
+    Block b = Block.explodeMicrobatch(microbatchVar).out(<span class="hljs-string">"*follow"</span>)
+                   .each(Ops.EXPAND, <span class="hljs-string">"*follow"</span>).out(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*followedUserId"</span>)
+                   .groupBy(<span class="hljs-string">"*userId"</span>, Block.agg(Agg.count()).out(<span class="hljs-string">"*count"</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*count"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">brokeThreshold</span><span class="hljs-params">(<span class="hljs-keyword">int</span> currCount, <span class="hljs-keyword">int</span> newCount)</span> </span>{
+    <span class="hljs-keyword">return</span> currCount &lt; <span class="hljs-number">2</span> &amp;&amp; newCount &gt;= <span class="hljs-number">2</span> || currCount &lt; <span class="hljs-number">6</span> &amp;&amp; newCount &gt;= <span class="hljs-number">6</span>;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*followsDepot"</span>, Depot.random());
+
+    MicrobatchTopology threshold = topologies.microbatch(<span class="hljs-string">"threshold"</span>);
+    threshold.pstate(<span class="hljs-string">"$$followCounts"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;
+    threshold.pstate(<span class="hljs-string">"$$forceRecomputeUsers"</span>, Set<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+
+    threshold.source(<span class="hljs-string">"*followsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+             .batchBlock(
+               Block.subBatch(followCounts(<span class="hljs-string">"*microbatch"</span>)).out(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*count"</span>)
+                    .localSelect(<span class="hljs-string">"$$followCounts"</span>, Path.key(<span class="hljs-string">"*userId"</span>).nullToVal(<span class="hljs-number">0</span>)).out(<span class="hljs-string">"*currCount"</span>)
+                    .each(Ops.PLUS, <span class="hljs-string">"*currCount"</span>, <span class="hljs-string">"*count"</span>).out(<span class="hljs-string">"*newCount"</span>)
+                    .each(Ops.PRINTLN, <span class="hljs-string">"User"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*currCount"</span>, <span class="hljs-string">"-&gt;"</span>, <span class="hljs-string">"*newCount"</span>)
+                    .ifTrue(<span class="hljs-keyword">new</span> Expr(FollowThresholdModule::brokeThreshold, <span class="hljs-string">"*currCount"</span>, <span class="hljs-string">"*newCount"</span>),
+                      Block.each(Ops.PRINTLN, <span class="hljs-string">"User broke threshold:"</span>, <span class="hljs-string">"*userId"</span>)
+                           .localTransform(<span class="hljs-string">"$$forceRecomputeUsers"</span>, Path.voidSetElem().termVal(<span class="hljs-string">"*userId"</span>)))
+                    .localTransform(<span class="hljs-string">"$$followCounts"</span>, Path.key(<span class="hljs-string">"*userId"</span>).termVal(<span class="hljs-string">"*newCount"</span>)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> FollowThresholdModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot followsDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*followsDepot"</span>);
+
+      System.out.println(<span class="hljs-string">"Round 1"</span>);
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"bettedavis"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"vivienleigh"</span>, <span class="hljs-string">"dorisday"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"dorisday"</span>, <span class="hljs-string">"bettedavis"</span>));
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"threshold"</span>, <span class="hljs-number">3</span>);
+
+      System.out.println(<span class="hljs-string">"Round 2"</span>);
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"marlonbrando"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"jacklemmon"</span>));
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"threshold"</span>, <span class="hljs-number">5</span>);
+
+      System.out.println(<span class="hljs-string">"Round 3"</span>);
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"henryfonda"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"lucilleball"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"vivienleigh"</span>, <span class="hljs-string">"lucilleball"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"gracekelly"</span>));
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"threshold"</span>, <span class="hljs-number">9</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>For each user with new follows in the microbatch, the topology computes the user’s number of follows before and after updating the <code>"$$followCounts"</code> PState. The usage of a <code>batchBlock</code> enables the topology to only read the <code>"$$followCounts"</code> PState once per user. Even if a user has 50 follows in the microbatch, <code>"$$followCounts"</code> will be queried once for that user.</p>
+</div>
+<div class="paragraph">
+<p>The subbatch computes the number of follow events for each user in the microbatch. It uses <a href="aggregators.html#_group_by_operator" class="page">groupBy</a> which implicitly inserts a <code>hashPartition</code> call. This <code>hashPartition</code> will be the final partitioner for the subbatch.</p>
+</div>
+<div class="paragraph">
+<p>The top-level batch block uses the information from the subbatch to query <code>"$$followCounts"</code> for the current follow count, check whether a threshold was passed, and update <code>"$$followCounts"</code>. When a threshold is passed, the user ID is added to <code>"$$forceRecomputeUsers"</code>. Very low thresholds are used in this module for demonstration purposes –&nbsp;in a real deployment higher threshold values like 10 and 100 would make more sense.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Ops.PRINTLN</code> calls in the module show the changes in user follow counts and when a user is detected to have broken a threshold. Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Round 1
+User vivienleigh 0 -&gt; 1
+User jamescagney 0 -&gt; 1
+User dorisday 0 -&gt; 1
+Round 2
+User jamescagney 1 -&gt; 3
+User broke threshold: jamescagney
+Round 3
+User vivienleigh 1 -&gt; 2
+User jamescagney 3 -&gt; 6
+User broke threshold: jamescagney
+User broke threshold: vivienleigh</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can see "jamescagney" passes both thresholds while "vivienleigh" passes only the first. The rest of the "who to follow" implementation in Mastodon uses subbatches in other interesting ways, so be sure to check out <a href="downloads-maven-local-dev.html" class="page">the implementation</a> to learn more.</p>
+</div>
+<div class="paragraph">
+<p>For another example of using a subbatch within a module, check out <a href="aggregators.html##_capturing_newly_updated_pstate_keys_and_values" class="page">this example from Aggregators</a> which uses a microbatch topology to maintain a PState of top words based on word count.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_invalid_batch_blocks"><a class="anchor" href="#_invalid_batch_blocks"></a>Invalid batch blocks</h3>
+<div class="paragraph">
+<p>Let’s look a little bit more at what constitutes a valid batch block, particularly in the pre-agg phase. We’ll look at one additional rule that hasn’t been covered yet, and we’ll look at some common mistakes that can cause a pre-agg declaration to be invalid.</p>
+</div>
+<div class="paragraph">
+<p>While pre-agg construction mostly works like regular dataflow code, by attaching one node at a time and always attempting to attach to the last attached node, you saw how joins take effect when a node can’t attach. Because of the importance of var names for determining the meaning of joins, Rama disallows var shadowing in the pre-agg phase of batch blocks. So code like this will throw an exception when you try to run it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.batchBlock(
+  Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+       .each(Ops.INC, <span class="hljs-string">"*a"</span>).out(<span class="hljs-string">"*a"</span>)
+       .agg(Agg.sum(<span class="hljs-string">"*a"</span>)).out(<span class="hljs-string">"*sum"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Because of the attempt to rebind the var <code>"*a"</code>, the stack trace will contain the message <code>Could not produce valid preagg configuration {:fields #{*a}, :reason {:shadowed #{*a}}</code>.</p>
+</div>
+<div class="paragraph">
+<p>The other major requirement of pre-agg code is all batch sources must combine to a single branch (through joins and merges). This "single branch rule" applies to all code in the pre-agg, so if you leave any stray branches in your code you’ll get an exception. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.batchBlock(
+  Block.each((OutputCollector collector) -&gt; {
+              collector.emitStream(<span class="hljs-string">"streamA"</span>, <span class="hljs-number">2</span>);
+              collector.emit(<span class="hljs-number">1</span>);
+            }).outStream(<span class="hljs-string">"streamA"</span>, <span class="hljs-string">"streamAAnchor"</span>, <span class="hljs-string">"*v"</span>)
+              .out(<span class="hljs-string">"*v"</span>)
+       .agg(Agg.sum(<span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*sum"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There are two branches at the end of the pre-agg phase here –&nbsp;one for "streamA", and one for the default output stream. The exception in this case will contain the message <code>Cannot add root to a non-empty DAG</code> (we have it on our list to improve that exception message!). One way to get this code to execute without exception is to unify those two branches.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, let’s take a look at what happens when you have multiple batch sources that can’t join together because they have no common vars. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.batchBlock(
+  Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+
+       .freshBatchSource()
+       .each(Ops.IDENTITY, <span class="hljs-number">2</span>).out(<span class="hljs-string">"*b"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This preagg block contains two batch sources that can’t join because they don’t share any vars. Running this throws an exception with the message <code>Expected single tail, found multiple - missing join fields? {:count 2, :vars #{*b *a}}</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a similar example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Block.batchBlock(
+  Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*a"</span>)
+
+       .freshBatchSource()
+       .each(Ops.IDENTITY, <span class="hljs-number">2</span>).out(<span class="hljs-string">"*b"</span>)
+
+       .each(Ops.PRINTLN, <span class="hljs-string">"Vals:"</span>, <span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case, the <code>Ops.PRINTLN</code> node can’t attach because there’s no valid joins to produce a scope with both <code>"*a"</code> and <code>"*b"</code>. The exception in this case contains the message <code>Could not produce valid preagg configuration {:fields #{*___ensure-output_2642 *b *a}, :reason [{:missing-input {:needed #{*b *a}, :found #{*b}}} :no-possible-joins]</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_outer_joins"><a class="anchor" href="#_outer_joins"></a>Outer joins</h3>
+<div class="paragraph">
+<p>Next, let’s take look at how outer joins are specified in Rama. Like the inner joins you saw before, they are defined very differently than a language like SQL.</p>
+</div>
+<div class="paragraph">
+<p>Let’s review what an outer join looks like between two tables. Suppose you had the following tables:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. People table</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">User ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Location ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">James Cagney</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bette Davis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jack Lemmon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Location table</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Location ID</th>
+<th class="tableblock halign-left valign-top">Location name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tokyo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lowell</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New York City</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you did a left outer join between the People and Location tables on Location ID, you would end up with these results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">User ID</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Location ID</th>
+<th class="tableblock halign-left valign-top">Location name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">James Cagney</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New York City</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bette Davis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lowell</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jack Lemmon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Every row from the non-outer table exists in the output, and when the corresponding key does not exist in the outer table the fields are set to <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>Another way to think of an outer join is as a join against an <strong>infinite table</strong>. The outer table contains a row for every key not defined in it with all other fields set to <code>null</code>. So you could think of this outer join as an <em>inner join</em> between a regular table and an infinite table. The infinite version of the Location table looks something like:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Location table (infinite)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Location ID</th>
+<th class="tableblock halign-left valign-top">Location name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tokyo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lowell</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New York City</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">…​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">…​</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Every possible key exists in the infinite table, not just numbers and <code>null</code>. An inner join between these two tables produces the correct result because the keys that end up in the final result are only the keys in the non-infinite table.</p>
+</div>
+<div class="paragraph">
+<p>In Rama, you specify outer joins using this more abstract concept. An infinite batch source in Rama is called an "unground source", while a regular batch source is called a "ground source". Unground sources are specified using special var names. Let’s look at an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List source1 = Arrays.asList(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>),
+                             Arrays.asList(<span class="hljs-string">"b"</span>, <span class="hljs-number">2</span>),
+                             Arrays.asList(<span class="hljs-string">"c"</span>, <span class="hljs-number">3</span>));
+List source2 = Arrays.asList(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">10</span>),
+                             Arrays.asList(<span class="hljs-string">"b"</span>, <span class="hljs-number">20</span>),
+                             Arrays.asList(<span class="hljs-string">"d"</span>, <span class="hljs-number">40</span>));
+Block.batchBlock(
+  Block.each(Ops.EXPLODE, source1).out(<span class="hljs-string">"*tuple1"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple1"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v1"</span>)
+
+       .freshBatchSource()
+       .each(Ops.EXPLODE, source2).out(<span class="hljs-string">"*___tuple2"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*___tuple2"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"**v2"</span>)
+
+       .each(Ops.PRINTLN, <span class="hljs-string">"Joined:"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"**v2"</span>))
+     .execute();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There are two special kinds of vars in this code: "unground vars" which begin with <code>"**"</code>, and "delayed unground vars" which begin with <code>"*___"</code>. These var names only have special meaning in batch blocks –&nbsp;in regular dataflow code they’re interpreted like any other var.</p>
+</div>
+<div class="paragraph">
+<p>As soon as you emit an unground var in a batch source, that batch source becomes unground. Because it’s now infinite, Rama disallows you from adding any more nodes to that batch source. The next operation with that batch source must be a join.</p>
+</div>
+<div class="paragraph">
+<p>When an unground source is involved in a join, it must join against all of its ground vars. However, because you may need intermediate vars in order to fully construct the unground source, Rama has a concept called "delayed unground vars". A delayed unground var is considered ground until an unground var is introduced into the batch source. At that point it becomes unground. In this example a delayed unground var is used for the intermediate tuple from which the rest of the vars are extracted.</p>
+</div>
+<div class="paragraph">
+<p>In the example, the first batch source is ground and the second is unground. The <code>Ops.PRINTLN</code> line triggers a join between the two sources. The join key is the var <code>"*k"</code> since that’s the only var they have in common. Running this example prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Joined: a 1 10
+Joined: b 2 20
+Joined: c 3 nil</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>On a practical level, your mind doesn’t need to go into an infinite dimension every time you want to do an outer join in Rama. Another way to think through it is "I want all the data from this source, and I want all the non-key fields from this other source to be null after the join". Then you set the ground and unground vars appropriately.</p>
+</div>
+<div class="paragraph">
+<p>Rama can also perform full outer joins between batch sources. They’re specified by having unground vars on every batch source. In this case, the resulting keys in the output will be the union of the keys across all batch sources.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_materialize"><a class="anchor" href="#_materialize"></a><code>materialize</code></h3>
+<div class="paragraph">
+<p>In some microbatch topologies you may want to re-use the results of a batch block in subsequent batch blocks. Rama lets you accomplish this by materializing a temporary PState with those results that’s only valid during that microbatch attempt. This temporary PState is fully in-memory and cleared in between microbatches.</p>
+</div>
+<div class="paragraph">
+<p>One way to materialize a temporary PState is with the <code>materialize</code> method on <code>Block</code>. This method is only valid inside batch blocks in microbatch topologies. The kinds of microbatch topologies that would use temporary PStates tend to be fairly complicated, so we’ll look at a contrived example for the purposes of demonstration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MaterializeModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(<span class="hljs-string">"$$p1"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>().<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+    mb.pstate(<span class="hljs-string">"$$p2"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>().<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+    mb.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+      .batchBlock(
+        Block.explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*v"</span>)
+             .each(Ops.INC, <span class="hljs-string">"*v"</span>).out(<span class="hljs-string">"*v2"</span>)
+             .materialize(<span class="hljs-string">"*v"</span>, <span class="hljs-string">"*v2"</span>).out(<span class="hljs-string">"$$nums"</span>))
+      .batchBlock(
+        Block.explodeMaterialized(<span class="hljs-string">"$$nums"</span>).out(<span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>)
+             .globalPartition()
+             .agg(<span class="hljs-string">"$$p1"</span>, Agg.sum(<span class="hljs-string">"*v1"</span>)))
+      .batchBlock(
+        Block.explodeMaterialized(<span class="hljs-string">"$$nums"</span>).out(<span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>)
+             .globalPartition()
+             .agg(<span class="hljs-string">"$$p2"</span>, Agg.sum(<span class="hljs-string">"*v2"</span>)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> MaterializeModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      PState p1 = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p1"</span>);
+      PState p2 = cluster.clusterPState(moduleName, <span class="hljs-string">"$$p2"</span>);
+
+      depot.append(<span class="hljs-number">1</span>);
+      depot.append(<span class="hljs-number">2</span>);
+      depot.append(<span class="hljs-number">3</span>);
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">3</span>);
+      System.out.println(<span class="hljs-string">"Vals: "</span> + p1.selectOne(Path.stay()) + <span class="hljs-string">" "</span> + p2.selectOne(Path.stay()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In the first batch block, a temporary PState <code>"$$nums"</code> is materialized containing two fields. This is a pre-agg only batch block, but you can also call <code>materialize</code> from the post-agg. Notice that <code>"$$nums"</code> is not declared anywhere. <code>"$$nums"</code> is then consumed using <code>explodeMaterialized</code> in the subsequent two batch blocks. Since batch blocks finish completely before the code after a batch block executes, <code>"$$nums"</code> is guaranteed to be fully materialized when the next batch block starts.</p>
+</div>
+<div class="paragraph">
+<p>A PState created with <code>materialize</code> is consumed through <code>explodeMaterialized</code>. Just like <code>explodeMicrobatch</code>, <code>explodeMaterialized</code> emits all data for the PState across all tasks. It emits the exact same number of fields as were given to it in the <code>materialize</code> call.</p>
+</div>
+<div class="paragraph">
+<p>Running this example prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Vals: 6 9</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can materialize as many temporary PStates as you like inside a microbatch topology. Besides <code>materialize</code>, you can also create temporary PStates from the output of aggregators in batch blocks. This is covered on <a href="aggregators.html#_aggregating_batch_specific_values_or_temporary_pstates" class="page">the Aggregators page</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_macros"><a class="anchor" href="#_macros"></a>Macros</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama being a pure Java API makes it very amenable to reusing code. You’ve seen how to define custom <code>RamaOperation</code> and <code>RamaFunction</code> classes, and in this section we’ll look at how dynamic chunks of dataflow code can be defined and reused via a facility called "macros".</p>
+</div>
+<div class="paragraph">
+<p>Macros aren’t strictly necessary for this kind of code reuse, but they make the code much more elegant. So let’s start by taking a look at how you would do this without macros. You’ll see the issues you have to deal with, and later you’ll see how macros make those issues much easier to handle.</p>
+</div>
+<div class="paragraph">
+<p>The first example we’ll use to explore these ideas comes from a utility in the open-source project <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> called <code>extractJavaFields</code>. We’ll start by building the utility <code>extractJavaFieldsNonMacro</code> that implements this functionality without macros. This utility will be a static Java function used like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+Block.Impl b = s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>);
+b = extractJavaFieldsNonMacro(b, <span class="hljs-string">"*data"</span>, <span class="hljs-string">"*id"</span>, <span class="hljs-string">"*name"</span>)
+b.localTransform(<span class="hljs-string">"$$names"</span>, Path.key(<span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*name"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>What <code>extractJavaFieldsNonMacro</code> does is add dataflow code to a <code>Block</code> that uses reflection to extract public fields from a Java object and bind them to vars of the same name. In this example, the fields <code>id</code> and <code>name</code> are extracted from the object in the var <code>"*data"</code> and bound to the vars <code>"*id"</code> and <code>"*name"</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>extractJavaFieldsNonMacro</code> will use the <code>RamaFunction</code> <code>TopologyUtils.ExtractJavaField</code> from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> which performs the actual reflection logic. Using this function manually looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+ .each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(<span class="hljs-string">"id"</span>), <span class="hljs-string">"*data"</span>).out(<span class="hljs-string">"*id"</span>)
+ .each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(<span class="hljs-string">"name"</span>), <span class="hljs-string">"*data"</span>).out(<span class="hljs-string">"*name"</span>)
+ .localTransform(<span class="hljs-string">"$$names"</span>, Path.key(<span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*name"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>extractJavaFieldsNonMacro</code> makes the code much more concise. It needs to generate a call to that function for every field being extracted. Here’s the implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Block <span class="hljs-title">extractJavaFieldsNonMacro</span><span class="hljs-params">(Block.Impl b, Object from, String... fieldVars)</span> </span>{
+  <span class="hljs-keyword">for</span>(String f: fieldVars) {
+    String name = f.substring(<span class="hljs-number">1</span>);
+    b = b.each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(name), from).out(f);
+  }
+  <span class="hljs-keyword">return</span> b;
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All this does is add a new <code>each</code> call for every desired field. It uses simple string manipulation to convert the output vars into the field names. This code is a great demonstration of the value of having a general-purpose langauge at your disposal when constructing dataflow code. Abstraction and composition are the foundations of software engineering and you should never sacrifice those.</p>
+</div>
+<div class="paragraph">
+<p>What makes this method of dataflow abstraction problematic is the awkwardness of using it. You can see from the example usage how it breaks the builder pattern of constructing blocks. Rather than be a method you can call on an existing block, you instead have to pass the block as an argument and continue attaching dataflow code from the return. What you really want is something like this pseudocode:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+ .extractJavaFieldsNonMacro(<span class="hljs-string">"*data"</span>, <span class="hljs-string">"*id"</span>, <span class="hljs-string">"*name"</span>)
+ .localTransform(<span class="hljs-string">"$$names"</span>, Path.key(<span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*name"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This isn’t possible since you can’t add methods to <code>Block</code>, but macros will get you very close to this level of elegance.</p>
+</div>
+<div class="paragraph">
+<p>Before we get to macros, let’s take a look at one more example from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> called <code>ModuleUniqueIdPState</code>. This provides a utility for generating 8-byte identifiers unique across all tasks of a module. You would use this when you want more efficient unique IDs than 16-byte UUIDs. It works by combining a counter on the task with the task’s ID into an 8-byte value. Underneath the hood, a PState is used to track the counter.</p>
+</div>
+<div class="paragraph">
+<p>Once again, we’ll make a version of <code>ModuleUniqueIdPState</code> without macros called <code>NonMacroModuleUniqueIdPState</code>. You’ll see another issue you must consider while generating chunks of dataflow code. First, here’s an example of usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+NonMacroModuleUniqueIdPState id = <span class="hljs-keyword">new</span> NonMacroModuleUniqueIdPState(<span class="hljs-string">"$$id"</span>);
+id.declarePState(s);
+Block.Impl b = s.source(<span class="hljs-string">"*depot"</span>);
+b = id.genId(b, <span class="hljs-string">"*id"</span>);
+b.each(Ops.PRINTLN, <span class="hljs-string">"New ID:"</span>, <span class="hljs-string">"*id"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>NonMacroModuleUniqueIdPState</code> provides a function <code>genId</code> which inserts dataflow code that interacts with a PState to generate unique IDs. It also has the function <code>declarePState</code> to create the PState it needs.</p>
+</div>
+<div class="paragraph">
+<p>Here’s the implementation of <code>NonMacroModuleUniqueIdPState</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NonMacroModuleUniqueIdPState</span> </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String _pstateName;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">NonMacroModuleUniqueIdPState</span><span class="hljs-params">(String pstateName)</span> </span>{
+    _pstateName = pstateName;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declarePState</span><span class="hljs-params">(ETLTopologyBase topology)</span> </span>{
+    topology.pstate(_pstateName, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">long</span> <span class="hljs-title">generateId</span><span class="hljs-params">(Long id1, Integer taskId)</span> </span>{
+    <span class="hljs-keyword">return</span> (((<span class="hljs-keyword">long</span>) taskId) &lt;&lt; <span class="hljs-number">42</span>) | id1;
+  }
+
+  <span class="hljs-keyword">public</span> Block.<span class="hljs-function">Impl <span class="hljs-title">genId</span><span class="hljs-params">(Block.Impl b, String outVar)</span> </span>{
+    String counterVar = Helpers.genVar(<span class="hljs-string">"counter"</span>);
+    String taskIdVar = Helpers.genVar(<span class="hljs-string">"taskId"</span>);
+    b = b.localSelect(_pstateName, Path.stay()).out(counterVar)
+         .localTransform(_pstateName, Path.term(Ops.PLUS_LONG, <span class="hljs-number">1</span>))
+         .each(Ops.CURRENT_TASK_ID).out(taskIdVar)
+         .each(NonMacroModuleUniqueIdPState::generateId, counterVar, taskIdVar).out(outVar);
+    <span class="hljs-keyword">return</span> b;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The strategy taken here to generate unique IDs is to combine an incrementing counter with the ID of the current task. In the 64 bits of output available, 22 bits are used for the task ID and 42 bits for the counter. This means <code>NonMacroModuleUniqueIdPState</code> can work on modules with up to 4.1M tasks and generate 4.3T unique IDs per task.</p>
+</div>
+<div class="paragraph">
+<p>Let’s turn our focus to the <code>genId</code> implementation which is doing something which may seem strange. The implementation needs intermediate variables to capture the current counter and the current task ID. Those are combined with <code>generateId</code> to produce the output. Rather than just declare variables like <code>"*counter"</code> and <code>"*currentTaskId"</code>, this is using a utility <code>Helpers.genVar</code>. There’s a very important reason for this.</p>
+</div>
+<div class="paragraph">
+<p>Let’s see what goes wrong if you were to hardcode <code>"*counter"</code> and <code>"*currentTaskId"</code> for those intermediate variables. Suppose you used <code>genId</code> in code like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+NonMacroModuleUniqueIdPState id = <span class="hljs-keyword">new</span> NonMacroModuleUniqueIdPState(<span class="hljs-string">"$$id"</span>);
+id.declarePState(s);
+Block.Impl b = s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*counter"</span>)
+b = id.genId(b, <span class="hljs-string">"*newId"</span>);
+b.each(Ops.PRINTLN, <span class="hljs-string">"Vals:"</span>, <span class="hljs-string">"*counter"</span>, <span class="hljs-string">"*newId"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Since the calls to <code>NonMacroModuleUniqueIdPState</code> are just adding dataflow code, this code is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$id"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*counter"</span>)
+ .localSelect(<span class="hljs-string">"$$id"</span>), Path.stay()).out(<span class="hljs-string">"*counter"</span>)
+ .localTransform(<span class="hljs-string">"$$id"</span>, Path.term(Ops.PLUS_LONG, <span class="hljs-number">1</span>))
+ .each(Ops.CURRENT_TASK_ID).out(<span class="hljs-string">"*currentTaskId"</span>)
+ .each(NonMacroModuleUniqueIdPState::generateId, <span class="hljs-string">"*counter"</span>, <span class="hljs-string">"*currentTaskId"</span>).out(<span class="hljs-string">"*newId"</span>)
+ .each(Ops.PRINTLN, <span class="hljs-string">"Vals:"</span>, <span class="hljs-string">"*counter"</span>, <span class="hljs-string">"*newId"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>With such an implementation of <code>genId</code>, the variable <code>"*counter"</code> is being inadvertently shadowed as a side effect! So rather than the <code>Ops.PRINTLN</code> statement printing the value that came off the depot, as the code looks to be doing, it’s instead printing an intermediate value from the <code>genId</code> implementation. A side effect like this is extremely confusing and hard to debug.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Helpers.genVar</code> function gets around this problem. Every call to <code>Helpers.genVar</code> produces a unique var. Since it’s unique, there’s no possibility of it inadvertently shadowing other vars in the context where the code is inserted. The argument to <code>Helpers.genVar</code> helps with debugging if you were to have a problem with your implementation –&nbsp;an error like <code>"*___counter_1234 not found"</code> is a lot more helpful than the error <code>"*___1234 not found"</code>. Even with the same argument, multiple calls to <code>Helpers.genVar</code> produce unique vars. There’s also <code>Helpers.genPStateVar</code> for generating vars beginning with <code>"$$"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now let’s see how to fix the awkwardness of this method of code generation with Rama’s macros. Let’s go back to <code>extractJavaFieldsNonMacro</code> and see how to do it as a macro:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Block <span class="hljs-title">extractJavaFieldsMacroFlawed</span><span class="hljs-params">(Object from, String... fieldVars)</span> </span>{
+  Block.Impl ret = Block.create();
+  <span class="hljs-keyword">for</span>(String f: fieldVars) {
+    String name = f.substring(<span class="hljs-number">1</span>);
+    ret = ret.each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(name), from).out(f);
+  }
+  <span class="hljs-keyword">return</span> ret;
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can tell from the name this isn’t perfect yet. We’re getting close, however. Here’s how this is used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+ .macro(extractJavaFieldsMacroFlawed(<span class="hljs-string">"*data"</span>, <span class="hljs-string">"*id"</span>, <span class="hljs-string">"*name"</span>))
+ .localTransform(<span class="hljs-string">"$$names"</span>, Path.key(<span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*name"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is much nicer than before! It no longer breaks the builder pattern and reads much better. What <code>macro</code> does is simply expand the provided <code>Block</code> into its callsite, just like we were doing explicitly with the non-macro implementation. So this code expands to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+ .each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(<span class="hljs-string">"id"</span>), <span class="hljs-string">"*data"</span>).out(<span class="hljs-string">"*id"</span>)
+ .each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(<span class="hljs-string">"name"</span>), <span class="hljs-string">"*data"</span>).out(<span class="hljs-string">"*name"</span>)
+ .localTransform(<span class="hljs-string">"$$names"</span>, Path.key(<span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*name"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>For usages like this –&nbsp;directly in topology code –&nbsp;<code>extractJavaFieldsMacroFlawed</code> works fantastic. Where it falls short is if you tried to use it in the implementation of another macro. For example, suppose you tried to use it in this macro:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Block <span class="hljs-title">extractCombinedNameMacroFlawed</span><span class="hljs-params">(Object from, String outVar)</span> </span>{
+  <span class="hljs-keyword">return</span> Block.macro(extractJavaFieldsMacroFlawed(from, <span class="hljs-string">"*firstName"</span>, <span class="hljs-string">"*lastName"</span>))
+              .each(Ops.TO_STRING, <span class="hljs-string">"*firstName"</span>, <span class="hljs-string">" "</span>, <span class="hljs-string">"*lastName"</span>).out(outVar);
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is creating intermediate vars <code>"*firstName"</code> and <code>"*lastName"</code> that will inadvertently shadow other vars in the context where the macro is expanded. But we can’t generate vars for the outputs of <code>extractJavaFieldsMacroFlawed</code> because its implementation is reliant on the var names being of that specific form. <code>extractJavaFieldsMacroFlawed</code> lacks composability.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, this is easy to fix. Here’s the implementation of <code>extractJavaFieldsMacro</code> which works perfectly for all scenarios:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Block <span class="hljs-title">extractJavaFieldsMacro</span><span class="hljs-params">(Object from, String... fieldVars)</span> </span>{
+  Block.Impl ret = Block.create();
+  <span class="hljs-keyword">for</span>(String f: fieldVars) {
+    String name;
+    <span class="hljs-keyword">if</span>(Helpers.isGeneratedVar(f)) name = Helpers.getGeneratedVarPrefix(f);
+    <span class="hljs-keyword">else</span> name = f.substring(<span class="hljs-number">1</span>);
+    ret = ret.each(<span class="hljs-keyword">new</span> TopologyUtils.ExtractJavaField(name), from).out(f);
+  }
+  <span class="hljs-keyword">return</span> ret;
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>To make the macro composable we need to explicitly handle the case where the output fields are generated vars. <code>Helpers.isGeneratedVar</code> tells you if a var is generated, and <code>Helpers.getGeneratedVarPrefix</code> gets you the string that was provided to the call to <code>Helpers.genVar</code>. With this technique, here’s how to implement <code>extractCombinedNameMacro</code> that handles intermediate vars correctly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Block <span class="hljs-title">extractCombinedNameMacro</span><span class="hljs-params">(Object from, String outVar)</span> </span>{
+  String firstNameVar = Helpers.genVar(<span class="hljs-string">"firstName"</span>);
+  String lastNameVar = Helpers.genVar(<span class="hljs-string">"lastName"</span>);
+  <span class="hljs-keyword">return</span> Block.macro(extractJavaFieldsMacro(from, firstNameVar, lastNameVar))
+              .each(Ops.TO_STRING, firstNameVar, <span class="hljs-string">" "</span>, lastNameVar).out(outVar);
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Just like before this extracts the fields <code>firstName</code> and <code>lastName</code>, but it does so with unique intermediate vars.</p>
+</div>
+<div class="paragraph">
+<p><code>extractJavaFieldsMacro</code> is unusual for the provided var names having semantic meaning for what fields should be extracted. The vast majority of macros you write won’t need to handle generated vars explicitly like this. The main rule to remember to keep your macros safe and composable is to use <code>Helpers.genVar</code> for all intermediate variables.</p>
+</div>
+<div class="paragraph">
+<p>That’s everything you need to know to make use of macros. They’re simple to write and use, and they unlock a great deal of power. With macros you can compose <em>anything</em> in the dataflow API to extract reusable functionality: function invocations, partitioners, PState interactions, etc. For more examples of the kinds of things macros can do, check out the rest of the <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On this page, you learned the remainder of Rama’s dataflow API. You’ve seen how batch blocks and macros greatly expand how you can approach building applications with Rama. Along the way, you saw how important it is for your dataflow API to be a library in a general purpose language so you can apply abstraction and composition techniques to your dataflow code.</p>
+</div>
+<div class="paragraph">
+<p>With the material on this page, you now have all the knowledge you need to understand the implementation of our  <a href="downloads-maven-local-dev.html" class="page">Twitter-scale Mastodon implementation</a>. That’s a great project to study to learn how to apply Rama towards a real application at scale.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

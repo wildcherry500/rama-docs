@@ -1,0 +1,550 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dependencies between modules :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="module-dependencies.html">Dependencies between modules</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_declaring_and_using_mirrors" class="">Declaring and using mirrors</a></li><li data-level="1"><a href="#_tradeoffs_to_consider_when_using_mirrors" class="">Tradeoffs to consider when using mirrors</a></li><li data-level="1"><a href="#_enforcement_of_module_dependencies_on_launchupdatedestroy" class="is-active">Enforcement of module dependencies on launch/update/destroy</a></li><li data-level="1"><a href="#_circular_dependencies">Circular dependencies</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Dependencies between modules</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_declaring_and_using_mirrors">Declaring and using mirrors</a></li><li data-level="1"><a href="#_tradeoffs_to_consider_when_using_mirrors">Tradeoffs to consider when using mirrors</a></li><li data-level="1"><a href="#_enforcement_of_module_dependencies_on_launchupdatedestroy">Enforcement of module dependencies on launch/update/destroy</a></li><li data-level="1"><a href="#_circular_dependencies">Circular dependencies</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Modules can use depots, PStates, and query topologies from other modules just as seamlessly as from their own. There are many reasons you may want to split up functionality across multiple modules. One reason is just basic decomposition: rather than have one module responsible for all functionality, you split the functionality across multiple modules. This also allows you to <a href="operating-rama.html#_updating_modules" class="page">update</a> your application in finer-grained ways. Another reason could be because there are multiple teams in your company, so each team would work on independent modules. The depots, PStates, and query topologies exposed by a team are the "service interface" provided to other teams.</p>
+</div>
+<div class="paragraph">
+<p>A depot, PState, or query topology used by another module is called a "mirror". Mirrors in Rama don’t store data locally –&nbsp;operations done on them always go through to the original.</p>
+</div>
+<div class="paragraph">
+<p>On this page you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to declare and use mirror depots, PStates, and query topologies in a module</p>
+</li>
+<li>
+<p>Tradeoffs to consider when using mirrors</p>
+</li>
+<li>
+<p>How Rama enforces that dependencies between modules aren’t violated on launch/update/destroy</p>
+</li>
+<li>
+<p>How modules can have circular dependencies</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_declaring_and_using_mirrors"><a class="anchor" href="#_declaring_and_using_mirrors"></a>Declaring and using mirrors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Mirrors are simple to declare using the methods <code>clusterDepot</code>, <code>clusterPState</code>, and <code>clusterQuery</code> in the definition of a module. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MirrorDeclarationsModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.clusterPState(<span class="hljs-string">"$$mirror"</span>, <span class="hljs-string">"com.mycompany.FooModule"</span>, <span class="hljs-string">"$$p"</span>);
+    setup.clusterDepot(<span class="hljs-string">"*mirrorDepot"</span>, <span class="hljs-string">"com.mycompany.FooModule"</span>, <span class="hljs-string">"*depot"</span>);
+    setup.clusterQuery(<span class="hljs-string">"*mirrorQuery"</span>, <span class="hljs-string">"com.mycompany.BarModule"</span>, <span class="hljs-string">"someQueryTopologyName"</span>);
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first argument to these methods is the var to use within this module to refer to those mirrors in topology code. The second argument is the name of the owning module, and the third argument is the name of the object or query topology in the owning module. This example creates a mirror PState and mirror Depot from <code>"com.mycompany.FooModule"</code> and a mirror query topology from <code>"com.mycompany.BarModule"</code>. There’s no limit to the number of mirrors you can declare.</p>
+</div>
+<div class="paragraph">
+<p>Using mirrors is similarly straightforward. You use them just as you would use colocated depots, PStates, and query topologies. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UsingMirrorsExample</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Module1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot1"</span>, Depot.hashBy(Ops.IDENTITY));
+      setup.declareDepot(<span class="hljs-string">"*depot2"</span>, Depot.hashBy(Ops.IDENTITY));
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+      s.source(<span class="hljs-string">"*depot1"</span>).out(<span class="hljs-string">"*k"</span>)
+       .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()));
+
+      topologies.query(<span class="hljs-string">"qq"</span>, <span class="hljs-string">"*v1"</span>, <span class="hljs-string">"*v2"</span>).out(<span class="hljs-string">"*res"</span>)
+                .each(Ops.TIMES, <span class="hljs-keyword">new</span> Expr(Ops.INC, <span class="hljs-string">"*v1"</span>), <span class="hljs-string">"*v2"</span>).out(<span class="hljs-string">"*res"</span>)
+                .originPartition();
+    }
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Module2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.clusterDepot(<span class="hljs-string">"*depot2"</span>, Module1<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), "*<span class="hljs-title">depot2</span>")</span>;
+      setup.clusterPState(<span class="hljs-string">"$$mirror"</span>, Module1<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), "$$<span class="hljs-title">p</span>")</span>;
+      setup.clusterQuery(<span class="hljs-string">"*mirrorQuery"</span>, Module1<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), "<span class="hljs-title">qq</span>")</span>;
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.source(<span class="hljs-string">"*depot2"</span>, StreamSourceOptions.startFromBeginning()).out(<span class="hljs-string">"*k"</span>)
+       .select(<span class="hljs-string">"$$mirror"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*count"</span>)
+       .invokeQuery(<span class="hljs-string">"*mirrorQuery"</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>).out(<span class="hljs-string">"*queryResult"</span>)
+       .each(Ops.PRINTLN, <span class="hljs-string">"Results:"</span>, <span class="hljs-string">"*count"</span>, <span class="hljs-string">"*queryResult"</span>);
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule module1 = <span class="hljs-keyword">new</span> Module1();
+      cluster.launchModule(module1, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String module1Name = module1.getClass().getName();
+      cluster.launchModule(<span class="hljs-keyword">new</span> Module2(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+
+      Depot depot1 = cluster.clusterDepot(module1Name, <span class="hljs-string">"*depot1"</span>);
+      Depot depot2 = cluster.clusterDepot(module1Name, <span class="hljs-string">"*depot2"</span>);
+
+      depot1.append(<span class="hljs-string">"a"</span>);
+      depot1.append(<span class="hljs-string">"a"</span>);
+      depot1.append(<span class="hljs-string">"b"</span>);
+      depot2.append(<span class="hljs-string">"a"</span>);
+      depot2.append(<span class="hljs-string">"b"</span>);
+      depot2.append(<span class="hljs-string">"c"</span>);
+
+      Thread.sleep(<span class="hljs-number">2000</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>main</code> method starts an <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/test/InProcessCluster.html">InProcessCluster</a> and then launches two modules on it. <code>Module1</code> contains a depot, PState, and query topology that are mirrored by <code>Module2</code>.</p>
+</div>
+<div class="paragraph">
+<p>The depot is used identically to a depot defined in the same module. There’s no limit to the number of subscribers to a depot, whether colocated subscribers or mirror subscribers.</p>
+</div>
+<div class="paragraph">
+<p><code>Module2</code> uses <code>StreamSourceOptions.startFromBeginning()</code> when sourcing the depot for an important reason. After module launch, it can take a little bit of time (generally less than 100 milliseconds) for the two modules to synchronize in order to resolve where the mirroring module will start processing a depot. That process is asynchronous and can still be resolving during the subsequent depot appends in this <code>main</code> method. So to ensure it picks up any data appended to <code>"*depot2"</code>, that start option is used. In general, production stream topologies that want to process just new data appended to a depot don’t care if they start processing appends 100 milliseconds after launch.</p>
+</div>
+<div class="paragraph">
+<p>Unlike colocated stream topology subscriptions, depot appends do not coordinate on stream topologies from other modules. So the depot appends on <code>"*depot2"</code> in this example can complete while <code>Module2</code> is still processing them. For that reason the call to <code>Thread.sleep</code> is inserted to give <code>Module2</code> time to finish processing before shutting down the cluster.</p>
+</div>
+<div class="paragraph">
+<p>Invoking the mirror query topology is also about the same as <a href="query.html#_invoking_colocated_query_topologies" class="page">invoking a colocated query topology</a>. The only difference is using a var to refer to the query topology rather than the query topology name.</p>
+</div>
+<div class="paragraph">
+<p>The last mirror used in this example is the mirror PState <code>"$$mirror"</code>. A <code>select</code> call <a href="pstates.html#_using_pstates_in_topologies" class="page">on a colocated PState</a> in a topology works by first partitioning to the task containing the relevant data and then doing a <code>localSelect</code>. A <code>select</code> call on the mirror does the same thing but works slightly differently behind the scenes.</p>
+</div>
+<div class="paragraph">
+<p>Rama assigns each task of the current module to zero or more partitions of each mirrored depot or PState. If the mirrored object has more partitions than tasks on the current module, each task on the current module will be assigned to multiple partitions of that object. Because the number of tasks in a module must be a power of two, the distribution will be even. If the mirrored object has less partitions than tasks on the current module, then only some tasks will be assigned a partition for that object.</p>
+</div>
+<div class="paragraph">
+<p>In this example, the source PState for <code>"$$mirror"</code> is deployed on four tasks, but <code>Module2</code> only has two tasks. So each task of <code>Module2</code> represents two tasks from <code>Module1</code>. When the <code>select</code> call partitions to the task in its module representing the relevant data, it also sets up context behind the scenes called the "mirror partition index" indicating which of the two tasks on <code>Module1</code> to query for <code>localSelect</code> calls.</p>
+</div>
+<div class="paragraph">
+<p>An alternative to using <code>select</code> is to use an object partitioner followed by explicit <code>localSelect</code> calls, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.hashPartition(<span class="hljs-string">"$$mirror"</span>, <span class="hljs-string">"*k"</span>)
+.localSelect(<span class="hljs-string">"$$mirror"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*count"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>All the object partitioners like this will set the "mirror partition index" in the background context. If you want to query multiple mirror PStates from the same module, and those PStates are partitioned the same way, you can partition once using an object partitioner and then query each one in turn with <code>localSelect</code>.</p>
+</div>
+<div class="paragraph">
+<p><a href="depots.html#_appending_to_depots_from_topologies" class="page">depotPartitionAppend</a> on a mirror depot likewise requires use of an object partitioner to know to which partition to send the append. <a href="partitioners.html#mirror-partitioners" class="page">This section from Partitioners</a> goes into more detail about using object partitioners.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tradeoffs_to_consider_when_using_mirrors"><a class="anchor" href="#_tradeoffs_to_consider_when_using_mirrors"></a>Tradeoffs to consider when using mirrors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using mirrors is seamless, but there are a few tradeoffs to consider when splitting an application across multiple modules.</p>
+</div>
+<div class="paragraph">
+<p>The first is the loss of colocation. All queries to PStates and appends to depots will require network calls instead of being thread-local operations as they are with colocated PStates and depots. Though Rama will batch these <code>localSelect</code> and <code>depotPartitionAppend</code> appends as much as possible, the additional cost of network transfer will reduce performance compared to being colocated.</p>
+</div>
+<div class="paragraph">
+<p>Another tradeoff is stream topologies on mirror depots don’t coordinate their processing with appends to that depot. An append on that depot with <a href="depots.html#depot_client_api" class="page">AckLevel.ACK</a> can complete before a stream topology on another module finishes processing the append. Whether this coordination is needed depends on how your application will be interacting with that depot. There are plenty of cases where you don’t need that coordination.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, interacting with mirrors is a little different than interacting with colocated PStates in terms of event execution. In <a href="intermediate-dataflow.html#_yieldifovertime" class="page">this section</a>, we discussed how topologies break down into discrete events around the concept of "async boundaries". Unlike colocated <code>localSelect</code> calls, mirror <code>localSelect</code> calls are async boundaries. This can have subtle differences in semantics, such as in this topology code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">.localSelect(<span class="hljs-string">"$$p1"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*v1"</span>)
+.localSelect(<span class="hljs-string">"$$mirror"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*v2"</span>)
+.localSelect(<span class="hljs-string">"$$p2"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*v1"</span>)</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Because the <code>localSelect</code> call to <code>"$$mirror"</code> is an async boundary, the <code>localSelect</code> calls to the other two PStates happen in separate events. This means the values fetched from <code>"$$p1"</code> and <code>"$$p2"</code> won’t be synchronized to the same moment in time. If <code>"$$mirror"</code> were a colocated PState they would be in the same event and would be synchronized. This could be important for cases where your ETL updates multiple PStates in the same event and you want a consistent view of both of those PStates when querying.</p>
+</div>
+<div class="paragraph">
+<p>It’s uncommon for this to matter, and it’s not something that influences how you decide if or how to split an application into multiple modules. And of course, all you have to do in this case to synchronize them is reorder the calls. This is a subtle semantic difference that’s good to be aware of in order to fully understand what’s happening in your topologies.</p>
+</div>
+<div class="paragraph">
+<p>As a general rule, it’s good to separate non-intersecting functionality into separate modules. Features like "user profiles" and "pageview analytics" probably don’t interact very much, so the benefits of decomposition makes putting those in separate modules attractive.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enforcement_of_module_dependencies_on_launchupdatedestroy"><a class="anchor" href="#_enforcement_of_module_dependencies_on_launchupdatedestroy"></a>Enforcement of module dependencies on launch/update/destroy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama enforces module dependencies when performing module operations. If you try to <a href="operating-rama.html#_launching_modules" class="page">launch</a> a module with a dependency that doesn’t exist, such as a specified PState not existing, the launch will fail. Likewise, if you try to add a non-existing dependency when <a href="operating-rama.html#_updating_modules" class="page">updating</a> a module, the update will fail.</p>
+</div>
+<div class="paragraph">
+<p>If you try to <a href="operating-rama.html#_using_the_rama_cli" class="page">destroy</a> a module that is depended on by other modules, the destroy will fail. In order to destroy that module you will first need to either destroy the dependent modules or update them to no longer have the dependency. An update will also fail if you try to remove a depot, PState, or query topology depended on by another module.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_circular_dependencies"><a class="anchor" href="#_circular_dependencies"></a>Circular dependencies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can have circular dependencies betwen modules on a Rama cluster. Two modules could be deployed using mirrors on each other, or you could have more complex arrangements of more than two modules with circular dependencies. Although we don’t recommend designing applications from the start to have circular dependencies, you may find the need for them as an application evolves with more features over time.</p>
+</div>
+<div class="paragraph">
+<p>Because new module launches enforce module dependencies, it’s not possible to create circular dependencies just with module launches. However, by updating an existing module you can create circular dependencies without ever violating any dependencies between modules. Here’s one way you can do it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deploy Module A</p>
+</li>
+<li>
+<p>Deploy Module B with a dependency on something in Module A</p>
+</li>
+<li>
+<p>Update Module A to add a dependency on something in Module B</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at an example using this exact procedure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircularDependenciesExample</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleA_v1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getModuleName</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"ModuleA"</span>;
+    }
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleB</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.clusterDepot(<span class="hljs-string">"*depot"</span>, <span class="hljs-string">"ModuleA"</span>, <span class="hljs-string">"*depot"</span>);
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+      s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+        .hashPartition(<span class="hljs-string">"*k"</span>)
+        .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()));
+    }
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleA_v2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+      setup.declareDepot(<span class="hljs-string">"*depot2"</span>, Depot.random());
+      setup.clusterPState(<span class="hljs-string">"$$mirror"</span>, ModuleB<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), "$$<span class="hljs-title">p</span>")</span>;
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.source(<span class="hljs-string">"*depot2"</span>).out(<span class="hljs-string">"*k"</span>)
+        .select(<span class="hljs-string">"$$mirror"</span>, Path.key(<span class="hljs-string">"*k"</span>)).out(<span class="hljs-string">"*count"</span>)
+        .each(Ops.PRINTLN, <span class="hljs-string">"Mirror count:"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-string">"*count"</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getModuleName</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">"ModuleA"</span>;
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      cluster.launchModule(<span class="hljs-keyword">new</span> ModuleA_v1(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+
+      RamaModule moduleB = <span class="hljs-keyword">new</span> ModuleB();
+      cluster.launchModule(moduleB, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleBName = moduleB.getClass().getName();
+
+      cluster.updateModule(<span class="hljs-keyword">new</span> ModuleA_v2());
+
+      Depot depot = cluster.clusterDepot(<span class="hljs-string">"ModuleA"</span>, <span class="hljs-string">"*depot"</span>);
+      Depot depot2 = cluster.clusterDepot(<span class="hljs-string">"ModuleA"</span>, <span class="hljs-string">"*depot2"</span>);
+
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"a"</span>);
+      depot.append(<span class="hljs-string">"b"</span>);
+
+      Thread.sleep(<span class="hljs-number">2000</span>);
+
+      depot2.append(<span class="hljs-string">"a"</span>);
+      depot2.append(<span class="hljs-string">"b"</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>RamaModule</code> has an optional method <code>getModuleName</code> that can be used to explicitly set the module name to something other than the class name. In this example it’s used to create two versions of <code>"ModuleA"</code>. The first version is launched containing one depot, and <code>"ModuleB"</code> is then launched with a dependency on that depot. <code>"ModuleA"</code> is then updated with a new version that adds a dependency on a PState from <code>"ModuleB"</code>. After the circular dependencies are set up, the <code>main</code> method does some depot appends to show that everything works. Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Mirror count: a 2
+Mirror count: b 1</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>On a real cluster, you wouldn’t necessarily need to override <code>getModuleName</code> in order to create circular dependencies. The new version of a module could just be the same class from a later commit of the repository with updated code. But in the context of testing with <code>InProcessCluster</code>, where everything is running in the same process with the same classpath, you’ll need to use the technique shown in this example to create circular dependencies.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Mirrors are seamless to use and allow you to decompose an application into multiple modules to separate independent functionality and/or mimic the organizational structure of your company. Rama is designed from the ground up to support any kind of module layout efficiently. Though there are tradeoffs to consider when using mirrors, as you gain experience with Rama you’ll find reasoning about how to split up functionality across multiple modules to generally be a straightforward process.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

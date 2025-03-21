@@ -1,0 +1,687 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Query topologies :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="query.html">Query topologies</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_structure_of_query_topologies" class="">Structure of query topologies</a></li><li data-level="1"><a href="#_query_topology_client" class="">Query topology client</a></li><li data-level="1"><a href="#_leading_partitioner_optimization" class="is-active">Leading partitioner optimization</a></li><li data-level="1"><a href="#_invoking_colocated_query_topologies">Invoking colocated query topologies</a></li><li data-level="1"><a href="#_recursive_query_topologies">Recursive query topologies</a></li><li data-level="1"><a href="#_temporary_in_memory_state_for_query_topologies">Temporary in-memory state for query topologies</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Query topologies</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_structure_of_query_topologies">Structure of query topologies</a></li><li data-level="1"><a href="#_query_topology_client">Query topology client</a></li><li data-level="1"><a href="#_leading_partitioner_optimization">Leading partitioner optimization</a></li><li data-level="1"><a href="#_invoking_colocated_query_topologies">Invoking colocated query topologies</a></li><li data-level="1"><a href="#_recursive_query_topologies">Recursive query topologies</a></li><li data-level="1"><a href="#_temporary_in_memory_state_for_query_topologies">Temporary in-memory state for query topologies</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Query topologies are a powerful facility in Rama enabling you to execute realtime, on-demand, distributed queries across any or all of your PStates and any or all of your tasks. They are similar in principle to predefined queries in SQL databases, except programmed with the same Java API as used to define ETLs and far more powerful.</p>
+</div>
+<div class="paragraph">
+<p>PState clients have powerful capabilities for doing <em>point queries</em> where you fetch data from one partition of one PState. The <a href="paths.html" class="page">Path API</a> allows you to slice and dice your way through a PState no matter what data structure or combination of data structures it is. As powerful as this API is, there are many cases where your queries need to look at multiple PStates at the same time or aggregate data across many tasks. Query topologies elegantly provide this functionality.</p>
+</div>
+<div class="paragraph">
+<p>You’ve seen how the dataflow API gives you great expressive power for processing data in order to create PStates. The basic dataflow primitives combined with higher level facilities like conditionals, loops, and batch blocks make even the most complex use cases elegant to implement. Query topologies use the exact same API to leverage that same elegance for query use cases.</p>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_structure_of_query_topologies"><a class="anchor" href="#_structure_of_query_topologies"></a>Structure of query topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Query topologies work like functions in regular programming. They take in any number of arguments as input and return exactly one object as output. Here’s a simple example of a query topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleQueryModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>).out(<span class="hljs-string">"*res"</span>)
+              .each(Ops.PLUS, <span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*res"</span>)
+              .originPartition();
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> SimpleQueryModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Integer&gt; q = cluster.clusterQuery(moduleName, <span class="hljs-string">"q"</span>);
+
+      System.out.println(<span class="hljs-string">"Query 1: "</span> + q.invoke(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));
+      System.out.println(<span class="hljs-string">"Query 2: "</span> + q.invoke(<span class="hljs-number">10</span>, <span class="hljs-number">7</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see the module definition is extremely small. The <code>main</code> method shows how a query topology is invoked from a client context. The query topology takes as input two numbers and returns the sum of the numbers plus one. The client invokes the query topology like any other function, by passing in two arguments and receiving a return value back. Unlike a regular function, the code runs remotely on a cluster. Running the <code>main</code> method prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query 1: 4
+Query 2: 18</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A query topology is defined by calling <code>query</code> on a <code>Topologies</code> object. <code>query</code> takes as input the name of the query topology followed by vars for the input arguments. A query topology can be defined with as few or as many arguments as you like, just like a Java function. Then the subsequent <code>out</code> call defines the output var for the topology. The rest of the code must ensure that var is in scope at the end.</p>
+</div>
+<div class="paragraph">
+<p>Query topologies are implicitly batch blocks. So when programming them you’re always thinking in terms of pre-agg, agg, and post-agg phases. All the power of batch blocks, including joins, subbatches, and two-phase aggregation, is available. You can learn how to use batch blocks <a href="intermediate-dataflow.html#_batch_blocks" class="page">in this section</a>. This example is a simple pre-agg only batch block.</p>
+</div>
+<div class="paragraph">
+<p>All query topologies must contain <code>originPartition</code>, and that must be the final partitioner of the computation. This is a special partitioner that can only be used within query topologies. It indicates to partition back to the "origin", which is the initial task ID of the query. The output var must be in scope by the end of the computation, and it must be emitted exactly one time. If emitted zero times or more than once the query topology will error. For example, here’s a query topology that would have problems:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">topologies.query(<span class="hljs-string">"q"</span>, <span class="hljs-string">"*list"</span>).out(<span class="hljs-string">"*res"</span>)
+          .originPartition()
+          .each(Ops.EXPLODE, <span class="hljs-string">"*list"</span>).out(<span class="hljs-string">"*res"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>If the input list has exactly one element, <code>"*res"</code> will be emitted one time and the topology will work. Otherwise, <code>"*res"</code> will be emitted zero times or more than once and the topology will error.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at an example of making a query topology for a more realistic use case. To start, let’s take a look at implementing "URL reach" on a social network. The reach of a URL is the number of <em>unique</em> users potentially exposed to a URL. It’s the distinct count of all the followers of all the people who ever shared that URL. To compute reach, you have to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fetch all the users who shared the URL</p>
+</li>
+<li>
+<p>Fetch all the followers of all those users</p>
+</li>
+<li>
+<p>Compute the distinct count of that set of followers</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This computation can involve fetching the followers for thousands of users and then computing the distinct count of tens of millions of elements. To be fast, steps #2 and #3 must be parallelized. Here’s a module which implements this with a 13 line query topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReachModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">private</span> SubBatch <span class="hljs-title">partialReachCounts</span><span class="hljs-params">(String urlVar)</span> </span>{
+    Block b = Block.hashPartition(urlVar)
+                   .localSelect(<span class="hljs-string">"$$urlToUsers"</span>, Path.key(urlVar).all()).out(<span class="hljs-string">"*userId"</span>)
+                   .select(<span class="hljs-string">"$$followers"</span>, Path.key(<span class="hljs-string">"*userId"</span>).all()).out(<span class="hljs-string">"*reachedUserId"</span>)
+                   .hashPartition(<span class="hljs-string">"*reachedUserId"</span>)
+                   .agg(Agg.set(<span class="hljs-string">"*reachedUserId"</span>)).out(<span class="hljs-string">"*partialReachedSet"</span>)
+                   .each(Ops.SIZE, <span class="hljs-string">"*partialReachedSet"</span>).out(<span class="hljs-string">"*count"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SubBatch(b, <span class="hljs-string">"*count"</span>);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*urlsDepot"</span>, Depot.hashBy(Ops.FIRST));
+    setup.declareDepot(<span class="hljs-string">"*followsDepot"</span>, Depot.hashBy(Ops.FIRST));
+
+    MicrobatchTopology core = topologies.microbatch(<span class="hljs-string">"core"</span>);
+    core.pstate(
+      <span class="hljs-string">"$$urlToUsers"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+    core.pstate(
+      <span class="hljs-string">"$$followers"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+
+    core.source(<span class="hljs-string">"*urlsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+        .explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*tuple"</span>)
+        .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*url"</span>, <span class="hljs-string">"*userId"</span>)
+        .compoundAgg(<span class="hljs-string">"$$urlToUsers"</span>, CompoundAgg.map(<span class="hljs-string">"*url"</span>, Agg.set(<span class="hljs-string">"*userId"</span>)));
+
+    core.source(<span class="hljs-string">"*followsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+        .explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*tuple"</span>)
+        .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*followerId"</span>)
+        .compoundAgg(<span class="hljs-string">"$$followers"</span>, CompoundAgg.map(<span class="hljs-string">"*userId"</span>, Agg.set(<span class="hljs-string">"*followerId"</span>)));
+
+    topologies.query(<span class="hljs-string">"reach"</span>, <span class="hljs-string">"*url"</span>).out(<span class="hljs-string">"*numUniqueUsers"</span>)
+              .subBatch(partialReachCounts(<span class="hljs-string">"*url"</span>)).out(<span class="hljs-string">"*partialCount"</span>)
+              .originPartition()
+              .agg(Agg.sum(<span class="hljs-string">"*partialCount"</span>)).out(<span class="hljs-string">"*numUniqueUsers"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> ReachModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot urlsDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*urlsDepot"</span>);
+      Depot followsDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*followsDepot"</span>);
+
+      QueryTopologyClient&lt;Integer&gt; reach = cluster.clusterQuery(moduleName, <span class="hljs-string">"reach"</span>);
+
+      urlsDepot.append(Arrays.asList(<span class="hljs-string">"grapefruit.com"</span>, <span class="hljs-string">"jamescagney"</span>));
+      urlsDepot.append(Arrays.asList(<span class="hljs-string">"grapefruit.com"</span>, <span class="hljs-string">"maeclarke"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"joanleslie"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"henryfonda"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"arlenefrancis"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"jamescagney"</span>, <span class="hljs-string">"jacklemmon"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"maeclarke"</span>, <span class="hljs-string">"henryfonda"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"maeclarke"</span>, <span class="hljs-string">"charleslaughton"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"maeclarke"</span>, <span class="hljs-string">"joanleslie"</span>));
+      followsDepot.append(Arrays.asList(<span class="hljs-string">"maeclarke"</span>, <span class="hljs-string">"debbiereynolds"</span>));
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"core"</span>, <span class="hljs-number">10</span>);
+
+      System.out.println(<span class="hljs-string">"grapefruit.com reach: "</span> + reach.invoke(<span class="hljs-string">"grapefruit.com"</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Reach operates on two PStates, <code>"$$urlToUsers"</code> and <code>"$$followers"</code>. The first maps a URL to the set of users who shared that URL, and the second maps each user to the set of all their followers. The topology "core" maintains these PStates based on events from <code>"*urlsDepot"</code> and <code>"*followsDepot"</code>. In a real application you wouldn’t have a depot like this containing URL/user pairs directly –&nbsp;instead you would consume a depot containing the full content of posts and extract the URLs from the posts in the topology. Since the focus of this example is implementing "reach", it’s done this way for simplicity.</p>
+</div>
+<div class="paragraph">
+<p>The "reach" topology takes in as input one argument, a URL. In the <code>main</code> method you can see it’s invoked from a client like a regular Java function with the code <code>reach.invoke("grapefruit.com")</code>. This launches a distributed computation to compute the reach for "grapefruit.com".</p>
+</div>
+<div class="paragraph">
+<p>The topology parallelizes both the fetching of the followers and the computation of the distinct count. The fetched followers are partitioned into sets across all the tasks of the module, and then the counts of those sets are summed to compute the final result. The <code>partialReachCounts</code> subbatch computes the partial counts, and those partial counts are summed afterwards by the top-level block.</p>
+</div>
+<div class="paragraph">
+<p>The key to this code is the <code>.hashPartition("*reachedUserId")</code> call. When the same follower exists across multiple users, this code sends all emits of that follower to the same task for aggregation. Since it’s a hash partition, the followers are still evenly divided across the tasks which ensures a balanced parallel computation. You can visualize the execution of the "grapefruit.com" query in the example like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/query-diagrams/reach.png" alt="reach">
+</div>
+</div>
+<div class="paragraph">
+<p>The values of the user IDs don’t necessarily hash to the tasks indicated – this is just an illustration of how the work gets divided up. Notice how the set aggregation on task 0 receives "joanleslie" twice, and the set aggregation on task 1 receives "henryfonda" twice. Since they’re aggregating to a set, they only get counted once when the set is counted.</p>
+</div>
+<div class="paragraph">
+<p>This example parallelizes the computation across two tasks. The more tasks in your module, the more parallelism the query will have.</p>
+</div>
+<div class="paragraph">
+<p>Running the <code>main</code> method performs this computation and prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">grapefruit.com reach: 6</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>What’s even better about this query topology is the efficiency it achieves from its colocation with the <code>"$$urlToUsers"</code> and <code>"$$followers"</code> PStates. When it performs <code>select</code> calls on those it’s doing local computation on the thread. This is a level of efficiency only possible with an integrated system like Rama.</p>
+</div>
+<div class="paragraph">
+<p>Not every query topology will be an intensive distributed computation like this one. Many just need to go to one task and combine information across multiple PStates, or they just need to aggregate a small amount of data across multiple tasks. What "URL reach" demonstrates is how easy it is to implement even a sophisticated use case.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_query_topology_client"><a class="anchor" href="#_query_topology_client"></a>Query topology client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A query topology client is retrieved from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a> on a real cluster, or from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/test/InProcessCluster.html">InProcessCluster</a> in a test environment. Connecting to a Rama cluster to fetch query topology clients is discussed more on <a href="operating-rama.html" class="page">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>In the examples so far you’ve already seen how to fetch a <code>QueryTopologyClient</code> and use it through its <code>invoke</code> method. <code>invoke</code> errors if you pass a different number of arguments than specified in the topology definition. Otherwise, it blocks until the query is complete.</p>
+</div>
+<div class="paragraph">
+<p>Like how PStates have non-blocking versions of <code>select</code>, <code>selectOne</code>, and <code>proxy</code>, there’s also a non-blocking version of <code>invoke</code> called <code>invokeAsync</code>. This returns a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> that will be delivered on completion of the query topology. For example, <code>invokeAsync</code> could be used with the "URL reach" client like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletableFuture&lt;Long&gt; res = reach.invokeAsync(<span class="hljs-string">"grapefruit.com"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can then use the <code>CompletableFuture</code> API to add callbacks for what to do when it’s delivered.</p>
+</div>
+<div class="paragraph">
+<p>Invoking a query topology could fail for a variety of reasons: your topology code throws an exception, one of the cluster machines goes down in the middle of the computation, or the request times out. In these cases <code>invoke</code> will throw an exception and <code>invokeAsync</code> will deliver an exception to the <code>CompletableFuture</code> with <code>completeExceptionally</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_leading_partitioner_optimization"><a class="anchor" href="#_leading_partitioner_optimization"></a>Leading partitioner optimization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you invoke a query topology client, it must first decide on which task to start executing. Many query topologies start by querying from a particular PState (like the "URL reach" topology above), and a query topology can save multiple network hops by starting on the right task. Query topologies implement a "leading partitioner optimization" that lets you achieve this.</p>
+</div>
+<div class="paragraph">
+<p>When a query topology starts with an appropriate partitioner call, the partitioner will execute client-side before the invoke request is sent to the module. A partitioner is leading if it’s the first call of the query topology, whether at the top-level of the topology definition or in a subbatch. So in the "URL reach" topology above, the call to <code>.hashPartition(urlVar)</code> is a leading partitioner. Execution of the topology always begins on the task containing the data for the URL in question.</p>
+</div>
+<div class="paragraph">
+<p>There are a few minor restrictions on which partitioners can be leading for the purposes of the optimization:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Must be a built-in partitioner (e.g. <code>hashPartition</code>) and can’t be a custom partitioner</p>
+</li>
+<li>
+<p>Must be a partitioner that goes to exactly one task (e.g. <code>.allPartition</code> cannot be a leading partitioner)</p>
+</li>
+<li>
+<p>All input to the partitioner call must be input vars for the query topology</p>
+</li>
+<li>
+<p>Cannot be a <a href="partitioners.html#mirror-partitioners" class="page">state partitioner</a> to a <a href="module-dependencies.html" class="page">mirror PState</a></p>
+</li>
+<li>
+<p>Although <code>select</code> in a topology <a href="partitioners.html#_implicit_partitioner_inserted_by_select" class="page">implicitly inserts a partitioner</a>, that partitioner will not count as a leading partitioner. This is why "URL reach" does a <code>hashPartition</code> followed by a <code>localSelect</code> instead of a <code>select</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If a query topology does not have a leading partitioner, the starting task will be selected at random.</p>
+</div>
+<div class="paragraph">
+<p>Especially for query topologies which don’t do that much computation, like one that fetches data from multiple PStates from one task, the leading partitioner optimization can have a big impact on performance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_invoking_colocated_query_topologies"><a class="anchor" href="#_invoking_colocated_query_topologies"></a>Invoking colocated query topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Query topologies can be called from other topologies in the same module, whether other query topologies or ETL topologies. They’re another way to decompose the logic of your module.</p>
+</div>
+<div class="paragraph">
+<p>A colocated query topology can be invoked with the <code>Block</code> method <code>invokeQuery</code>. It takes as input the topology name to invoke along with the arguments. Here’s an example of using this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ColocatedQueryTopologyInvokeModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    topologies.query(<span class="hljs-string">"q1"</span>, <span class="hljs-string">"*a"</span>).out(<span class="hljs-string">"*res"</span>)
+              .each(Ops.TIMES, <span class="hljs-string">"*a"</span>, <span class="hljs-number">3</span>).out(<span class="hljs-string">"*res"</span>)
+              .originPartition();
+
+    topologies.query(<span class="hljs-string">"q2"</span>, <span class="hljs-string">"*a"</span>).out(<span class="hljs-string">"*res"</span>)
+              .invokeQuery(<span class="hljs-string">"q1"</span>, <span class="hljs-string">"*a"</span>).out(<span class="hljs-string">"*v"</span>)
+              .each(Ops.PLUS, <span class="hljs-string">"*v"</span>, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*res"</span>)
+              .originPartition();
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> ColocatedQueryTopologyInvokeModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Integer&gt; q2 = cluster.clusterQuery(moduleName, <span class="hljs-string">"q2"</span>);
+
+      System.out.println(<span class="hljs-string">"Query 1: "</span> + q2.invoke(<span class="hljs-number">1</span>));
+      System.out.println(<span class="hljs-string">"Query 2: "</span> + q2.invoke(<span class="hljs-number">10</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Query 1: 4
+Query 2: 31</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You can also call query topologies from topologies in other modules. This is described on <a href="module-dependencies.html" class="page">this page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recursive_query_topologies"><a class="anchor" href="#_recursive_query_topologies"></a>Recursive query topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Query topologies can also be recursive by invoking themselves. Here’s an example of implementing the "nth fibonacci number" in a query topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FibonacciModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    topologies.query(<span class="hljs-string">"fib"</span>, <span class="hljs-string">"*n"</span>).out(<span class="hljs-string">"*res"</span>)
+              .ifTrue(<span class="hljs-keyword">new</span> Expr(Ops.OR, <span class="hljs-keyword">new</span> Expr(Ops.EQUAL, <span class="hljs-string">"*n"</span>, <span class="hljs-number">0</span>),
+                                       <span class="hljs-keyword">new</span> Expr(Ops.EQUAL, <span class="hljs-string">"*n"</span>, <span class="hljs-number">1</span>)),
+                Block.each(Ops.IDENTITY, <span class="hljs-number">1</span>).out(<span class="hljs-string">"*res"</span>),
+                Block.invokeQuery(<span class="hljs-string">"fib"</span>, <span class="hljs-keyword">new</span> Expr(Ops.DEC, <span class="hljs-string">"*n"</span>)).out(<span class="hljs-string">"*a"</span>)
+                     .invokeQuery(<span class="hljs-string">"fib"</span>, <span class="hljs-keyword">new</span> Expr(Ops.MINUS, <span class="hljs-string">"*n"</span>, <span class="hljs-number">2</span>)).out(<span class="hljs-string">"*b"</span>)
+                     .each(Ops.PLUS, <span class="hljs-string">"*a"</span>, <span class="hljs-string">"*b"</span>).out(<span class="hljs-string">"*res"</span>))
+              .originPartition();
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> FibonacciModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Integer&gt; fib = cluster.clusterQuery(moduleName, <span class="hljs-string">"fib"</span>);
+
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10</span>; i++) {
+        System.out.println(<span class="hljs-string">"Fib("</span> + i + <span class="hljs-string">"): "</span> + fib.invoke(i));
+      }
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Fib(0): 1
+Fib(1): 1
+Fib(2): 2
+Fib(3): 3
+Fib(4): 5
+Fib(5): 8
+Fib(6): 13
+Fib(7): 21
+Fib(8): 34
+Fib(9): 55</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Query topologies can also be mutually recursive.</p>
+</div>
+<div class="paragraph">
+<p>Rama provides protection against infinite recursion were you to have a bug like that in your code. Since query topologies are always invoked with a timeout, that timeout is used on internal events to halt computation if it’s exceeded. The query topology invocation can still use a lot of resources during that time period, but at least it won’t use resources forever.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_temporary_in_memory_state_for_query_topologies"><a class="anchor" href="#_temporary_in_memory_state_for_query_topologies"></a>Temporary in-memory state for query topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>More complex query topologies sometimes need to track in-memory state across tasks during their execution. Rama provides an implicit PState for this purpose for every query topology called <code>"$$&lt;query topology name&gt;$$"</code>. So if you have a query topology called <code>"findPath"</code>, the implicit PState is called <code>"$$findPath$$"</code>. The values of this PState’s partitions are unique for every query topology invoke, and each partition starts as <code>null</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of using this implicit in-memory PState in a query topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TemporaryQueryStateModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    topologies.query(<span class="hljs-string">"foo"</span>, <span class="hljs-string">"*v"</span>, <span class="hljs-string">"*v2"</span>).out(<span class="hljs-string">"*res"</span>)
+              .hashPartition(<span class="hljs-string">"*v"</span>)
+              .localTransform(<span class="hljs-string">"$$foo$$"</span>, Path.termVal(<span class="hljs-string">"*v2"</span>))
+              .shufflePartition()
+              .hashPartition(<span class="hljs-string">"*v"</span>)
+              .localSelect(<span class="hljs-string">"$$foo$$"</span>, Path.stay()).out(<span class="hljs-string">"*v3"</span>)
+              .originPartition()
+              .each(Ops.PLUS, <span class="hljs-string">"*v"</span>, <span class="hljs-string">"*v3"</span>).out(<span class="hljs-string">"*res"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> TemporaryQueryStateModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">2</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      QueryTopologyClient&lt;Integer&gt; foo = cluster.clusterQuery(moduleName, <span class="hljs-string">"foo"</span>);
+
+      System.out.println(<span class="hljs-string">"Result: "</span> + foo.invoke(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>));
+      System.out.println(<span class="hljs-string">"Result: "</span> + foo.invoke(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>));
+      System.out.println(<span class="hljs-string">"Result: "</span> + foo.invoke(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is computing the sum of two numbers in a contrived way by storing the second number in the temporary PState, hopping around to different partitions of the module, and then coming back to the task with the stored state to complete the sum.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tuning_options"><a class="anchor" href="#_tuning_options"></a>Tuning options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dynamic options can be edited from the <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a> and take effect immediately. They can be configured on a topology by topology basis. The dynamic option available for query topologies is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>topology.query.timeout.millis</code>: This is the timeout used for a query topology’s execution.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To design an application you must determine the balance of what information gets precomputed into PStates and what gets computed at query time. Rama’s ETL and PState abstractions give you fantastic capabilities for doing the former, and query topologies give you fantastic capabilities for doing the latter. They allow the query side of applications to be distributed computations as well, and by using the exact same API as ETL topologies they are extremely flexible and easy to write.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Depots :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="depots.html">Depots</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_declaring_depots" class="">Declaring depots</a></li><li data-level="2"><a href="#_choosing_number_of_depots" class="">Choosing number of depots</a></li><li data-level="2"><a href="#_depot_options" class="">Depot options</a></li><li data-level="1"><a href="#_tick_depots" class="">Tick depots</a></li><li data-level="1"><a href="#_depot_client_api" class="">Depot client API</a></li><li data-level="2"><a href="#_appends" class="is-active">Appends</a></li><li data-level="2"><a href="#_querying_ranges_of_data_from_partitions">Querying ranges of data from partitions</a></li><li data-level="1"><a href="#_streaming_ack_returns">Streaming ack returns</a></li><li data-level="1"><a href="#_appending_to_depots_from_topologies">Appending to depots from topologies</a></li><li data-level="1"><a href="#_depot_trimming">Depot trimming</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Depots</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_declaring_depots">Declaring depots</a></li><li data-level="2"><a href="#_choosing_number_of_depots">Choosing number of depots</a></li><li data-level="2"><a href="#_depot_options">Depot options</a></li><li data-level="1"><a href="#_tick_depots">Tick depots</a></li><li data-level="1"><a href="#_depot_client_api">Depot client API</a></li><li data-level="2"><a href="#_appends">Appends</a></li><li data-level="2"><a href="#_querying_ranges_of_data_from_partitions">Querying ranges of data from partitions</a></li><li data-level="1"><a href="#_streaming_ack_returns">Streaming ack returns</a></li><li data-level="1"><a href="#_appending_to_depots_from_topologies">Appending to depots from topologies</a></li><li data-level="1"><a href="#_depot_trimming">Depot trimming</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depots are distributed logs of data that exist across one or more partitions on a module. All new data enters Rama via depots, and topologies source all incoming data from them. On this page you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Declaring depots and options available</p>
+</li>
+<li>
+<p>Guidelines for what data should go in the same depot versus separate depots</p>
+</li>
+<li>
+<p>Tick depots, which emit based on the passage of time</p>
+</li>
+<li>
+<p>Depot client API</p>
+</li>
+<li>
+<p>Using ack levels to detect completion of processing</p>
+</li>
+<li>
+<p>Appending to depots from topologies</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_declaring_depots"><a class="anchor" href="#_declaring_depots"></a>Declaring depots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depots are declared at the top-level of a module definition with <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaModule.Setup.html#declareDepot-java.lang.String-com.rpl.rama.impl.NativeDepotPartitioning-">declareDepot</a>. Here are a few examples of depot declarations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicDepotExamplesModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot1"</span>, Depot.random());
+    setup.declareDepot(<span class="hljs-string">"*depot2"</span>, Depot.hashBy(Ops.FIRST));
+    setup.declareDepot(<span class="hljs-string">"*depot3"</span>, Depot.disallow());
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module declares three depots each with a different <em>partitioning scheme</em>. Though this module has no ETLs or PStates, the depots could still be used as sources for topologies <a href="module-dependencies.html" class="page">in other modules</a>.</p>
+</div>
+<div class="paragraph">
+<p>A depot’s partitioning scheme determines to which partition a client append goes. There are three built-in schemes available, and depots also support custom partitioning schemes. The three built-in schemes are shown in the above example and are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Depot.random</code>: Each append goes to a random partition. The randomness ensures an even distribution, but ordering of processing cannot be guaranteed.</p>
+</li>
+<li>
+<p><code>Depot.hashBy</code>: Each append goes to a partition determined by the hash of the value extracted by the provided function. This ensures data with the same extracted value always goes to the same partition. The use of hashing ensures an even distribution overall across all depot partitions (except for unusual scenarios, like the extraction function always extracting the same value).</p>
+</li>
+<li>
+<p><code>Depot.disallow</code>: Appends from clients are not allowed, and attempting one will result in an exception on the client. This is used for depots which are meant to only be appended to by topologies. For example, a module may be publishing an event stream based on other depots meant for consumption by other modules.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Custom partitioning schemes are specified by implementing the interface <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Depot.Partitioning.html">Depot.Partitioning</a> and providing the class reference when calling <code>declareDepot</code>. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomPartitioningModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPartitioner</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Depot</span>.<span class="hljs-title">Partitioning</span>&lt;<span class="hljs-title">Integer</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">choosePartitionIndex</span><span class="hljs-params">(Integer data, <span class="hljs-keyword">int</span> numPartitions)</span> </span>{
+      <span class="hljs-keyword">if</span>(data==<span class="hljs-number">11</span>) <span class="hljs-keyword">return</span> numPartitions - <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, MyPartitioner<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This partitioner expects <code>Integer</code> types to be appended to this depot. The data value <code>11</code> gets appended to the last partition, and all other data gets appended to partition 0. All partitions in between will never have data appended (this isn’t a useful partitioner!).</p>
+</div>
+<div class="paragraph">
+<p>There are two reasons why depot partitioning can be important. The first is so related events get processed in the order in which they happened. This is also known as maintaining <em>local ordering</em>. For example, suppose your application has "profile field set" data that’s generated from a user interacting with a web app. If those are processed in a different order than the user generated them, your PState mapping users to profile fields would end up with the wrong results. If you were to use <code>Depot.random()</code> for that depot, then they could be processed out of order since data on different partitions are processed in parallel and independently.</p>
+</div>
+<div class="paragraph">
+<p>By using a depot partitioner to ensure any individual user’s "profile field set" data goes to the same depot partition, local ordering is maintained and ETLs can process that data in the correct order. The <code>Depot.hashBy</code> partitioner would be appropriate for this use case.</p>
+</div>
+<div class="paragraph">
+<p>The second reason depot partitioning can be important is performance. For many use cases, depot data corresponds directly to PState updates. A colocated ETL topology for "profile field set" data could simply write that data into a corresponding PState mapping users to profile fields. If the depot is partitioned the same way as the PState, you can write the topology like so (in this example "profile field set" data is represented as tuples of <code>[user ID, field, value]</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProfileFieldSetGoodModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*profileFieldsDepot"</span>, Depot.hashBy(Ops.FIRST));
+
+    StreamTopology profiles = topologies.stream(<span class="hljs-string">"profiles"</span>);
+    profiles.pstate(
+      <span class="hljs-string">"$$profiles"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+          <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+          <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>)))</span>;
+
+    profiles.source(<span class="hljs-string">"*profileFieldsDepot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+            .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>, <span class="hljs-string">"*value"</span>)
+            .localTransform(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>).termVal(<span class="hljs-string">"*value"</span>));
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Since the depot partitions using the hash of the user ID, the data is already on the task needed to update the PState. For this reason the stream topology does not need to use any partitioners after reading data off the depot. It’s able to immediately write to the PState.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, suppose the depot is partitioned differently than the PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProfileFieldSetBadModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*profileFieldsDepot"</span>, Depot.random());
+
+    StreamTopology profiles = topologies.stream(<span class="hljs-string">"profiles"</span>);
+    profiles.pstate(
+      <span class="hljs-string">"$$profiles"</span>,
+      PState.mapSchema(
+        String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+        <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(
+          <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+          <span class="hljs-title">Object</span>.<span class="hljs-title">class</span>)))</span>;
+
+    profiles.source(<span class="hljs-string">"*profileFieldsDepot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+            .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>, <span class="hljs-string">"*value"</span>)
+            .hashPartition(<span class="hljs-string">"*userId"</span>)
+            .localTransform(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>).termVal(<span class="hljs-string">"*value"</span>));
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Besides the local ordering problems mentioned above, this topology has the additional burden of needing to relocate the computation to the correct task by using <code>hashPartition</code>. This is an extra network hop which is a non-trivial amount of extra resource usage.</p>
+</div>
+<div class="sect2">
+<h3 id="_choosing_number_of_depots"><a class="anchor" href="#_choosing_number_of_depots"></a>Choosing number of depots</h3>
+<div class="paragraph">
+<p>Data should be appended to the same depot when related and to different depots when unrelated. Data is related if local ordering is important or if they affect the same conceptual entities.</p>
+</div>
+<div class="paragraph">
+<p>Topologies read all data appended to a depot. So if a topology doesn’t need certain data being appended, it must filter out that data at the beginning of processing. For example, keeping both "profile field sets" and "pageview" information on the same depot would probably require a lot of filtering by topologies. These totally unrelated datatypes would be better off in separate depots.</p>
+</div>
+<div class="paragraph">
+<p>Local ordering can be relevant for data of different types. For example, if you have <code>Follow</code> and <code>Unfollow</code> data, both data types affect your social graph PStates. It’s important a user’s <code>Follow</code> and <code>Unfollow</code> events are processed in the order in which they happened, so they should go on the same depot. Rama provides the <a href="intermediate-dataflow.html#_subsource" class="page">subSource</a> dataflow method to make it easy to process distinct datatypes off the same depot.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_depot_options"><a class="anchor" href="#_depot_options"></a>Depot options</h3>
+<div class="paragraph">
+<p>Depots only have one option available when declaring them, <code>global</code>. A global depot exists as a single partition. Here’s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GlobalDepotModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*myGlobalDepot"</span>, Depot.random()).global();
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Global depots should not be used for high throughput depots because of their inherent lack of scalability. Though the declaration still requires a depot partitioner, which one you use doesn’t matter since there’s only one partition.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tick_depots"><a class="anchor" href="#_tick_depots"></a>Tick depots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama provides a special kind of depot called a "tick depot" which emits based on the passage of time. Tick depots are configured with a frequency and cannot be appended to. They are useful for any time-based behavior needed in ETL topologies.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of declaring and using a tick depot:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TickDepotModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareTickDepot(<span class="hljs-string">"*ticks"</span>, <span class="hljs-number">3000</span>);
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*ticks"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Tick"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      cluster.launchModule(<span class="hljs-keyword">new</span> TickDepotModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      Thread.sleep(<span class="hljs-number">10000</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This creates a tick depot bound to the var <code>"*ticks"</code> that emits every three seconds. A stream topology subscribes to the depot and prints every time it emits. The main method lets the module run for ten seconds and prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Tick
+Tick
+Tick</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The stream topology doesn’t have a call to <code>out</code> to capture the value emitted by the tick depot because it doesn’t matter. If you were to capture it, you would see tick depots always emit the same constant value.</p>
+</div>
+<div class="paragraph">
+<p>Because stream topologies are <a href="stream.html#_operation" class="page">push-based</a> and process depot data as soon as it’s emitted, they will always run at the frequency of the tick depot (except for slight variance due to things like GC). Microbatch topologies are a bit different because they’re <a href="microbatch.html#_operation_and_fault_tolerance" class="page">pull-based</a>. Every time a new microbatch attempt runs, it checks to see if enough time has elapsed since the last tick. If so, then the tick depot will emit exactly one time for that microbatch. If not, it won’t emit.</p>
+</div>
+<div class="paragraph">
+<p>Since microbatches can take hundreds of milliseconds to many seconds to run, ticks for microbatching won’t run at exactly the frequency at which they’re configured –&nbsp;especially if the tick frequency is very low. For example, if the tick frequency is ten milliseconds and microbatches take 500 milliseconds, the ticks will only run once every 500 milliseconds. This is the frequency at which microbatches are checking the depot. And critically, even if many tick periods have passed since the last check, only one tick will be emitted for that microbatch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_depot_client_api"><a class="anchor" href="#_depot_client_api"></a>Depot client API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the rest of the documentation you’ve seen many examples of using a depot client to do appends. Those examples only showed the most basic behavior of depot appends. Let’s now take a look at all the functionality available.</p>
+</div>
+<div class="paragraph">
+<p>A depot client is retrieved from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a> on a real cluster, or from <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/test/InProcessCluster.html">InProcessCluster</a> in a test environment. Connecting to a Rama cluster to fetch depot clients is discussed more on <a href="operating-rama.html" class="page">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>Depot clients are primarily used to append new data, but they can also be used to query ranges of data from depot partitions.</p>
+</div>
+<div class="sect2">
+<h3 id="_appends"><a class="anchor" href="#_appends"></a>Appends</h3>
+<div class="paragraph">
+<p>A client append automatically makes use of the configured depot partitioner from the depot declaration. So you never have to worry about which partition to send data to –&nbsp;the depot client handles that for you. This is exactly as it should be, as ultimately the module author knows how the depot will be used and thereby how it should be partitioned.</p>
+</div>
+<div class="paragraph">
+<p>Appends also store and index in the depot partition the time of the append. This is used for "start from" options for <a href="stream.html#_start_from_options" class="page">stream</a> and <a href="microbatch.html#_start_from_options" class="page">microbatch</a> topologies.</p>
+</div>
+<div class="paragraph">
+<p>There are two signatures for the depot client <code>append</code> call. The first, which you’ve seen many times already, just takes in the data to append. The second takes in the data to append and an "ack level". The ack level tells the client what condition to wait for before returning success. Here are examples of all the ack levels available when calling <code>append</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">depot.append(<span class="hljs-string">"some data"</span>, AckLevel.APPEND_ACK);
+depot.append(<span class="hljs-string">"some data"</span>, AckLevel.ACK);
+depot.append(<span class="hljs-string">"some data"</span>, AckLevel.NONE);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>AckLevel.APPEND_ACK</code> returns success after the data has been appended to the depot partition and replicated successfully.  <code>AckLevel.ACK</code> waits for the same condition plus waiting for all colocated stream topologies to process the data, including replication of any updated PStates. If there are no colocated stream topologies, <code>AckLevel.ACK</code> is equivalent to <code>AckLevel.APPEND_ACK</code>. <code>AckLevel.NONE</code> doesn’t wait for anything and returns success immediately.</p>
+</div>
+<div class="paragraph">
+<p>An example of where <code>AckLevel.ACK</code> is useful is coordinating a user interface with the processing of data submitted by a user. For example, you may want a submit button for a profile update to be disabled until the profile update has been recorded in the associated PState.</p>
+</div>
+<div class="paragraph">
+<p>Colocated stream topologies can also return arbitrary information during processing to clients of depot appends. This is called "streaming ack returns" and is documented in <a href="#_streaming_ack_returns">the next section</a>. One example use case for this is returning a user ID for a user registration depot append.</p>
+</div>
+<div class="paragraph">
+<p>The depot client will throw an exception if anything goes wrong, such as a network partition or disk error on the target depot partition.&nbsp;An exception doesn’t mean the append did not go through –&nbsp;it just means it didn’t go through cleanly. For instance, if there were a network partition right before the server was about to send the success message back to the client, you would get an exception even though the append finished successfully.</p>
+</div>
+<div class="paragraph">
+<p>For <code>AckLevel.ACK</code>, by default success of colocated streaming topologies is determined solely on the first attempt of the data. So if it fails the first time the stream topology tries to process it but succeeds when the topology retries it, the client append call will get an exception. This behavior can be changed with the dynamic option <code>depot.ack.failure.on.any.streaming.failure</code>. When that option is set to <code>false</code>, the depot client will wait until a timeout for the colocated stream topologies to succeed, even if they have to retry many times.</p>
+</div>
+<div class="paragraph">
+<p>When you use the <code>append</code> variant without an explicit ack level, the ack level used is <code>AckLevel.ACK</code>.</p>
+</div>
+<div class="paragraph">
+<p>The reason to use ack levels below <code>AckLevel.ACK</code> is for lower latencies. The less an <code>append</code> call has to wait for, the faster it can return success.</p>
+</div>
+<div class="paragraph">
+<p>Just like the PState and query topology client APIs, depot clients have non-blocking variants of <code>append</code> called <code>appendAsync</code>. These return a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a>  that is delivered success or an exception depending what happens with the append. Here are examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">CompletableFuture f = d.appendAsync(<span class="hljs-string">"some data"</span>, AckLevel.APPEND_ACK);
+f.get(<span class="hljs-number">2</span>, TimeUnit.SECONDS);
+
+CompletableFuture f2 = d.appendAsync(<span class="hljs-string">"some data"</span>);
+f2.join();</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>These take in the exact same arguments as <code>append</code> and just communicate success/failure in a non-blocking way.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_querying_ranges_of_data_from_partitions"><a class="anchor" href="#_querying_ranges_of_data_from_partitions"></a>Querying ranges of data from partitions</h3>
+<div class="paragraph">
+<p>Data can be fetched from depot partitions using a depot client. A record in a depot partition is identified by a "partition index" and an "offset". A partition index identifies on which depot partition it lives. Offsets start from zero and increase by one for each depot record appended.</p>
+</div>
+<div class="paragraph">
+<p>To determine how many partitions a depot has and what offsets are available on each partition, a few methods are provided to return metadata about the depot. The first is <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/PartitionedObject.html#getObjectInfo--">getObjectInfo</a> (also available on PStates), which returns a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/object/PartitionedObjectInfo.html">PartitionedObjectInfo</a> containing general information about the object, including the number of partitions it has.</p>
+</div>
+<div class="paragraph">
+<p>The second method is <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Depot.html#getPartitionInfo-long-">getPartitionInfo</a>, which returns the offsets available on a particular depot partition. Since this does a remote call to fetch the info, there’s also an async version <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Depot.html#getPartitionInfoAsync-long-">getPartitionInfoAsync</a> available. This returns a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/object/DepotPartitionInfo.html">DepotPartitionInfo</a> that contains the offsets available, from start offset (inclusive) to end offset (exclusive).</p>
+</div>
+<div class="paragraph">
+<p>The method for reading a range of data is <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Depot.html#read-long-long-long-">read</a>, which takes in a partition index, a start offset, and an end offset. The async version is <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Depot.html#readAsync-long-long-long-">readAsync</a>. It returns all depot records in that range as a list. If the range includes offsets that don’t exist, the method will throw an exception.</p>
+</div>
+<div class="paragraph">
+<p>The fetch is done as a single synchronous event, so to avoid locking up the task thread for too long it’s recommended to limit the number of records fetched per call. As a rule of thumb you shouldn’t fetch more than 50kb worth of data at a time. If records are about 50 bytes, then the depot range should be at most 1000 offsets.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_streaming_ack_returns"><a class="anchor" href="#_streaming_ack_returns"></a>Streaming ack returns</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Stream topologies colocated with a depot in the same module can return arbitrary information back to the appender. The depot <code>append</code> and <code>appendAsync</code> methods return <code>Map&lt;String, Object&gt;</code> and <code>CompletableFuture&lt;Map&lt;String, Object&gt;&gt;</code> respectively. The returned <code>Map</code> is a map from topology name to "streaming ack return". Streaming ack returns are only returned for <code>AckLevel.ACK</code>, and the returned map will be empty for <code>AckLevel.APPEND_ACK</code> or <code>AckLevel.NONE</code>. The map only contains entries for non-null streaming ack returns.</p>
+</div>
+<div class="paragraph">
+<p>How to specify streaming ack returns in a stream topology is documented <a href="stream.html#_ack_return_agg_options" class="page">in this section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appending_to_depots_from_topologies"><a class="anchor" href="#_appending_to_depots_from_topologies"></a>Appending to depots from topologies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can also append to a depot from a topology, whether in the same module or a different module. Appends from topologies are done with the <code>Block</code> method <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#depotPartitionAppend-java.lang.String-java.lang.Object-">depotPartitionAppend</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>depotPartitionAppend</code> works differently than depot client appends. Whereas depot client appends choose a partition to append to based on the data being appended, <code>depotPartitionAppend</code> always appends to the partition represented by the current task. So to control the partition an append goes you must use a <a href="partitioners.html" class="page">partitioner</a>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DepotPartitionAppendModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*incomingDepot"</span>, Depot.hashBy(Ops.FIRST));
+    setup.declareDepot(<span class="hljs-string">"*outgoingDepot"</span>, Depot.disallow());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*incomingDepot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*k2"</span>, <span class="hljs-string">"*v"</span>)
+     .hashPartition(<span class="hljs-string">"*k2"</span>)
+     .each(Ops.TUPLE, <span class="hljs-string">"*k2"</span>, <span class="hljs-keyword">new</span> Expr(Ops.INC, <span class="hljs-string">"*v"</span>)).out(<span class="hljs-string">"*newTuple"</span>)
+     .depotPartitionAppend(<span class="hljs-string">"*outgoingDepot"</span>, <span class="hljs-string">"*newTuple"</span>);
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module publishes a new depot based on <code>"*incomingDepot"</code> partitioned by a different key and with a transformed value. <code>"*outgoingDepot"</code> is given the depot partitioner <code>Depot.disallow</code> to prevent depot clients from appending to that depot.</p>
+</div>
+<div class="paragraph">
+<p>To control the partition for appends to <a href="module-dependencies.html" class="page">mirror depots</a>, you must use a partitioner on the depot object itself, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+ .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v"</span>)
+ .hashPartition(<span class="hljs-string">"*mirrorDepot"</span>, <span class="hljs-string">"*k"</span>)
+ .depotPartitionAppend(<span class="hljs-string">"*mirrorDepot"</span>, <span class="hljs-string">"*v"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Since the mirror depot could have more or less tasks than the appending module, the explicit hash partition to it is necessary so Rama knows which partition to append to.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_depot_trimming"><a class="anchor" href="#_depot_trimming"></a>Depot trimming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, depots permanently store all data appended to them. For many use cases this is desirable, but for others you may want to clean up the disk space for old depot entries that are no longer needed. You can do this by using a feature of depots called "depot trimming".</p>
+</div>
+<div class="paragraph">
+<p>Depot trimming is controlled through <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">dynamic options</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>depot.max.entries.per.partitition</code>: If set, causes affected depots to regularly delete entries older than this amount. Depot trimming is applied every 10 minutes.</p>
+</li>
+<li>
+<p><code>depot.excess.proportion</code>: This determines the size of an extra buffer of depot entries beyond the above option. This is used to determine where topologies start processing data when they specify they wish to begin from the "start" of a depot.</p>
+</li>
+<li>
+<p><code>depot.trim.coordinate.local.topologies</code>: This determines whether depot trimming will check if any colocated topologies need data before trimming.</p>
+</li>
+<li>
+<p><code>depot.trim.coordinate.remote.topologies</code>: This determines whether depot trimming will check if any topologies in other modules need data before trimming.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Suppose <code>depot.max.entries.per.partitition</code> is set to 1000 and <code>depot.excess.proportion</code> is set to 0.25. Then each depot partition will delete all entries other than the most recent 1250 entries. The excess buffer is there to guard against race conditions with new ETL topologies. If a new ETL wishes to begin from the start of that depot, it will begin at the 1000th oldest entry, not the 1250th. If it began at the very start and the depot happened to trim at that moment, then there could be a gap of data suddenly unavailable to the ETL. The excess buffer makes that scenario very unlikely.</p>
+</div>
+<div class="paragraph">
+<p>By default, data will not be trimmed if it’s still needed by any topology in any module. So if an ETL topology had a bug in it that caused it to continuously fail, any depots it’s consuming will never trim. You can turn off this behavior for colocated or non-colocated topologies with the dynamic options listed above. When turned off, ETLs will skip ahead to the next available offset in the depot when the data they’re expecting has been trimmed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tuning_options"><a class="anchor" href="#_tuning_options"></a>Tuning options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depots have a number of dynamic options relevant specifically for <a href="stream.html" class="page">stream</a> and <a href="microbatch.html" class="page">microbatch</a> topologies. These are documented on those pages. Besides depot trimming, the only other dynamic option relevant for depots is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>replication.depot.append.timeout.millis</code>: Timeout for <a href="replication.html" class="page">replicating</a> each depot append. If the timeout is exceeded depot client appends with <code>AckLevel.APPEND_ACK</code> or <code>AckLevel.ACK</code> will throw an exception.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following configs can be used on foreign depot clients:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>foreign.depot.flush.delay.millis</code>: Adds a delay on clients before flushing depot appends to the module. A higher number increases the amount of batching that can be done. This defaults to 0. An optimal number is usually between 0 and 50 milliseconds.</p>
+</li>
+<li>
+<p><code>foreign.depot.operation.timeout.millis</code>: Timeout to use for foreign depot operations, including appends and partition queries</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Depots are simple to configure and use, with all the hard parts (replication, tracking downstream processing) happening automatically in the background. Depots being integrated on the same processes/threads as PStates enables great efficiency for simple topologies that don’t need any further partitioning.</p>
+</div>
+<div class="paragraph">
+<p>The keys to using depots effectively are determining how many depots to have, what data should go on which depot, and how each depot should be partitioned. With a little experience, managing the tradeoffs at play becomes a straightforward part of the application design process.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

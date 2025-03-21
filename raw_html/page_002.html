@@ -1,0 +1,679 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Building your first module: Hello, World :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="tutorial1.html">Tutorial</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_setting_up_your_sandbox" class="">Setting up your sandbox</a></li><li data-level="1"><a href="#_running_a_module_on_a_cluster" class="">Running a module on a cluster</a></li><li data-level="1"><a href="#_the_big_picture" class="">The big picture</a></li><li data-level="1"><a href="#_clusters" class="">Clusters</a></li><li data-level="1"><a href="#_modules" class="is-active">Modules</a></li><li data-level="1"><a href="#_launching_a_module">Launching a module</a></li><li data-level="1"><a href="#_appending_data_to_depots">Appending data to depots</a></li><li data-level="1"><a href="#_processing_data_with_etls">Processing data with ETLs</a></li><li data-level="1"><a href="#_querying_data">Querying data</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Building your first module: Hello, World</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_setting_up_your_sandbox">Setting up your sandbox</a></li><li data-level="1"><a href="#_running_a_module_on_a_cluster">Running a module on a cluster</a></li><li data-level="1"><a href="#_the_big_picture">The big picture</a></li><li data-level="1"><a href="#_clusters">Clusters</a></li><li data-level="1"><a href="#_modules">Modules</a></li><li data-level="1"><a href="#_launching_a_module">Launching a module</a></li><li data-level="1"><a href="#_appending_data_to_depots">Appending data to depots</a></li><li data-level="1"><a href="#_processing_data_with_etls">Processing data with ETLs</a></li><li data-level="1"><a href="#_querying_data">Querying data</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distributed web applications can resemble a creature from the imagination of <a href="https://en.wikipedia.org/wiki/Mary_Shelley">Mary Shelley</a>. "You do <em>what</em> with Postgres?" "Kafka’s doing <em>that</em> in your cluster?" And the appeal is understandable; no one
+ever accused Dr. Frankenstein of living a dull life.</p>
+</div>
+<div class="paragraph">
+<p>Still, not everyone is cut out for the mad genius lifestyle. Perhaps you
+yourself have wondered what it would be like to live a more predictable life, to
+use a single tool built from the ground up to handle your distributed needs
+without requiring two tons of duct tape and shell scripts.</p>
+</div>
+<div class="paragraph">
+<p>Whether you’re building the next Twitter or bootstrapping a micro-niche SaaS,
+Rama is a distributed-first scalable programming platform that you can use to build the
+entire data layer of your application.</p>
+</div>
+<div class="paragraph">
+<p>As you learn to build Rama applications, you might find your instincts fighting
+the design decisions you encounter. To ease your transition, this tutorial takes
+pains to identify differences with standard development practice and to show the
+rationale for the choices. Some of the differences won’t fully
+make sense until later in the tutorial. But like astronauts adjusting to zero-gravity,
+you’ll soon find yourself adjusting to your new environment and feeling
+more powerful than ever.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start learning. To begin, you’ll learn the basics of writing and running a Rama application. Just as Rama is new and exciting, your application will do something new and exciting: print <em>hello world</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_your_sandbox"><a class="anchor" href="#_setting_up_your_sandbox"></a>Setting up your sandbox</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To get started, you’ll need to clone the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project on Github.</p>
+</div>
+<div class="paragraph">
+<p>The <code>rama-examples</code> project uses Maven to manage dependencies. Starting a process and loading all the Rama classes takes a little while (30 seconds to a minute), so the easiest way to try out the examples is via an interactive shell. <code>rama-examples</code> is configured so you can easily launch a <a href="https://groovy-lang.org">Groovy</a> shell like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn compile
+mvn gplus:shell</code></pre>
+<div class="source-toolbox"><span class="source-lang">shell</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You must run <code>mvn compile</code> first so the examples are available inside the shell. From this shell you’ll be able to easily run the code examples in this tutorial.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_running_a_module_on_a_cluster"><a class="anchor" href="#_running_a_module_on_a_cluster"></a>Running a module on a cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you’re all set up, let’s work with some code! Here’s how to run an application that prints <em>hello world</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">package</span> rama.examples.tutorial;
+
+<span class="hljs-keyword">import</span> com.rpl.rama.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.<span class="hljs-keyword">module</span>.*;
+<span class="hljs-keyword">import</span> com.rpl.rama.ops.Ops;
+<span class="hljs-keyword">import</span> com.rpl.rama.test.*;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorldModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"*data"</span>);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span> (InProcessCluster cluster = InProcessCluster.create()) {
+      cluster.launchModule(<span class="hljs-keyword">new</span> HelloWorldModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+
+      String moduleName = HelloWorldModule<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>()</span>;
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+      depot.append(<span class="hljs-string">"Hello, world!!"</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>To run the example, try this command from the Groovy shell:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">groovy:000&gt; rama.examples.tutorial.HelloWorldModule.main(null)</code></pre>
+<div class="source-toolbox"><span class="source-lang">shell</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first time you run an <code>InProcessCluster</code>, the JVM will take 30 seconds to a minute loading all the Rama classes. Once everything has finished loading, you should see <code>Hello, world!!</code> printed. Subsequent examples you run in the same shell will run very quickly.</p>
+</div>
+<div class="paragraph">
+<p>At a macro level, here is what the code does:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It creates an <em>in-process cluster</em>. Clusters are the execution environment.</p>
+</li>
+<li>
+<p>It defines a Rama <em>module</em>, <code>HelloWorldModule</code>. Modules are executables.</p>
+</li>
+<li>
+<p>It <em>launches</em> the module on the cluster.</p>
+</li>
+<li>
+<p>It <em>appends</em> data to the module’s <em>depot</em>.</p>
+</li>
+<li>
+<p>The appended data is <em>sourced</em> from the depot in a <em>streaming topology</em>.</p>
+</li>
+<li>
+<p>The topology performs an <em>operation</em> on the data, which results in the string
+being printed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>By the end of this tutorial you’ll have a precise idea of what all this means.
+The first step to getting there is explaining the larger context in which Rama
+applications live.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_big_picture"><a class="anchor" href="#_the_big_picture"></a>The big picture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rama <em>integrates</em> and <em>generalizes</em> data ingestion, processing, indexing, and querying. The "integrates" aspect means it encompasses a suite of responsibilities that aren’t normally packaged in a single tool. The "generalizes" part means Rama is unrestricted in the kinds of applications it can build, including applications that require huge scale. This means Rama can build complex application backends on its own in a small amount of code that previously required dozens of tools and a lot of code. In many cases the code difference is over 100x.</p>
+</div>
+<div class="paragraph">
+<p>Rama’s programming model is based on <em>event sourcing</em> and <em>materialized views</em>. Rather than manipulate the current state of the world, as you do with databases, with event sourcing you append new data to an unindexed log. From that log you materialize views, which are indexed datastores, to serve the queries needed by your application.</p>
+</div>
+<div class="paragraph">
+<p>Most databases are fundamentally flawed because being a source of truth and being an indexed store that answers queries are fundamentally in conflict. It’s impossible for one datastore to do both of these well. A source of truth demands complete data normalization to achieve data consistency. Performance requirements are non-negotiable and eventually force <a href="https://en.wikipedia.org/wiki/Denormalization">denormalization</a>, which throws data consistency out the window.</p>
+</div>
+<div class="paragraph">
+<p>Event sourcing solves this by separating the source of truth from the indexed datastores that serve queries. Since the source of truth is an unindexed log, data can be normalized completely. Then you’re free to make as many materialized views, denormalized as much as necessary, to handle application queries.</p>
+</div>
+<div class="paragraph">
+<p>There are huge additional advantages that come from event sourcing. If you deploy a bug that corrupts your views, you can always recompute those views from scratch from the raw data in the logs. This is a capability you don’t have with databases where bugs trample over the state of the database. Event sourcing also provides a natural audit trail for your application, which is invaluable for debugging or future analysis.</p>
+</div>
+<div class="paragraph">
+<p>While traditionally event sourcing is only for asynchronous use cases, due to the consumption of a queue system being uncoordinated with a client doing appends, this is not the case with Rama. Because Rama is an integrated system, clients doing appends can optionally coordinate with downstream processing so that an append only returns to the client when all downstream processing and updates to materialized views have completed. This makes Rama suitable for highly interactive use cases as well as asynchronous use cases.</p>
+</div>
+<div class="paragraph">
+<p>As you make your way through the tutorial, you’ll learn the details of how applications are built with this programming model. Let’s start by looking at the Rama execution environment: the <em>cluster</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clusters"><a class="anchor" href="#_clusters"></a>Clusters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The example code’s <code>main</code> method starts an <em>in-process cluster</em> with
+<code>InProcessCluster cluster = InProcessCluster.create()</code>. There are a couple
+things to unpack here: what’s a cluster, and what’s an in-process cluster?</p>
+</div>
+<div class="paragraph">
+<p>Let’s start by exploring what we mean by <em>cluster</em>, both conceptually and
+concretely. The term is used with slightly different meanings in different
+contexts, so let’s define it precisely.</p>
+</div>
+<div class="paragraph">
+<p>Conceptually, a <em>cluster</em> is Rama’s execution environment. Similar to how you
+start a program by telling an operating system to run it, you start a Rama
+module by telling a cluster to <em>launch</em> it (launching modules is covered in the
+next section).</p>
+</div>
+<div class="paragraph">
+<p>Concretely, a cluster consists of a group of cooperating, networked machines
+(<em>nodes</em>); this is the general usage of the term "cluster" you’ve probably
+encountered. A Rama cluster refines this notion by specifying three different
+roles for the processes running on the machines in a cluster:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Conductor</p>
+</li>
+<li>
+<p>Supervisor</p>
+</li>
+<li>
+<p>Worker</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Worker</em> processes are responsible for, well, doing work – they perform the
+compute operations you specify. There can be multiple workers per machine.
+Workers are managed by Supervisors.</p>
+</div>
+<div class="paragraph">
+<p><em>Supervisor</em> processes monitor worker health and start or stop worker processes
+according to the specification you’ve given for how work should be distributed.
+There’s one supervisor per machine.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Conductor</em> orchestrates the steps involved in launching and updating modules.</p>
+</div>
+<div class="paragraph">
+<p>Here’s what a Rama cluster could look like with two modules deployed, "SocialGraphModule" and "TimelineModule":</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/module-diagrams/cluster-overview.svg" alt="cluster overview">
+</div>
+</div>
+<div class="paragraph">
+<p>One Conductor exists for the whole cluster, and each other node has a Supervisor responsible for all the worker processes on it. Each module is partitioned across one or more workers in order to parallelize its work. Everything a module does, such as data ingestion via <a href="depots.html" class="page">"depots"</a>, data processing via <a href="tutorial5.html" class="page">"topologies"</a>, and indexing via <a href="pstates.html" class="page">"PStates"</a>, is colocated within the same set of worker processes.</p>
+</div>
+<div class="paragraph">
+<p>Rama <a href="operating-rama.html" class="page">gives you tools</a> for creating clusters in a data center, on the cloud, or on your local machine. You can also create in-process clusters.</p>
+</div>
+<div class="paragraph">
+<p>An <em>in-process cluster</em> (IPC) is a virtual cluster that runs within a single JVM
+process. Starting and stopping a fleet of machines and their conductor,
+supervisors, and worker processes takes time. By using an in-process cluster
+instead of a real cluster, you get faster feedback, which is better for
+learning. In-process clusters are also used for unit testing the behavior of modules.</p>
+</div>
+<div class="paragraph">
+<p>In the example above, we create an in-process cluster and launch a module on it
+with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">InProcessCluster cluster = InProcessCluster.create()
+cluster.launchModule(<span class="hljs-keyword">new</span> HelloWorldModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>You’ll continue to see this as we work through examples. Just keep in mind that IPCs are a development tool, and that you’re unlikely to use them outside of tests and tutorials. In a real project, you wouldn’t have <code>main</code> methods on your modules and your use of IPCs would be in tests.</p>
+</div>
+<div class="paragraph">
+<p>To sum up: a Rama cluster is a group of cooperating machines and processes
+responsible for performing the work defined in Rama modules. Modules run on
+clusters. We use in-process clusters for learning and development because they
+provide tight feedback loops.</p>
+</div>
+<div class="paragraph">
+<p>All of these topics (conductors, workers, supervisors, modules,
+work) will be explained fully throughout this tutorial, but hopefully this gives you a decent idea
+of what’s going on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modules"><a class="anchor" href="#_modules"></a>Modules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Modules are where we access data and manipulate it. If a cluster is the
+execution environment, a <em>module</em> is the executable. You create modules to do
+work. We can understand modules in terms of their <em>definitions</em> and their
+<em>runtime instantiation</em>.</p>
+</div>
+<div class="paragraph">
+<p>To define a module, you create a class that implements the <code>RamaModule</code>
+interface, which consists of the <code>define</code> method. <code>define</code> takes two arguments, <code>setup</code> and
+<code>topologies</code>, which you’ll learn more about in the next section. In the Hello
+World example, we define a module named <code>HelloWorldModule</code>.</p>
+</div>
+<div class="paragraph">
+<p>Data enters Rama modules through <em>depots</em>. <a href="depots.html" class="page">Depots</a> exist at the boundary between the external world and your system: clients
+<em>append</em> data to depots, and module <em>ETLs</em> read the data, perform work with it,
+and index it. (<em>ETL</em> stands for <em>extract-transform-load</em>, which refers to the
+general process of reading data from data stores, performing computations on it,
+and storing the result.) Queries read and transform stored data for consumption
+by user interfaces, APIs, and other systems that rely on your data.</p>
+</div>
+<div class="paragraph">
+<p>Depots are defined within and belong to modules. <code>HelloWorldModule</code> defines a depot with <code>setup.declareDepot("*depot", Depot.random());</code>. The first argument <code>"*depot"</code> is the depot’s name. The <code>*</code> at the beginning of the name is important: strings beginning with <code>*</code> are <em>variables</em> that can be referred to later on in topology code. A depot’s name always begins with a <code>*</code>. The second argument, <code>Depot.random()</code>, specifies the depot’s partitioning scheme; more on that later.</p>
+</div>
+<div class="paragraph">
+<p>The next few lines define a topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*data"</span>)
+ .each(Ops.PRINTLN, <span class="hljs-string">"*data"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This creates a <a href="stream.html" class="page">stream topology</a>. Topologies are a world unto themselves that
+we’ll dedicate time and space to, but for now you can think of this topology as
+a kind of process with streaming performance and consistency characteristics: it
+operates on data as the data is received, rather than periodically performing
+batch operations. The overall effect is that, as data is appended to <code>"*depot"</code>,
+it’s processed by the topology such that every append is printed.</p>
+</div>
+<div class="paragraph">
+<p>There are other kinds of ETLs with different performance and consistency
+characteristics, and we’ll learn about those in a later section.</p>
+</div>
+<div class="paragraph">
+<p>So that’s what’s involved in defining a module. Now let’s look at their runtime
+instantiations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_launching_a_module"><a class="anchor" href="#_launching_a_module"></a>Launching a module</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This section explains how to launch modules on an in-process cluster. Launching modules
+on a real cluster is done through Rama’s <a href="operating-rama.html" class="page">command-line client</a>. The concepts are the
+same, though there are more options for launch on the command-line like replication factor and config overrides.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>After crafting your beautiful new module, you’ll want to run it. To do that, you
+<em>launch</em> it on a cluster. When you launch a module, you register it with a
+cluster and you give the cluster some specifications around resource allocation.
+In the example we do that with this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">cluster.launchModule(<span class="hljs-keyword">new</span> HelloWorldModule(), <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>cluster</code> is an instance of an <code>InProcessCluster</code> and its <code>launchModule</code> method
+takes two arguments, a module instance and a <code>LaunchConfig</code> instance. The launch
+config specifies how many partitions a module should have, as well as the number
+of workers and threads that should be dedicated to those partitions. In upcoming
+sections you’ll learn more about what it means to specify a launch config and
+how the choices you make in a launch config affect the runtime characteristics
+of your module.</p>
+</div>
+<div class="paragraph">
+<p>It’s worth pointing out that the <code>LaunchConfig</code> strains the "execution environment / executable" metaphor a little bit, but you can consider it to be similar to how you can specify the max heap size and other
+resource constraints when starting a Java process. Runtime environments can
+provide knobs for you to tune an executable’s resource consumption, it’s just
+that in Rama you’re required to specify these settings.</p>
+</div>
+<div class="paragraph">
+<p>Launching a module on a real cluster results in Java processes getting created on your cluster’s machines – these are the <em>worker processes</em> mentioned earlier. These worker processes run the module’s code, and they’ll start an event loop that listens for depot appends to kick off ETLs to process those appends. (In an IPC these worker processes are simulated as threads – otherwise IPC would be incredibly slow!)</p>
+</div>
+<div class="paragraph">
+<p>Most programming languages specify some kind of entry point for a program, some
+variation of <code>main</code> that tells the runtime environment what sequence of steps
+to take. Your module has no such entry point; instead, you create a kind of
+event-driven dataflow pipeline that processes data as added.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appending_data_to_depots"><a class="anchor" href="#_appending_data_to_depots"></a>Appending data to depots</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you’ve launched a module you can start appending data to its depots.
+Appending data to depots is the main means of conveying information from the
+outside world into your system. Modules can also perform further depot appends,
+both to their own depots and to depots belonging to other modules.</p>
+</div>
+<div class="paragraph">
+<p>In the example, we appended data to the depot thusly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String moduleName = HelloWorldModule<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>()</span>;
+Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+depot.append(<span class="hljs-string">"Hello, world!!"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Here, we’re retrieving a depot object by looking it up with <code>cluster.clusterDepot</code>, and then appending to it directly with <code>depot.append</code>. After you append data to a depot, the ETLs sourcing that depot will receive the new data and process it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_processing_data_with_etls"><a class="anchor" href="#_processing_data_with_etls"></a>Processing data with ETLs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you define an ETL, you specify which depots it should <em>source</em> – you can
+see this in the example with <code>s.source("*depot")</code>. When an ETL sources a depot,
+it effectively listens for new depot appends and reactively performs
+<em>operations</em> on that data. In the example, we only perform the <code>Ops.PRINTLN</code>
+operation.</p>
+</div>
+<div class="paragraph">
+<p>In real ETLs, you usually produce indexes that can satisfy application queries. Indexes are called <a href="pstates.html" class="page">"partitioned states"</a> (PStates) in Rama and they can be fine-tuned to precisely the shapes needed for handling all your querying needs. You’ll learn a lot more about this later.</p>
+</div>
+<div class="paragraph">
+<p>We’re going to spend a lot of time covering exactly how to define ETLs. They embody a programming style that may be new to you, so they’ll take some time getting used to. This can be daunting, but it’s also exciting: ETLs provide immense expressive power, allowing you to concisely describe distributed operations at a level of abstraction that isn’t possible with any other tool. By learning to write them, you’ll not only become proficient at Rama, you’ll expand your mental programming toolkit. In the same way that learning about declarative programming is useful if you’ve only ever been exposed to imperative programming, learning about how Rama ETLs work will give you a new way to think about how to solve problems in your work, even outside of using Rama.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_querying_data"><a class="anchor" href="#_querying_data"></a>Querying data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While processing and indexing data can be a life-enriching activity in and of itself, most of the time you’ll need to then retrieve the data so you can use it. Ultimately, you’re building a system that takes source data and processes it for consumption. ETLs perform some of that processing, indexing the results, and queries might perform further computation.</p>
+</div>
+<div class="paragraph">
+<p>As in other systems, you make tradeoffs between precomputing some results and deriving some results at query time. Rama has two ways of doing queries: <a href="pstates.html#_using_pstate_clients" class="page">point queries</a>, where you ask for one piece of information from one index on one module, and predefined queries, where your query is itself a full distributed computation that can talk to many indexes on many modules. Predefined queries are defined using Rama’s <a href="query.html" class="page">query topology</a> API. Rama differs from other systems in that you’ll use the same computation API for both ETLs and query topologies. Being able to use the same API and concepts in both contexts is another way that simplifies the process of developing distributed applications, as you’ll see. We’ll look at querying PStates more on <a href="tutorial2.html" class="page">the next page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, you learned about Rama basics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rama applications run on <em>clusters</em></p>
+</li>
+<li>
+<p><em>Modules</em> are Rama’s executables</p>
+</li>
+<li>
+<p>You <em>launch</em> a module on a cluster</p>
+</li>
+<li>
+<p>Modules contain <em>depots</em>, <em>ETLs</em>, <em>PStates</em>, and <em>query topologies</em></p>
+</li>
+<li>
+<p>You <em>append</em> data to depots</p>
+</li>
+<li>
+<p>ETLs <em>source</em> data from depots and perform operations on that data</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

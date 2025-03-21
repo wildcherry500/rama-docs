@@ -1,0 +1,636 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Partitioners :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="partitioners.html">Partitioners</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_how_partitioners_work" class="">How partitioners work</a></li><li data-level="1"><a href="#_built_in_partitioners" class="">Built-in partitioners</a></li><li data-level="1"><a href="#_custom_partitioners" class="is-active">Custom partitioners</a></li><li data-level="1"><a href="#mirror-partitioners">Partitioning to PStates or depots from other modules</a></li><li data-level="1"><a href="#_implicit_partitioner_inserted_by_select">Implicit partitioner inserted by select</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Partitioners</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_how_partitioners_work">How partitioners work</a></li><li data-level="1"><a href="#_built_in_partitioners">Built-in partitioners</a></li><li data-level="1"><a href="#_custom_partitioners">Custom partitioners</a></li><li data-level="1"><a href="#mirror-partitioners">Partitioning to PStates or depots from other modules</a></li><li data-level="1"><a href="#_implicit_partitioner_inserted_by_select">Implicit partitioner inserted by select</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>At a fundamental level Rama’s ETL topologies let you run whatever computation you need wherever you need it. Processing incoming data may require you to fetch and update data from many tasks, and partitioners are how you control where your computation runs at any given point.</p>
+</div>
+<div class="paragraph">
+<p>In this section you will learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How partitioners work</p>
+</li>
+<li>
+<p>Built-in partitioners available</p>
+</li>
+<li>
+<p>How to define custom partitioners</p>
+</li>
+<li>
+<p>Partitioning to PStates or depots from other modules</p>
+</li>
+<li>
+<p>Implicit partitioner inserted by <code>select</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_partitioners_work"><a class="anchor" href="#_how_partitioners_work"></a>How partitioners work</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <a href="tutorial3.html#task-model" class="page">this section</a> from the tutorial, you learned how a Rama module is deployed across some number of <em>tasks</em>. Each task runs the exact same code and stores different partitions of PStates and depots. When ETL code is running on a task it can read and write to colocated partitions.</p>
+</div>
+<div class="paragraph">
+<p>A partitioner moves dataflow computation to one or more target tasks. Let’s take a look at an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicPartitionerExampleModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Start task"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID))
+     .hashPartition(<span class="hljs-string">"*k"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"End task"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> BasicPartitionerExampleModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">8</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      depot.append(<span class="hljs-string">"cagney"</span>);
+      depot.append(<span class="hljs-string">"cagney"</span>);
+      depot.append(<span class="hljs-string">"lemmon"</span>);
+      depot.append(<span class="hljs-string">"lemmon"</span>);
+      depot.append(<span class="hljs-string">"bergman"</span>);
+      depot.append(<span class="hljs-string">"bergman"</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This module is launched with 8 tasks and prints the difference in task ID before and after a <code>hashPartition</code> call. Since the depot partitioner is <code>Depot.random</code>, the start task is random. <code>hashPartition</code> chooses its target task based on the hash of the input. The same input will always go to the same task, but different inputs can go to different tasks. Running the <code>main</code> method prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Start task cagney 3
+End task cagney 4
+Start task cagney 1
+End task cagney 4
+Start task lemmon 5
+End task lemmon 1
+Start task lemmon 6
+End task lemmon 1
+Start task bergman 5
+End task bergman 5
+Start task bergman 1
+End task bergman 5</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Two depot appends are done for each input string, and you can see that though they start off on different tasks they always end up on the same task. You can also see that a partitioner doesn’t necessarily have to change tasks –&nbsp;it just ensures the task after the partitioner call is the correct one.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example using a different partitioner:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AllPartitionerExampleModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Start task"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID))
+     .allPartition()
+     .each(Ops.PRINTLN, <span class="hljs-string">"End task"</span>, <span class="hljs-string">"*k"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> AllPartitionerExampleModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      depot.append(<span class="hljs-string">"groucho"</span>);
+      depot.append(<span class="hljs-string">"harpo"</span>);
+      depot.append(<span class="hljs-string">"chico"</span>);
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Start task groucho 2
+End task groucho 3
+End task groucho 1
+End task groucho 0
+End task groucho 2
+Start task harpo 1
+End task harpo 0
+End task harpo 1
+End task harpo 2
+End task harpo 3
+Start task chico 3
+End task chico 0
+End task chico 1
+End task chico 2
+End task chico 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Just like how a <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/ops/RamaOperation.html">RamaOperation</a> implementation can emit many times, <code>allPartition</code> emits one time on every task in the module. From the output of this example you can see the processing of each depot record starts on a random task, but then ends on each of the four tasks in the module. <code>allPartition</code> should be used carefully since it becomes more expensive the larger your module. There are valid use cases for it though, like performing work on every task on a fixed interval via a <a href="depots.html#_tick_depots" class="page">tick depot</a>.</p>
+</div>
+<div class="paragraph">
+<p>Partitioners ensure ordering is maintained between any two tasks. If task A sends events 1, 2, and 3 to task B across a partitioner, task B will receive and process those events in exactly that order. This is called "local ordering" and is a property you can leverage when implementing topologies. The same local ordering property exists between depot clients and individual depot partitions as well.</p>
+</div>
+<div class="paragraph">
+<p>Partitioners take care of all the details of transferring your computation to another task in the most efficient way possible. The target task could be on another thread in the same process, on another process on the same machine, or on another machine altogether. Regardless of where the target task resides, partitioners will transfer the computation efficiently. Here’s a slightly more complicated topology to explain more what’s happening behind the scenes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>))</span>;
+
+s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+ .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*k2"</span>, <span class="hljs-string">"*v"</span>)
+ .hashPartition(<span class="hljs-string">"*k"</span>)
+ .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)))
+ .hashPartition(<span class="hljs-string">"*k2"</span>)
+ .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The first thing to note is every var reaches a point in the topology where it is no longer needed. <code>"*tuple"</code>, for example, is not used after the second line of the topology. Each var transferred across a partitioner increases the size of network packets and the cost of serialization/deserialization. So there’s no point in transferring <code>"*tuple"</code> across <code>hashPartition("*k")</code>. Rama analyzes the topology code to determine the exact set of vars needed after every point and only transfers needed vars across partitioners. Likewise, <code>"*k"</code> is no longer needed after the first <code>compoundAgg</code> call, so it’s not transferred with the second partitioner.</p>
+</div>
+<div class="paragraph">
+<p>Partitioners also batch the transfer of events across partitioners as much as possible. This works a little bit differently in stream topologies versus microbatch topologies because stream topologies have much more stringent latency constraints. So microbatch topologies will tend to get better batching for partitioners, and this is one reason why microbatch topologies have higher throughput than stream topologies.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_built_in_partitioners"><a class="anchor" href="#_built_in_partitioners"></a>Built-in partitioners</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The partitioners available in Rama’s dataflow API are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#hashPartition-java.lang.Object-">hashPartition</a>: Chooses target task based on hash of input modded by number of tasks in module. Always emits exactly once.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#allPartition--">allPartition</a>: Emits on every task in the module.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#globalPartition--">globalPartition</a>: Transfers computation to task 0.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#shufflePartition--">shufflePartition</a>: Chooses target task using random round-robin algorithm. The list of tasks is randomly ordered and the next task on the list is chosen each time the partitioner is called. When the list is exhausted the list of tasks is randomly ordered again. This ensures an even distribution of work across all tasks. Always emits exactly once.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#directPartition-java.lang.Object-">directPartition</a>: Transfers computation to the task ID given as input.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#pathPartition-java.lang.String-com.rpl.rama.Path-">pathPartition</a>: Takes as input a PState and a path and partitions according to the configured <a href="pstates.html#_pstate_options" class="page">key partitioner</a> on the PState. This is inserted implicitly <a href="#_implicit_partitioner_inserted_by_select">when using select</a> in a topology.</p>
+</li>
+<li>
+<p><a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#originPartition--">originPartition</a>: Only usable in <a href="query.html" class="page">query topologies</a>, this transfers computation back to the start task of a query topology invoke.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most of these partitioners also have versions taking in a PState or depot as a first argument. These will restrict the range of tasks considered for partitioning to the tasks on which the PState or depot lives. PStates and depots from the same module exist on either every task or just on task 0 (if declared <code>global</code>). So you don’t need these versions of partitioners for colocated PStates and depots. As you’ll <a href="#_partitioning_to_pstates_or_depots_from_other_modules">see below</a>, they’re needed when interacting with PStates or depots from other modules.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_partitioners"><a class="anchor" href="#_custom_partitioners"></a>Custom partitioners</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A custom partitioner function can be used with <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#customPartition-com.rpl.rama.ops.RamaFunction1-">customPartition</a>. Here’s an example of usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomPartitionerModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskOnePartitioner</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaFunction1</span>&lt;<span class="hljs-title">Integer</span>, <span class="hljs-title">Integer</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">invoke</span><span class="hljs-params">(Integer numPartitions)</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPartitioner</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaFunction3</span>&lt;<span class="hljs-title">Integer</span>, <span class="hljs-title">Integer</span>, <span class="hljs-title">Integer</span>, <span class="hljs-title">Integer</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">invoke</span><span class="hljs-params">(Integer numPartitions, Integer n1, Integer n2)</span> </span>{
+      <span class="hljs-keyword">if</span>(n2 &gt; n1) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> numPartitions - <span class="hljs-number">1</span>;
+    }
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+
+    StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+    s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Start task"</span>, <span class="hljs-string">"*tuple"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID))
+     .customPartition(<span class="hljs-keyword">new</span> TaskOnePartitioner())
+     .each(Ops.PRINTLN, <span class="hljs-string">"Next task"</span>, <span class="hljs-string">"*tuple"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID))
+     .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*n1"</span>, <span class="hljs-string">"*n2"</span>)
+     .customPartition(<span class="hljs-keyword">new</span> MyPartitioner(), <span class="hljs-string">"*n1"</span>, <span class="hljs-string">"*n2"</span>)
+     .each(Ops.PRINTLN, <span class="hljs-string">"Final task"</span>, <span class="hljs-string">"*tuple"</span>, <span class="hljs-keyword">new</span> Expr(Ops.CURRENT_TASK_ID));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> CustomPartitionerModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot depot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*depot"</span>);
+
+      depot.append(Arrays.asList(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>));
+      depot.append(Arrays.asList(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>A partitioner function is a regular function implementation that takes in as arguments the number of partitions followed by any arguments passed to <code>customPartition</code>. In this example you can see one partitioner taking in no additional arguments and one partitioner taking in two arguments. A partitioner returns the partition number to which to transfer computation.</p>
+</div>
+<div class="paragraph">
+<p>Running this prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Start task #object[java.util.Arrays$ArrayList 0x3060082d [0, 1]] 1
+Next task #object[java.util.Arrays$ArrayList 0x3060082d [0, 1]] 1
+Final task #object[java.util.Arrays$ArrayList 0x3060082d [0, 1]] 0
+Start task #object[java.util.Arrays$ArrayList 0x222759ce [5, 2]] 2
+Next task #object[java.util.Arrays$ArrayList 0x222759ce [5, 2]] 1
+Final task #object[java.util.Arrays$ArrayList 0x222759ce [5, 2]] 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>TaskOnePartitioner</code> always partitions to task 1. This partitioner function would cause a runtime exception if used in a module with only one task (since it only has task 0). <code>MyPartitioner</code> partitions to the first task if the second argument is greater than the first, and it partitions to the last task otherwise. There are four tasks in this module, which accounts for the output.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>customPartition</code> variant that doesn’t take in a PState or depot as a first argument is called, <code>numPartitions</code> will be equal to the number of tasks in the module. If called with the variants that takes a PState or depot as a first argument, <code>numPartitions</code> will be the number of partitions for that PState or depot. When used with a PState or depot from another module, the returned partition number will be mapped by Rama to the appropriate task in the current module (even if the other module has more tasks). This is explored further in the next section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mirror-partitioners"><a class="anchor" href="#mirror-partitioners"></a>Partitioning to PStates or depots from other modules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In topology code, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#localSelect-java.lang.String-com.rpl.rama.Path-">localSelect</a> on PStates and <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#depotPartitionAppend-java.lang.String-java.lang.Object-">depotPartitionAppend</a> on depots interact with the "local" partition for that PState or depot. For PStates and depots from the same module, the local partition is the one on the current task. But because PStates and depots from other modules (also known as "mirror PStates" and "mirror depots") could have more or less tasks than the current module, what "local" means is slightly different.</p>
+</div>
+<div class="paragraph">
+<p>When a mirror PState or depot is declared on a module, Rama assigns each task of the current module to zero or more partitions of that mirrored object. If the mirrored object has more partitions than tasks on the current module, each task on the current module will be assigned to multiple partitions of that object. Because the number of tasks in a module must be a power of two, the distribution will be even. If the mirrored object has less partitions than tasks on the current module, then only some tasks will be assigned a partition for that object.</p>
+</div>
+<div class="paragraph">
+<p>When multiple partitions for a mirrored object are assigned to the same task, Rama needs more information to know which partition to interact with when calling <code>localSelect</code> or <code>depotPartitionAppend</code>. This information is provided by using a partitioner on the mirrored object. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MirrorPStateExample</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Module1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.hashBy(Ops.IDENTITY));
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+      s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*k"</span>)
+       .compoundAgg(<span class="hljs-string">"$$p"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, Agg.count()));
+    }
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Module2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+      setup.declareDepot(<span class="hljs-string">"*depot"</span>, Depot.random());
+      setup.clusterPState(<span class="hljs-string">"$$other"</span>, Module1<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>(), "$$<span class="hljs-title">p</span>")</span>;
+
+      StreamTopology s = topologies.stream(<span class="hljs-string">"s"</span>);
+      s.pstate(<span class="hljs-string">"$$p"</span>, PState.mapSchema(String<span class="hljs-class">.<span class="hljs-keyword">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>))</span>;
+
+      s.source(<span class="hljs-string">"*depot"</span>).out(<span class="hljs-string">"*tuple"</span>)
+       .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*v"</span>)
+       .hashPartition(<span class="hljs-string">"$$other"</span>, <span class="hljs-string">"*k"</span>)
+       .localSelect(<span class="hljs-string">"$$other"</span>, Path.key(<span class="hljs-string">"*k"</span>).nullToVal(<span class="hljs-number">0L</span>)).out(<span class="hljs-string">"*n"</span>)
+       .each(Ops.PLUS_LONG, <span class="hljs-string">"*v"</span>, <span class="hljs-string">"*n"</span>).out(<span class="hljs-string">"*newv"</span>)
+       .hashPartition(<span class="hljs-string">"*k"</span>)
+       .localTransform(<span class="hljs-string">"$$p"</span>, Path.key(<span class="hljs-string">"*k"</span>).termVal(<span class="hljs-string">"*newv"</span>));
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule module1 = <span class="hljs-keyword">new</span> Module1();
+      cluster.launchModule(module1, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">8</span>, <span class="hljs-number">4</span>));
+      RamaModule module2 = <span class="hljs-keyword">new</span> Module2();
+      cluster.launchModule(module2, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String module1Name = module1.getClass().getName();
+      String module2Name = module2.getClass().getName();
+
+      Depot depot1 = cluster.clusterDepot(module1Name, <span class="hljs-string">"*depot"</span>);
+      Depot depot2 = cluster.clusterDepot(module2Name, <span class="hljs-string">"*depot"</span>);
+      PState pstate = cluster.clusterPState(module2Name, <span class="hljs-string">"$$p"</span>);
+
+      depot1.append(<span class="hljs-string">"a"</span>);
+      depot1.append(<span class="hljs-string">"a"</span>);
+
+      depot2.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-number">10</span>));
+      System.out.println(<span class="hljs-string">"Val: "</span> + pstate.selectOne(Path.key(<span class="hljs-string">"a"</span>)));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This example launches two modules. The first creates a simple PState recording the number of times each key was appended to its depot. The second uses <code>hashPartition</code> to query the PState from the first module and integrate that information into its own PState. Notice that the second module has four tasks while the first module has eight tasks. The <code>hashPartition</code> on <code>"$$other"</code> transfers computation to the correct task and sets the "partition index" in the context of the computation so it knows which partition to query.</p>
+</div>
+<div class="paragraph">
+<p>Running <code>main</code> on this example prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Val: 12</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you’ll see in the next section, a more concise way to query a mirror PState is with <code>select</code> rather than a partitioner plus a <code>localSelect</code> call. A full discussion of using mirrored PStates and depots can be found on the <a href="module-dependencies.html" class="page">Module dependencies page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implicit_partitioner_inserted_by_select"><a class="anchor" href="#_implicit_partitioner_inserted_by_select"></a>Implicit partitioner inserted by <code>select</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>select</code> in a topology partitions the computation first before doing a <code>localSelect</code>. It’s equivalent to using <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/Block.html#pathPartition-java.lang.String-com.rpl.rama.Path-">pathPartition</a> followed by a <code>localSelect</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>select</code> follows the same rules as <code>pathPartition</code> or PState clients when it comes to choosing a target task. If the target PState has more than one partition, the path must begin with <code>key</code> and the target task will be chosen using the PState’s <a href="pstates.html#_pstate_options" class="page">configured key partitioner</a> along with that key. If the target PState is global or is on a module with only one task, any path can be used.</p>
+</div>
+<div class="paragraph">
+<p>Using <code>select</code> in a topology works for either colocated or mirror PStates. It’s generally the preferred way of interacting with mirror PStates because it’s more concise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Partitioners seamlessly move computation around a cluster without you having to worry about low-level routines like serialization or networking. They enable you to always have full control over where computation runs, and they do so while automatically batching and optimizing transfer between tasks.</p>
+</div>
+<div class="paragraph">
+<p>Many topologies can get away without using partitioners at all. These topologies takes advantage of depot partitioning to start computation colocated with the PState partition they need to update. More sophisticated topologies which maintain multiple PStates partitioned by different values make use of partitioners heavily.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

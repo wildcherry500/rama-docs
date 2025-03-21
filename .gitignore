@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Python virtual environments and cache
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+
+# Vector database and other large files
+rama_vectordb/
+*.pkl
+*.bin
+
+# API keys and secrets
+.env
+.env.local
+secrets.json
+
+# MkDocs build directory
+site/
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Log files
+*.log
+npm-debug.log*

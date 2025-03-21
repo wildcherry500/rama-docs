@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Custom serialization :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="serialization.html">Custom serialization</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_ramaserializable_interface" class="">RamaSerializable interface</a></li><li data-level="1"><a href="#_ramacustomserialization_interface" class="is-active">RamaCustomSerialization interface</a></li><li data-level="1"><a href="#_serialization_requirements_for_custom_types_used_as_map_keys_or_set_values">Serialization requirements for custom types used as map keys or set values</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Custom serialization</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_ramaserializable_interface">RamaSerializable interface</a></li><li data-level="1"><a href="#_ramacustomserialization_interface">RamaCustomSerialization interface</a></li><li data-level="1"><a href="#_serialization_requirements_for_custom_types_used_as_map_keys_or_set_values">Serialization requirements for custom types used as map keys or set values</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of the joys of using Rama is being able to use first-class types all the time, whether appending data to a depot, processing data in ETLs, querying PStates, or anything else. To use an object type within Rama, Rama must know how to serialize/deserialize that type to a stream of bytes. Rama does this when writing objects to disk or transferring objects to other processes.</p>
+</div>
+<div class="paragraph">
+<p>Rama has built-in support for using basic types (int, long, float, double, string, etc.), commonly used types from <a href="https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html">java.util</a>, and the immutable data structures <a href="https://clojure.org/reference/data_structures">from Clojure’s library</a>.</p>
+</div>
+<div class="paragraph">
+<p>On this page, you’ll learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The conveniences and drawbacks of <code>RamaSerializable</code></p>
+</li>
+<li>
+<p>Defining custom serializers</p>
+</li>
+<li>
+<p>Registering custom serializers in production and test environments</p>
+</li>
+<li>
+<p>Serialization requirements for custom types used as map keys or set values</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ramaserializable_interface"><a class="anchor" href="#_ramaserializable_interface"></a>RamaSerializable interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As was shown in the <a href="tutorial6.html" class="page">RamaSpace example</a> from the tutorial, <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaSerializable.html">RamaSerializable</a> is a convenient way to define Java types that integrate with Rama’s serialization needs. All you have to do is add the <code>RamaSerializable</code> interface to a type, and that type will be usable in all Rama contexts that require serialization. Here’s an example of defining a type with <code>RamaSerializable</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">import</span> com.rpl.rama.RamaSerializable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LocationUpdate</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaSerializable</span> </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> userId;
+  <span class="hljs-keyword">private</span> String location;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LocationUpdate</span><span class="hljs-params">(<span class="hljs-keyword">long</span> userId, String location)</span> </span>{
+    <span class="hljs-keyword">this</span>.userId = userId;
+    <span class="hljs-keyword">this</span>.location = location;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getUserId</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> userId; }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getLocation</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> location; }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Objects implementing <code>RamaSerializable</code> use <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/serialization/index.html">Java serialization</a>. Though easy to use, there are some drawbacks to Java serialization:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Performance is suboptimal since other serialization schemes can produce much lower numbers of bytes.</p>
+</li>
+<li>
+<p>Evolving types for future iterations of a module isn’t well supported by Java serialization. You may want to add a field to an existing type, for instance, and then you won’t be able to deserialize old versions of that type currently stored in your PStates.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For these reasons, we generally recommend limiting your use of <code>RamaSerializable</code> to experiments and tests. For production use it’s better to use a solution for custom types with first-class support for evolving types over time. Example projects that work well for this purpose are <a href="https://thrift.apache.org/">Apache Thrift</a> and <a href="https://developers.google.com/protocol-buffers">Protocol Buffers</a>. In the next section, you’ll see how easy it is to integrate frameworks like these with Rama.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ramacustomserialization_interface"><a class="anchor" href="#_ramacustomserialization_interface"></a>RamaCustomSerialization interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Serialization for custom types is implemented using the <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaCustomSerialization.html">RamaCustomSerialization</a> interface. An implementation of this interface targets a particular type and provides methods to serialize and deserialize instances of that type. It is independent from the types themselves.</p>
+</div>
+<div class="paragraph">
+<p>Let’s take a look at an example of using this interface to implement serialization for <a href="https://thrift.apache.org/">Apache Thrift</a> types. This code comes from <a href="downloads-maven-local-dev.html" class="page">our Twitter-scale Mastodon implementation</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThriftSerialization</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaCustomSerialization</span>&lt;<span class="hljs-title">TBase</span>&gt; </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;Short, Class&gt; _idToType = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;Class, Short&gt; _typeToId = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">ThriftSerialization</span><span class="hljs-params">()</span> </span>{
+    Map&lt;Integer, Class&gt; m = typeIds();
+    <span class="hljs-keyword">for</span>(Integer id: m.keySet()) _idToType.put(id.shortValue(), m.get(id));
+    <span class="hljs-keyword">for</span>(Short id: _idToType.keySet()) _typeToId.put(_idToType.get(id), id);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">serialize</span><span class="hljs-params">(TBase obj, DataOutput out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    Short id = _typeToId.get(obj.getClass());
+    <span class="hljs-keyword">if</span>(id==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">"Could not find type id for "</span> + obj.getClass());
+    out.writeShort(id);
+    <span class="hljs-keyword">byte</span>[] serialized = <span class="hljs-keyword">new</span> TSerializer(<span class="hljs-keyword">new</span> TCompactProtocol.Factory()).serialize(obj);
+    out.writeInt(serialized.length);
+    out.write(serialized);
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> TBase <span class="hljs-title">deserialize</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    TBase obj = (TBase) _idToType.get(in.readShort()).newInstance();
+    <span class="hljs-keyword">byte</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[in.readInt()];
+    in.readFully(arr);
+    <span class="hljs-keyword">new</span> TDeserializer(<span class="hljs-keyword">new</span> TCompactProtocol.Factory()).deserialize(obj, arr);
+    <span class="hljs-keyword">return</span> obj;
+  }
+
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Class <span class="hljs-title">targetType</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> TBase<span class="hljs-class">.<span class="hljs-keyword">class</span></span>;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">abstract</span> Map&lt;Integer, Class&gt; <span class="hljs-title">typeIds</span><span class="hljs-params">()</span></span>;
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There are three methods on the <code>RamaCustomSerialization</code> interface. <code>targetType</code> returns the type this object serializes. In this case it returns <code>TBase</code>, the base class for all Thrift objects. <code>serialize</code> writes an object of the target type to a <code>DataOutput</code>, and <code>deserialize</code> reads an object of the target type from <code>DataInput</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>ThriftSerialization</code> implements serialization for all Thrift objects. In order to deserialize an object using Thrift, you need to first create an empty instance of the specific type being deserialized. So this code needs to distinguish different types in the serialized output. It does this using <em>type IDs</em>. An application using <code>ThriftSerialization</code> would extend the class with an implementation of <code>typeIds</code> to provide that information. Here’s an example of what that looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApplicationThriftSerialization</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ThriftSerialization</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> Map&lt;Integer, Class&gt; <span class="hljs-title">typeIds</span><span class="hljs-params">()</span> </span>{
+    Map&lt;Integer, Class&gt; ret = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    ret.put(<span class="hljs-number">0</span>, ProfileEdit<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    ret.put(<span class="hljs-number">1</span>, PageView<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    ret.put(<span class="hljs-number">2</span>, Post<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    <span class="hljs-keyword">return</span> ret;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>In this case <code>ProfileEdit</code>, <code>PageView</code>, and <code>Post</code> refer to the specific Thrift types used by the application.</p>
+</div>
+<div class="paragraph">
+<p>Needing to distinguish types on the wire is a common problem when implementing serialization. Explicit type IDs are one solution you could use, but there are other ways you could approach it. You could generate type IDs using hashes of the classnames, with the size of the hash being a tradeoff between serialization compactness and collision resistance. If you used a two-byte hash, you’re only adding two bytes per serialized object, but the chance of multiple types hashing to the same value starts becoming high after only 50 types (see <a href="https://en.wikipedia.org/wiki/Birthday_problem">Birthday problem</a>). If you used an eight-byte hash, the chance of collisions is effectively zero but serialization is correspondingly more expensive.</p>
+</div>
+<div class="paragraph">
+<p>Custom serialization implementations are registered with Rama through the config provided for module launch or when creating a client-side <a href="https://redplanetlabs.com/javadoc/com/rpl/rama/RamaClusterManager.html">RamaClusterManager</a>. The key <code>"custom.serializations"</code> is given a list of class names of <code>RamaCustomSerialization</code> implementations you wish to have active. The classes provided must have a zero-argument constructor so that Rama can create instances of them. For example, to deploy a module using <code>MyApplicationThriftSerialization</code>, you could first specify the config in a file <code>overrides.yaml</code> like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">custom.serializations:
+  - "com.rpl.myapp.serialization.MyApplicationThriftSerialization"</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Then you would deploy the module with a command like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">rama deploy \
+--action launch \
+--jar my-application-jar.jar \
+--module com.rpl.myapp.MyModule \
+--configOverrides overrides.yaml \
+--tasks 128 \
+--threads 32 \
+--workers 8 \
+--replicationFactor 3</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>To make a client that makes use of <code>MyApplicationThriftSerialization</code>, you would create the <code>RamaClusterManager</code> like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Map config = <span class="hljs-keyword">new</span> HashMap();
+List serializations = <span class="hljs-keyword">new</span> ArrayList();
+serializations.add(<span class="hljs-string">"com.rpl.myapp.serialization.MyApplicationThriftSerialization"</span>);
+config.put(<span class="hljs-string">"custom.serializations"</span>, serializations);
+RamaClusterManager manager = RamaClusterManager.open(config);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>It’s critical that all modules and clients that interact with those objects have this serialization registered. Since <code>"custom.serializations"</code> is a list, you can have as many custom serialization implementations registered as you need. See <a href="operating-rama.html" class="page">Operating Rama clusters</a> for more details on deploying modules and using <code>RamaClusterManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Configuring custom serializations in a <a href="testing.html" class="page">test context</a> with <code>InProcessCluster</code> is slightly different. In this context custom serializations are configured as part of the <code>InProcessCluster</code> instead of as part of individual modules or clients. Here’s an example of using <code>MyApplicationThriftSerialization</code> with <code>InProcessCluster</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">List&lt;Class&gt; serializations = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+serializations.add(MyApplicationThriftSerialization<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+<span class="hljs-keyword">try</span>(InProcessCluster ipc = InProcessCluster.create(serializations)) {
+  RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> MyModule();
+  ipc.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Finally, here are a few more properties a custom serialization implementation must have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Since every worker and client will have a separate instance, the serialization implementation must be deterministic.</p>
+</li>
+<li>
+<p>Must be thread-safe since the same instance can be used across multiple threads.</p>
+</li>
+<li>
+<p>Multiple <code>RamaCustomSerialization</code> implementations should not match on the same types, including parent types. Which one is used in that case is undefined.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_serialization_requirements_for_custom_types_used_as_map_keys_or_set_values"><a class="anchor" href="#_serialization_requirements_for_custom_types_used_as_map_keys_or_set_values"></a>Serialization requirements for custom types used as map keys or set values</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Top-level maps and subindexed structures in PStates are sorted. They also store their individual entries on disk in serialized form. If you want to use a custom type as a map key or set value, there are a few additional requirements.</p>
+</div>
+<div class="paragraph">
+<p>First, equal values must serialize to the exact same sequence of bytes. Lookup of a key in an on-disk map or a value in an on-disk set is done using the serialized form, so if serialization isn’t consistent you may fail to look up an existing key. If you’re serializing something that has undefined order (like an unordered map), you need to assign a consistent order to the serialized form (like by sorting values before serializing). Rama implements consistent serialization for all of its built-in serialization, including types with undefined ordering like <code>HashMap</code> and <code>HashSet</code>.</p>
+</div>
+<div class="paragraph">
+<p>Second, if you care about ordering in these contexts (like to be able to do <a href="paths.html#_range_queries" class="page">range queries</a>), you need to make sure the serialized form of your custom types has the same ordering as the non-serialized form. The way serialized forms are compared on disk is with <a href="https://en.wikipedia.org/wiki/Lexicographic_order">lexicographic order</a>. Rama implements this property as well for built-in serialization for relevant types like numbers and strings.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On this page you learned how to define and configure serialization for custom types. Once a serialization is configured, you’re able to use those types in a first-class way within modules and on clients without having to worry about serialization again. That the definition of serialization is disconnected from the types themselves, since the types don’t have to implement any additional interfaces, makes serialization completely non-intrusive to how you would normally define your data types. It also makes it easy to integrate serialization frameworks like Apache Thrift and Protocol Buffers with Rama.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

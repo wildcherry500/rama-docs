@@ -1,0 +1,1240 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tying it all together: build a social network :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item is-active is-current-path" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="tutorial1.html">Tutorial</a></li>
+    <li><a href="tutorial6.html">Tying it all together</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_designing_your_application" class="">Designing your application</a></li><li data-level="1"><a href="#_defining_application_queries" class="">Defining application queries</a></li><li data-level="1"><a href="#_defining_application_data" class="">Defining application data</a></li><li data-level="1"><a href="#_defining_ramaspacemodule" class="">Defining RamaSpaceModule</a></li><li data-level="2"><a href="#_depots" class="">Depots</a></li><li data-level="2"><a href="#_users_topology" class="">Users topology</a></li><li data-level="2"><a href="#_friends_topology" class="is-active">Friends topology</a></li><li data-level="2"><a href="#_posts_topology">Posts topology</a></li><li data-level="2"><a href="#_profile_views_topology">Profile views topology</a></li><li data-level="2"><a href="#_resolveposts_query_topology">resolvePosts query topology</a></li><li data-level="1"><a href="#_unit_tests">Unit tests</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Tying it all together: build a social network</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_designing_your_application">Designing your application</a></li><li data-level="1"><a href="#_defining_application_queries">Defining application queries</a></li><li data-level="1"><a href="#_defining_application_data">Defining application data</a></li><li data-level="1"><a href="#_defining_ramaspacemodule">Defining RamaSpaceModule</a></li><li data-level="2"><a href="#_depots">Depots</a></li><li data-level="2"><a href="#_users_topology">Users topology</a></li><li data-level="2"><a href="#_friends_topology">Friends topology</a></li><li data-level="2"><a href="#_posts_topology">Posts topology</a></li><li data-level="2"><a href="#_profile_views_topology">Profile views topology</a></li><li data-level="2"><a href="#_resolveposts_query_topology">resolvePosts query topology</a></li><li data-level="1"><a href="#_unit_tests">Unit tests</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that we’ve covered the basics of working with Rama, let’s work on a real project: building a fully scalable social network with bidirectional relationships, profiles, posting on a user’s wall, and simple analytics. This will give you a better sense of how all the pieces fit together, and you’ll also be introduced to new tools.</p>
+</div>
+<div class="paragraph">
+<p>The application will be called "RamaSpace" and will only be 180 lines of code. All the code on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_designing_your_application"><a class="anchor" href="#_designing_your_application"></a>Designing your application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you’re designing a Rama program, you start by figuring out what tasks you need to support, and from there what PStates will support those tasks and what depots and ETLs are needed to correctly maintain those PStates.</p>
+</div>
+<div class="paragraph">
+<p>Our application will consist of <em>users</em>, <em>profiles</em>, <em>friendship requests</em>, and <em>friendships</em>. Here are the tasks we’ll support:</p>
+</div>
+<div class="paragraph">
+<p><strong>Users</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Register a new user with a unique user ID, email, and display name</p>
+</li>
+<li>
+<p>Update a profile field</p>
+</li>
+<li>
+<p>Fetch password hash for a user (for login)</p>
+</li>
+<li>
+<p>Post a comment on any user’s wall</p>
+</li>
+<li>
+<p>View posts on a user’s wall (paginated)</p>
+</li>
+<li>
+<p>View number of posts on a user’s wall</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Friendships</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Request friendship with another user</p>
+</li>
+<li>
+<p>View friendship requests</p>
+</li>
+<li>
+<p>Cancel friendship request</p>
+</li>
+<li>
+<p>Accept friendship request</p>
+</li>
+<li>
+<p>Check if two users are currently friends</p>
+</li>
+<li>
+<p>View all friends for a user (paginated)</p>
+</li>
+<li>
+<p>View number of friends for a user</p>
+</li>
+<li>
+<p>Unfriend existing friend</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Analytics</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Query for number of profile views for a user over a range of hours</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Multiple PStates are needed to support all these tasks, although some tasks are supported by the same PState. As you gain experience using Rama, mapping the set of queries you need to support your application to a collection of PStates becomes second nature. To support the tasks for this application, we’ll build the following PStates:</p>
+</div>
+<div class="paragraph">
+<p><strong>$$profiles</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;:
+  {<span class="hljs-attr">"displayName"</span>:      &lt;String&gt;,
+   <span class="hljs-attr">"email"</span>:            &lt;String&gt;,
+   <span class="hljs-attr">"profilePic"</span>:       &lt;String&gt;,
+   <span class="hljs-attr">"bio"</span>:              &lt;String&gt;,
+   <span class="hljs-attr">"location"</span>:         &lt;String&gt;,
+   <span class="hljs-attr">"pwdHash"</span>:          &lt;Integer&gt;,
+   <span class="hljs-attr">"joinedAtMillis"</span>:   &lt;Long&gt;,
+   <span class="hljs-attr">"registrationUUID"</span>: &lt;String&gt;
+   }}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$outgoingFriendRequests</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;: Set&lt;userId&lt;String&gt;&gt;}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$incomingFriendRequests</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;: Set&lt;userId&lt;String&gt;&gt;}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$friends</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;: Set&lt;userId&lt;String&gt;&gt;}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$posts</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;: {postId&lt;Long&gt;: &lt;Post&gt;}}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$postId</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">&lt;Long&gt;</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><strong>$$profileViews</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{userId&lt;String&gt;: {hourBucket&lt;Long&gt;: count&lt;Long&gt;}}</code></pre>
+<div class="source-toolbox"><span class="source-lang">json</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_defining_application_queries"><a class="anchor" href="#_defining_application_queries"></a>Defining application queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s now take a look at all the queries on these PStates that will support our application. Since supporting a set of queries is a primary goal of any Rama application, this is a great place to start to make sure your PState structure is sound.</p>
+</div>
+<div class="paragraph">
+<p>For these queries to be efficient, some of the PStates will take advantage of an important PState feature which hasn’t been discussed yet: subindexing. Subindexing is specified as a flag on an inner data structure in a PState schema and indicates the elements of that data structure should be indexed individually. Without subindexing, the entire data structure will be stored and retrieved as a single value. This will get expensive once there’s even just a few hundred elements in it. Subindexing enables inner data structures to efficiently contain huge numbers of elements, even more than could fit into memory. You can read more about subindexing on <a href="pstates.html" class="page">this page</a>. Enabling subindexing is extremely simple –&nbsp;here’s the declaration of the <code>"$$friends"</code> PState:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">friends.pstate(
+  <span class="hljs-string">"$$friends"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The queries for RamaSpace are defined in the class <code>RamaSpaceClient</code>. <code>RamaSpaceClient</code> wraps a cluster manager and maps application-level concepts into Rama queries. The constructor fetches all PStates for RamaSpace into fields on the class like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">String moduleName = RamaSpaceModule<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getName</span>()</span>;
+_profiles = cluster.clusterPState(moduleName, <span class="hljs-string">"$$profiles"</span>);
+_outgoingFriendRequests = cluster.clusterPState(moduleName, <span class="hljs-string">"$$outgoingFriendRequests"</span>);
+_incomingFriendRequests = cluster.clusterPState(moduleName, <span class="hljs-string">"$$incomingFriendRequests"</span>);
+_friends = cluster.clusterPState(moduleName, <span class="hljs-string">"$$friends"</span>);
+_posts = cluster.clusterPState(moduleName, <span class="hljs-string">"$$posts"</span>);
+_profileViews = cluster.clusterPState(moduleName, <span class="hljs-string">"$$profileViews"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Each RamaSpace query is defined as a <code>RamaSpaceClient</code> method. Let’s start with the query that fetches the password hash for a user. This is used to authenticate a user when logging in.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getPwdHash</span><span class="hljs-params">(String userId)</span> </span>{
+  <span class="hljs-keyword">return</span> _profiles.selectOne(Path.key(userId, <span class="hljs-string">"pwdHash"</span>));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The <code>"$$profiles"</code> PState has a slightly different structure than you’ve seen before. The inner map containing profile fields is a "fixed keys schema", which is similar to named columns on tables in a relational database. So those inner maps only contain the declared set of specified keys.</p>
+</div>
+<div class="paragraph">
+<p>The password hash for a user is in the "pwdHash" field for their profile map. So this query is just a simple navigation into two maps: the outer map mapping user IDs to profile maps, and the inner map mapping profile fields to values.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look at the query for fetching all the profile information needed for a user’s profile page:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> Profile <span class="hljs-title">getProfile</span><span class="hljs-params">(String userId)</span> </span>{
+  Map profile = _profiles.selectOne(
+                  Path.key(userId)
+                      .subMap(<span class="hljs-string">"displayName"</span>,
+                              <span class="hljs-string">"location"</span>,
+                              <span class="hljs-string">"bio"</span>,
+                              <span class="hljs-string">"email"</span>,
+                              <span class="hljs-string">"profilePic"</span>,
+                              <span class="hljs-string">"joinedAtMillis"</span>));
+  <span class="hljs-keyword">if</span>(profile.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Profile((String) profile.get(<span class="hljs-string">"email"</span>),
+                          (String) profile.get(<span class="hljs-string">"displayName"</span>),
+                          (String) profile.get(<span class="hljs-string">"bio"</span>),
+                          (String) profile.get(<span class="hljs-string">"location"</span>),
+                          (String) profile.get(<span class="hljs-string">"profilePic"</span>),
+                          (<span class="hljs-keyword">long</span>) profile.get(<span class="hljs-string">"joinedAtMillis"</span>));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This query specifies all the desired fields in the <code>subMap</code> navigator. The data in the map returned by <code>_profiles.selectOne</code> is then packaged into the first-class type <code>Profile</code>. <code>Profile</code> is a just a plain Java object.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look at getting the number of friends for a user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getFriendsCount</span><span class="hljs-params">(String userId)</span> </span>{
+  <span class="hljs-keyword">return</span> _friends.selectOne(Path.key(userId).view(Ops.SIZE));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This query navigates to the set of friends for a user ID and runs the <code>Ops.SIZE</code> function on it to get the friend count. Importantly, this path executes <em>entirely on the server</em>. So all that’s transferred from the client to the server is the path, and all that’s transferred back is the size. You can run any function that’s defined on both the client and module in query paths like this. These functions just have to implement the <code>RamaFunction1</code> interface.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned the inner set in the <code>"$$friends"</code> PState is subindexed, so each set element is indexed separately. This allows a user to have a large number of friends (even millions of friends) while still supporting fast queries. Internally, Rama automatically indexes the size of subindexed structures so that querying for their sizes is a fast, constant-time operation. You can read more about this on the <a href="pstates.html" class="page">page about PStates</a>.</p>
+</div>
+<div class="paragraph">
+<p>Here’s the query to check if two users are friends:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFriends</span><span class="hljs-params">(String userId1, String userId2)</span> </span>{
+  <span class="hljs-keyword">return</span> !_friends.select(Path.key(userId1).setElem(userId2)).isEmpty();
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Unlike <code>selectOne</code>, which must navigate to exactly one value, <code>select</code> returns a list of all values navigated to by the path. This path uses the <code>setElem</code> navigator which navigates to the specified value in the set only if it exists. So this path navigates to either one value or zero values, and the two users are currently friends if the returned list is not empty. Note that it doesn’t matter whether the friends of <code>userId1</code> or <code>userId2</code> are checked: the ETL that maintains the <code>"$$friends"</code> PState will ensure friendship relationships are always bidirectional.</p>
+</div>
+<div class="paragraph">
+<p>Here is the query to retrieve a page of someone’s friends. Since someone could have many friends, the UI will display no more than twenty friends at a time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;String&gt; <span class="hljs-title">getFriendsPage</span><span class="hljs-params">(String userId, String start)</span> </span>{
+  <span class="hljs-keyword">return</span> _friends.selectOne(Path.key(userId).sortedSetRangeFrom(start, SortedRangeFromOptions.maxAmt(<span class="hljs-number">20</span>).excludeStart()));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Subindexed sets and maps are <em>sorted</em>. The <code>sortedSetRangeFrom</code> navigator gets the subset of up to twenty friends starting from the given value. It works by iterating through the subindexed set starting from that value for that many elements. To get the first page of friends the <code>start</code> value would be set to the empty string, which is the smallest string value. To get the next page of friends, the start value would be the last value from the previous page. The <code>excludeStart</code> option is used here so as not to fetch the last value from the previous page again.</p>
+</div>
+<div class="paragraph">
+<p>Note that this PState structure will paginate through friends in user ID order. Depending on your application, you may desire something different. For example, if you wanted to iterate through friends in the order in which the friendships were created, a linked set structure would be appropriate. The <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> repository contains a helper called <code>KeyToLinkedEntitySetPStateGroup</code> that provides this functionality.</p>
+</div>
+<div class="paragraph">
+<p>Paginating through outgoing and incoming friendship requests is exactly the same, but on different PStates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;String&gt; <span class="hljs-title">getOutgoingFriendRequests</span><span class="hljs-params">(String userId, String start)</span> </span>{
+  <span class="hljs-keyword">return</span> _outgoingFriendRequests.selectOne(Path.key(userId).sortedSetRangeFrom(start, SortedRangeFromOptions.maxAmt(<span class="hljs-number">20</span>).excludeStart()));
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;String&gt; <span class="hljs-title">getIncomingFriendRequests</span><span class="hljs-params">(String userId, String start)</span> </span>{
+  <span class="hljs-keyword">return</span> _incomingFriendRequests.selectOne(Path.key(userId).sortedSetRangeFrom(start, SortedRangeFromOptions.maxAmt(<span class="hljs-number">20</span>).excludeStart()));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look at the query to get the number of profile views for a user over a range of hours:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getNumProfileViews</span><span class="hljs-params">(String userId, <span class="hljs-keyword">long</span> startHourBucket, <span class="hljs-keyword">long</span> endHourBucket)</span> </span>{
+  <span class="hljs-keyword">return</span> _profileViews.selectOne(
+           Path.key(userId)
+               .sortedMapRange(startHourBucket, endHourBucket)
+               .subselect(Path.mapVals())
+               .view(Ops.SUM));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This query is a great example of the power and flexibility of Rama’s path-based query API. The <code>"$$profileViews"</code> PState stores the number of profile views for a user ID for every hour of time. It’s a map from user ID to a subindexed map of hour bucket to view count. This query gets the sum of the counts for every hour in the requested range. Like the previous query invoking a function as part of the path, this entire query executes server-side. Let’s walk through how this path works:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Path.key(userId)</code>: This navigates to the subindexed map for <code>userId</code></p>
+</li>
+<li>
+<p><code>.sortedMapRange(startHourBucket, endHourBucket)</code>: This navigates to the submap containing keys only between that range of hours. Recall that subindexed maps and sets are sorted.</p>
+</li>
+<li>
+<p><code>.subselect(Path.mapVals())</code>: This part is a little subtle. We wish to sum together all the values for all those buckets, but in order to do so we need all the values together in a single collection. The <code>mapVals</code> navigator navigates to each map value <em>separately</em>. So that navigator is wrapped in <code>subselect</code> which performs a full <code>select</code> at that point in the navigation. <code>subselect</code> here navigates to the sequence of values navigated by <code>Path.mapVals()</code>. The end result of the <code>subselect</code> is a list of all map values.</p>
+</li>
+<li>
+<p><code>.view(Ops.SUM)</code>: At this point we are navigated to a list of all counts for every hour in that range. This last navigator finishes the query by summing together those values with <code>Ops.SUM</code>. <code>Ops.SUM</code> takes in as input a single list of values and returns the sum.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The computation cost of this query is linear with the number of requested hours. So for a very large range of time, such as five years, it will iterate and sum a huge number of values. If this is a use case you wish to optimize, there are more sophisticated PState structures aggregating additional time granularities that can accelerate queries like this. We’ll leave that as an exercise for the reader.</p>
+</div>
+<div class="paragraph">
+<p>Next, here’s the query for the number of posts on a user’s wall. It’s the same as getting someone’s friend count.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getPostsCount</span><span class="hljs-params">(String userId)</span> </span>{
+  <span class="hljs-keyword">return</span> _posts.selectOne(Path.key(userId).view(Ops.SIZE));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The last query is resolving a page of posts on a user’s wall. This query is more complex because there’s more information that needs to be retrieved besides what’s in the <code>"$$posts"</code> PState, such as the display name and profile pic of the posting user for each post on the page. This query is implemented as a query topology and will be covered later on this page.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_defining_application_data"><a class="anchor" href="#_defining_application_data"></a>Defining application data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let’s now define the types for all the data comprising this application. Most of these types define the raw data being appended to depots. While nothing is stopping you from using unstructured tools like JSON for this data, we recommend using first-class types with strong validation of fields. If you have a bug that’s creating invalid data, it’s much easier to debug when you get an exception creating the data than downstream when the data is being read.</p>
+</div>
+<div class="paragraph">
+<p>Because these data types will be transferred across the network – for depot appends, between tasks during topology execution, or for PState queries – Rama needs to know how to serialize them. RamaSpace will make use of a built-in serialization mechanism provided by Rama. By simply implementing the <code>RamaSerializable</code> class, Rama will use Java serialization whenever that type needs to be serialized. Java serialiation isn’t the most efficient, so you can integrate other serialization mechanisms for greater efficiency. See <a href="serialization.html" class="page">the page on serialization</a> for details.</p>
+</div>
+<div class="paragraph">
+<p>To illustrate the structure of RamaSpace’s types, here are a few of them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRegistration</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaSerializable</span> </span>{
+  <span class="hljs-keyword">public</span> String userId;
+  <span class="hljs-keyword">public</span> String email;
+  <span class="hljs-keyword">public</span> String displayName;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> pwdHash;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">UserRegistration</span><span class="hljs-params">(String userId, String email, String displayName, <span class="hljs-keyword">int</span> pwdHash)</span> </span>{
+    <span class="hljs-keyword">this</span>.userId = userId;
+    <span class="hljs-keyword">this</span>.email = email;
+    <span class="hljs-keyword">this</span>.displayName = displayName;
+    <span class="hljs-keyword">this</span>.pwdHash = pwdHash;
+  }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FriendRequest</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaSerializable</span> </span>{
+  <span class="hljs-keyword">public</span> String userId;
+  <span class="hljs-keyword">public</span> String toUserId;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FriendRequest</span><span class="hljs-params">(String userId, String toUserId)</span> </span>{
+    <span class="hljs-keyword">this</span>.userId = userId;
+    <span class="hljs-keyword">this</span>.toUserId = toUserId;
+  }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaSerializable</span> </span>{
+  <span class="hljs-keyword">public</span> String userId;
+  <span class="hljs-keyword">public</span> String toUserId;
+  <span class="hljs-keyword">public</span> String content;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Post</span><span class="hljs-params">(String userId, String toUserId, String content)</span> </span>{
+    <span class="hljs-keyword">this</span>.userId = userId;
+    <span class="hljs-keyword">this</span>.toUserId = toUserId;
+    <span class="hljs-keyword">this</span>.content = content;
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>These types use public fields to make use of a helper facility from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> to make it easier to write topologies. This is not a requirement.</p>
+</div>
+<div class="paragraph">
+<p>Here is the full list of datatypes and their fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UserRegistration[userId&lt;String&gt;, email&lt;String&gt;, displayName&lt;String&gt;, pwdHash&lt;Integer&gt;, registrationUUID&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>FriendRequest[userId&lt;String&gt;, toUserId&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>CancelFriendRequest[userId&lt;String&gt;, toUserId&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>FriendshipAdd[userId1&lt;String&gt;, userId2&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>FriendshipRemove[userId1&lt;String&gt;, userId2&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>ProfileEdit[userId&lt;String&gt;, field&lt;String&gt;, value&lt;Object&gt;]</code></p>
+</li>
+<li>
+<p><code>Post[userId&lt;String&gt;, toUserId&lt;String&gt;, content&lt;String&gt;]</code></p>
+</li>
+<li>
+<p><code>Profile[email&lt;String&gt;, displayName&lt;String&gt;, bio&lt;String&gt;, location&lt;String&gt;, profilePic&lt;String&gt;, joinedAtMillis&lt;Long&gt;]</code></p>
+</li>
+<li>
+<p><code>ResolvedPost[userId&lt;String&gt;, content&lt;String&gt;, displayName&lt;String&gt;, profilePic&lt;String&gt;]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>Profile</code> and <code>ResolvedPost</code> are used for query results, while the other types are used for depot appends.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_defining_ramaspacemodule"><a class="anchor" href="#_defining_ramaspacemodule"></a>Defining <code>RamaSpaceModule</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now let’s get to the fun part! All of the functionality described will only require 180 lines of code to implement as a module. It will be fully scalable and fault-tolerant in addition to being so easy to implement.</p>
+</div>
+<div class="paragraph">
+<p>Let’s explore this module from the top-down, starting from the <code>define</code> method for the <code>RamaModule</code> interface. Remember, this is the only method that a module implements and defines all the depots, PStates, ETLs, and query topologies for the module.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+  setup.declareDepot(<span class="hljs-string">"*userRegistrationsDepot"</span>, Depot.hashBy(UserIdExtract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+  setup.declareDepot(<span class="hljs-string">"*profileEditsDepot"</span>, Depot.hashBy(UserIdExtract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+  setup.declareDepot(<span class="hljs-string">"*profileViewsDepot"</span>, Depot.hashBy(ToUserIdExtract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+  setup.declareDepot(<span class="hljs-string">"*friendRequestsDepot"</span>, Depot.hashBy(UserIdExtract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+  setup.declareDepot(<span class="hljs-string">"*friendshipChangesDepot"</span>, Depot.hashBy(UserId1Extract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+  setup.declareDepot(<span class="hljs-string">"*postsDepot"</span>, Depot.hashBy(ToUserIdExtract<span class="hljs-class">.<span class="hljs-keyword">class</span>))</span>;
+
+  declareUsersTopology(topologies);
+  declareFriendsTopology(topologies);
+  declarePostsTopology(topologies);
+  declareProfileViewsTopology(topologies);
+
+  topologies.query(<span class="hljs-string">"resolvePosts"</span>, <span class="hljs-string">"*forUserId"</span>, <span class="hljs-string">"*startPostId"</span>).out(<span class="hljs-string">"*resultMap"</span>)
+            .hashPartition(<span class="hljs-string">"*forUserId"</span>)
+            .localSelect(<span class="hljs-string">"$$posts"</span>, Path.key(<span class="hljs-string">"*forUserId"</span>).sortedMapRangeFrom(<span class="hljs-string">"*startPostId"</span>, <span class="hljs-number">20</span>)).out(<span class="hljs-string">"*submap"</span>)
+            .each(Ops.EXPLODE_MAP, <span class="hljs-string">"*submap"</span>).out(<span class="hljs-string">"*i"</span>, <span class="hljs-string">"*post"</span>)
+            .macro(extractJavaFields(<span class="hljs-string">"*post"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*content"</span>))
+            .hashPartition(<span class="hljs-string">"*userId"</span>)
+            .localSelect(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"displayName"</span>)).out(<span class="hljs-string">"*displayName"</span>)
+            .localSelect(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"profilePic"</span>)).out(<span class="hljs-string">"*profilePic"</span>)
+            .each(ResolvedPost::<span class="hljs-keyword">new</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*content"</span>, <span class="hljs-string">"*displayName"</span>, <span class="hljs-string">"*profilePic"</span>).out(<span class="hljs-string">"*resolvedPost"</span>)
+            .originPartition()
+            .compoundAgg(CompoundAgg.map(<span class="hljs-string">"*i"</span>, Agg.last(<span class="hljs-string">"*resolvedPost"</span>))).out(<span class="hljs-string">"*resultMap"</span>);
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The depots and query topology for this module are defined in this method, while the four ETL topologies are delegated to helper functions. Let’s start with the depots.</p>
+</div>
+<div class="sect2">
+<h3 id="_depots"><a class="anchor" href="#_depots"></a>Depots</h3>
+<div class="paragraph">
+<p>The depots correspond to the categories of events happening in the application. Not every data type has its own depot. Some of these depots receive multiple data types. For example, the <code>"*friendRequestsDepot"</code> receives both <code>FriendRequest</code> and <code>CancelFriendRequest</code> data. This is necessary so that different types of data that affect the same PStates are processed in the order in which they happened. As an illustration of this, suppose a user is spamming the "request friend" and "cancel friend request" buttons on the RamaSpace UI. This will generate many <code>FriendRequest</code> and <code>CancelFriendRequest</code> records. If those were kept on separate depots, there’s no guarantee as to the order in which they will be processed. The user could generate data in this order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FriendRequest</code></p>
+</li>
+<li>
+<p><code>CancelFriendRequest</code></p>
+</li>
+<li>
+<p><code>FriendRequest</code></p>
+</li>
+<li>
+<p><code>CancelFriendRequest</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>But they could be processed in this order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FriendRequest</code></p>
+</li>
+<li>
+<p><code>CancelFriendRequest</code></p>
+</li>
+<li>
+<p><code>CancelFriendRequest</code></p>
+</li>
+<li>
+<p><code>FriendRequest</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Only by keeping these two datatypes on the same depot can the order of processing match the order in which the data was generated.</p>
+</div>
+<div class="paragraph">
+<p>Likewise, how a depot is partitioned is critical for ensuring this ordering. The order in which data on different partitions of a depot is processed is undefined because they are being processed in parallel. If <code>"*friendRequestsDepot"</code> were defined with <code>Depot.random()</code> partitioning, you will run into the same ordering mismatch. So <code>"*friendRequestsDepot"</code> instead defines its partitioning as <code>Depot.hashBy(UserIdExtract.class)</code>. This class ensures <code>FriendRequest</code> and <code>CancelFriendRequest</code> from the same user always goes to the same partition. <code>UserIdExtract</code> is defined as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserIdExtract</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TopologyUtils</span>.<span class="hljs-title">ExtractJavaField</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">UserIdExtract</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">super</span>(<span class="hljs-string">"userId"</span>);
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This uses the helper class <code>TopologyUtils.ExtractJavaField</code> from <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> to extract the <code>userId</code> field from the data being appended. Both <code>FriendRequest</code> and <code>CancelFriendRequest</code> have a field <code>userId</code>.</p>
+</div>
+<div class="paragraph">
+<p>The definitions of the other depots all use the exact same logic. You’ll see specifically how the data from each depot is used in the definitions of the ETL topologies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_users_topology"><a class="anchor" href="#_users_topology"></a>Users topology</h3>
+<div class="paragraph">
+<p>The users topology handles user registrations and profiles. Let’s start with the declaration of the topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology users = topologies.stream(<span class="hljs-string">"users"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Streaming is used for this topology because low latency updates (a few milliseconds) are necessary for these use cases. Next is the declaration of the one PState for this topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">users.pstate(
+  <span class="hljs-string">"$$profiles"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">fixedKeysSchema</span>(
+      "<span class="hljs-title">displayName</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">email</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">profilePic</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">bio</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">location</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">pwdHash</span>", <span class="hljs-title">Integer</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">joinedAtMillis</span>", <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>,
+      "<span class="hljs-title">registrationUUID</span>", <span class="hljs-title">String</span>.<span class="hljs-title">class</span>
+      )))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is the "fixed keys schema" that was mentioned before. For each user ID, a map with a fixed set of fields is stored. These fields represent all profile information for that user, and each field has its own schema.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>User IDs in RamaSpace are the same as usernames. This structure makes it hard to implement the feature of a user being able to change their username. A more flexible design would track user IDs and usernames separately.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Next is handling user registrations. The key task to handle is detecting whether the registration succeeded or whether the requested user ID already exists. An incorrect way to do this would be to first query the <code>"$$profiles"</code> PState to check if the user ID exists and then append a <code>UserRegistration</code> if the user ID is available. This doesn’t work because there’s a race condition between two clients trying to register the same user ID at the same time: they could both see the user ID doesn’t currently exist and then both append a <code>UserRegistration</code> record.</p>
+</div>
+<div class="paragraph">
+<p>The correct way to handle this is within the ETL code that processes <code>UserRegistration</code> records. Each <code>UserRegistration</code> is an <em>attempt</em> to register that user ID – if the user ID currently exists, it doesn’t do anything. In order for a client to know whether their registration succeeded or not, the client provides a UUID with the registration that gets written into the <code>"$$profiles"</code> PState if and only if the user ID didn’t exist. Here’s the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">users.source(<span class="hljs-string">"*userRegistrationsDepot"</span>).out(<span class="hljs-string">"*registration"</span>)
+     .macro(extractJavaFields(<span class="hljs-string">"*registration"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*email"</span>, <span class="hljs-string">"*displayName"</span>, <span class="hljs-string">"*pwdHash"</span>, <span class="hljs-string">"*registrationUUID"</span>))
+     .each(System::currentTimeMillis).out(<span class="hljs-string">"*joinedAtMillis"</span>)
+     .localTransform(<span class="hljs-string">"$$profiles"</span>,
+       Path.key(<span class="hljs-string">"*userId"</span>)
+           .filterPred(Ops.IS_NULL)
+           .multiPath(Path.key(<span class="hljs-string">"email"</span>).termVal(<span class="hljs-string">"*email"</span>),
+                      Path.key(<span class="hljs-string">"displayName"</span>).termVal(<span class="hljs-string">"*displayName"</span>),
+                      Path.key(<span class="hljs-string">"pwdHash"</span>).termVal(<span class="hljs-string">"*pwdHash"</span>),
+                      Path.key(<span class="hljs-string">"joinedAtMillis"</span>).termVal(<span class="hljs-string">"*joinedAtMillis"</span>),
+                      Path.key(<span class="hljs-string">"registrationUUID"</span>).termVal(<span class="hljs-string">"*registrationUUID"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This code takes advantage of fact that events for a single task run in sequence. So while this code is processing a <code>UserRegistration</code>, no other events for the same user ID can be running at the same time (but events for different user IDs on different tasks can be running in parallel). This is a property you can take advantage for other goals, such as updating multiple PStates on the same task and ensuring those changes become visible atomically.</p>
+</div>
+<div class="paragraph">
+<p>This ETL code takes advantage of the depot partitioning for <code>"*userRegistrationsDepot"</code>. The depot is configured to partition by the user ID inside the <code>UserRegistration</code> objects. So when this ETL code begins processing a <code>UserRegistration</code>, it’s already on the task with the correct partition of the <code>"$$profiles"</code> PState for that user ID.</p>
+</div>
+<div class="paragraph">
+<p>The next step is extracting the information needed from the <code>UserRegistration</code> to perform the work of the ETL. Here you can see a facility of Rama’s dataflow API that hasn’t been introduced yet: macros. Macros are a way to decompose and reuse chunks of dataflow code. <code>macro</code> is given a block of code and expands that block of code into that callsite. This <code>macro</code> call uses the <code>extractJavaFields</code> function defined in <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> and expands to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">users.source(<span class="hljs-string">"*userRegistrationsDepot"</span>).out(<span class="hljs-string">"*registration"</span>)
+     .each(<span class="hljs-keyword">new</span> ExtractJavaField(<span class="hljs-string">"userId"</span>), <span class="hljs-string">"*registration"</span>).out(<span class="hljs-string">"*userId"</span>)
+     .each(<span class="hljs-keyword">new</span> ExtractJavaField(<span class="hljs-string">"email"</span>), <span class="hljs-string">"*registration"</span>).out(<span class="hljs-string">"*email"</span>)
+     .each(<span class="hljs-keyword">new</span> ExtractJavaField(<span class="hljs-string">"displayName"</span>), <span class="hljs-string">"*registration"</span>).out(<span class="hljs-string">"*displayName"</span>)
+     .each(<span class="hljs-keyword">new</span> ExtractJavaField(<span class="hljs-string">"pwdHash"</span>), <span class="hljs-string">"*registration"</span>).out(<span class="hljs-string">"*pwdHash"</span>)
+     .each(<span class="hljs-keyword">new</span> ExtractJavaField(<span class="hljs-string">"registrationUUID"</span>), <span class="hljs-string">"*registration"</span>).out(<span class="hljs-string">"*registrationUUID"</span>)
+     .each(System::currentTimeMillis).out(<span class="hljs-string">"*joinedAtMillis"</span>)
+     .localTransform(<span class="hljs-string">"$$profiles"</span>,
+       Path.key(<span class="hljs-string">"*userId"</span>)
+           .filterPred(Ops.IS_NULL)
+           .multiPath(Path.key(<span class="hljs-string">"email"</span>).termVal(<span class="hljs-string">"*email"</span>),
+                      Path.key(<span class="hljs-string">"displayName"</span>).termVal(<span class="hljs-string">"*displayName"</span>),
+                      Path.key(<span class="hljs-string">"pwdHash"</span>).termVal(<span class="hljs-string">"*pwdHash"</span>),
+                      Path.key(<span class="hljs-string">"joinedAtMillis"</span>).termVal(<span class="hljs-string">"*joinedAtMillis"</span>),
+                      Path.key(<span class="hljs-string">"registrationUUID"</span>).termVal(<span class="hljs-string">"*registrationUUID"</span>)));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p><code>ExtractJavaField</code> is also defined in <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> and extracts the public field from a Java object with that name. The <code>extractJavaFields</code> function produces code which maps the desired output variable names to field names. There’s much more to say about how to use macros, and you can read more about them on <a href="intermediate-dataflow.html" class="page">this page</a>.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the ETL code is straightforward. It writes the user registration information into the <code>$$profiles</code> PState only if that user ID doesn’t currently exist. The key code is the <code>filterPred(Ops.IS_NULL)</code> navigator, which only continues navigation if the user ID doesn’t exist.</p>
+</div>
+<div class="paragraph">
+<p>With the ETL explained, we can now complete the story of how user registration works. A client does the following procedure to attempt to register a user ID:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Append a <code>UserRegistration</code> object to <code>"*userRegistrationsDepot"</code>. Recall that a <code>UserRegistration</code> records contains a unique <code>registrationUUID</code>.</p>
+</li>
+<li>
+<p>This depot append uses <code>AckLevel.ACK</code> (which is the default if not specified). With this ack level the depot append call will only complete when all streaming topologies colocated with the depot have finished processing the data.</p>
+</li>
+<li>
+<p>The client queries the <code>"$$profiles"</code> PState to check if the <code>"registrationUUID"</code> field matches the <code>registrationUUID</code> included with the depot append. If so, the user registration was successful. If not, the user ID already existed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here’s the client code for this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">appendUserRegistration</span><span class="hljs-params">(String userId, String email, String displayName, <span class="hljs-keyword">int</span> pwdHash)</span> </span>{
+  String registrationUUID = UUID.randomUUID().toString();
+  _userRegistrationsDepot.append(<span class="hljs-keyword">new</span> UserRegistration(userId, email, displayName, pwdHash, registrationUUID));
+  String storedUUID = _profiles.selectOne(Path.key(userId, <span class="hljs-string">"registrationUUID"</span>));
+  <span class="hljs-keyword">return</span> registrationUUID.equals(storedUUID);
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Although only a small amount of code is required for handling user registrations, both in the module and client-side, it’s a great example of composing together Rama’s primitives to achieve application-level goals.</p>
+</div>
+<div class="paragraph">
+<p>The last piece of the users topology is handling edits to existing profiles. This is accomplished by processing <code>ProfileEdit</code> data from the <code>"*profileEditsDepot"</code> like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">users.source(<span class="hljs-string">"*profileEditsDepot"</span>).out(<span class="hljs-string">"*edit"</span>)
+     .macro(extractJavaFields(<span class="hljs-string">"*edit"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>, <span class="hljs-string">"*value"</span>))
+     .localTransform(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*field"</span>).termVal(<span class="hljs-string">"*value"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like user registrations, this code takes advantage of the partitioning of <code>"*profileEditsDepot"</code>. It simply reads the field and value from the <code>ProfileEdit</code> and overwrites those in the <code>"$$profiles"</code> PState.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_friends_topology"><a class="anchor" href="#_friends_topology"></a>Friends topology</h3>
+<div class="paragraph">
+<p>The friends topology handles friend requests and maintaining a bidirectional social graph. A user can view both incoming and outgoing friend requests, can cancel pending friend requests, and can unfriend existing friends. Let’s start with the declaration of the topology and the PStates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">StreamTopology friends = topologies.stream(<span class="hljs-string">"friends"</span>);
+friends.pstate(
+  <span class="hljs-string">"$$outgoingFriendRequests"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+friends.pstate(
+  <span class="hljs-string">"$$incomingFriendRequests"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+friends.pstate(
+  <span class="hljs-string">"$$friends"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">setSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is a use case where either streaming or microbatching could be used depending on what exactly the application designer desires. Streaming ensures new friend requests and friendships are visible very quickly, while microbatching would be able to handle higher throughput while having higher latency (on order of a few hundred milliseconds).</p>
+</div>
+<div class="paragraph">
+<p>There are three PStates for this topology all with the same structure: a map of user ID to a subindexed set of user IDs. These PStates track outgoing friend requests, incoming friend requests, and friendship relations. Any friendship will correspond to two pieces of data in the <code>"$$friends"</code> PState for each direction of the friendship. Each direction of a friendship could be stored on different partitions of the PState since the two user IDs are unrelated.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at the code for handling friend requests and cancellations of friend requests:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">friends.source(<span class="hljs-string">"*friendRequestsDepot"</span>).out(<span class="hljs-string">"*request"</span>)
+       .macro(extractJavaFields(<span class="hljs-string">"*request"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*toUserId"</span>))
+       .subSource(<span class="hljs-string">"*request"</span>,
+         SubSource.create(FriendRequest<span class="hljs-class">.<span class="hljs-keyword">class</span>)
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">outgoingFriendRequests</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">set</span>("*<span class="hljs-title">toUserId</span>")))
+                  .<span class="hljs-title">hashPartition</span>("*<span class="hljs-title">toUserId</span>")
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">incomingFriendRequests</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">toUserId</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">set</span>("*<span class="hljs-title">userId</span>"))),
+         <span class="hljs-title">SubSource</span>.<span class="hljs-title">create</span>(<span class="hljs-title">CancelFriendRequest</span>.<span class="hljs-title">class</span>)
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">outgoingFriendRequests</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">setRemove</span>("*<span class="hljs-title">toUserId</span>")))
+                  .<span class="hljs-title">hashPartition</span>("*<span class="hljs-title">toUserId</span>")
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">incomingFriendRequests</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">toUserId</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">setRemove</span>("*<span class="hljs-title">userId</span>"))))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>There’s a new operation here that hasn’t been introduced yet: <code>subSource</code>. <code>subSource</code> dispatches processing based on the type of the input data. While you could accomplish the same thing here using <code>ifTrue</code>, <code>subSource</code> is especially convenient when you have more than two data types. In this case there are two branches of computation: one for the <code>FriendRequest</code> type, and one for the <code>CancelFriendRequest</code> type.</p>
+</div>
+<div class="paragraph">
+<p>Let’s start with the processing for <code>FriendRequest</code>. <code>"*friendRequestsDepot"</code> is partitioned by the <code>userId</code> field, so the processing is already on the right task to update <code>"$$outgoingFriendRequests"</code>. This is done here with <code>compoundAgg</code> by adding <code>"*toUserId"</code> to the set of outgoing friend requests for <code>"*userId"</code>. You could also perform this write with <code>localTransform</code>, but the code is slightly shorter with <code>compoundAgg</code>. Next, the computation is relocated to the partition representing data for <code>"*toUserId"</code> and a similar <code>compoundAgg</code> call is done to update incoming friend requests for <code>"*toUserId"</code>.</p>
+</div>
+<div class="paragraph">
+<p>The code handling <code>CancelFriendRequest</code> is the same, except removing elements from those nested sets instead of adding them.</p>
+</div>
+<div class="paragraph">
+<p>Next, let’s take a look for handling friendship additions and removals:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">friends.source(<span class="hljs-string">"*friendshipChangesDepot"</span>).out(<span class="hljs-string">"*change"</span>)
+       .macro(extractJavaFields(<span class="hljs-string">"*change"</span>, <span class="hljs-string">"*userId1"</span>, <span class="hljs-string">"*userId2"</span>))
+       .anchor(<span class="hljs-string">"start"</span>)
+       .compoundAgg(<span class="hljs-string">"$$incomingFriendRequests"</span>, CompoundAgg.map(<span class="hljs-string">"*userId1"</span>, Agg.setRemove(<span class="hljs-string">"*userId2"</span>)))
+       .compoundAgg(<span class="hljs-string">"$$outgoingFriendRequests"</span>, CompoundAgg.map(<span class="hljs-string">"*userId1"</span>, Agg.setRemove(<span class="hljs-string">"*userId2"</span>)))
+       .hashPartition(<span class="hljs-string">"*userId2"</span>)
+       .compoundAgg(<span class="hljs-string">"$$incomingFriendRequests"</span>, CompoundAgg.map(<span class="hljs-string">"*userId2"</span>, Agg.setRemove(<span class="hljs-string">"*userId1"</span>)))
+       .compoundAgg(<span class="hljs-string">"$$outgoingFriendRequests"</span>, CompoundAgg.map(<span class="hljs-string">"*userId2"</span>, Agg.setRemove(<span class="hljs-string">"*userId1"</span>)))
+       .hook(<span class="hljs-string">"start"</span>)
+       .subSource(<span class="hljs-string">"*change"</span>,
+         SubSource.create(FriendshipAdd<span class="hljs-class">.<span class="hljs-keyword">class</span>)
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">friends</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId1</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">set</span>("*<span class="hljs-title">userId2</span>")))
+                  .<span class="hljs-title">hashPartition</span>("*<span class="hljs-title">userId2</span>")
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">friends</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId2</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">set</span>("*<span class="hljs-title">userId1</span>"))),
+         <span class="hljs-title">SubSource</span>.<span class="hljs-title">create</span>(<span class="hljs-title">FriendshipRemove</span>.<span class="hljs-title">class</span>)
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">friends</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId1</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">setRemove</span>("*<span class="hljs-title">userId2</span>")))
+                  .<span class="hljs-title">hashPartition</span>("*<span class="hljs-title">userId2</span>")
+                  .<span class="hljs-title">compoundAgg</span>("$$<span class="hljs-title">friends</span>", <span class="hljs-title">CompoundAgg</span>.<span class="hljs-title">map</span>("*<span class="hljs-title">userId2</span>", <span class="hljs-title">Agg</span>.<span class="hljs-title">setRemove</span>("*<span class="hljs-title">userId1</span>"))))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The idea here is when a user accepts a friendship request, only a single <code>FriendshipAdd</code> record is appended to the <code>"*friendshipChangesDepot"</code>. So this code is a little more involved because friendship requests must be cleared in addition to updating the <code>"$$friends"</code> PState.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>An alternative design is to append a <code>CancelFriendRequest</code> record as well when accepting a friend request and have the ETL code above only update the <code>"$$friends"</code> PState. This can be prone to errors though –&nbsp;if the client process crashes after sending the <code>FriendshipAdd</code> but before sending the <code>CancelFriendRequest</code>, the friend request won’t be cleared. When you have multiple actions you want to take in response to an event, it’s best to encode that as a single depot append. That way the system can’t get into a state where only some of the desired actions are taken.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>This code uses <a href="tutorial4.html#_branching_dataflow_graphs" class="page">"anchor" and "hook"</a> to create two branches of computation. The first branch clears all incoming and outgoing requests between those two user IDs, and the other branch updates the <code>"$$friends"</code> PState in both directions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_posts_topology"><a class="anchor" href="#_posts_topology"></a>Posts topology</h3>
+<div class="paragraph">
+<p>For the posts topology, let’s once again start with the declaration of the topology and the PStates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">MicrobatchTopology posts = topologies.microbatch(<span class="hljs-string">"posts"</span>);
+posts.pstate(
+  <span class="hljs-string">"$$posts"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Post</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+
+TaskUniqueIdPState id = <span class="hljs-keyword">new</span> TaskUniqueIdPState(<span class="hljs-string">"$$postId"</span>).descending();
+id.declarePState(posts);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Because this uses a microbatch topology, it will be able to handle very high throughput at the tradeoff of moderately increased latency of processing. Microbatching is used here for the purposes of illustration; whether you use a stream topology or microbatch topology depends on the latency you desire of new posts being visible on the user’s wall.</p>
+</div>
+<div class="paragraph">
+<p>The <code>"$$posts"</code> PState is a map from user ID to post ID to <code>Post</code>. The inner map is subindexed because users will have lots of posts on their wall. Post IDs are generated <em>in descending order</em>, which causes a user’s wall to be stored in reverse chronological order. This is exactly how we desire posts to be ordered on the frontend. Getting a page of posts is as simple as using the <code>sortedMapRangeFrom</code> navigator, as you’ll see later in the <code>resolvePosts</code> query topology.</p>
+</div>
+<div class="paragraph">
+<p><code>TaskUniqueIdPState</code> is a utility you haven’t seen before that comes from the <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> repository. It’s a simple tool that generates IDs unique to this task. It keeps the next post ID value in the local partition for the <code>"$$postId"</code> PState. So the <code>"$$postId"</code> PState is partitioned numbers –&nbsp;not a map like you’ve been seeing so far. In this case the <code>TaskUniqueIdPState</code> is configured to generate IDs in descending order starting from the largest <code>Long</code> value.</p>
+</div>
+<div class="paragraph">
+<p><code>TaskUniqueIdPState</code> generates IDs that are unique <em>on the task</em>. These IDs will not be unique across tasks. In this case that’s all that’s needed. <a href="https://github.com/redplanetlabs/rama-helpers">rama-helpers</a> contains another utility called <code>ModuleUniqueIdPState</code> which generates IDs unique across the entire module. It does this by incorporating the task ID in the generated ID.</p>
+</div>
+<div class="paragraph">
+<p>Now let’s look at the topology code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">posts.source(<span class="hljs-string">"*postsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+     .explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*post"</span>)
+     .macro(extractJavaFields(<span class="hljs-string">"*post"</span>, <span class="hljs-string">"*toUserId"</span>))
+     .macro(id.genId(<span class="hljs-string">"*id"</span>))
+     .localTransform(<span class="hljs-string">"$$posts"</span>, Path.key(<span class="hljs-string">"*toUserId"</span>, <span class="hljs-string">"*id"</span>).termVal(<span class="hljs-string">"*post"</span>));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>This is only five lines of code! The only new bit is the <code>genId</code> macro from <code>TaskUniqueIdPState</code> which generates a new ID and binds it to the <code>"*id"</code> var. Helper utilities like <code>TaskUniqueIdPState</code> often expose fine-grained functionality like this through macros.</p>
+</div>
+<div class="paragraph">
+<p>Also of note is the lack of any partitioner calls: the partitioning of depots is respected by microbatch topologies the same as stream topologies, so a post begins processing here on the same depot partition it was appended to (partitioned by <code>toUserId</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_profile_views_topology"><a class="anchor" href="#_profile_views_topology"></a>Profile views topology</h3>
+<div class="paragraph">
+<p>The last topology in RamaSpace is the profile views analytics topology. Recall that this ETL produces a PState to support a query for getting the number of profile views over a range of hours. Once again, let’s start with the declaration of the topology and PStates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">MicrobatchTopology profileViews = topologies.microbatch(<span class="hljs-string">"profileViews"</span>);
+profileViews.pstate(
+  <span class="hljs-string">"$$profileViews"</span>,
+  PState.mapSchema(
+    String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+    <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">Long</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Microbatching is perfect for this use case. It’s completely fine for the update latency of analytics like this to be a few hundred milliseconds. There’s no reason to need faster latency than that especially since the granularity of analytics is an hour. Microbatching gives high throughput and great fault-tolerance semantics while barely making the code more complicated.</p>
+</div>
+<div class="paragraph">
+<p>The PState is a map from user ID to hour bucket to number of profile views in that bucket. There are about 8760 hours in a year, so it’s critical that inner map be subindexed. Subindexing enables inner data structures like this to be of arbitrary size, and you’re only limited by the amount of disk space on the machine.</p>
+</div>
+<div class="paragraph">
+<p>Let’s now take a look at the topology code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">profileViews.source(<span class="hljs-string">"*profileViewsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+            .explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*profileView"</span>)
+            .macro(extractJavaFields(<span class="hljs-string">"*profileView"</span>, <span class="hljs-string">"*toUserId"</span>, <span class="hljs-string">"*timestamp"</span>))
+            .each((Long timestamp) -&gt; timestamp / (<span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>), <span class="hljs-string">"*timestamp"</span>).out(<span class="hljs-string">"*bucket"</span>)
+            .compoundAgg(<span class="hljs-string">"$$profileViews"</span>,
+              CompoundAgg.map(
+                <span class="hljs-string">"*toUserId"</span>,
+                CompoundAgg.map(
+                  <span class="hljs-string">"*bucket"</span>,
+                  Agg.count())));</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Like all the other topologies, this code is extremely straightforward. It’s straightforward because RamaSpace is straightforward, and Rama can express applications close to how you describe them by cutting out all the usual complexity.</p>
+</div>
+<div class="paragraph">
+<p>While the write to the PState could use a <code>localTransform</code>, using a <code>compoundAgg</code> here is more concise. Aggregators automate routine things like initializing non-existent subvalues. In this case, the <code>Agg.count()</code> aggregator initializes the value for a bucket to <code>0</code> the first time it appears. You can read more about aggregators and other features they have <a href="aggregators.html" class="page">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resolveposts_query_topology"><a class="anchor" href="#_resolveposts_query_topology"></a><code>resolvePosts</code> query topology</h3>
+<div class="paragraph">
+<p>The last piece of the RamaSpace implementation is the <code>resolvePosts</code> query topology. Rendering a page of posts on a user’s wall requires not just the posts themselves but also information about the users who made those posts. While you could query all this user info client-side for every post, that would require over twenty round-trips with the module to get all the information needed to render one page of posts. It’s far more efficient to perform all that work in a single round-trip with a query topology.</p>
+</div>
+<div class="paragraph">
+<p>With a query topology you specify a parallelized computation using the exact same API as used for making ETLs. This computation can query any or all of the module’s PStates and any or all of the module’s tasks. Here is the code for <code>resolvePosts</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">topologies.query(<span class="hljs-string">"resolvePosts"</span>, <span class="hljs-string">"*forUserId"</span>, <span class="hljs-string">"*startPostId"</span>).out(<span class="hljs-string">"*resultMap"</span>)
+          .hashPartition(<span class="hljs-string">"*forUserId"</span>)
+          .localSelect(<span class="hljs-string">"$$posts"</span>, Path.key(<span class="hljs-string">"*forUserId"</span>).sortedMapRangeFrom(<span class="hljs-string">"*startPostId"</span>, <span class="hljs-number">20</span>)).out(<span class="hljs-string">"*submap"</span>)
+          .each(Ops.EXPLODE_MAP, <span class="hljs-string">"*submap"</span>).out(<span class="hljs-string">"*i"</span>, <span class="hljs-string">"*post"</span>)
+          .macro(extractJavaFields(<span class="hljs-string">"*post"</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*content"</span>))
+          .hashPartition(<span class="hljs-string">"*userId"</span>)
+          .localSelect(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"displayName"</span>)).out(<span class="hljs-string">"*displayName"</span>)
+          .localSelect(<span class="hljs-string">"$$profiles"</span>, Path.key(<span class="hljs-string">"*userId"</span>, <span class="hljs-string">"profilePic"</span>)).out(<span class="hljs-string">"*profilePic"</span>)
+          .each(ResolvedPost::<span class="hljs-keyword">new</span>, <span class="hljs-string">"*userId"</span>, <span class="hljs-string">"*content"</span>, <span class="hljs-string">"*displayName"</span>, <span class="hljs-string">"*profilePic"</span>).out(<span class="hljs-string">"*resolvedPost"</span>)
+          .originPartition()
+          .compoundAgg(CompoundAgg.map(<span class="hljs-string">"*i"</span>, Agg.last(<span class="hljs-string">"*resolvedPost"</span>))).out(<span class="hljs-string">"*resultMap"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>At a high-level, this code fetches up to the next 20 posts for <code>"*forUserId"</code> starting from <code>"*startPostId"</code>. The first page would use a starting post ID of 0, which is the lowest possible ID. For each of these posts it partitions by the user ID to fetch their display name and profile pic, and then it combines all this information into a map to return back to the caller. To get the next page of posts, the client would invoke the query topology again with a starting post ID of one more than the highest post ID from the last page.</p>
+</div>
+<div class="paragraph">
+<p>Query topologies are <em>batched computations</em>, a concept that hasn’t been introduced yet. So you’ll have to do a little more reading to fully understand this code. See <a href="query.html" class="page">this page</a> for all the details on making query topologies.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, here’s how this query topology is used client-side. First, here’s how a handle to the query topology is created in the constructor of <code>RamaSpaceClient</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">_resolvePosts = cluster.clusterQuery(moduleName, <span class="hljs-string">"resolvePosts"</span>);</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Then, here’s how it’s invoked:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-function"><span class="hljs-keyword">public</span> TreeMap&lt;Long, ResolvedPost&gt; <span class="hljs-title">resolvePosts</span><span class="hljs-params">(String userId, <span class="hljs-keyword">long</span> index)</span> </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TreeMap(_resolvePosts.invoke(userId, index));
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>As you can see query topologies are invoked just like normal functions, except they perform highly scalable distributed computations to do their work.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unit_tests"><a class="anchor" href="#_unit_tests"></a>Unit tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The last piece to the RamaSpace project is testing. <code>InProcessCluster</code>, which you’ve seen already for many examples, is a great environment for unit testing the behavior of modules. Here is an example of using <code>InProcessCluster</code> along with JUnit to test <code>RamaSpaceModule</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">basicTest</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+  <span class="hljs-keyword">try</span>(InProcessCluster ipc = InProcessCluster.create()) {
+    RamaSpaceModule ramaspace = <span class="hljs-keyword">new</span> RamaSpaceModule();
+    String moduleName = ramaspace.getClass().getName();
+    ipc.launchModule(ramaspace, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+    RamaSpaceClient client = <span class="hljs-keyword">new</span> RamaSpaceClient(ipc);
+
+    assertTrue(client.appendUserRegistration(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"alice@gmail.com"</span>, <span class="hljs-string">"Alice Alice"</span>, <span class="hljs-number">1</span>));
+    assertFalse(client.appendUserRegistration(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"alice2@gmail.com"</span>, <span class="hljs-string">"Alice2"</span>, <span class="hljs-number">2</span>));
+    assertEquals(<span class="hljs-number">1</span>, client.getPwdHash(<span class="hljs-string">"alice"</span>));
+    client.appendBioEdit(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"in wonderland"</span>);
+    Profile profile = client.getProfile(<span class="hljs-string">"alice"</span>);
+    assertEquals(<span class="hljs-string">"Alice Alice"</span>, profile.displayName);
+    assertEquals(<span class="hljs-string">"alice@gmail.com"</span>, profile.email);
+    assertEquals(<span class="hljs-string">"in wonderland"</span>, profile.bio);
+    assertTrue(profile.joinedAtMillis &gt; <span class="hljs-number">0</span>);
+    assertNull(profile.location);
+
+    assertTrue(client.appendUserRegistration(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"bob@gmail.com"</span>, <span class="hljs-string">"Bobby"</span>, <span class="hljs-number">2</span>));
+    assertTrue(client.appendUserRegistration(<span class="hljs-string">"charlie"</span>, <span class="hljs-string">"charlie@gmail.com"</span>, <span class="hljs-string">"Charles"</span>, <span class="hljs-number">2</span>));
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">8</span>; i++) {
+      client.appendPost(<span class="hljs-string">"alice"</span>, <span class="hljs-string">"alice"</span>, <span class="hljs-string">"x"</span> + i);
+      client.appendPost(<span class="hljs-string">"charlie"</span>, <span class="hljs-string">"alice"</span>, <span class="hljs-string">"y"</span> + i);
+      client.appendPost(<span class="hljs-string">"bob"</span>, <span class="hljs-string">"alice"</span>, <span class="hljs-string">"z"</span> + i);
+    }
+
+    ipc.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"posts"</span>, <span class="hljs-number">24</span>);
+
+    TreeMap&lt;Long, ResolvedPost&gt; page1 = client.resolvePosts(<span class="hljs-string">"alice"</span>, <span class="hljs-number">0</span>);
+    assertEquals(<span class="hljs-number">20</span>, page1.size());
+    TreeMap&lt;Long, ResolvedPost&gt; page2  = client.resolvePosts(<span class="hljs-string">"alice"</span>, page1.lastKey() + <span class="hljs-number">1</span>);
+    assertEquals(<span class="hljs-number">4</span>, page2.size());
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>The basic pattern of testing a module is to append some data and then validate the PStates change in the expected ways. How you coordinate those assertions depends on the type of topology updating the PStates in question. For example, in this code assertions on profile updates can happen right after the depot appends because the depot appends don’t complete until the "profiles" stream topology finishes processing those appends. On the other hand, the "posts" topology does not coordinate with depot appends because it’s a microbatch topology. So <code>InProcessCluster</code> provides the utility <code>waitForMicrobatchProcessedCount</code> to block until that topology has processed the expected number of records. Because 24 posts are appended in the test, the <code>waitForMicrobatchProcessedCount</code> call waits for 24 records to be processed. Then the <code>resolvePosts</code> query topology can be tested.</p>
+</div>
+<div class="paragraph">
+<p>This unit test is only testing some of the functionality of <code>RamaSpaceModule</code>, as it’s only intended to illustrate how you would go about testing an application. Before deploying <code>RamaSpaceModule</code> to production you’d want to write more tests to validate all the different parts of the RamaSpace application.</p>
+</div>
+<div class="paragraph">
+<p>As you can see, testing Rama modules is straightforward. This code also illustrates the ease of working with Rama from a client: you’re always working with application-level data types, and the details of where PStates, depots, and query topologies are located is managed for you. Using PStates, depots, and query topologies from a production client (like a web server) is exactly the same as in this unit test.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You now have the core knowledge needed to build elegant, robust, scalable, high-performance backends end-to-end. There’s a world of possibilities even just with what you’ve learned so far. And yet there’s still many more capabilities of Rama to explore that will let you handle many more kinds of use cases. These capabilities include <a href="module-dependencies.html" class="page">dependencies between modules</a>, <a href="pstates.html#_reactive_queries" class="page">fine-grained reactive queries</a>, <a href="intermediate-dataflow.html" class="page">subbatches</a>, and more.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the documentation pages are deep dives into various aspects of Rama. You shouldn’t feel it necessary to learn every little detail of Rama’s capabilities. Instead, we recommend glancing over the rest of the docs to learn what’s available and coming back to them as you encounter those use cases. For running production clusters be sure to read <a href="operating-rama.html" class="page">the page on operating Rama</a>.</p>
+</div>
+<div class="paragraph">
+<p>From here your learning journey can go many directions. You can try to build your own application, or you can explore more complex applications like our <a href="downloads-maven-local-dev.html" class="page">Twitter-scale Mastodon implementation</a>. You can also look at <a href="https://github.com/redplanetlabs/rama-demo-gallery">rama-demo-gallery</a> which contains short, self-contained, thoroughly commented examples of applying Rama towards a variety of use cases. In all cases, <code>InProcessCluster</code> is a fantastic tool for playing with Rama with a fast feedback loop.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>

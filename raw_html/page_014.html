@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Microbatch topologies :: Red Planet Labs Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<!-- Google tag (gtag.js) -->
+<script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-6FCG0W0TYJ&amp;l=dataLayer&amp;cx=c&amp;gtm=457e53h1za200&amp;tag_exp=102482433~102587591~102717422~102788824~102813109~102814060~102825837~102879719"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-137231341-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6FCG0W0TYJ');
+</script>
+  <script src="https://www.google.com/cse/static/element/75c56d121cde450a/cse_element__en.js?usqp=CAM%3D" type="text/javascript"></script><link type="text/css" href="https://www.google.com/cse/static/element/75c56d121cde450a/default+en.css" rel="stylesheet"><link type="text/css" href="https://www.google.com/cse/static/style/look/v4/default.css" rel="stylesheet"><style type="text/css">.gsc-control-cse{font-family:arial, sans-serif}.gsc-control-cse .gsc-table-result{font-family:arial, sans-serif}.gsc-refinementsGradient{background:linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0))}.gsc-control-cse{border-color:#1a1a1a;background-color:#1a1a1a}input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus{border-color:#DFE1E5}.gsc-search-button-v2,.gsc-search-button-v2:hover,.gsc-search-button-v2:focus{border-color:#3079ED;background-color:#4D90FE;background-image:none;filter:none}.gsc-search-button-v2 svg{fill:#FFFFFF}.gsc-tabHeader.gsc-tabhActive,.gsc-refinementHeader.gsc-refinementhActive{color:#1A73E8;border-color:#1A73E8;background-color:#FFFFFF}.gsc-tabHeader.gsc-tabhInactive,.gsc-refinementHeader.gsc-refinementhInactive{color:#666666;border-color:#666666;background-color:#FFFFFF}.gsc-webResult.gsc-result,.gsc-results .gsc-imageResult{border-color:#FFFFFF;background-color:#FFFFFF}.gsc-webResult.gsc-result:hover{border-color:#FFFFFF;background-color:#FFFFFF}.gs-webResult.gs-result a.gs-title:link,.gs-webResult.gs-result a.gs-title:link b,.gs-imageResult a.gs-title:link,.gs-imageResult a.gs-title:link b{color:#1155CC}.gs-webResult.gs-result a.gs-title:visited,.gs-webResult.gs-result a.gs-title:visited b,.gs-imageResult a.gs-title:visited,.gs-imageResult a.gs-title:visited b{color:#1155CC}.gs-webResult.gs-result a.gs-title:hover,.gs-webResult.gs-result a.gs-title:hover b,.gs-imageResult a.gs-title:hover,.gs-imageResult a.gs-title:hover b{color:#1155CC}.gs-webResult.gs-result a.gs-title:active,.gs-webResult.gs-result a.gs-title:active b,.gs-imageResult a.gs-title:active,.gs-imageResult a.gs-title:active b{color:#1155CC}.gsc-cursor-page{color:#1155CC}a.gsc-trailing-more-results:link{color:#1155CC}.gs-webResult:not(.gs-no-results-result):not(.gs-error-result) .gs-snippet,.gs-fileFormatType{color:#333333}.gs-webResult div.gs-visibleUrl{color:#009933}.gs-webResult div.gs-visibleUrl-short{color:#009933}.gs-webResult div.gs-visibleUrl-short{display:none}.gs-webResult div.gs-visibleUrl-long{display:none}.gs-webResult div.gs-visibleUrl-breadcrumb{display:block}.gs-promotion div.gs-visibleUrl-short{display:none}.gs-promotion div.gs-visibleUrl-long{display:block}.gs-promotion div.gs-visibleUrl-breadcrumb{display:none}.gsc-cursor-box{border-color:#FFFFFF}.gsc-results .gsc-cursor-box .gsc-cursor-page{border-color:#666666;background-color:#FFFFFF;color:#666666}.gsc-results .gsc-cursor-box .gsc-cursor-current-page{border-color:#1A73E8;background-color:#FFFFFF;color:#1A73E8}.gsc-webResult.gsc-result.gsc-promotion{border-color:#FFFFFF;background-color:#F6F6F6}.gsc-completion-title{color:#1155CC}.gsc-completion-snippet{color:#333333}.gs-promotion a.gs-title:link,.gs-promotion a.gs-title:link *,.gs-promotion .gs-snippet a:link{color:#1155CC}.gs-promotion a.gs-title:visited,.gs-promotion a.gs-title:visited *,.gs-promotion .gs-snippet a:visited{color:#1155CC}.gs-promotion a.gs-title:hover,.gs-promotion a.gs-title:hover *,.gs-promotion .gs-snippet a:hover{color:#1155CC}.gs-promotion a.gs-title:active,.gs-promotion a.gs-title:active *,.gs-promotion .gs-snippet a:active{color:#1155CC}.gs-promotion .gs-snippet,.gs-promotion .gs-title .gs-promotion-title-right,.gs-promotion .gs-title .gs-promotion-title-right *{color:#333333}.gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short{color:#009933}.gcsc-find-more-on-google{color:#1155CC}.gcsc-find-more-on-google-magnifier{fill:#1155CC}</style><style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{vertical-align:middle;opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gssb_a{padding:0 9px}.gsib_a{padding:5px 9px 4px 9px}.gscb_a{line-height:27px}.gssb_e{border:0}.gssb_l{margin:5px 0}input.gsc-input::-webkit-input-placeholder{font-size:14px}input.gsc-input:-moz-placeholder{font-size:14px}input.gsc-input::-moz-placeholder{font-size:14px}input.gsc-input:-ms-input-placeholder{font-size:14px}input.gsc-input:focus::-webkit-input-placeholder{color:transparent}input.gsc-input:focus:-moz-placeholder{color:transparent}input.gsc-input:focus::-moz-placeholder{color:transparent}input.gsc-input:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style></head>
+  <body class="article">
+<style>
+  p {
+    hyphens: none;
+  }
+  td {
+    hyphens: none;
+  }
+
+  p code {
+    background: #eeeeee !important
+  }
+
+  .gsc-clear-button {
+    display: none;
+  }
+
+  .gsc-control-cse {
+    font-size: 10px !important
+  }
+</style>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/~/index.html">Red Planet Labs Documentation</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <script async="" src="https://cse.google.com/cse.js?cx=a198d0f9938004cd4">
+          </script>
+          <div id="___gcse_0"><div class="gsc-control-cse gsc-control-cse-en"><div class="gsc-control-wrapper-cse" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" role="presentation" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" aria-label="search" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none;"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" title="Clear search box" role="button" style="display: none;"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>search</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table></form><div class="gsc-results-wrapper-overlay"><div class="gsc-results-close-btn" tabindex="0"></div><div class="gsc-positioningWrapper"><div class="gsc-tabsAreaInvisible"><div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div></div><div class="gsc-positioningWrapper"><div class="gsc-refinementsAreaInvisible"></div></div><div class="gsc-above-wrapper-area-invisible"><div class="gsc-above-wrapper-area-backfill-container"></div><table cellspacing="0" cellpadding="0" role="presentation" class="gsc-above-wrapper-area-container"><tbody><tr><td class="gsc-result-info-container"><div class="gsc-result-info-invisible"></div></td><td class="gsc-orderby-container"><div class="gsc-orderby-invisible"><div class="gsc-orderby-label gsc-inline-block">Sort by:</div><div class="gsc-option-menu-container gsc-inline-block"><div class="gsc-selected-option-container gsc-inline-block"><div class="gsc-selected-option">Relevance</div><div class="gsc-option-selector"></div></div><div class="gsc-option-menu-invisible"><div class="gsc-option-menu-item gsc-option-menu-item-highlighted"><div class="gsc-option">Relevance</div></div><div class="gsc-option-menu-item"><div class="gsc-option">Date</div></div></div></div></div></td></tr></tbody></table></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><div><div class="gsc-expansionArea"></div></div></div></div></div></div><div class="gsc-modal-background-image" tabindex="0"></div></div></div></div>
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="~">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style=""></button>
+    <h3 class="title"><a href="index.html">Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item is-active is-current-path" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="why-use-rama.html">Why use Rama?</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tutorial1.html">Tutorial</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial1.html">First module</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial2.html">Depots, ETLs, and PStates</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial3.html">Distributed programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial4.html">Dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial5.html">Types of ETLs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tutorial6.html">Tying it all together</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="downloads-maven-local-dev.html">Downloads, Maven, and local development</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="paths.html">Paths</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="intermediate-dataflow.html">Intermediate dataflow programming</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="aggregators.html">Aggregators</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stream.html">Stream topologies</a>
+  </li>
+  <li class="nav-item is-current-page is-active" data-depth="1">
+    <a class="nav-link" href="microbatch.html">Microbatch topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="query.html">Query topologies</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="depots.html">Depots</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pstates.html">PStates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="partitioners.html">Partitioners</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="module-dependencies.html">Dependencies between modules</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="operating-rama.html">Operating Rama clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="heterogenous-clusters.html">Heterogenous clusters</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replication.html">Replication</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="backups.html">Backups</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acid.html">ACID semantics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="rest.html">REST API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="integrating.html">Integrating with other tools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="all-configs.html">All configs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="clj-defining-modules.html">Clojure API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-defining-modules.html">Defining and using modules</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-dataflow-lang.html">Dataflow language</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-serialization.html">Custom serialization</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clj-testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Documentation</span>
+    <span class="version">~</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">Documentation</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">~</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Documentation</a></li>
+    <li><a href="microbatch.html">Microbatch topologies</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_usage" class="">Usage</a></li><li data-level="1"><a href="#_operation_and_fault_tolerance" class="is-active">Operation and fault-tolerance</a></li><li data-level="1"><a href="#_start_from_options">"Start from" options</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div>
+</aside>
+<article class="doc">
+<h1 class="page">Microbatch topologies</h1>
+<aside class="toc embedded"><div class="toc-menu"><h3>Contents</h3><ul><li data-level="1"><a href="#_usage">Usage</a></li><li data-level="1"><a href="#_operation_and_fault_tolerance">Operation and fault-tolerance</a></li><li data-level="1"><a href="#_start_from_options">"Start from" options</a></li><li data-level="1"><a href="#_tuning_options">Tuning options</a></li><li data-level="1"><a href="#_summary">Summary</a></li></ul></div></aside><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In <a href="tutorial5.html" class="page">the tutorial</a>, you saw an overview of microbatch topologies. Though broadly similar to using stream topologies, microbatch topologies have many important differences. They have significant additional capabilities for expressing computations, different performance characteristics, and simple exactly-once fault-tolerance semantics.</p>
+</div>
+<div class="paragraph">
+<p>On this page, you’ll learn:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Additional computational capabilities supported by microbatch topologies</p>
+</li>
+<li>
+<p>Phases of microbatch operation</p>
+</li>
+<li>
+<p>How microbatch topologies achieve exactly-once semantics for PState updates regardless of failures and retries</p>
+</li>
+<li>
+<p>Tuning options available for microbatch topologies</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All examples on this page can be found in the <a href="https://github.com/redplanetlabs/rama-examples">rama-examples</a> project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Microbatch topologies process data that has accumulated on subscribed depots in one coordinated batch computation. There could be hundreds or thousands of unprocessed records on each depot partition that are processed together in a single microbatch. After finishing, a microbatch topology starts again with whatever data accumulated during the last microbatch. This is in contrast to stream topologies which process depot records independently and concurrently as they are appended.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an example of a microbatch topology:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleMicrobatchTopologyModule</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RamaModule</span> </span>{
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">define</span><span class="hljs-params">(Setup setup, Topologies topologies)</span> </span>{
+    setup.declareDepot(<span class="hljs-string">"*keyPairsDepot"</span>, Depot.hashBy(Ops.FIRST));
+    setup.declareDepot(<span class="hljs-string">"*numbersDepot"</span>, Depot.random());
+
+    MicrobatchTopology mb = topologies.microbatch(<span class="hljs-string">"mb"</span>);
+    mb.pstate(
+       <span class="hljs-string">"$$keyPairCounts"</span>,
+       PState.mapSchema(
+         String<span class="hljs-class">.<span class="hljs-keyword">class</span>,
+         <span class="hljs-title">PState</span>.<span class="hljs-title">mapSchema</span>(<span class="hljs-title">String</span>.<span class="hljs-title">class</span>, <span class="hljs-title">Long</span>.<span class="hljs-title">class</span>).<span class="hljs-title">subindexed</span>()))</span>;
+    mb.pstate(<span class="hljs-string">"$$globalSum"</span>, Long<span class="hljs-class">.<span class="hljs-keyword">class</span>).<span class="hljs-title">global</span>().<span class="hljs-title">initialValue</span>(0<span class="hljs-title">L</span>)</span>;
+
+    mb.source(<span class="hljs-string">"*keyPairsDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+      .explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*tuple"</span>)
+      .each(Ops.EXPAND, <span class="hljs-string">"*tuple"</span>).out(<span class="hljs-string">"*k"</span>, <span class="hljs-string">"*k2"</span>)
+      .compoundAgg(<span class="hljs-string">"$$keyPairCounts"</span>, CompoundAgg.map(<span class="hljs-string">"*k"</span>, CompoundAgg.map(<span class="hljs-string">"*k2"</span>, Agg.count())));
+
+    mb.source(<span class="hljs-string">"*numbersDepot"</span>).out(<span class="hljs-string">"*microbatch"</span>)
+      .batchBlock(
+        Block.explodeMicrobatch(<span class="hljs-string">"*microbatch"</span>).out(<span class="hljs-string">"*v"</span>)
+             .globalPartition()
+             .agg(<span class="hljs-string">"$$globalSum"</span>, Agg.sum(<span class="hljs-string">"*v"</span>)));
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    <span class="hljs-keyword">try</span>(InProcessCluster cluster = InProcessCluster.create()) {
+      RamaModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> ExampleMicrobatchTopologyModule();
+      cluster.launchModule(<span class="hljs-keyword">module</span>, <span class="hljs-keyword">new</span> LaunchConfig(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>));
+      String moduleName = <span class="hljs-keyword">module</span>.getClass().getName();
+
+      Depot keyPairsDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*keyPairsDepot"</span>);
+      Depot numbersDepot = cluster.clusterDepot(moduleName, <span class="hljs-string">"*numbersDepot"</span>);
+      PState keyPairCounts = cluster.clusterPState(moduleName, <span class="hljs-string">"$$keyPairCounts"</span>);
+      PState globalSum = cluster.clusterPState(moduleName, <span class="hljs-string">"$$globalSum"</span>);
+
+      numbersDepot.append(<span class="hljs-number">1</span>);
+      numbersDepot.append(<span class="hljs-number">3</span>);
+      numbersDepot.append(<span class="hljs-number">7</span>);
+
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"a"</span>, <span class="hljs-string">"c"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>));
+      keyPairsDepot.append(Arrays.asList(<span class="hljs-string">"x"</span>, <span class="hljs-string">"z"</span>));
+
+      cluster.waitForMicrobatchProcessedCount(moduleName, <span class="hljs-string">"mb"</span>, <span class="hljs-number">10</span>);
+
+      System.out.println(<span class="hljs-string">"Global sum: "</span> + globalSum.selectOne(Path.stay()));
+      System.out.println(<span class="hljs-string">"Counts for 'a': "</span> + keyPairCounts.select(Path.key(<span class="hljs-string">"a"</span>).all()));
+      System.out.println(<span class="hljs-string">"Counts for 'x': "</span> + keyPairCounts.select(Path.key(<span class="hljs-string">"x"</span>).all()));
+    }
+  }
+}</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Once again, the <code>main</code> method demonstrates what it would be like using this module once deployed on a cluster. Just like stream topologies, microbatch topologies can declare as many PStates and consume from as many depots as they wish. Although this example does not do so, when you have multiple source blocks on a topology it’s common for them to modify the same PStates.</p>
+</div>
+<div class="paragraph">
+<p>In microbatch topologies, depot sources emit an object representing the batch of data for this microbatch across all that depot’s partitions. This object can only be used in conjunction with <code>explodeMicrobatch</code>, which emits each piece of data across all partitions. The code after <code>explodeMicrobatch</code> runs on all partitions of the depot.</p>
+</div>
+<div class="paragraph">
+<p>The entire dataflow API is available in microbatch topologies. Unlike stream topologies, microbatch topologies can take advantage of Rama’s batch computation capabilities with <code>batchBlock</code>. Batch blocks open up a huge amount of power, including two-phase aggregation, joins, and temporary PStates. See <a href="intermediate-dataflow.html#_batch_blocks" class="page">this section</a> for details on batch blocks.</p>
+</div>
+<div class="paragraph">
+<p>All the dataflow constructs are composable with one another. You can use partitioners within conditionals or batch blocks, and you can use batch blocks within loops. You can even mix batch blocks with regular dataflow code in the same source block, although this isn’t common. The only restriction with batch blocks is they must be initiated from task 0 (always the starting task at the beginning of a microbatch source block). You can string multiple batch blocks together since the code after a batch block runs on task 0.</p>
+</div>
+<div class="paragraph">
+<p>This example uses <code>"*keyPairsDepot"</code> to count each pair of keys. It uses <code>"*numbersDepot"</code> to compute the sum of all the numbers. The batch block in that source block takes advantage of <a href="aggregators.html#_high_performance_two_phase_aggregation_with_combiners" class="page">two-phase aggregation</a>, which makes that global sum scalable and extremely performant.</p>
+</div>
+<div class="paragraph">
+<p>Running <code>main</code> prints:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Global sum: 11
+Counts for 'a': [["b" 2] ["c" 1]]
+Counts for 'x': [["y" 3] ["z" 1]]</code></pre>
+<div class="source-toolbox"><span class="source-lang">text</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>Microbatch topologies do not integrate with depot appends because they run asynchronously to the appends. In tests, you utilize <code>waitForMicrobatchProcessedCount</code> to know when your microbatch topology has processed all the data you appended. In this case, since ten records were appended, it uses <code>waitForMicrobatchProcessedCount</code> to wait for ten records to be processed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operation_and_fault_tolerance"><a class="anchor" href="#_operation_and_fault_tolerance"></a>Operation and fault-tolerance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Microbatch topologies are designed for high throughput and exactly-once fault-tolerance semantics. Let’s take a look at a broad overview of the implementation of microbatch topologies to see how this is achieved. Though you don’t need to understand the implementation to use them effectively, this information will help you understand the telemetry for microbatch topologies in the <a href="operating-rama.html#_cluster_ui" class="page">Cluster UI</a>.</p>
+</div>
+<div class="paragraph">
+<p>A microbatch topology is controlled by a "runner" on the task 0 leader. This runner shares the task 0 thread with all other events running on that thread (topology events, PState reads, etc.). Like everything else in Rama, this runner does not block the task thread but instead runs as a series of asynchronous events.</p>
+</div>
+<div class="paragraph">
+<p>The runner launches a microbatch, detects when it finishes processing, and coordinates when changes to PStates are made visible to clients and other topologies. Once this procedure finishes successfully, it starts again with the next set of unprocessed data that has accumulated on depots. You can think of the runner as an asynchronous while(true) loop where each iteration of the loop processes a single microbatch.</p>
+</div>
+<div class="paragraph">
+<p>A single iteration of the microbatch runner is called a "microbatch attempt". A microbatch attempt is identified by a <em>microbatch ID</em> and <em>version</em>. If a microbatch fails (e.g. an exception in the topology, a leadership change during processing, or a timeout), it is re-attempted with the same microbatch ID and an incremented version. Each attempt for the same microbatch ID processes the exact same set of data from the depots, even if more data has accumulated on the depots since the first attempt. Additionally, each microbatch attempt starts with the PStates at exactly their state after the previous microbatch ID. The microbatch ID and version are stored on an internal PState dedicated to the topology with a name of the form <code>"$$__microbatcher-state-&lt;topologyId&gt;"</code>.</p>
+</div>
+<div class="paragraph">
+<p>A microbatch topology executes in three phases: priming phase, processing phase, and commit phase. Each phase completes before moving on to the next phase. The version is incremented at the start, and the microbatch ID is incremented at the end. All of these are coordinated by the task 0 runner. Here’s a diagram of how microbatch topologies work:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/diagrams/microbatch/microbatch-loop.png" alt="microbatch loop">
+</div>
+</div>
+<div class="paragraph">
+<p>The priming phase runs an event on every task to prepare them for the upcoming microbatch. It clears internal buffers used for joins and aggregations, clears temporary PStates, and resets every user PState (e.g. <code>"$$keyPairCounts"</code> in the above example) to the state at the end of the previous microbatch ID. User PStates have separate <em>internal</em> and <em>external</em> views which are managed separately. This reset only affects the internal view, and topology code always operates on the internal views of user PStates.</p>
+</div>
+<div class="paragraph">
+<p>The processing phase runs your topology code. The first time <code>explodeMicrobatch</code> is called on a depot source for a microbatch ID, the range of data to read per partition for that microbatch ID is written and replicated. The max amount of data to read per partition is configurable by the <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">dynamic option</a> <code>depot.microbatch.max.records</code>.</p>
+</div>
+<div class="paragraph">
+<p>After the processing phase finishes, all PState updates have been applied by the topology. The commit phase checkpoints the internal PStates and marks them with the microbatch ID / version of the microbatch. This checkpointing process predominantly involves making <a href="https://en.wikipedia.org/wiki/Hard_link">hard links</a> on disk. The latest versions for the last two microbatch IDs are always kept, ensuring the microbatch can restart with the state from the last microbatch ID if any worker involved in the commit phase were to fail. The commit phase also <a href="replication.html" class="page">replicates</a> all changes from the microbatch to followers. After all PStates on a task have been checkpointed and replicated, their external versions are updated to what was just checkpointed. This is when changes are made visible to clients and other topologies. This means all changes to all PStates on a task in a microbatch become visible at the exact same time (though changes on different tasks may become visible at slightly different times).</p>
+</div>
+<div class="paragraph">
+<p>Because microbatch topologies always start from the state of the last microbatch ID, and because they always process the exact same set of depot records, they have exactly-once semantics for PState updates regardless of failures in any of the phases.</p>
+</div>
+<div class="paragraph">
+<p>A microbatch topology is not necessarily deterministic, however. That depends entirely on the topology code. If you use <code>shufflePartition</code>, random numbers, or query <a href="module-dependencies.html" class="page">mirror PStates</a> in your topology, the results after a retry could be different than the previous version for the same microbatch ID. Importantly, the resulting PStates still do represent the processing of each depot record exactly one time. When a new version of a PState is computed for the same microbatch ID, the new version replaces the old version in the external view of the PState.</p>
+</div>
+<div class="paragraph">
+<p>If you do depot appends as part of your microbatch topology to either the same module or other modules, those currently do not have exactly-once semantics in the face of failures and retries. However, this is on our roadmap.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_start_from_options"><a class="anchor" href="#_start_from_options"></a>"Start from" options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Like stream topologies, you can configure a microbatch topology to begin processing depots from some point in the past. By default, they will start from the end and only process records appended after the topology started. These options only have an effect the first time the microbatch topology encounters that depot, either on a module launch or by adding a new depot source in a module update.</p>
+</div>
+<div class="paragraph">
+<p>Here are examples of all the different options you can configure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">mb.source(<span class="hljs-string">"*depot"</span>, MicrobatchSourceOptions.startFromBeginning())
+
+mb.source(<span class="hljs-string">"*depot2"</span>, MicrobatchSourceOptions.startFromOffsetAfterTimestamp(<span class="hljs-number">107740800000</span>))
+
+mb.source(<span class="hljs-string">"*depot3"</span>, MicrobatchSourceOptions.startFromOffsetAgo(<span class="hljs-number">10000</span>, OffsetAgo.RECORDS))
+
+mb.source(<span class="hljs-string">"*depot4"</span>, MicrobatchSourceOptions.startFromOffsetAgo(<span class="hljs-number">15</span>, OffsetAgo.DAYS))</code></pre>
+<div class="source-toolbox"><span class="source-lang">java</span><button class="copy-button" title="Copy to clipboard"><img src="../../_/img/octicons-16.svg#view-clippy" alt="copy icon" class="copy-icon"><span class="copy-toast">Copied!</span></button></div></div>
+</div>
+<div class="paragraph">
+<p>See <a href="stream.html#_start_from_options" class="page">this section</a> for a description of what these do.</p>
+</div>
+<div class="paragraph">
+<p>There are no other options besides these on <code>MicrobatchSourceOptions</code>. Unlike stream topologies, there’s nothing you need to worry about with regards to retry modes and fault-tolerance since microbatch topologies always have exactly-once semantics.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tuning_options"><a class="anchor" href="#_tuning_options"></a>Tuning options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are a variety of <a href="operating-rama.html#_worker_configurations_and_dynamic_options" class="page">dynamic options</a> available for microbatch topologies. Dynamic options can be edited from the Cluster UI and take effect immediately. The relevant dynamic options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>depot.microbatch.max.records</code>: This is the maximum number of records to read per depot partition for a microbatch. Higher numbers allow a microbatch to benefit from increased batching across the board, but too high a number risks running out of memory during the processing phase.</p>
+</li>
+<li>
+<p><code>depot.max.fetch</code>: This is the maximum number of depot records to fetch from a partition at a time in a single event. Bigger fetches take longer and will thereby utilize the task thread for longer. This should be less than or equal to <code>depot.microbatch.max.records</code>. Filling the data read for a partition up to <code>depot.microbatch.max.records</code> will span some number of events each fetching a maximum of <code>depot.max.fetch</code> records at a time.</p>
+</li>
+<li>
+<p><code>topology.microbatch.phase.timeout.seconds</code>: This is the timeout for each phase of a microbatch. If a phase takes longer than this, it will fail and the microbatch will retry from the start.</p>
+</li>
+<li>
+<p><code>topology.microbatch.empty.sleep.time.millis</code>: If a microbatch does not process any records, the runner will sleep for this amount of time before launching the next microbatch. This prevents microbatches from running in a tight loop using large amounts of CPU across the cluster when the rate of incoming data is low.</p>
+</li>
+<li>
+<p><code>topology.microbatch.pstate.flush.path.count</code>: This is the rate at which writes to PStates are flushed to disk. A higher number will get improved write performance via increased batching, but since writes happen in a task thread it also risks utilizing a task thread for too long.</p>
+</li>
+<li>
+<p><code>worker.combined.transfer.limit</code>: Microbatch topologies use this value to determine how many outgoing events to package together into a single network message. Higher values get improved throughput from increased batching, but too high a number risks delays at the network level. Since each worker only listens on one port, a single incoming message that’s too large will cause delays to all traffic coming to that worker (like PState client reads).</p>
+</li>
+<li>
+<p><code>topology.combiner.limit</code>: For combiners that require flushing, this determines the frequency at which they flush in terms of number of aggregations. Note that most combiners do not require flushing so it’s unlikely you’ll need to edit this.</p>
+</li>
+<li>
+<p><code>topology.microbatch.ack.branching.factor</code>: To scalably detect completion of the processing phase, a microbatch topology implements a hierarchical acking algorithm. Tasks are arranged into a tree using this branching factor, with the root task being task 0. Tasks funnel information about event completion to their parent task, and event completion information is combined together as it works its way up the tree. Tasks forward completion information to their parent when they haven’t received any new completion information in a fixed amount of time.</p>
+</li>
+<li>
+<p><code>topology.microbatch.ack.delay.base.millis</code>: This determines the minimum amount of time to wait for new completion information in the hierarchical acking algorithm. If new completion information is received in this time window, the wait starts over again.</p>
+</li>
+<li>
+<p><code>topology.microbatch.ack.delay.step.millis</code>: This increases the amount of time to wait for completion information for each level of the tree. As a task gets closer to task 0, it waits longer. This helps even out the amount of load incurred by each task in the acking tree.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Updating PStates with microbatch topologies is different than how databases are normally interacted with. For decades the predominant pattern has been to do reads and writes to databases from an application layer, which is essentially like stream processing without the structured framework for it.</p>
+</div>
+<div class="paragraph">
+<p>Unless you require millisecond-level update latency for your PStates, you should generally prefer microbatch topologies. They have higher throughput and simpler fault-tolerance semantics than stream topologies. Their additional computational capabilities through batch blocks are also very significant.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+</footer>
+<script type="text/javascript" src="../../_/js/main.js"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async="" src="../../_/js/vendor/highlight.js"></script>
+  
+
+<table cellspacing="0" cellpadding="0" role="presentation" class="gstl_50 gssb_c" style="width: 217px; display: none; top: 50px; left: 1048px; position: absolute;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table></body></html>
